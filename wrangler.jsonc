@@ -1,9 +1,8 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  // Cloudflare Pages (ccme-ma-v3) — Workers Builds runs `npx wrangler deploy`,
-  // which Wrangler 4.x maps to Pages when this key is present.
-  // Do NOT add "main" or "assets" here (Pages forbids mixing with Worker keys).
-  "name": "ccme-ma-v3",
+  "name": "ccmev3",
   "compatibility_date": "2026-06-13",
-  "pages_build_output_dir": "./dist"
+  "assets": {
+    "directory": "./dist"
+  }
 }

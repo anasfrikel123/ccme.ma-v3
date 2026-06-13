@@ -1,29 +1,9 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  // Workers static assets — matches Cloudflare Workers Builds deploy command:
-  //   npx wrangler deploy
-  // Do NOT add pages_build_output_dir here (Wrangler forbids mixing Pages + Worker keys).
+  // Cloudflare Pages (ccme-ma-v3) — Workers Builds runs `npx wrangler deploy`,
+  // which Wrangler 4.x maps to Pages when this key is present.
+  // Do NOT add "main" or "assets" here (Pages forbids mixing with Worker keys).
   "name": "ccme-ma-v3",
   "compatibility_date": "2026-06-13",
-  "main": "./worker/index.ts",
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "404-page",
-    "run_worker_first": ["/blog/*"]
-  },
-  "observability": {
-    "enabled": false,
-    "head_sampling_rate": 1,
-    "logs": {
-      "enabled": true,
-      "head_sampling_rate": 1,
-      "persist": true,
-      "invocation_logs": true
-    },
-    "traces": {
-      "enabled": false,
-      "persist": true,
-      "head_sampling_rate": 1
-    }
-  }
+  "pages_build_output_dir": "./dist"
 }

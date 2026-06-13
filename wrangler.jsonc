@@ -3,7 +3,7 @@
   // Cloudflare Pages project (ccme.ma-v3) — single source of truth for Git + CLI deploys.
   "name": "ccme-ma-v3",
   "compatibility_date": "2026-06-13",
-  // Astro static output; Pages Functions live in ./functions (e.g. _middleware.ts).
+  // Pages project — use `wrangler pages deploy`, NOT `wrangler deploy` (Workers).
   "pages_build_output_dir": "./dist",
   "observability": {
     "enabled": false,

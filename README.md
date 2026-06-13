@@ -105,7 +105,7 @@ Repo : [github.com/anasfrikel123/ccme.ma-v3](https://github.com/anasfrikel123/cc
 | Paramètre | Valeur |
 |-----------|--------|
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
+| Deploy command | `npx wrangler pages deploy dist --project-name=ccme-ma-v3` |
 | Build output directory | `dist` (also in `wrangler.jsonc`) |
 | Node.js | 22 |
 
@@ -135,7 +135,7 @@ npm run deploy:preview  # preview — branche courante
 
 ```powershell
 npm run build
-npx wrangler deploy
+npx wrangler pages deploy dist --project-name=ccme-ma-v3
 ```
 
 `functions/_middleware.ts` est pris en charge automatiquement (dossier `functions/` à la racine du repo).
@@ -145,7 +145,7 @@ npx wrangler deploy
 Connecte le repo **ccme.ma-v3** dans Cloudflare Dashboard → Workers & Pages → Connect to Git :
 
 - **Build command:** `npm run build`
-- **Deploy command:** `npx wrangler deploy`
+- **Deploy command:** `npx wrangler pages deploy dist --project-name=ccme-ma-v3`
 - **Builds for non-production branches:** checked (preview URLs)
 
 Chaque `git push` sur `main` déploie en prod. Pas besoin de `npm run deploy` en local si Git CI est actif.

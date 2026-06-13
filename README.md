@@ -117,6 +117,30 @@ Le build exécute tests, génération OG/llms, Astro static, puis vérifie les l
 
 `astro.config.mjs` est configuré avec `site: 'https://www.ccme.ma'`.
 
+### Déploiement manuel (Wrangler CLI)
+
+Une fois connecté (`npx wrangler login`) :
+
+```powershell
+cd astro-site
+npm install
+npm run deploy          # prod — branche main
+npm run deploy:preview  # preview — branche courante
+```
+
+Équivalent direct :
+
+```powershell
+npm run build
+npx wrangler pages deploy dist --project-name=ccme-ma-v3 --branch=main
+```
+
+`functions/_middleware.ts` est pris en charge automatiquement (dossier `functions/` à la racine du repo).
+
+### Déploiement auto (recommandé)
+
+Connecte le repo **ccme.ma-v3** dans Cloudflare Dashboard → Workers & Pages → Create → Connect to Git. Chaque `git push` sur `main` lance `npm run build` et publie `dist/` — pas besoin de `npm run deploy` en local.
+
 ## Mise à jour du contenu
 
 **Ajouter un service** : créer `src/content/services/<slug>.md` avec frontmatter respectant le schéma. Apparaît automatiquement dans `/services` et accessible via `/services/<slug>`.

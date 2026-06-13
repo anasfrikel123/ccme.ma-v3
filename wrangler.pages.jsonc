@@ -1,0 +1,7 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Optional — manual Pages CLI deploy only (`npm run deploy:pages`).
+  "name": "ccme-ma-v3",
+  "compatibility_date": "2026-06-13",
+  "pages_build_output_dir": "./dist"
+}

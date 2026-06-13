@@ -105,22 +105,19 @@ Repo : [github.com/anasfrikel123/ccme.ma-v3](https://github.com/anasfrikel123/cc
 | Paramètre | Valeur |
 |-----------|--------|
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler pages deploy dist --project-name=ccme-ma-v3` |
+| Deploy command | `npx wrangler deploy` |
 | Node.js | 22 |
 
-`wrangler.jsonc` configures both deploy paths:
+**Workers Builds** uses `wrangler.jsonc` (Worker + static assets). Manual Pages deploy: `npm run deploy:pages` (uses `wrangler.pages.jsonc`).
 
-- **`wrangler pages deploy`** (recommended) — Pages Functions via `functions/_middleware.ts`
-- **`wrangler deploy`** (Workers Builds default) — static assets + `worker/index.ts` (same markdown negotiation)
-
-Workers Builds only exposes **Build command** + **Deploy command** (no output-directory field). Either deploy command works after this config.
+Wrangler cannot mix `pages_build_output_dir` with `main`/`assets` — CI uses Worker deploy; Pages CLI uses the separate config file.
 
 Variables d'environnement (Dashboard → Settings → Environment variables) :
 
 - `PUBLIC_WEB3FORMS_KEY` — clé Web3Forms pour `/contact` (obligatoire en prod)
 - `PUBLIC_GSC_TOKEN` — optionnel, Search Console
 
-Le build exécute tests, génération OG/llms, Astro static, puis vérifie les liens internes. Les en-têtes CSP et les redirects legacy sont dans `public/_headers` et `public/_redirects`. La négociation `Accept: text/markdown` pour le blog est gérée par `functions/_middleware.ts`.
+Le build exécute tests, génération OG/llms, Astro static, puis vérifie les liens internes. Les en-têtes CSP et les redirects legacy sont dans `public/_headers` et `public/_redirects`. La négociation `Accept: text/markdown` pour le blog : `worker/index.ts` (CI `wrangler deploy`) ou `functions/_middleware.ts` (Pages CLI).
 
 `astro.config.mjs` est configuré avec `site: 'https://www.ccme.ma'`.
 
@@ -149,11 +146,10 @@ npx wrangler pages deploy dist --project-name=ccme-ma-v3
 Connecte le repo **ccme.ma-v3** dans Cloudflare Dashboard → Workers & Pages → ton projet → **Settings** → **Build** :
 
 - **Build command:** `npm run build`
-- **Deploy command:** `npm run deploy:pages` (or `npx wrangler pages deploy dist --project-name=ccme-ma-v3`)
-- **Do not use** `npx wrangler deploy` — that is for Workers, not Pages.
+- **Deploy command:** `npx wrangler deploy`
 - **Builds for non-production branches:** checked (preview URLs)
 
-There is no separate output-directory field on Workers Builds; `dist` is in the deploy command above.
+Pas de champ « output directory » — `dist` est dans `wrangler.jsonc` → `assets.directory`.
 
 Chaque `git push` sur `main` déploie en prod. Pas besoin de `npm run deploy` en local si Git CI est actif.
 

@@ -1,17 +1,16 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  // Cloudflare Pages project (ccme.ma-v3) — single source of truth for Git + CLI deploys.
+  // Workers static assets — matches Cloudflare Workers Builds deploy command:
+  //   npx wrangler deploy
+  // Do NOT add pages_build_output_dir here (Wrangler forbids mixing Pages + Worker keys).
   "name": "ccme-ma-v3",
   "compatibility_date": "2026-06-13",
-  // Pages + Workers Builds: `pages_build_output_dir` for `wrangler pages deploy`;
-  // `assets` lets the dashboard default `wrangler deploy` succeed on CI.
-  "pages_build_output_dir": "./dist",
+  "main": "./worker/index.ts",
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
     "run_worker_first": ["/blog/*"]
   },
-  "main": "./worker/index.ts",
   "observability": {
     "enabled": false,
     "head_sampling_rate": 1,

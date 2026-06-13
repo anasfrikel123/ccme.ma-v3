@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Cloudflare Pages project (ccme.ma-v3) — single source of truth for Git + CLI deploys.
+  "name": "ccme-ma-v3",
+  "compatibility_date": "2026-06-13",
+  // Astro static output; Pages Functions live in ./functions (e.g. _middleware.ts).
+  "pages_build_output_dir": "./dist",
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
+  }
+}

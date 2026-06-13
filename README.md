@@ -106,10 +106,14 @@ Repo : [github.com/anasfrikel123/ccme.ma-v3](https://github.com/anasfrikel123/cc
 |-----------|--------|
 | Build command | `npm run build` |
 | Deploy command | `npx wrangler pages deploy dist --project-name=ccme-ma-v3` |
-| Build output directory | `dist` (also in `wrangler.jsonc`) |
 | Node.js | 22 |
 
-`wrangler.jsonc` at repo root is the **single source of truth** for project name, output dir, and observability — Git builds and `npm run deploy` both read it.
+`wrangler.jsonc` configures both deploy paths:
+
+- **`wrangler pages deploy`** (recommended) — Pages Functions via `functions/_middleware.ts`
+- **`wrangler deploy`** (Workers Builds default) — static assets + `worker/index.ts` (same markdown negotiation)
+
+Workers Builds only exposes **Build command** + **Deploy command** (no output-directory field). Either deploy command works after this config.
 
 Variables d'environnement (Dashboard → Settings → Environment variables) :
 
@@ -142,11 +146,14 @@ npx wrangler pages deploy dist --project-name=ccme-ma-v3
 
 ### Déploiement auto (recommandé)
 
-Connecte le repo **ccme.ma-v3** dans Cloudflare Dashboard → Workers & Pages → Connect to Git :
+Connecte le repo **ccme.ma-v3** dans Cloudflare Dashboard → Workers & Pages → ton projet → **Settings** → **Build** :
 
 - **Build command:** `npm run build`
-- **Deploy command:** `npx wrangler pages deploy dist --project-name=ccme-ma-v3`
+- **Deploy command:** `npm run deploy:pages` (or `npx wrangler pages deploy dist --project-name=ccme-ma-v3`)
+- **Do not use** `npx wrangler deploy` — that is for Workers, not Pages.
 - **Builds for non-production branches:** checked (preview URLs)
+
+There is no separate output-directory field on Workers Builds; `dist` is in the deploy command above.
 
 Chaque `git push` sur `main` déploie en prod. Pas besoin de `npm run deploy` en local si Git CI est actif.
 

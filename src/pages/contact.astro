@@ -2,7 +2,7 @@
 import Page from '~/layouts/Page.astro';
 import { cabinet } from '~/data/cabinet';
 
-// Web3Forms public access key. Set via PUBLIC_WEB3FORMS_KEY env var (in .env or Vercel project settings).
+// Web3Forms public access key. Set via PUBLIC_WEB3FORMS_KEY env var (in .env or Cloudflare Pages settings).
 // Falls back to a placeholder so the form can still be reviewed in dev — submissions to placeholder will fail.
 const WEB3FORMS_KEY =
   (import.meta.env.PUBLIC_WEB3FORMS_KEY as string | undefined) ||

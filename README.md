@@ -16,7 +16,7 @@ Build production :
 npm run build
 ```
 
-Sortie dans `dist/` — déployable sur Vercel, Netlify, GitHub Pages, ou hébergement statique classique.
+Sortie dans `dist/` — déployé sur **Cloudflare Pages** (`public/_headers`, `public/_redirects`, `functions/_middleware.ts`).
 
 ## Architecture
 
@@ -98,14 +98,24 @@ Toutes indexées dans le sitemap auto-généré.
 - Contraste AA min
 - Navigation clavier complète
 
-## Déploiement Vercel
+## Déploiement Cloudflare Pages
 
-```bash
-npm install -g vercel
-vercel
-```
+Repo : [github.com/anasfrikel123/ccme.ma-v3](https://github.com/anasfrikel123/ccme.ma-v3)
 
-`astro.config.mjs` est déjà configuré avec `site: 'https://www.ccme.ma'`.
+| Paramètre | Valeur |
+|-----------|--------|
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node.js | 22 |
+
+Variables d'environnement (Dashboard → Settings → Environment variables) :
+
+- `PUBLIC_WEB3FORMS_KEY` — clé Web3Forms pour `/contact` (obligatoire en prod)
+- `PUBLIC_GSC_TOKEN` — optionnel, Search Console
+
+Le build exécute tests, génération OG/llms, Astro static, puis vérifie les liens internes. Les en-têtes CSP et les redirects legacy sont dans `public/_headers` et `public/_redirects`. La négociation `Accept: text/markdown` pour le blog est gérée par `functions/_middleware.ts`.
+
+`astro.config.mjs` est configuré avec `site: 'https://www.ccme.ma'`.
 
 ## Mise à jour du contenu
 

@@ -1,0 +1,47 @@
+---
+import Page from '~/layouts/Page.astro';
+import { collectionPageSchema } from '~/lib/collection-schema';
+
+const SITE = 'https://www.ccme.ma';
+const items = [
+  { slug: 'sarl-vs-sas-maroc', title: 'SARL vs SAS au Maroc', desc: 'Différences, avantages, fiscalité, capital, gouvernance. Lequel choisir en 2026 ?' },
+  { slug: 'freelance-vs-societe-maroc', title: 'Freelance ou société au Maroc', desc: 'Auto-entrepreneur, IR pro, ou créer une SARL ? Comparatif charges, plafonds, image.' },
+  { slug: 'comptable-vs-fiduciaire', title: 'Expert-comptable vs fiduciaire', desc: 'Quelle est la différence ? Lequel choisir selon la taille de votre entreprise ?' },
+  { slug: 'tanger-med-vs-tfz-vs-tac', title: 'Tanger Med vs TFZ vs TAC', desc: 'Trois zones franches, quel régime, pour quelle activité ?' },
+];
+const hubSchema = collectionPageSchema({
+  url: `${SITE}/comparatifs`,
+  name: 'Comparatifs comptables et fiscaux Maroc',
+  description: 'SARL vs SAS, freelance vs société, expert-comptable vs fiduciaire, zones franches Tanger.',
+  items: items.map((it) => ({ url: `/comparatifs/${it.slug}`, name: it.title })),
+});
+---
+<Page
+  title="Comparatifs comptables et fiscaux Maroc | CCME"
+  description="Comparatifs pour les bons choix : SARL vs SAS, freelance vs société, expert-comptable vs fiduciaire, zones franches Tanger. Décodés par notre cabinet."
+  eyebrow="Comparatifs"
+  heading="Le bon choix pour votre activité."
+  lede="Quatre comparatifs basés sur des cas réels. SARL ou SAS ? Freelance ou société ? On tranche en quelques minutes de lecture, sans jargon."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs' }]}
+  keywords={["SARL ou SAS Maroc","freelance ou société Maroc","expert comptable vs fiduciaire","zones franches Tanger comparatif"]}
+  schema={hubSchema}
+>
+  <section>
+    <div class="container">
+      <div class="grid grid-2">
+        {items.map(it => (
+          <a href={`/comparatifs/${it.slug}`} class="card reveal">
+            <p class="eyebrow">Comparatif</p>
+            <h3>{it.title}</h3>
+            <p>{it.desc}</p>
+            <span class="arrow" aria-hidden="true">→ Lire</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Page>
+<style>
+  .card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); }
+  .arrow { color: var(--gold); margin-top: auto; padding-top: 12px; font-weight: 600; }
+</style>

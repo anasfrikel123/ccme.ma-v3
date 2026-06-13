@@ -1,0 +1,42 @@
+---
+import Page from '~/layouts/Page.astro';
+import { getCollection } from 'astro:content';
+import { collectionPageSchema } from '~/lib/collection-schema';
+
+const SITE = 'https://www.ccme.ma';
+const secteurs = await getCollection('secteurs');
+const hubSchema = collectionPageSchema({
+  url: `${SITE}/secteurs`,
+  name: 'Secteurs spécialisés — Cabinet CCME Tanger',
+  description: 'Comptabilité par secteur : BTP, import-export, e-commerce, restauration, textile, professions libérales.',
+  items: secteurs.map((s) => ({ url: `/secteurs/${s.id}`, name: s.data.h1 })),
+});
+---
+<Page
+  title="Secteurs spécialisés | Expert-comptable Tanger"
+  description="Cabinet spécialisé par secteur : BTP, import-export, e-commerce, restauration-hôtellerie, textile-automobile, professions libérales. Tanger."
+  eyebrow="Secteurs"
+  heading="Une compta qui comprend votre métier."
+  lede="Pas de plan comptable générique. Des cabinets qui ont vraiment travaillé avec votre secteur, qui en connaissent les pièges, et qui livrent des chiffres exploitables pour votre décision."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Secteurs' }]}
+  schema={hubSchema}
+>
+  <section>
+    <div class="container">
+      <div class="grid grid-3">
+        {secteurs.map(s => (
+          <a href={`/secteurs/${s.id}`} class="card reveal">
+            <p class="eyebrow">{s.data.eyebrow}</p>
+            <h3>{s.data.h1}</h3>
+            <p>{s.data.description}</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Page>
+<style>
+  .card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); }
+  .card .arrow { color: var(--gold); margin-top: auto; padding-top: 12px; font-size: 22px; }
+</style>

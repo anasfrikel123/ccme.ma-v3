@@ -1,0 +1,293 @@
+---
+import Page from '~/layouts/Page.astro';
+import { cabinet } from '~/data/cabinet';
+
+// Web3Forms public access key. Set via PUBLIC_WEB3FORMS_KEY env var (in .env or Vercel project settings).
+// Falls back to a placeholder so the form can still be reviewed in dev — submissions to placeholder will fail.
+const WEB3FORMS_KEY =
+  (import.meta.env.PUBLIC_WEB3FORMS_KEY as string | undefined) ||
+  'YOUR_WEB3FORMS_PUBLIC_KEY';
+---
+<Page
+  title="Contact | Cabinet expert-comptable Tanger — CCME"
+  description={`Contactez le cabinet CCME à Tanger : devis gratuit, premier RDV sans engagement. ${cabinet.address.streetAddress}, ${cabinet.phone.display}, ${cabinet.email}.`}
+  eyebrow="Contact"
+  heading="Premier échange, gratuit. Sans engagement."
+  lede="Quelques mots sur votre projet ou votre problématique, et on vous rappelle dans la journée pour caler un RDV."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Contact' }]}
+  showCTA={false}
+  keywords={['contact expert comptable Tanger', 'rendez-vous comptable Tanger', 'devis cabinet comptable Maroc']}
+>
+  <section>
+    <div class="container contact-grid">
+      <div class="reveal-left">
+        <h2>Nous écrire</h2>
+        <p>Réponse sous 24h ouvrées.</p>
+
+        <div class="urgency-callout" role="note" aria-label="Contact urgent">
+          <strong>Urgence fiscale ou sociale ?</strong>
+          <span>Mise en demeure, contrôle annoncé, redressement imminent — appelez directement, on décroche.</span>
+          <a href={cabinet.phone.tel} class="urgency-phone">{cabinet.phone.display}</a>
+        </div>
+
+        <form
+          class="contact-form"
+          name="contact"
+          method="POST"
+          action="https://api.web3forms.com/submit"
+          aria-describedby="contact-status"
+          data-contact-form
+        >
+          <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+          <input type="hidden" name="subject" value="Nouveau contact CCME — site web" />
+          <input type="hidden" name="from_name" value="Site CCME" />
+          <input type="hidden" name="redirect" value="false" />
+
+          {/* Honeypot: bots fill it, hidden from real users + accessible tech */}
+          <div class="hp" aria-hidden="true">
+            <label>Ne pas remplir : <input type="text" name="botcheck" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="nom">Nom <span aria-hidden="true">*</span><span class="visually-hidden"> obligatoire</span></label>
+              <input id="nom" name="nom" required autocomplete="name" minlength="2" maxlength="80" />
+            </div>
+            <div class="field">
+              <label for="email">Email <span aria-hidden="true">*</span><span class="visually-hidden"> obligatoire</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" maxlength="120" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="tel">Téléphone</label>
+              <input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" pattern="^[\d+\s().-]{6,}$" />
+            </div>
+            <div class="field">
+              <label for="societe">Société</label>
+              <input id="societe" name="societe" autocomplete="organization" maxlength="120" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="sujet">Sujet</label>
+            <select id="sujet" name="sujet">
+              <option value="" disabled selected>Choisir un sujet</option>
+              <option>Création d'entreprise</option>
+              <option>Tenue comptable mensuelle</option>
+              <option>Conseil fiscal</option>
+              <option>Contrôle DGI / contentieux</option>
+              <option>Paie & CNSS</option>
+              <option>Domiciliation</option>
+              <option>Audit / commissariat aux comptes</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Votre message <span aria-hidden="true">*</span><span class="visually-hidden"> obligatoire</span></label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              minlength="10"
+              maxlength="3000"
+              placeholder="Décrivez brièvement votre besoin (activité, taille, problématique principale)"
+            ></textarea>
+          </div>
+
+          <div class="field consent">
+            <input type="checkbox" id="consent" name="consent" required />
+            <label for="consent">
+              J'accepte d'être recontacté(e) pour le traitement de cette demande. Vos données ne sont ni revendues ni partagées.
+              <a href="/confidentialite">Politique de confidentialité</a>.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" data-submit-btn>
+            <span class="btn-label">Envoyer</span>
+            <span class="btn-loading" aria-hidden="true">…</span>
+          </button>
+
+          <p
+            id="contact-status"
+            class="form-status"
+            role="status"
+            aria-live="polite"
+            data-status
+          ></p>
+        </form>
+      </div>
+
+      <aside class="contact-aside reveal-right">
+        <div class="card">
+          <h3>Coordonnées</h3>
+          <p><strong>{cabinet.phone.display}</strong></p>
+          <p><a href={`mailto:${cabinet.email}`}>{cabinet.email}</a></p>
+          <p set:html={`${cabinet.address.streetAddressLong.replace('3ème', '3<sup>ème</sup>')}<br/>${cabinet.address.postalCode} ${cabinet.address.addressLocality}`} />
+          <p>Lundi-vendredi · 9h-18h<br/>Samedi sur RDV</p>
+        </div>
+        <div class="card">
+          <h3>Pour aller plus vite</h3>
+          <p>WhatsApp : <a href={cabinet.phone.whatsapp} rel="noopener">{cabinet.phone.display}</a></p>
+          <p>Visio Google Meet : on peut caler un RDV de 30 min en visio dès aujourd'hui.</p>
+          <p>Au cabinet : sans rendez-vous accepté du lundi au vendredi 14h-17h, sinon RDV pour confort des deux côtés.</p>
+        </div>
+        <div class="map">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-5.823%2C35.776%2C-5.804%2C35.785&layer=mapnik&marker=35.7802%2C-5.8136"
+            title="Localisation du cabinet CCME à Tanger sur OpenStreetMap"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Page>
+
+<script>
+  // Progressive-enhancement form handler. Submits via fetch to keep the user on-page,
+  // surfaces success/error in the live region, and falls back to native submit if JS fails.
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const status = document.querySelector<HTMLElement>('[data-status]');
+  const submitBtn = document.querySelector<HTMLButtonElement>('[data-submit-btn]');
+
+  function setStatus(msg: string, kind: 'idle' | 'sending' | 'ok' | 'err') {
+    if (!status) return;
+    status.textContent = msg;
+    status.dataset.kind = kind;
+  }
+
+  // Pre-populate subject dropdown from ?sujet= URL param (set by service page CTAs).
+  const sujetParam = new URLSearchParams(window.location.search).get('sujet');
+  if (sujetParam && form) {
+    const select = form.elements.namedItem('sujet') as HTMLSelectElement | null;
+    if (select) {
+      const match = Array.from(select.options).find(
+        o => o.value === sujetParam || o.text === sujetParam,
+      );
+      if (match) select.value = match.value;
+    }
+    // Highlight the urgency callout when arriving from a contentieux/fiscal service.
+    if (sujetParam === 'Contrôle DGI / contentieux') {
+      document.querySelector<HTMLElement>('.urgency-callout')?.setAttribute('data-urgent', 'true');
+    }
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    if (!form.reportValidity()) {
+      e.preventDefault();
+      return;
+    }
+
+    // Bot trap: if filled, drop silently.
+    const botcheck = (form.elements.namedItem('botcheck') as HTMLInputElement | null)?.value;
+    if (botcheck) {
+      e.preventDefault();
+      return;
+    }
+
+    e.preventDefault();
+    setStatus('Envoi en cours…', 'sending');
+    submitBtn?.setAttribute('aria-busy', 'true');
+    submitBtn?.setAttribute('disabled', 'true');
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        setStatus(
+          'Merci, votre message a bien été envoyé. On revient vers vous sous 24h ouvrées.',
+          'ok',
+        );
+        form.reset();
+      } else {
+        const msg = data?.message || 'Une erreur est survenue. Réessayez ou écrivez à info@ccme.ma.';
+        setStatus(msg, 'err');
+      }
+    } catch {
+      setStatus(
+        'Connexion impossible. Vérifiez votre réseau ou écrivez à info@ccme.ma.',
+        'err',
+      );
+    } finally {
+      submitBtn?.removeAttribute('aria-busy');
+      submitBtn?.removeAttribute('disabled');
+    }
+  });
+</script>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; }
+  .contact-form { display: grid; gap: 18px; margin-top: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { display: grid; gap: 6px; }
+  .field label { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .field input, .field select, .field textarea { width: 100%; }
+
+  .consent { grid-template-columns: auto 1fr; align-items: start; gap: 10px; }
+  .consent input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; accent-color: var(--gold); }
+  .consent label { font-size: 13.5px; color: var(--ink-soft); font-weight: 400; line-height: 1.5; }
+  .consent label a { color: var(--gold); }
+
+  .form-status { font-size: 14px; min-height: 1.4em; margin: 0; }
+  .form-status[data-kind="sending"] { color: var(--muted); }
+  .form-status[data-kind="ok"] { color: var(--good); font-weight: 600; }
+  .form-status[data-kind="err"] { color: #b3261e; font-weight: 500; }
+
+  .btn-loading { display: none; }
+  [data-submit-btn][aria-busy="true"] .btn-label { display: none; }
+  [data-submit-btn][aria-busy="true"] .btn-loading { display: inline; }
+
+  /* Honeypot anti-spam: hidden via clip-path (search-engine-safe) */
+  .hp { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+  .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+  .contact-aside { display: grid; gap: 20px; }
+  .map { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4/3; border: 1px solid var(--line); }
+  .map iframe { width: 100%; height: 100%; border: 0; }
+
+  .urgency-callout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    background: oklch(0.97 0.015 50);
+    border: 1.5px solid var(--warn);
+    border-radius: var(--r-md);
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .urgency-callout strong { color: var(--warn); white-space: nowrap; }
+  .urgency-callout span { color: var(--ink-soft); flex: 1; min-width: 200px; }
+  .urgency-phone {
+    font-weight: 700;
+    color: var(--warn);
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1.5px solid var(--warn);
+    border-radius: 999px;
+    padding: 5px 14px;
+    transition: background var(--t-fast), color var(--t-fast);
+  }
+  .urgency-phone:hover { background: var(--warn); color: #fff; }
+  .urgency-callout[data-urgent="true"] {
+    background: oklch(0.94 0.025 50);
+    border-width: 2px;
+    box-shadow: 0 0 0 4px rgba(185, 76, 42, 0.1);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>

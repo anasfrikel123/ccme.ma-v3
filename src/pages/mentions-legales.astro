@@ -1,0 +1,34 @@
+---
+import Page from '~/layouts/Page.astro';
+import { cabinet } from '~/data/cabinet';
+---
+<Page
+  title="Mentions légales | CCME Tanger"
+  description="Mentions légales du site ccme.ma et du cabinet Consulting Maghreb Expertise, Tanger, Maroc."
+  eyebrow="Légal"
+  heading="Mentions légales"
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Mentions légales' }]}
+  showCTA={false}
+>
+  <section>
+    <div class="container prose">
+      <h2>Éditeur du site</h2>
+      <p><strong>{cabinet.legalName} (CCME)</strong><br/>Cabinet d'expertise comptable inscrit à l'Ordre des Experts-Comptables du Maroc.<br/>{cabinet.address.formatted}<br/>Téléphone : {cabinet.phone.display} — Email : {cabinet.email}</p>
+
+      <h2>Directeur de la publication</h2>
+      <p>Frikel Ahmed.</p>
+
+      <h2>Hébergement</h2>
+      <p>Le site est hébergé sur Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis.</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble du contenu de ce site (textes, logos, images, graphismes) est la propriété exclusive de CCME ou de ses partenaires. Toute reproduction, totale ou partielle, est interdite sans autorisation écrite préalable.</p>
+
+      <h2>Limitation de responsabilité</h2>
+      <p>Les informations diffusées sur ce site ont un caractère informatif et ne constituent en aucun cas un avis fiscal, comptable ou juridique personnalisé. Pour toute décision affectant votre situation, consultez un professionnel.</p>
+
+      <h2>Crédits</h2>
+      <p>Conception et développement : équipe CCME. Polices : Newsreader & Hanken Grotesk via Google Fonts.</p>
+    </div>
+  </section>
+</Page>

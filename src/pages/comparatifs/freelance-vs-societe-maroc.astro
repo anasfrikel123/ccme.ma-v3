@@ -1,0 +1,68 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import CompareTable from '~/components/CompareTable.astro';
+
+const faq = [
+  { q: "Auto-entrepreneur ou IR pro, quelle différence ?", a: "L'auto-entrepreneur a un plafond CA bas (200 000 DH commerce, 80 000 DH services) et un taux unique sur CA (1 % commerce, 2 % services). L'IR pro est sans plafond, taxe le bénéfice net selon le barème IR avec abattement de 25 %. L'IR pro est plus avantageux dès qu'on dépasse les seuils." },
+  { q: "À partir de quel CA passer en société ?", a: "Variable. En général, dès 600 000 - 1 MDH de CA avec une marge correcte, l'IS à 20 % (barème 2026) devient compétitif face à l'IR pro. Le calcul exact dépend de votre TMI personnelle et de votre besoin de réinvestissement — utilisez le simulateur IS." },
+  { q: "Peut-on cumuler salariat et freelance au Maroc ?", a: "Oui, sauf clause d'exclusivité dans le contrat de travail. Les revenus freelance se déclarent en IR pro en plus du salaire. Attention à la concurrence avec l'employeur." },
+];
+
+const compareColumns = ['Critère', 'Auto-entrepreneur', 'IR professionnel', 'SARL / SARLAU'];
+const compareRows = [
+  { label: 'Plafond CA', values: ['200K (commerce) / 80K (services)', 'Illimité', 'Illimité'] },
+  { label: 'Imposition', values: ['1 % (commerce) ou 2 % (services) sur CA', 'Barème IR sur bénéfice (-25 % abattement)', 'IS 20 % sur bénéfice (≤ 100 MDH), 35 % au-delà'] },
+  { label: 'Comptabilité', values: ['Très allégée', 'Simplifiée (livres)', 'Complète (CGNC)'] },
+  { label: 'TVA', values: ['Non collectée', 'Si CA > 500K', 'Si CA > 500K'] },
+  { label: 'Charges sociales', values: ['CNSS-TNS forfaitaire', 'CNSS-TNS', 'Salaire dirigeant + charges sociales'] },
+  { label: 'Responsabilité', values: ['Personnelle illimitée', 'Personnelle illimitée', 'Limitée aux apports'] },
+  { label: 'Image', values: ['Petite activité', 'Pro libérale standard', 'Entreprise crédible'] },
+  { label: 'Crédit bancaire', values: ['Difficile', 'Possible', 'Standard'] },
+  { label: 'Marchés publics', values: ['Limité', 'Possible', 'Pleinement éligible'] },
+  { label: 'Coût annuel', values: ['~500 DH (CFE)', '~3 000-6 000 DH (compta)', '10 000-25 000 DH (compta)'] },
+];
+---
+<Page
+  title="Freelance ou société au Maroc 2026 | Comparatif"
+  description="Auto-entrepreneur, IR pro ou SARL ? Comparatif fiscal, charges, plafonds pour les indépendants au Maroc en 2026."
+  eyebrow="Comparatif"
+  heading="Freelance ou société au Maroc"
+  lede="Trois choix : auto-entrepreneur, IR professionnel, ou SARL. Avec quels seuils chacun devient le meilleur ? Réponse chiffrée."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs', href: '/comparatifs' }, { label: 'Freelance vs société' }]}
+  keywords={["freelance ou société Maroc","auto-entrepreneur vs SARL","IR pro Maroc","quel statut indépendant Maroc"]}
+>
+  <section>
+    <div class="container">
+      <CompareTable columns={compareColumns} rows={compareRows} narrow="md" />
+
+      <div class="prose compare-prose">
+        <h2>Quel choix selon votre situation</h2>
+
+        <h3>Auto-entrepreneur (CFE)</h3>
+        <p>Idéal pour démarrer ou pour une activité accessoire. Plafond bas qui force la migration dès qu'on grandit. Pas de TVA, pas de charges complexes. Peut être démarré en 24-48h en ligne via Poste Maroc / Barid Bank.</p>
+        <p><strong>Notre conseil :</strong> commencez ici si votre CA prévisionnel est inférieur à 80K (services) ou 200K (commerce). C'est le moins cher et le plus simple.</p>
+
+        <h3>IR professionnel</h3>
+        <p>Régime classique des professions libérales (médecins, avocats, consultants, architectes). Compta allégée, abattement professionnel 25 % sur le bénéfice avant barème IR. Pas de personnalité morale — c'est vous qui contractez et qui êtes responsable sur votre patrimoine personnel.</p>
+        <p><strong>Notre conseil :</strong> tant que votre TMI personnelle est inférieure à 30 % (≈ jusqu'à 80K bénéfice net annuel), l'IR pro est optimal. Au-delà, comparez avec l'IS.</p>
+
+        <h3>SARL / SARLAU</h3>
+        <p>Personnalité morale, responsabilité limitée, IS sur bénéfices, dividendes possibles. Plus de paperasse, plus cher en compta, mais protège votre patrimoine personnel et permet d'optimiser fiscalement (rémunération vs dividendes, réinvestissement).</p>
+        <p><strong>Notre conseil :</strong> dès que votre activité dépasse 600K de CA ou que vous avez besoin de crédibilité (banques, marchés publics, gros clients B2B), passez en société.</p>
+
+        <h2>Cas pratiques</h2>
+        <p><strong>Salwa, photographe à Marshan, CA 60K/an :</strong> auto-entrepreneur. Optimal.</p>
+        <p><strong>Driss, consultant IT à Boukhalef, CA 240K/an, bénéfice 180K :</strong> IR pro. IR à payer ≈ 25 000 DH/an. Compta 4 800 DH/an. Net : 150 000 DH dans la poche.</p>
+        <p><strong>Hicham, agence digitale à Tanger Tech, CA 1,5 MDH/an :</strong> SARL. Optimisation rémunération (8K net/mois) + dividendes annuels = charge fiscale globale ~22 % vs IR pro qui taxerait au taux marginal 37 %.</p>
+
+        <p><a href="/services/creation-entreprise">→ Création d'entreprise — choix de la structure et accompagnement</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .compare-prose { margin-top: 48px; max-width: 1000px; margin-inline: auto; }
+</style>

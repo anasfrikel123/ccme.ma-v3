@@ -1,0 +1,200 @@
+---
+import Page from '~/layouts/Page.astro';
+import { getCollection } from 'astro:content';
+import { collectionPageSchema } from '~/lib/collection-schema';
+
+const SITE = 'https://www.ccme.ma';
+const posts = (await getCollection('blog')).sort((a, b) =>
+  new Date(b.data.publishedTime).getTime() - new Date(a.data.publishedTime).getTime()
+);
+const hubSchema = collectionPageSchema({
+  url: `${SITE}/blog`,
+  name: 'Le Journal CCME — Blog expert-comptable Tanger',
+  description: 'Articles pratiques comptabilité, fiscalité IS 2026, paie CNSS, juridique et création d\'entreprise au Maroc.',
+  items: posts.map((p) => ({ url: `/blog/${p.id}`, name: p.data.title })),
+});
+const cats = [...new Set(posts.map(p => p.data.category))];
+
+const slugify = (s: string) => s.toLowerCase()
+  .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+---
+<Page
+  title="Le Journal | Blog expert-comptable Tanger — CCME"
+  description="Articles pratiques sur la comptabilité, la fiscalité IS 2026, la paie CNSS, le juridique et la création d'entreprise au Maroc. Cabinet à Tanger."
+  eyebrow="Le Journal"
+  heading="Comprendre les chiffres, sans le jargon."
+  lede="Articles pratiques pour entrepreneurs, dirigeants et expatriés. Réforme IS 2026, contrôles fiscaux, zones franches, paie CNSS — tout ce qui concerne votre activité au Maroc."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Le Journal' }]}
+  schema={hubSchema}
+>
+  <section>
+    <div class="container">
+      <div class="cat-filter reveal" role="tablist" aria-label="Filtrer les articles par catégorie">
+        <button
+          class="cat-pill active"
+          data-filter="all"
+          role="tab"
+          aria-selected="true"
+          aria-controls="post-grid"
+          id="cat-tab-all"
+          type="button"
+        >Tout</button>
+        {cats.map(c => (
+          <button
+            class="cat-pill"
+            data-filter={c}
+            role="tab"
+            aria-selected="false"
+            aria-controls="post-grid"
+            id={`cat-tab-${slugify(c)}`}
+            type="button"
+            tabindex="-1"
+          >{c}</button>
+        ))}
+      </div>
+
+      <div
+        class="grid grid-3"
+        id="post-grid"
+        role="tabpanel"
+        aria-live="polite"
+        aria-labelledby="cat-tab-all"
+      >
+        {posts.map((p, i) => (
+          <article class="post-card reveal" data-cat={p.data.category} style={`transition-delay:${i * 50}ms`}>
+            <a href={`/blog/${p.id}`} aria-label={`Lire : ${p.data.title}`}>
+              {p.data.heroImage && (
+                <div class="post-thumb">
+                  <picture>
+                    <source srcset={p.data.heroImage.replace(/\.jpe?g$/i, '.webp')} type="image/webp" />
+                    <img
+                      src={p.data.heroImage}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="338"
+                    />
+                  </picture>
+                </div>
+              )}
+              <div class="post-body">
+                <div class="post-meta">
+                  <span class="tag">{p.data.category}</span>
+                  <time datetime={p.data.publishedTime}>{new Date(p.data.publishedTime).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}</time>
+                </div>
+                <h3>{p.data.title}</h3>
+                <p>{p.data.description}</p>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Page>
+
+<script>
+  const tablist = document.querySelector<HTMLElement>('.cat-filter');
+  const pills = Array.from(document.querySelectorAll<HTMLButtonElement>('.cat-pill'));
+  const cards = document.querySelectorAll<HTMLElement>('.post-card');
+  const grid = document.getElementById('post-grid');
+
+  function activate(target: HTMLButtonElement) {
+    pills.forEach(x => {
+      const isActive = x === target;
+      x.classList.toggle('active', isActive);
+      x.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      x.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
+    grid?.setAttribute('aria-labelledby', target.id);
+    const f = target.dataset.filter;
+    cards.forEach(c => {
+      const show = f === 'all' || c.dataset.cat === f;
+      c.hidden = !show;
+    });
+  }
+
+  pills.forEach(p => {
+    p.addEventListener('click', () => activate(p));
+  });
+
+  // Arrow-key navigation between tabs (WAI-ARIA tabs pattern)
+  tablist?.addEventListener('keydown', (e) => {
+    const current = pills.findIndex(p => p === document.activeElement);
+    if (current === -1) return;
+    let next = current;
+    if (e.key === 'ArrowRight') next = (current + 1) % pills.length;
+    else if (e.key === 'ArrowLeft') next = (current - 1 + pills.length) % pills.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = pills.length - 1;
+    else return;
+    e.preventDefault();
+    pills[next]?.focus();
+    activate(pills[next]);
+  });
+</script>
+
+<style>
+  .cat-filter { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+  .cat-pill {
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition: all var(--t-fast);
+    font-family: inherit;
+  }
+  .cat-pill:hover { border-color: var(--ink); color: var(--ink); }
+  .cat-pill:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .cat-pill.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .post-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
+    overflow: hidden;
+  }
+  .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-pop); border-color: var(--gold); }
+  .post-card[hidden] { display: none; }
+  .post-card a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--ink);
+    height: 100%;
+  }
+  .post-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--paper-2);
+  }
+  .post-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(.2,.8,.2,1);
+  }
+  .post-card:hover .post-thumb img { transform: scale(1.04); }
+  .post-body { display: flex; flex-direction: column; padding: 22px 24px 26px; flex: 1; }
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .post-card h3 { font-size: 1.18rem; line-height: 1.3; margin-bottom: 8px; }
+  .post-card p { color: var(--ink-soft); font-size: 14.5px; flex: 1; }
+  .post-card .arrow { color: var(--gold); font-size: 22px; margin-top: 12px; transition: transform var(--t-fast); }
+  .post-card:hover .arrow { transform: translateX(6px); }
+</style>

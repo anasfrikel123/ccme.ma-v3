@@ -1,0 +1,283 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import Icon from '~/components/Icon.astro';
+
+// Evergreen freshness anchor for the cabinet's topical authority.
+// Updated each January when DGI / CNSS publish their new circulars.
+//
+// SEO logic:
+//  - Targets long-tail queries: "déclaration TVA mars 2026", "acompte IS
+//    septembre", "echeance CNSS Damancom 2026", "calendrier fiscal Maroc 2026"
+//  - Acts as a hub-spoke node: every entry links to the relevant /services
+//    or /blog page, distributing internal authority
+//  - Refreshed monthly via `dateModified`, which gives Google a clear
+//    freshness signal even when the substance stays stable
+
+const SITE = 'https://www.ccme.ma';
+
+interface Echeance {
+  date: string;        // human-readable date
+  iso: string;         // ISO YYYY-MM-DD for schema
+  type: 'TVA' | 'IS' | 'IR' | 'CNSS' | 'AMO' | 'Patente' | 'Autre';
+  label: string;
+  detail: string;
+  link?: string;       // internal link to relevant /services or /blog
+}
+
+const calendrier: Record<string, Echeance[]> = {
+  'Janvier 2026': [
+    { date: '20 jan.', iso: '2026-01-20', type: 'TVA', label: 'TVA décembre 2025', detail: "Télédéclaration et télépaiement de la TVA du mois précédent (régime mensuel) ou du dernier trimestre (régime trimestriel) sur Simpl-Impôts.", link: '/services/simpl-impots-dgi' },
+    { date: '31 jan.', iso: '2026-01-31', type: 'CNSS', label: 'BDS décembre 2025', detail: "Bordereau de déclaration et paiement des cotisations sociales sur Damancom. Salariés réguliers + apprentis ANAPEC le cas échéant.", link: '/services/damancom-cnss' },
+    { date: '31 jan.', iso: '2026-01-31', type: 'Patente', label: 'Déclaration de patente', detail: "Déclaration annuelle de patente / taxe professionnelle au service local des impôts. Concernent toutes les entreprises ayant un établissement au Maroc.", link: '/services/conseil-fiscal' },
+  ],
+  'Février 2026': [
+    { date: '20 fév.', iso: '2026-02-20', type: 'TVA', label: 'TVA janvier 2026', detail: "Télédéclaration et télépaiement de la TVA mensuelle sur Simpl-Impôts." },
+    { date: '28 fév.', iso: '2026-02-28', type: 'CNSS', label: 'BDS janvier 2026', detail: "Bordereau et paiement Damancom du mois précédent." },
+    { date: '28 fév.', iso: '2026-02-28', type: 'IR', label: 'Déclaration revenus fonciers IR', detail: "Pour les bailleurs personnes physiques : déclaration annuelle des revenus locatifs et paiement de l'IR correspondant.", link: '/outils/simulateur-ir' },
+  ],
+  'Mars 2026': [
+    { date: '20 mars', iso: '2026-03-20', type: 'TVA', label: 'TVA février 2026', detail: "Télédéclaration TVA mensuelle." },
+    { date: '31 mars', iso: '2026-03-31', type: 'IS', label: 'Bilan, liasse fiscale et IS — exercice 2025', detail: "Date butoir pour le dépôt de la déclaration IS et de la liasse fiscale (exercice clos le 31 décembre). Solde IS à régler au plus tard le 31 mars. Pénalité importante en cas de retard.", link: '/services/tenue-comptabilite' },
+    { date: '31 mars', iso: '2026-03-31', type: 'CNSS', label: 'BDS février 2026', detail: "Bordereau Damancom mensuel." },
+  ],
+  'Avril 2026': [
+    { date: '20 avr.', iso: '2026-04-20', type: 'TVA', label: 'TVA mars 2026 / 1er trimestre', detail: "Télédéclaration TVA mensuelle ou trimestrielle (1er trimestre) selon votre régime." },
+    { date: '30 avr.', iso: '2026-04-30', type: 'CNSS', label: 'BDS mars 2026', detail: "Bordereau Damancom mensuel." },
+    { date: '30 avr.', iso: '2026-04-30', type: 'IS', label: '1er acompte IS 2026', detail: "Premier acompte trimestriel d'impôt sur les sociétés, calculé sur la base de l'IS exercice N-1 (25 %). Télépaiement Simpl-Impôts.", link: '/blog/fiscalite-2026-acomptes-is' },
+  ],
+  'Mai 2026': [
+    { date: '20 mai', iso: '2026-05-20', type: 'TVA', label: 'TVA avril 2026', detail: "Télédéclaration TVA mensuelle." },
+    { date: '31 mai', iso: '2026-05-31', type: 'CNSS', label: 'BDS avril 2026', detail: "Bordereau Damancom mensuel." },
+    { date: '31 mai', iso: '2026-05-31', type: 'Autre', label: 'AGO annuelle', detail: "Échéance courante pour l'assemblée générale ordinaire d'approbation des comptes (dans les 6 mois de la clôture). Procès-verbal à déposer ensuite au tribunal de commerce.", link: '/services/travaux-juridiques' },
+  ],
+  'Juin 2026': [
+    { date: '20 juin', iso: '2026-06-20', type: 'TVA', label: 'TVA mai 2026', detail: "Télédéclaration TVA mensuelle." },
+    { date: '30 juin', iso: '2026-06-30', type: 'CNSS', label: 'BDS mai 2026', detail: "Bordereau Damancom mensuel." },
+    { date: '30 juin', iso: '2026-06-30', type: 'Autre', label: 'Dépôt PV d\'AGO au tribunal', detail: "Dépôt physique du procès-verbal d'AGO et des comptes annuels au greffe du tribunal de commerce de Tanger (1 mois après l'AGO)." },
+  ],
+  'Juillet 2026': [
+    { date: '20 juil.', iso: '2026-07-20', type: 'TVA', label: 'TVA juin 2026 / 2e trimestre', detail: "Télédéclaration TVA mensuelle ou trimestrielle." },
+    { date: '31 juil.', iso: '2026-07-31', type: 'IS', label: '2e acompte IS 2026', detail: "Deuxième acompte trimestriel d'impôt sur les sociétés (25 % de l'IS N-1)." },
+    { date: '31 juil.', iso: '2026-07-31', type: 'CNSS', label: 'BDS juin 2026', detail: "Bordereau Damancom mensuel." },
+  ],
+  'Août 2026': [
+    { date: '20 août', iso: '2026-08-20', type: 'TVA', label: 'TVA juillet 2026', detail: "Télédéclaration TVA mensuelle." },
+    { date: '31 août', iso: '2026-08-31', type: 'CNSS', label: 'BDS juillet 2026', detail: "Bordereau Damancom mensuel." },
+  ],
+  'Septembre 2026': [
+    { date: '20 sept.', iso: '2026-09-20', type: 'TVA', label: 'TVA août 2026', detail: "Télédéclaration TVA mensuelle." },
+    { date: '30 sept.', iso: '2026-09-30', type: 'CNSS', label: 'BDS août 2026', detail: "Bordereau Damancom mensuel." },
+  ],
+  'Octobre 2026': [
+    { date: '20 oct.', iso: '2026-10-20', type: 'TVA', label: 'TVA septembre 2026 / 3e trimestre', detail: "Télédéclaration TVA mensuelle ou trimestrielle." },
+    { date: '31 oct.', iso: '2026-10-31', type: 'IS', label: '3e acompte IS 2026', detail: "Troisième acompte trimestriel d'impôt sur les sociétés (25 % de l'IS N-1)." },
+    { date: '31 oct.', iso: '2026-10-31', type: 'CNSS', label: 'BDS septembre 2026', detail: "Bordereau Damancom mensuel." },
+  ],
+  'Novembre 2026': [
+    { date: '20 nov.', iso: '2026-11-20', type: 'TVA', label: 'TVA octobre 2026', detail: "Télédéclaration TVA mensuelle." },
+    { date: '30 nov.', iso: '2026-11-30', type: 'CNSS', label: 'BDS octobre 2026', detail: "Bordereau Damancom mensuel." },
+  ],
+  'Décembre 2026': [
+    { date: '20 déc.', iso: '2026-12-20', type: 'TVA', label: 'TVA novembre 2026', detail: "Télédéclaration TVA mensuelle." },
+    { date: '31 déc.', iso: '2026-12-31', type: 'IS', label: '4e acompte IS 2026', detail: "Quatrième et dernier acompte trimestriel d'impôt sur les sociétés (25 % de l'IS N-1). À régulariser au moment du bilan en mars suivant." },
+    { date: '31 déc.', iso: '2026-12-31', type: 'CNSS', label: 'BDS novembre 2026', detail: "Bordereau Damancom mensuel." },
+    { date: '31 déc.', iso: '2026-12-31', type: 'Autre', label: 'Inventaires + clôture exercice', detail: "Préparation des inventaires physiques (stocks, immobilisations), arrêté des comptes pour clôture exercice 31 décembre. À organiser avec le cabinet en amont." },
+  ],
+};
+
+const faq = [
+  {
+    q: "Que se passe-t-il en cas de retard de déclaration TVA ?",
+    a: "Pénalité de 15 % du montant dû en cas de retard, plus 5 % par mois ou fraction de mois jusqu'à un plafond de 100 %. Pour une déclaration tardive avec paiement à temps, c'est une amende fixe de 500 DH par déclaration. Mieux vaut télédéclarer même tardivement que ne pas déclarer du tout."
+  },
+  {
+    q: "Comment savoir si je suis au régime TVA mensuel ou trimestriel ?",
+    a: "Si votre chiffre d'affaires annuel HT dépasse 1 million de dirhams, vous êtes obligatoirement au régime mensuel. En dessous, vous pouvez opter pour le trimestriel (déclarations à 20 jan., 20 avr., 20 juil., 20 oct.). L'option se fait au moment de la création ou avant le 31 janvier de chaque année pour l'exercice en cours."
+  },
+  {
+    q: "Quelle est la différence entre les acomptes IS et l'IS final ?",
+    a: "Les acomptes IS sont calculés sur la base de l'IS dû au titre de l'exercice précédent (N-1), répartis en quatre versements de 25 % aux 31 mars, 30 juin, 30 septembre et 31 décembre. L'IS final est calculé sur la base du résultat fiscal réel de l'exercice clos. La régularisation (paiement du solde ou demande de remboursement) se fait au moment du dépôt du bilan, avant le 31 mars de l'année suivante."
+  },
+  {
+    q: "Le 20 du mois tombe un week-end ou un jour férié, que faire ?",
+    a: "L'échéance est reportée au premier jour ouvrable suivant. Mais en pratique, ne pariez jamais sur le report : Simpl-Impôts et Damancom subissent des ralentissements en fin d'échéance, et un report effectif administratif n'évite pas un blocage technique sur la plateforme. Télédéclarez la veille."
+  },
+  {
+    q: "Les zones franches (TFZ, Tanger Tech) sont-elles soumises au même calendrier ?",
+    a: "Oui. Le bénéfice du régime fiscal préférentiel (IS à taux réduit, exonération partielle ou totale selon ancienneté) ne dispense pas des obligations déclaratives. Vous déposez le même bilan, la même liasse fiscale, les mêmes déclarations TVA. La seule différence : le calcul de l'IS et certaines lignes spécifiques de la liasse."
+  },
+];
+
+const echeanceSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE}/calendrier-fiscal-2026#faq`,
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'Article',
+      '@id': `${SITE}/calendrier-fiscal-2026#article`,
+      headline: "Calendrier fiscal Maroc 2026 — toutes les échéances par mois",
+      description: "Toutes les échéances fiscales et sociales 2026 au Maroc, mois par mois : TVA, IS, IR, CNSS Damancom, patente. Mis à jour selon les circulaires DGI et CNSS.",
+      datePublished: '2026-01-15',
+      dateModified: '2026-06-12',
+      author: { '@id': `${SITE}/#accounting` },
+      publisher: { '@id': `${SITE}/#accounting` },
+      inLanguage: 'fr-MA',
+      isAccessibleForFree: true,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/calendrier-fiscal-2026` },
+    },
+  ],
+};
+
+const typeColors: Record<Echeance['type'], string> = {
+  TVA: 'tag-tva',
+  IS: 'tag-is',
+  IR: 'tag-ir',
+  CNSS: 'tag-cnss',
+  AMO: 'tag-amo',
+  Patente: 'tag-patente',
+  Autre: 'tag-autre',
+};
+---
+<Page
+  title="Calendrier fiscal Maroc 2026 | CCME"
+  description="Échéances fiscales et sociales 2026 au Maroc, mois par mois : TVA, IS, IR, CNSS Damancom, patente. Vérifié par un cabinet expert-comptable de Tanger."
+  eyebrow="Référence"
+  heading="Calendrier fiscal Maroc 2026."
+  lede="Toutes les échéances fiscales et sociales de l'année, mois par mois. Vérifiées par notre équipe à chaque circulaire DGI / CNSS. Imprimable, à coller au-dessus du bureau."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Calendrier fiscal 2026' }]}
+  keywords={[
+    'calendrier fiscal Maroc 2026',
+    'echeances DGI 2026',
+    'echeances CNSS Damancom 2026',
+    'date acomptes IS 2026',
+    'declaration TVA echeance 2026'
+  ]}
+  schema={echeanceSchema}
+>
+  <section>
+    <div class="container cal">
+      <p class="updated"><Icon name="check" size={14} stroke={2.4} /> Dernière mise à jour : 12 juin 2026 — vérifié contre les circulaires DGI et CNSS.</p>
+
+      <div class="legend" aria-label="Légende des types d'échéances">
+        <span class="tag tag-tva">TVA</span>
+        <span class="tag tag-is">IS</span>
+        <span class="tag tag-ir">IR</span>
+        <span class="tag tag-cnss">CNSS / Damancom</span>
+        <span class="tag tag-patente">Patente</span>
+        <span class="tag tag-autre">Autre</span>
+      </div>
+
+      {Object.entries(calendrier).map(([mois, items]) => (
+        <article class="month reveal" id={mois.toLowerCase().replace(/\s/g, '-')}>
+          <h2>{mois}</h2>
+          <div class="echeances">
+            {items.map((e) => (
+              <div class="echeance">
+                <div class="date" aria-hidden="true">{e.date}</div>
+                <time class="visually-hidden" datetime={e.iso}>{e.iso}</time>
+                <div class="body">
+                  <div class="head">
+                    <span class={`tag ${typeColors[e.type]}`}>{e.type}</span>
+                    <h3>{e.label}</h3>
+                  </div>
+                  <p>{e.detail}</p>
+                  {e.link && <a href={e.link} class="learn">En savoir plus <span aria-hidden="true">→</span></a>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+
+      <aside class="reminder">
+        <h3>Vous voulez ne plus jamais y penser ?</h3>
+        <p>C'est exactement ce qu'on fait pour nos clients en tenue mensuelle : on télédéclare, on prévient quelques jours avant chaque échéance, on règle. Vous gérez votre business, on gère le calendrier.</p>
+        <a href="/contact" class="btn btn-primary">Premier échange gratuit</a>
+      </aside>
+    </div>
+  </section>
+
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .cal { max-width: 80ch; }
+  .updated {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--paper-2); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 14px;
+    font-size: 13.5px; color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+  .updated :global(.icon) { color: var(--gold); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; padding: 14px 16px; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-md); }
+  .tag {
+    display: inline-flex; align-items: center;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 4px 10px; border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .tag-tva { background: #f0e5d0; color: #6b4f1a; }
+  .tag-is { background: #dfe9d9; color: #2f5232; }
+  .tag-ir { background: #d6e3f1; color: #25426c; }
+  .tag-cnss { background: #efd9dc; color: #76343b; }
+  .tag-amo { background: #efd9dc; color: #76343b; }
+  .tag-patente { background: #e1d6ee; color: #4d2f72; }
+  .tag-autre { background: #e2dfd6; color: #4a4537; }
+
+  .month { margin-bottom: 36px; }
+  .month h2 {
+    font-family: var(--serif); font-size: 1.5rem; color: var(--ink);
+    margin: 0 0 14px;
+    border-bottom: 1px solid var(--line); padding-bottom: 8px;
+  }
+  .echeances { display: grid; gap: 12px; }
+  .echeance {
+    display: grid; grid-template-columns: 88px 1fr; gap: 18px;
+    background: #fff; border: 1px solid var(--line); border-radius: var(--r-md);
+    padding: 16px 18px;
+    transition: transform var(--t-fast), box-shadow var(--t-fast), border-color var(--t-fast);
+  }
+  .echeance:hover { transform: translateY(-2px); border-color: var(--gold-soft); box-shadow: var(--shadow-1); }
+  .date {
+    font-family: var(--serif); font-size: 1rem; color: var(--ink);
+    background: var(--paper-2); border-radius: var(--r-sm);
+    padding: 8px 10px; text-align: center;
+    align-self: start; min-width: 0;
+  }
+  .body .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+  .body h3 { font-size: 1.05rem; margin: 0; color: var(--ink); }
+  .body p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 6px; }
+  .learn { font-size: 13.5px; color: var(--gold-deep); text-decoration: none; }
+  .learn:hover { text-decoration: underline; }
+
+  .reminder {
+    margin-top: 56px;
+    background: linear-gradient(135deg, var(--paper-2) 0%, #fbf7ec 100%);
+    border: 1px solid var(--gold-soft); border-radius: var(--r-lg);
+    padding: 32px;
+    text-align: center;
+  }
+  .reminder h3 { font-family: var(--serif); font-size: 1.4rem; margin: 0 0 8px; color: var(--ink); }
+  .reminder p { color: var(--ink-soft); max-width: 60ch; margin: 0 auto 18px; }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  @media (max-width: 600px) {
+    .echeance { grid-template-columns: 1fr; }
+    .date { display: inline-block; min-width: 0; width: fit-content; padding: 4px 10px; font-size: 14px; }
+  }
+</style>

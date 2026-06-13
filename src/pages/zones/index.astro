@@ -1,0 +1,42 @@
+---
+import Page from '~/layouts/Page.astro';
+import { getCollection } from 'astro:content';
+import { collectionPageSchema } from '~/lib/collection-schema';
+
+const SITE = 'https://www.ccme.ma';
+const zones = await getCollection('zones');
+const hubSchema = collectionPageSchema({
+  url: `${SITE}/zones`,
+  name: 'Zones et régions de Tanger — Cabinet CCME',
+  description: 'Tanger Med, TFZ, TAC, Tanger Tech, centre-ville — régime ZAI et zones franches.',
+  items: zones.map((z) => ({ url: `/zones/${z.id}`, name: z.data.h1 })),
+});
+---
+<Page
+  title="Zones et régions de Tanger | Cabinet CCME"
+  description="Cabinet d'expertise comptable couvrant Tanger Med, TFZ, TAC, Tanger Tech, centre-ville. Spécialiste régime ZAI et zones franches."
+  eyebrow="Zones & régions"
+  heading="On connaît chaque coin de Tanger."
+  lede="Du centre-ville à TFZ en passant par Tanger Med — chaque zone a ses règles, ses avantages, ses pièges. On les pratique au quotidien."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Zones' }]}
+  schema={hubSchema}
+>
+  <section>
+    <div class="container">
+      <div class="grid grid-2">
+        {zones.map(z => (
+          <a href={`/zones/${z.id}`} class="card reveal">
+            <p class="eyebrow">{z.data.eyebrow}</p>
+            <h3>{z.data.h1}</h3>
+            <p>{z.data.description}</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Page>
+<style>
+  .card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); }
+  .card .arrow { color: var(--gold); margin-top: auto; padding-top: 12px; font-size: 22px; }
+</style>

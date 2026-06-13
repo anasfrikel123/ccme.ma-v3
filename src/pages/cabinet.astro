@@ -1,0 +1,248 @@
+---
+import Page from '~/layouts/Page.astro';
+import { cabinet } from '~/data/cabinet';
+import { CABINET_VALUES } from '~/data/service-families';
+
+const SITE = 'https://www.ccme.ma';
+
+const team = [
+  {
+    id: 'hicham-bennani',
+    name: 'Hicham Bennani',
+    jobTitle: 'Expert-comptable, associé fondateur',
+    pole: 'Direction technique · Expertise comptable & audit',
+    bio: "Inscrit à l'Ordre des Experts-Comptables du Maroc (OEC). Plus de 20 ans à Tanger, dont 12 en pratique indépendante. Spécialiste de la fiscalité internationale, des conventions bilatérales (France, Espagne, Belgique) et de la consolidation pour groupes PME.",
+    sameAs: ['https://www.linkedin.com/company/consulting-maghreb-expertises/'],
+    knowsAbout: [
+      "Fiscalité internationale Maroc",
+      "Convention fiscale franco-marocaine",
+      "Impôt sur les sociétés (IS) Maroc",
+      "Contrôle fiscal DGI",
+      "Audit comptable et financier",
+    ],
+    alumniOf: { '@type': 'EducationalOrganization', name: 'DESCF Casablanca', url: 'https://www.iscae.ma/' },
+    hasCredential: "Expert-comptable inscrit à l'OEC Maroc",
+  },
+  {
+    id: 'salma-el-idrissi',
+    name: 'Salma El Idrissi',
+    jobTitle: 'Responsable fiscalité & contentieux',
+    pole: 'Pôle fiscal & juridique · Conseil et contentieux',
+    bio: "Juriste d'affaires (Master 2 droit fiscal — Université Mohammed V, Rabat). Sept ans en cabinet à Tanger, dont quatre dédiés au contentieux DGI : recours gracieux, commission locale, contentieux administratif.",
+    sameAs: ['https://www.linkedin.com/company/consulting-maghreb-expertises/'],
+    knowsAbout: ['Contentieux fiscal DGI', 'TVA secteurs spécifiques', 'Prix de transfert Maroc'],
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Université Mohammed V, Rabat', url: 'https://www.um5.ac.ma/' },
+    hasCredential: 'Master 2 droit fiscal',
+  },
+  {
+    id: 'yassine-ouali',
+    name: 'Yassine Ouali',
+    jobTitle: 'Responsable paie & gestion sociale',
+    pole: 'Pôle paie & social · Damancom & GRH',
+    bio: "Gestionnaire paie certifié, dix ans d'expérience dont six au cabinet. Pilote l'externalisation paie pour plus de 60 entreprises clientes, multi-conventions sectorielles.",
+    sameAs: ['https://www.linkedin.com/company/consulting-maghreb-expertises/'],
+    knowsAbout: ['Paie Maroc (CNSS, AMO, IR)', 'Damancom et déclarations sociales'],
+    hasCredential: 'Gestionnaire paie certifié',
+  },
+];
+
+const teamSchema = team.map(m => ({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${SITE}/cabinet#${m.id}`,
+  name: m.name,
+  jobTitle: m.jobTitle,
+  worksFor: { '@id': 'https://www.ccme.ma/#accounting' },
+  url: `${SITE}/cabinet#${m.id}`,
+  description: m.bio,
+  knowsLanguage: ['fr-MA', 'ar-MA', 'en'],
+  knowsAbout: m.knowsAbout,
+  ...(m.alumniOf ? { alumniOf: m.alumniOf } : {}),
+  ...(m.hasCredential ? { hasCredential: m.hasCredential } : {}),
+  sameAs: m.sameAs,
+}));
+
+const cabinetStats = [
+  { value: '15', suffix: '+', label: "années d'expérience" },
+  { value: '500', suffix: '+', label: 'clients accompagnés' },
+  { value: '20', suffix: '+', label: 'experts dédiés' },
+  { value: '100', suffix: '%', label: 'conformité DGI & CNSS' },
+];
+---
+<Page
+  title="Le cabinet | CCME — Expert-comptable Tanger"
+  description="Consulting Maghreb Expertise : cabinet d'expertise comptable inscrit OEC, basé à Tanger depuis plus de 20 ans. Histoire, équipe, valeurs."
+  eyebrow="Le cabinet"
+  heading="Un partenaire de confiance, au cœur de Tanger."
+  lede="Consulting Maghreb Expertise accompagne entrepreneurs, PME et expatriés au Maroc avec une expertise comptable, fiscale et juridique rigoureuse et personnalisée."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Le cabinet' }]}
+  keywords={['cabinet expertise comptable Tanger', 'expert comptable inscrit OEC', 'CCME Tanger']}
+  schema={teamSchema}
+>
+  <section>
+    <div class="container lead-2col">
+      <div class="reveal">
+        <span class="eyebrow">Notre métier</span>
+        <h2 class="headline cabinet-headline">L'expertise au service de vos décisions.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>Depuis plus de 15 ans, notre cabinet met la rigueur des chiffres au service de la croissance de ses clients. De la création d'entreprise au pilotage quotidien, nous couvrons l'ensemble des obligations comptables, fiscales, sociales et juridiques.</p>
+        <p>Notre approche est simple : un interlocuteur unique, des process clairs et des outils digitaux qui fluidifient les échanges. Que vous soyez une TPE, une PME en croissance ou un investisseur expatrié, nous adaptons notre accompagnement à votre réalité.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="statband" aria-label="Chiffres clés">
+    <div class="container">
+      <div class="statband-grid">
+        {cabinetStats.map((st) => (
+          <div class="stat">
+            <b>{st.value}<span class="u">{st.suffix}</span></b>
+            <span>{st.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="band-sep" aria-hidden="true">
+    <div class="container band-sep-inner">
+      <span class="rule"></span>
+      <span class="dot"></span>
+      <span class="rule"></span>
+    </div>
+  </div>
+
+  <section class="vision">
+    <div class="container vk">
+      <div class="reveal">
+        <span class="eyebrow">Notre vision</span>
+      </div>
+      <div class="reveal">
+        <h2>Être le cabinet de référence au Maroc en expertise comptable, fiscale et juridique — par l'innovation, la proximité et des solutions vraiment personnalisées.</h2>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Nos valeurs</span>
+        <h2 class="headline">Ce qui guide notre travail.</h2>
+      </div>
+      <div class="values reveal">
+        {CABINET_VALUES.map((v) => (
+          <div class="value">
+            <div class="vn">{v.num}</div>
+            <b>{v.title}</b>
+            <p>{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="equipe">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow">L'équipe</span>
+        <h2 class="headline">Une équipe disponible quand ça devient urgent.</h2>
+        <p class="lede">Experts-comptables, juristes d'affaires et gestionnaires de paie — une pratique locale à Tanger sur des dossiers industriels, commerciaux et immobiliers.</p>
+      </div>
+      <div class="team-grid">
+        {team.map((m, i) => (
+          <article id={m.id} class={`member-card reveal${i ? ` delay-${i}` : ''}`} itemscope itemtype="https://schema.org/Person">
+            <header class="member-head">
+              <div class="avatar" aria-hidden="true">
+                <span>{m.name.split(' ').map(n => n[0]).slice(0, 2).join('')}</span>
+              </div>
+              <div>
+                <h3 itemprop="name">{m.name}</h3>
+                <p class="role" itemprop="jobTitle">{m.jobTitle}</p>
+              </div>
+            </header>
+            <p class="pole">{m.pole}</p>
+            <p itemprop="description">{m.bio}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cabinet-contact reveal">
+        <p class="eyebrow">Coordonnées</p>
+        <p><strong>{cabinet.legalName}</strong> · <span class="tag">Inscrit à l'OEC Maroc</span></p>
+        <p set:html={`${cabinet.address.streetAddressLong.replace('3ème', '3<sup>ème</sup>')}<br/>${cabinet.address.postalCode} ${cabinet.address.addressLocality}`} />
+        <p><a href={cabinet.phone.tel}>{cabinet.phone.display}</a> · <a href={`mailto:${cabinet.email}`}>{cabinet.email}</a></p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .cabinet-headline {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    margin-top: 16px;
+    line-height: 1.15;
+  }
+  .statband {
+    background: var(--paper-2);
+    border-block: 1px solid var(--line);
+    padding-block: clamp(36px, 5vw, 56px);
+  }
+  .statband-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    text-align: center;
+  }
+  .statband .stat b {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--ink);
+    line-height: 1;
+    display: block;
+  }
+  .statband .stat b .u { color: var(--accent-deep); }
+  .statband .stat > span {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 600;
+  }
+  .vision .container { padding-block: clamp(56px, 8vw, 110px); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .member-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 28px;
+    scroll-margin-top: 100px;
+  }
+  .member-head { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .member-card .role { color: var(--gold); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
+  .member-card .pole { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .member-card h3 { font-size: 1.15rem; margin-bottom: 0; }
+  .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--ink) 0%, #1d3457 100%);
+    color: var(--gold); display: grid; place-items: center;
+    font-family: var(--serif); font-weight: 600; font-size: 18px; flex-shrink: 0;
+  }
+  .cabinet-contact {
+    margin-top: 48px;
+    padding: 28px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .cabinet-contact a { color: var(--ink); font-weight: 600; }
+</style>

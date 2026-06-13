@@ -1,0 +1,50 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import AsideCard from '~/components/AsideCard.astro';
+import AsideCTA from '~/components/AsideCTA.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const list = await getCollection('secteurs');
+  return list.map(s => ({ params: { slug: s.id }, props: { secteur: s } }));
+}
+const { secteur } = Astro.props;
+const { Content } = await render(secteur);
+---
+<Page
+  title={secteur.data.title}
+  description={secteur.data.description}
+  eyebrow={secteur.data.eyebrow}
+  heading={secteur.data.h1}
+  lede={secteur.data.description}
+  breadcrumb={[
+    { label: 'Accueil', href: '/' },
+    { label: 'Secteurs', href: '/secteurs' },
+    { label: secteur.data.h1 },
+  ]}
+  ogImage={secteur.data.heroImage}
+  ogImageAlt={secteur.data.heroAlt ?? `${secteur.data.h1} — Cabinet expert-comptable CCME, Tanger`}
+  heroImage={secteur.data.heroImage}
+  heroAlt={secteur.data.heroAlt}
+  keywords={secteur.data.keywords}
+>
+  <section>
+    <div class="container service-grid">
+      <div class="prose reveal"><Content /></div>
+      {secteur.data.bullets.length > 0 && (
+        <aside class="reveal-right">
+          <AsideCard eyebrow="Spécificités du secteur">
+            <ul class="bullet-list">{secteur.data.bullets.map(b => <li>{b}</li>)}</ul>
+          </AsideCard>
+          <AsideCTA
+            title="Audit de votre situation"
+            text="On regarde vos chiffres avec un œil sectoriel. Premier échange gratuit."
+            primaryLabel="Demander un audit"
+          />
+        </aside>
+      )}
+    </div>
+  </section>
+  {secteur.data.faq.length > 0 && <FAQ items={secteur.data.faq} />}
+</Page>

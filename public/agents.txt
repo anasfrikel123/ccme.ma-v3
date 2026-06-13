@@ -1,0 +1,21 @@
+# Agent discovery — Consulting Maghreb Expertise (CCME)
+# https://www.ccme.ma/agents.txt
+#
+# Companion to /.well-known/ai.txt — symlinked at the root for crawlers that
+# look for a robots.txt-style file specifically named "agents.txt".
+
+User-agent: *
+Allow: /
+Manifest: https://www.ccme.ma/api/agent-manifest.json
+Sitemap: https://www.ccme.ma/sitemap-index.xml
+LLMs: https://www.ccme.ma/llms.txt
+LLMs-Full: https://www.ccme.ma/llms-full.txt
+Policy: https://www.ccme.ma/.well-known/ai.txt
+Contact: info@ccme.ma
+
+# Preferred ingestion order:
+#   1. /api/agent-manifest.json    (capability discovery)
+#   2. /llms-full.txt              (full clean text dump)
+#   3. /api/services.json          (structured service catalogue)
+#   4. /api/blog.json              (article index)
+#   5. /sitemap-index.xml          (full URL inventory)

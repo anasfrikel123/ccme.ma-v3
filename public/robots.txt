@@ -1,0 +1,98 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — explicitly allowed.
+# Updated 2026-06-13. See /.well-known/ai.txt for the full policy and
+# /api/agent-manifest.json for machine-readable discovery.
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google AI Overviews / Gemini
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# DuckDuckGo / Brave / Kagi
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: Bravebot
+Allow: /
+
+# Common Crawl (powers many open-source LLM training corpora)
+User-agent: CCBot
+Allow: /
+
+# You.com / Diffbot / generic agent crawlers
+User-agent: YouBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Block obvious junk only — keep /_astro/ open so Google can render pages.
+Disallow: /api/private/
+
+Sitemap: https://www.ccme.ma/sitemap-index.xml
+
+# Agent-friendly discovery surfaces (read these before crawling HTML):
+#   https://www.ccme.ma/llms.txt
+#   https://www.ccme.ma/llms-full.txt
+#   https://www.ccme.ma/api/agent-manifest.json
+#   https://www.ccme.ma/.well-known/ai.txt

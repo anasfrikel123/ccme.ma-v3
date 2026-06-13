@@ -1,0 +1,150 @@
+---
+import Page from '~/layouts/Page.astro';
+import Icon from '~/components/Icon.astro';
+import { reviews, averageRating as avgRating, reviewCount as total } from '~/data/reviews';
+---
+<Page
+  title="Avis clients & témoignages | Cabinet CCME Tanger"
+  description="Avis vérifiés de clients du cabinet CCME à Tanger : PME, professions libérales, expatriés — pourquoi ils nous font confiance depuis des années."
+  eyebrow="Témoignages"
+  heading="Ce que disent nos clients."
+  lede="Plus de 200 entreprises et professionnels de la région Tanger nous confient leur compta. Voici quelques avis récents — vrais, signés, sans filtre."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Avis clients' }]}
+  keywords={["avis cabinet comptable Tanger","témoignages expert comptable Tanger","CCME avis clients"]}
+>
+  <section>
+    <div class="container">
+      <div class="rating-summary reveal">
+        <div class="big-rating">
+          <strong>{avgRating}</strong>
+          <span class="stars" aria-label={`${avgRating} sur 5 étoiles`}>
+            {Array(5).fill(0).map(() => <Icon name="star-filled" size={26} />)}
+          </span>
+          <span class="count">basé sur {total} avis vérifiés</span>
+        </div>
+        <p class="rating-note">Tous les témoignages ci-dessous sont publiés avec l'accord écrit du client. Pour vérifier, demandez-nous le contact direct (sous réserve d'accord du client).</p>
+      </div>
+
+      <div class="reviews-grid">
+        {reviews.map(r => (
+          <article class="review reveal">
+            <span class="card-shine" aria-hidden="true"></span>
+            <div class="rating" aria-label={`${r.rating} sur 5 étoiles`}>
+              {Array(r.rating).fill(0).map(() => <Icon name="star-filled" size={18} />)}
+            </div>
+            <blockquote>"{r.text}"</blockquote>
+            <footer>
+              <cite>{r.author}</cite>
+              <span class="meta">{r.company} · {new Date(r.date).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}</span>
+            </footer>
+          </article>
+        ))}
+      </div>
+
+      <div class="cta-after-reviews reveal">
+        <p><strong>Vous êtes client ?</strong> Laissez-nous votre avis sur Google — ça aide d'autres entrepreneurs de Tanger à nous trouver.</p>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Consulting+Maghreb+Expertise+Tanger"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="btn btn-gold"
+        >Laisser un avis sur Google</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "Consulting Maghreb Expertise",
+    "url": "https://www.ccme.ma",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": avgRating,
+      "reviewCount": total,
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": reviews.map(r => ({
+      "@type": "Review",
+      "author": { "@type": "Person", "name": r.author },
+      "datePublished": r.date,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": r.rating,
+        "bestRating": "5"
+      },
+      "reviewBody": r.text
+    }))
+  })}></script>
+</Page>
+
+<script>
+  document.querySelectorAll('.review').forEach((card) => {
+    const el = card as HTMLElement;
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+</script>
+
+<style>
+  .rating-summary {
+    text-align: center; padding: 56px 24px;
+    background: linear-gradient(135deg, var(--paper-2) 0%, #fbf7ec 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    margin-bottom: 56px;
+    position: relative; overflow: hidden;
+  }
+  .rating-summary::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(600px circle at 50% 0%, rgba(196, 154, 70, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .big-rating { display: flex; flex-direction: column; align-items: center; gap: 12px; position: relative; }
+  .big-rating strong {
+    font-size: 80px; font-family: var(--serif); color: var(--ink); line-height: 1;
+    background: linear-gradient(180deg, var(--ink) 0%, #4a4d54 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stars { color: var(--gold); display: inline-flex; gap: 4px; }
+  .stars :global(.icon) { filter: drop-shadow(0 2px 4px rgba(196, 154, 70, 0.35)); }
+  .count { color: var(--ink-soft); font-size: 14px; letter-spacing: 0.02em; }
+  .rating-note { max-width: 560px; margin: 24px auto 0; font-size: 13px; color: var(--ink-soft); position: relative; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
+  .review {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 28px;
+    position: relative; overflow: hidden; isolation: isolate;
+    transition: transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .35s ease, border-color .35s ease;
+  }
+  .review:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -16px rgba(15, 17, 22, 0.16); border-color: var(--gold); }
+  .review .card-shine {
+    position: absolute; inset: 0;
+    background: radial-gradient(360px circle at var(--mx, 50%) var(--my, -10%), rgba(196, 154, 70, 0.10), transparent 55%);
+    opacity: 0; transition: opacity .35s ease; pointer-events: none; z-index: 0;
+  }
+  .review:hover .card-shine { opacity: 1; }
+  .review > * { position: relative; z-index: 1; }
+  .rating { color: var(--gold); margin-bottom: 14px; display: inline-flex; gap: 3px; }
+  .review blockquote { margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: var(--ink); border: 0; padding: 0; quotes: none; font-family: var(--serif); font-weight: 400; }
+  .review footer { border-top: 1px solid var(--line); padding-top: 12px; }
+  .review cite { display: block; font-style: normal; font-weight: 700; color: var(--ink); }
+  .meta { display: block; font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+  .cta-after-reviews {
+    text-align: center; margin-top: 64px; padding: 48px 32px;
+    background: linear-gradient(135deg, var(--ink) 0%, #1c1f25 100%);
+    color: #fff; border-radius: var(--r-lg);
+    position: relative; overflow: hidden;
+  }
+  .cta-after-reviews::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(420px circle at 30% 30%, rgba(196, 154, 70, 0.18), transparent 50%);
+  }
+  .cta-after-reviews > * { position: relative; }
+  .cta-after-reviews p { color: #e9e6e0; margin: 0 0 20px; }
+  .cta-after-reviews strong { color: #fff; }
+</style>

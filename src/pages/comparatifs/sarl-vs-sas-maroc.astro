@@ -1,0 +1,74 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import CompareTable from '~/components/CompareTable.astro';
+
+const faq = [
+  { q: "Au Maroc, la SAS est-elle vraiment intéressante ?", a: "Oui, surtout pour les startups en levée de fonds. Liberté statutaire totale (pacte d'actionnaires, BSPCE, droits de vote différenciés). Mais nécessite des statuts plus complexes — pas le bon choix pour une activité simple." },
+  { q: "SARL = obligatoire pour les commerces ?", a: "Non, mais c'est la forme dominante pour les PME. Capital librement fixé, gouvernance simple (gérant), responsabilité limitée. 80 % de nos clients PME sont en SARL." },
+  { q: "Peut-on transformer une SARL en SAS ?", a: "Oui, par décision d'AG extraordinaire. Procédure de transformation, nouveaux statuts, publication BO. Comptez 4-8 semaines et 6 000-12 000 DH de frais." },
+];
+
+const compareColumns = ['Critère', 'SARL', 'SAS'];
+const compareRows = [
+  { label: 'Capital minimum', values: ['Librement fixé (1 DH possible)', 'Librement fixé (1 DH possible)'] },
+  { label: "Nombre d'associés", values: ['1 à 50 (au-delà → SA)', '1 à illimité'] },
+  { label: 'Responsabilité', values: ['Limitée aux apports', 'Limitée aux apports'] },
+  { label: 'Gouvernance', values: ['Gérant (1 ou plusieurs)', 'Président + organes libres'] },
+  { label: 'Acte de création', values: ['Sous seing privé OK', 'Sous seing privé OK'] },
+  { label: 'Liberté statutaire', values: ['Limitée par la loi 5-96', 'Très large'] },
+  { label: 'Cession des parts/actions', values: ['Agrément obligatoire pour tiers', 'Libre par défaut, modulable'] },
+  { label: "Pacte d'actionnaires", values: ['Possible mais limité', 'Pleinement intégrable'] },
+  { label: 'BSPCE / stock-options', values: ['Difficile', 'Pleinement possible'] },
+  { label: 'Commissaire aux comptes', values: ['Obligatoire si CA > 50 MDH', 'Selon statuts (souvent oui)'] },
+  { label: 'Régime fiscal', values: ['IS standard (20 % / 35 %)', 'IS standard (20 % / 35 %)'] },
+  { label: 'Image / crédibilité', values: ['Banale, bien acceptée', 'Moderne, "startup", levée de fonds'] },
+  { label: 'Coût de création', values: ['3 500-5 000 DH', '4 500-7 000 DH'] },
+  { label: 'Idéal pour', values: ['PME, commerce, BTP, professions libérales', 'Startups, holdings, projets multi-investisseurs'] },
+];
+---
+<Page
+  title="SARL vs SAS au Maroc 2026 | Comparatif détaillé"
+  description="SARL ou SAS au Maroc en 2026 ? Différences capital, gouvernance, fiscalité, levée de fonds. Comparatif détaillé par cabinet d'expertise comptable Tanger."
+  eyebrow="Comparatif"
+  heading="SARL vs SAS au Maroc"
+  lede="La SARL reste la forme dominante au Maroc. La SAS, plus récente, séduit les startups. Comparatif honnête pour faire le bon choix."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs', href: '/comparatifs' }, { label: 'SARL vs SAS' }]}
+  keywords={["SARL vs SAS Maroc","SARL ou SAS","comparatif sociétés Maroc 2026","quelle forme juridique Maroc"]}
+>
+  <section>
+    <div class="container">
+      <CompareTable columns={compareColumns} rows={compareRows} narrow="sm" />
+
+      <div class="prose compare-prose">
+        <h2>Notre recommandation</h2>
+        <p>Pour 80 % des projets à Tanger, la SARL fait le job. Capital librement fixé, gouvernance simple, banques rassurées — vous lancez votre activité et vous avancez. C'est la forme par défaut qu'on conseille pour : commerce, BTP, restauration, services classiques, professions libérales en société.</p>
+
+        <p>La SAS s'impose pour des cas plus précis :</p>
+        <ul>
+          <li><strong>Startup tech qui anticipe une levée de fonds</strong> — investisseurs préfèrent la SAS pour les pactes</li>
+          <li><strong>Projet avec plusieurs co-fondateurs</strong> aux apports déséquilibrés — la flexibilité statutaire permet de construire un deal propre</li>
+          <li><strong>Holding</strong> avec plusieurs filiales — gouvernance plus souple</li>
+          <li><strong>Project international</strong> où la SAS est plus reconnue par les partenaires étrangers (équivalent SAS française, plus familière aux investisseurs)</li>
+        </ul>
+
+        <h2>Le piège à éviter</h2>
+        <p>Beaucoup d'entrepreneurs tangérois choisissent la SAS "parce que c'est moderne". Erreur. Si votre activité est simple et que vous n'avez pas d'investisseur en vue, la SAS vous ajoute de la complexité administrative pour rien : statuts plus longs, conseil souvent obligatoire, commissaire aux comptes plus systématique.</p>
+
+        <p>Notre règle simple : <strong>SARL par défaut, SAS si raison précise</strong> (levée de fonds, multi-investisseurs, holding).</p>
+
+        <h2>Cas réels (clients du cabinet)</h2>
+        <p><strong>Cas 1 :</strong> Un import-export à Aouama, 2 associés, 500 000 DH de capital. SARL. Aucune raison de complexifier.</p>
+        <p><strong>Cas 2 :</strong> Une startup SaaS à Tanger Tech, 4 co-fondateurs avec des apports différents, prévision de levée d'amorçage. SAS dès le départ. Le pacte d'actionnaires a été déterminant pour clore le deal investisseur 8 mois plus tard.</p>
+        <p><strong>Cas 3 :</strong> Un cabinet médical de 3 médecins à California. SARL avec gérance partagée. La SAS aurait été overkill et coûteuse.</p>
+
+        <p><a href="/services/creation-entreprise">→ Création d'entreprise au Maroc — accompagnement complet</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .compare-prose { margin-top: 48px; max-width: 920px; margin-inline: auto; }
+</style>

@@ -1,0 +1,101 @@
+# Cloudflare Pages headers config.
+# Replaces the previous vercel.json headers stanza.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+# ---------------------------------------------------------------------------
+# Global security + site-level agent discovery (RFC 8288).
+# llms.txt / llms-full.txt are scoped to `/` only — they describe the site,
+# not each individual page (rel="describedby" is misleading on /blog/foo).
+# ---------------------------------------------------------------------------
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://api.web3forms.com; frame-src https://www.openstreetmap.org https://www.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'; upgrade-insecure-requests
+  Link: </.well-known/ai.txt>; rel="ai-policy"; type="text/plain"
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"
+  Link: </.well-known/agent-skills/index.json>; rel="agent-skills"; type="application/json"
+  Link: </api/agent-manifest.json>; rel="manifest"; type="application/json"
+  Link: </sitemap-index.xml>; rel="sitemap"; type="application/xml"
+  Link: </rss.xml>; rel="alternate"; type="application/rss+xml"; title="CCME — Le Journal"
+
+# Homepage-only LLM discovery (site-level, not per-page).
+/
+  Link: </llms.txt>; rel="describedby"; type="text/plain"
+  Link: </llms-full.txt>; rel="alternate"; type="text/plain"; title="LLM full content dump"
+  Link: </images/hero-720.webp>; rel=preload; as=image; type=image/webp; fetchpriority=high
+  Link: </fonts/newsreader-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: </fonts/hanken-400.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+
+# ---------------------------------------------------------------------------
+# JSON API endpoints — CORS open + edge-cached.
+# ---------------------------------------------------------------------------
+/api/*.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Headers: Accept, Content-Type
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/.well-known/agent-skills/index.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/.well-known/agent-skills/*
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/.well-known/ai.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# ---------------------------------------------------------------------------
+# Markdown sources for blog (raw .md endpoints)
+# ---------------------------------------------------------------------------
+/blog/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/agents.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# ---------------------------------------------------------------------------
+# Static asset caching
+# ---------------------------------------------------------------------------
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/logos/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/og/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

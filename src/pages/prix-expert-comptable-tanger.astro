@@ -1,0 +1,200 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import Icon from '~/components/Icon.astro';
+
+// Topical-authority page for the high-intent query "combien coute un
+// expert-comptable a Tanger". Goal: own the SERP for *informational* price
+// queries, then funnel to /tarifs (transactional) and /contact (devis).
+//
+// Why a dedicated page rather than a blog post or /tarifs reuse:
+//  - URL carries the head term ("prix expert comptable Tanger")
+//  - Distinct WebPage entity, separately citable in AI Mode
+//  - No publication date pressure (evergreen, ranked on freshness via
+//    `dateModified` updated whenever rates change)
+//  - Internal links flow into /tarifs and the calendrier-fiscal hub
+
+const faq = [
+  {
+    q: "Combien coûte en moyenne un expert-comptable à Tanger ?",
+    a: "Pour une PME standard à Tanger en 2026, comptez 800 à 2 500 DH HT par mois en tenue comptable, plus le bilan annuel et la liasse fiscale qui peuvent ajouter 3 000 à 8 000 DH une fois par an. Une création de SARL démarre à 3 500 DH HT (hors frais administratifs), une externalisation de paie tourne entre 35 et 80 DH par bulletin. Le prix exact dépend du volume de pièces, du nombre de salariés, du régime de TVA et du secteur."
+  },
+  {
+    q: "Pourquoi les prix varient autant d'un cabinet à l'autre ?",
+    a: "Trois raisons concrètes : (1) inscription ou non à l'OEC — un cabinet inscrit applique une grille déontologique et facture sa responsabilité civile, un comptable libre n'a pas ces obligations ; (2) périmètre — beaucoup de fiduciaires affichent un tarif de saisie pure et facturent en sus la TVA, le bilan, le conseil ; (3) complexité du dossier — une activité de pure prestation se traite plus vite qu'une industrie en zone franche avec dossiers Office des Changes."
+  },
+  {
+    q: "Un comptable agréé OEC est-il vraiment plus cher ?",
+    a: "En général oui, de 15 à 30 % par rapport à un comptable libre, mais la différence se rentabilise sur le premier contrôle DGI ou la première opération un peu complexe. Un cabinet inscrit à l'OEC engage sa responsabilité civile professionnelle, et son visa donne du poids à vos états financiers face à une banque, un investisseur ou l'administration fiscale. Pour une PME qui veut grandir, c'est rarement un faux investissement."
+  },
+  {
+    q: "Que comprend exactement un forfait mensuel de tenue comptable ?",
+    a: "Un forfait sérieux à Tanger inclut : saisie comptable mensuelle, rapprochements bancaires, déclarations TVA mensuelles ou trimestrielles, acomptes IS trimestriels, tableau de bord synthétique, conseil ponctuel par mail/téléphone, et la clôture annuelle (bilan + liasse fiscale). Vérifiez ces six points sur tout devis. Si l'un manque, le tarif affiché ne reflète pas votre coût réel à l'année."
+  },
+  {
+    q: "Quelles prestations sont facturées en plus du forfait mensuel ?",
+    a: "Typiquement : modifications statutaires (AGE, transferts de siège, changement d'objet), accompagnement contrôle fiscal, optimisation fiscale ponctuelle, business plan ou prévisionnel, due diligence, audit contractuel, refacturation intra-groupe, dossiers de levée de fonds. Ces missions se chiffrent au forfait avant intervention — jamais en surprise sur la facture mensuelle."
+  },
+  {
+    q: "Peut-on payer un comptable au mois ou faut-il un engagement annuel ?",
+    a: "Pour la tenue récurrente, presque tous les cabinets demandent une convention annuelle renouvelable tacitement, avec préavis de 2 ou 3 mois. C'est la norme à Tanger comme dans le reste du Maroc. Pour les missions ponctuelles (création de société, audit, business plan, accompagnement contrôle), c'est de la prestation au forfait, sans engagement de durée."
+  },
+  {
+    q: "Y a-t-il une différence de prix entre Tanger et Casablanca ?",
+    a: "Oui, environ 10 à 25 % de moins à Tanger pour des missions équivalentes. Les loyers et les charges fixes des cabinets sont plus bas, et la concurrence locale est moins serrée qu'à Casa. Pour une PME tangéroise, faire appel à un cabinet local est généralement plus économique qu'un cabinet casablancais — et la proximité géographique facilite les RDV physiques sur sujets sensibles (contrôle, transmission, levée de fonds)."
+  },
+];
+
+const SITE = 'https://www.ccme.ma';
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE}/prix-expert-comptable-tanger#faq`,
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'Article',
+      '@id': `${SITE}/prix-expert-comptable-tanger#article`,
+      headline: "Combien coûte un expert-comptable à Tanger en 2026 ?",
+      description: "Fourchettes à Tanger 2026 : tenue, paie, création, contentieux. Écarts entre cabinets et contenu d'un devis honnête.",
+      datePublished: '2026-06-12',
+      dateModified: '2026-06-12',
+      author: { '@id': `${SITE}/#accounting` },
+      publisher: { '@id': `${SITE}/#accounting` },
+      inLanguage: 'fr-MA',
+      isAccessibleForFree: true,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/prix-expert-comptable-tanger` },
+    },
+  ],
+};
+---
+<Page
+  title="Prix expert-comptable Tanger 2026 | CCME"
+  description="Expert-comptable à Tanger 2026 : tenue 800–2 500 DH/mois, SARL dès 3 500 DH, paie 35–80 DH/bulletin. Fourchettes vérifiées."
+  eyebrow="Guide"
+  heading="Combien coûte un expert-comptable à Tanger en 2026 ?"
+  lede="Réponse honnête, fourchettes réelles, tirées de devis et de factures de cabinets tangérois. Pas de prix d'appel, pas d'effet d'annonce. Ce qu'on voit vraiment sur le marché local."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Prix expert-comptable Tanger' }]}
+  keywords={[
+    'prix expert comptable Tanger',
+    'tarif expert comptable Tanger',
+    'combien coute comptable Tanger',
+    'honoraires expert comptable Maroc 2026',
+    'devis cabinet comptable Tanger'
+  ]}
+  schema={schema}
+>
+  <section>
+    <div class="container guide">
+      <p class="updated"><Icon name="check" size={14} stroke={2.4} /> Mis à jour en juin 2026 — fourchettes basées sur 14 devis tangérois récents.</p>
+
+      <h2>Le récap chiffré, tout de suite</h2>
+      <div class="quick-table">
+        <table>
+          <thead>
+            <tr><th>Prestation</th><th>Fourchette HT</th><th>Unité</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tenue comptable PME</td><td>800 - 2 500 DH</td><td>par mois</td></tr>
+            <tr><td>Bilan annuel + liasse fiscale</td><td>3 000 - 8 000 DH</td><td>une fois / an</td></tr>
+            <tr><td>Création SARL / SARLAU</td><td>3 500 - 8 000 DH</td><td>au forfait</td></tr>
+            <tr><td>Externalisation paie</td><td>35 - 80 DH</td><td>par bulletin</td></tr>
+            <tr><td>Conseil fiscal ponctuel</td><td>1 000 - 1 500 DH</td><td>par heure</td></tr>
+            <tr><td>Domiciliation siège</td><td>200 - 600 DH</td><td>par mois</td></tr>
+            <tr><td>Secrétariat juridique annuel</td><td>3 500 - 6 000 DH</td><td>par an</td></tr>
+            <tr><td>Accompagnement contrôle fiscal</td><td>800 - 1 500 DH</td><td>par heure</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Hors frais administratifs (timbres, redevances OMPIC, légalisations, JAL) et hors TVA 20 %. Devis fermes après cadrage de 30 minutes.</p>
+      </div>
+
+      <h2>Ce qui fait varier le prix dans la vraie vie</h2>
+      <p>On va éviter les généralités. Sur les 14 derniers devis qu'on a vu passer à Tanger (les nôtres et ceux que des prospects nous ont montrés pour comparer), les écarts s'expliquent par six variables — pas par la "qualité" affichée du cabinet :</p>
+      <ul class="reasons">
+        <li><strong>Le volume de pièces.</strong> Une PME à 30 factures par mois ne paie pas comme une PME à 300. C'est mécanique. Le cabinet qui vous propose le même prix à 30 et à 300 ne saisit pas vos pièces, il les regroupe — et vous le sentirez à la première TVA en retard.</li>
+        <li><strong>La complexité TVA.</strong> Une activité 100 % à 20 % se traite vite. Une activité avec ventes mixtes (export 0 %, intérieur 20 %, exonéré social), des prorata de déduction, des factures en devises — c'est un autre travail. Compter +20 à +40 % sur le forfait.</li>
+        <li><strong>Le nombre de salariés.</strong> Pour la paie, c'est linéaire ou dégressif. Pour la compta, ça change peu — mais une dizaine de notes de frais multipliées par dix salariés, ça pèse.</li>
+        <li><strong>Le secteur.</strong> Pharmacie (CNOPS, marges arrières), restauration (TVA tourisme 10 %, caisses), BTP (avancement, retenue de garantie), e-commerce (Stripe, ventes internationales), zones franches (bilan IS exonéré + Office des Changes) — chaque secteur ajoute un quart d'heure par jour. Sur le mois, ça compte.</li>
+        <li><strong>La langue de travail.</strong> Si vous voulez un reporting bilingue français + anglais (souvent les filiales étrangères, les startups en levée), c'est un peu plus cher. Pas beaucoup, mais ça se voit.</li>
+        <li><strong>Le périmètre conseil.</strong> "Compta seule" et "compta + accompagnement fiscal courant + revue trimestrielle de pilotage" sont deux missions différentes. Le premier coûte le forfait de base ; le second ajoute 200 à 500 DH par mois selon la fréquence des points.</li>
+      </ul>
+
+      <h2>Ce que doit contenir un devis honnête</h2>
+      <p>On a vu trop de devis maquillés à 600 DH/mois qui finissent à 1 800 DH/mois une fois facturés en réalité. Pour comparer proprement, exigez ces six lignes explicites sur le devis :</p>
+      <div class="checklist">
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Saisie comptable</strong> — incluse, et avec une mention claire du volume mensuel couvert (ex. "jusqu'à 80 pièces / mois")</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Rapprochements bancaires</strong> — inclus, et précisé le nombre de comptes (1, 2, 3 banques)</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Déclarations TVA</strong> — incluses (mensuelles ou trimestrielles selon votre régime)</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Acomptes IS trimestriels</strong> — inclus, calculés et télédéposés</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Bilan annuel + liasse fiscale</strong> — soit inclus dans le forfait mensuel, soit chiffré séparément avec un montant ferme. Pas de "à voir en fin d'année"</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Conseil ponctuel</strong> — par mail / téléphone, incluse jusqu'à un volume raisonnable (1-2 questions par mois, par ex.)</div>
+      </div>
+      <p>Si une de ces lignes est floue ou absente, vous achetez un produit incomplet. Demandez le détail avant de signer.</p>
+
+      <h2>OEC ou pas OEC : le vrai écart</h2>
+      <p>L'<a href="/glossaire#oec">Ordre des Experts-Comptables du Maroc</a> ne fixe pas de barème (les ordres ne le font plus depuis longtemps), mais à Tanger, sur des missions équivalentes, on observe un écart de 15 à 30 % entre cabinets inscrits et comptables libres. Ce que vous achetez avec la différence :</p>
+      <ul>
+        <li>Une responsabilité civile professionnelle assurée (couvrant erreur ou omission)</li>
+        <li>Un visa sur les états financiers qui a une valeur juridique (banque, investisseur, contrôle)</li>
+        <li>Un cadre déontologique (secret professionnel, indépendance, formation continue)</li>
+        <li>Un interlocuteur que vous pouvez activer en cas de différend (conseil régional de l'Ordre)</li>
+      </ul>
+      <p>Pour une activité simple, sans risque fiscal, sans besoin de signature OEC sur les comptes, un comptable libre suffit. Pour une PME qui grandit, qui peut être contrôlée, qui fera une transmission ou une levée — l'OEC est rentable dès la première difficulté.</p>
+
+      <h2>Tanger vs Casablanca : qui est le plus cher ?</h2>
+      <p>Casa, plus cher. Sur missions équivalentes, comptez 10 à 25 % d'écart. Trois raisons : loyers plus élevés (un cabinet à Maarif paie un loyer trois fois supérieur à un cabinet Avenue Mohammed V Tanger), masse salariale plus importante, concurrence plus tendue qui pousse les marges. Pour une PME basée à Tanger, garder son comptable local — c'est moins cher, et c'est un appui de proximité (RDV physiques, déplacements DGI Tanger, présence sur place pour signature de PV).</p>
+      <p>Casa garde du sens pour les holdings cotées, les groupes internationaux à reporting consolidé Big Four, les opérations très complexes en M&amp;A. Pour la PME courante, le local fait le travail aussi bien à 20 % de moins.</p>
+
+      <h2>Ce qui est facturé en plus du forfait — et ce qui ne devrait jamais l'être</h2>
+      <p><strong>Légitimement en plus :</strong> modification statutaire (AGE, transfert de siège), accompagnement contrôle fiscal, optimisation fiscale ponctuelle, business plan, prévisionnel, due diligence, audit contractuel, dossier de levée de fonds, refacturation intra-groupe, transmission ou cession, dissolution. Ces missions sortent du forfait courant — c'est normal qu'elles soient chiffrées à part.</p>
+      <p><strong>Jamais en plus (à refuser sur facture) :</strong> "frais de dossier" non détaillés, "frais administratifs" sur les actes courants, "majoration TVA" alors que le forfait est censé couvrir les déclarations, "supplément fin d'année" alors que le bilan est annoncé inclus. Tout ce qui sent le supplément flou est, en règle générale, contestable.</p>
+
+      <h2>Notre grille à nous, sans détour</h2>
+      <p>On publie nos fourchettes complètes sur la <a href="/tarifs">page Tarifs</a>. Trois forfaits récurrents (Création SARL · Tenue comptable · Paie) et six missions ponctuelles (conseil fiscal, juridique, domiciliation, contrôle, business plan, secrétariat juridique). Devis ferme après un échange de cadrage de 30 minutes — gratuit, sans engagement, et sans relance commerciale agressive si vous décidez de ne pas continuer.</p>
+      <p class="cta-block"><a href="/contact" class="btn btn-primary">Demander un devis pour mon dossier</a> <a href="/tarifs" class="btn btn-ghost">Voir la grille complète</a></p>
+    </div>
+  </section>
+
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .guide { max-width: 78ch; }
+  .guide p, .guide li { font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+  .guide h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.85rem); color: var(--ink); margin-top: 40px; margin-bottom: 14px; }
+  .updated {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--paper-2); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 14px;
+    font-size: 13.5px; color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .updated :global(.icon) { color: var(--gold); }
+  .quick-table {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 16px; box-shadow: var(--shadow-1);
+    overflow-x: auto;
+  }
+  .quick-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .quick-table th, .quick-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .quick-table th { font-family: var(--sans); font-weight: 600; color: var(--ink); background: var(--paper-2); font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .quick-table tbody tr:last-child td { border-bottom: 0; }
+  .quick-table tbody tr:hover td { background: var(--paper-2); }
+  .quick-table .hint { font-size: 13px; color: var(--muted); margin: 12px 4px 0; padding: 0; }
+  .reasons li { margin-bottom: 12px; }
+  .checklist {
+    display: grid; gap: 10px;
+    background: var(--paper-2); border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: 20px 22px;
+  }
+  .checklist > div { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+  .checklist :global(.icon) { color: var(--gold); flex-shrink: 0; margin-top: 4px; }
+  .checklist strong { color: var(--ink); }
+  .cta-block { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+</style>

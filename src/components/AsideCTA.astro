@@ -1,0 +1,63 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  phoneHref?: string;
+  phoneLabel?: string;
+}
+
+const {
+  title,
+  text,
+  primaryHref = '/contact',
+  primaryLabel = 'Prendre rendez-vous',
+  phoneHref,
+  phoneLabel,
+} = Astro.props;
+---
+
+<div class="aside-cta">
+  <h3>{title}</h3>
+  <p>{text}</p>
+  <a href={primaryHref} class="btn btn-primary aside-cta-btn">{primaryLabel}</a>
+  {phoneHref && phoneLabel && (
+    <a href={phoneHref} class="btn btn-ghost aside-cta-btn aside-cta-phone">{phoneLabel}</a>
+  )}
+</div>
+
+<style>
+  .aside-cta {
+    background: var(--ink);
+    color: var(--surface);
+    border: 1px solid var(--ink);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .aside-cta h3 {
+    color: var(--surface);
+    margin-bottom: 6px;
+    font-size: 1.15rem;
+  }
+  .aside-cta p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 14.5px;
+    margin-bottom: 16px;
+  }
+  .aside-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .aside-cta-phone {
+    margin-top: 10px;
+    color: var(--surface);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .aside-cta-phone:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--surface);
+    color: var(--surface);
+  }
+</style>

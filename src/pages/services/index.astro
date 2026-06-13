@@ -1,0 +1,71 @@
+---
+import Page from '~/layouts/Page.astro';
+import ServiceProof from '~/components/ServiceProof.astro';
+import { getCollection } from 'astro:content';
+import { collectionPageSchema } from '~/lib/collection-schema';
+import { SERVICE_FAMILIES } from '~/data/service-families';
+
+const SITE = 'https://www.ccme.ma';
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const totalServices = services.length;
+
+const hubSchema = collectionPageSchema({
+  url: `${SITE}/services`,
+  name: 'Services expert-comptable CCME Tanger',
+  description: 'Catalogue complet : comptabilité, fiscalité, juridique, paie CNSS, audit, business plan.',
+  items: services.map((s) => ({ url: `/services/${s.id}`, name: s.data.h1 })),
+});
+---
+<Page
+  title="Services | Cabinet expert-comptable Tanger — CCME"
+  description="Tous nos services à Tanger : tenue comptable, fiscalité, juridique, paie CNSS, audit, business plan. Cabinet d'expertise comptable inscrit OEC."
+  eyebrow="Nos services"
+  heading="Comptabilité, fiscalité, juridique & conseil."
+  lede="Des solutions adaptées à votre profil — TPE, PME, startup ou expatrié — avec un interlocuteur unique et une exigence de conformité constante."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Services' }]}
+  keywords={['expert comptable Tanger', 'services comptables Tanger', 'cabinet expertise comptable Maroc']}
+  schema={hubSchema}
+>
+  <section class="svc-index">
+    <div class="container">
+      <div class="svc-meta reveal">
+        <p class="m-lede">Quatre pôles d'expertise, un seul <em>interlocuteur</em> pour piloter toutes vos obligations.</p>
+        <div class="m-figs">
+          <div class="m-fig">
+            <b>{SERVICE_FAMILIES.length}</b>
+            <span>pôles d'expertise</span>
+          </div>
+          <div class="m-fig">
+            <b>{totalServices}</b>
+            <span>prestations</span>
+          </div>
+        </div>
+      </div>
+
+      {SERVICE_FAMILIES.map((family) => {
+        const items = services.filter((s) => family.categories.includes(s.data.category));
+        if (items.length === 0) return null;
+        return (
+          <div class="fam-row reveal">
+            <div class="fam-head">
+              <div class="fam-num">{family.num}</div>
+              <h3>{family.label}</h3>
+              <p>{family.description}</p>
+              <span class="fam-count">{items.length} prestations</span>
+            </div>
+            <div class="fam-services">
+              {items.map((s) => (
+                <a class="svc-link" href={`/services/${s.id}`}>
+                  <span class="sl-label">{s.data.h1}</span>
+                  <span class="sl-go" aria-hidden="true">→</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <ServiceProof />
+</Page>

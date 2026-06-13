@@ -1,0 +1,105 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Simulateur IS Maroc 2026 | Calcul impôt sociétés"
+  description="Calculez votre IS 2026 selon le barème marocain en vigueur : 20 % sur le bénéfice jusqu'à 100 MDH, 35 % au-delà. Cotisation minimale incluse. Outil CCME Tanger."
+  eyebrow="Outil"
+  heading="Simulateur IS 2026 (Maroc)"
+  lede="Régime de droit commun (LF 2026) — 20 % sur le bénéfice net fiscal jusqu'à 100 millions de DH, 35 % au-delà. Cotisation minimale 0,25 % du CA (min 3 000 DH)."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils', href: '/outils' }, { label: 'Simulateur IS' }]}
+  keywords={["simulateur IS Maroc","calcul IS 2026","cotisation minimale Maroc","barème IS 2026"]}
+>
+  <section>
+    <div class="container narrow">
+      <div class="card sim-card">
+        <h2>Calcul rapide</h2>
+        <div class="form-grid">
+          <label>
+            <span>Chiffre d'affaires HT (DH)</span>
+            <input type="number" id="ca" placeholder="Ex : 5 000 000" min="0" />
+          </label>
+          <label>
+            <span>Résultat fiscal (bénéfice imposable, DH)</span>
+            <input type="number" id="benefice" placeholder="Ex : 800 000" min="0" />
+          </label>
+        </div>
+        <button id="calculate" class="btn btn-gold" type="button">Calculer mon IS</button>
+
+        <p id="sim-error" class="sim-error" role="alert" aria-live="polite"></p>
+
+        <div id="result" class="result" hidden>
+          <div class="row"><span>Tranche 1 (0 → 300 000) à 20 %</span><strong id="t1">—</strong></div>
+          <div class="row"><span>Tranche 2 (300 001 → 1 000 000) à 20 %</span><strong id="t2">—</strong></div>
+          <div class="row"><span>Tranche 3 (1 000 001 → 100 000 000) à 20 %</span><strong id="t3">—</strong></div>
+          <div class="row"><span>Tranche 4 (bénéfice &gt; 100 MDH) à 35 %</span><strong id="t4">—</strong></div>
+          <hr/>
+          <div class="row"><span>IS calculé selon barème</span><strong id="isCalc">—</strong></div>
+          <div class="row"><span>Cotisation minimale (0,25 % du CA, min 3 000 DH)</span><strong id="cm">—</strong></div>
+          <div class="row total"><span>IS dû (le plus élevé)</span><strong id="isDue">—</strong></div>
+          <p class="note" id="note"></p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:48px">
+        <h2>Comment ça marche</h2>
+        <p>En 2026, la réforme IS lancée en 2023 aboutit au <strong>taux unique de 20 %</strong> sur le bénéfice net fiscal pour le régime de droit commun, jusqu'à <strong>100 millions de DH</strong> de bénéfice. Au-delà, la fraction excédentaire est imposée à <strong>35 %</strong>.</p>
+        <p>Les tranches affichées ci-dessus reprennent la structure du CGI (art. 19) ; en pratique, pour une PME classique, l'IS = bénéfice × 20 %.</p>
+        <ul>
+          <li><strong>0 → 100 000 000 DH de bénéfice</strong> : 20 % (toutes tranches confondues)</li>
+          <li><strong>Au-delà de 100 MDH de bénéfice</strong> : 35 % sur l'excédent</li>
+        </ul>
+        <p>La <strong>cotisation minimale</strong> s'applique : 0,25 % du chiffre d'affaires HT (minimum 3 000 DH). Elle est due si elle dépasse l'IS calculé sur le bénéfice.</p>
+        <p><strong>Non couvert ici :</strong> banques et assurances (40 %), barèmes spécifiques export/hôtellerie/industrie. Zones d'accélération industrielle (TFZ, TAC) : exonération 5 ans, puis 8,75 %.</p>
+        <p><a href="/services/conseil-fiscal">→ Optimisation fiscale par notre cabinet</a></p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .narrow { max-width: 780px; }
+  .sim-card { padding: 32px; }
+  .form-grid { display: grid; gap: 16px; margin: 24px 0; }
+  .form-grid label { display: block; }
+  .form-grid span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-grid input { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 16px; background: #fff; }
+  .form-grid input:focus { outline: 2px solid var(--gold); }
+  .result { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .row { display: flex; justify-content: space-between; padding: 10px 0; gap: 16px; font-size: 14.5px; }
+  .row strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .row.total { padding: 16px 0; border-top: 2px solid var(--ink); margin-top: 12px; font-size: 17px; font-weight: 700; }
+  .row.total strong { color: var(--gold); font-size: 22px; }
+  .note { margin-top: 16px; font-size: 13px; color: var(--ink-soft); padding: 12px; background: var(--paper-2); border-radius: var(--r-md); }
+  .sim-error { color: #b3261e; font-size: 14px; min-height: 1.4em; margin: 12px 0 0; font-weight: 500; }
+  .sim-error:empty { display: none; }
+</style>
+
+<script>
+  import { computeIS, fmtDH } from '~/lib/tax-maroc';
+  document.getElementById('calculate')!.addEventListener('click', () => {
+    const errEl = document.getElementById('sim-error') as HTMLElement;
+    errEl.textContent = '';
+    const ca = parseFloat((document.getElementById('ca') as HTMLInputElement).value) || 0;
+    const benefice = parseFloat((document.getElementById('benefice') as HTMLInputElement).value) || 0;
+    if (ca <= 0 && benefice <= 0) {
+      errEl.textContent = 'Veuillez renseigner au moins le chiffre d\u2019affaires ou le bénéfice imposable.';
+      (document.getElementById('ca') as HTMLInputElement).focus();
+      return;
+    }
+    const r = computeIS(ca, benefice);
+    document.getElementById('t1')!.textContent = fmtDH(r.tranches.t1);
+    document.getElementById('t2')!.textContent = fmtDH(r.tranches.t2);
+    document.getElementById('t3')!.textContent = fmtDH(r.tranches.t3);
+    document.getElementById('t4')!.textContent = fmtDH(r.tranches.t4);
+    document.getElementById('isCalc')!.textContent = fmtDH(r.isCalc);
+    document.getElementById('cm')!.textContent = fmtDH(r.cotisationMinimale);
+    document.getElementById('isDue')!.textContent = fmtDH(r.isDue);
+    document.getElementById('note')!.textContent = r.mode === 'cotisation-minimale'
+      ? 'La cotisation minimale s\u2019applique car elle est sup\u00e9rieure \u00e0 l\u2019IS calcul\u00e9 sur votre b\u00e9n\u00e9fice.'
+      : 'IS calcul\u00e9 au bar\u00e8me 2026 (20 % jusqu\u2019\u00e0 100 MDH de b\u00e9n\u00e9fice, 35 % au-del\u00e0).';
+    const result = document.getElementById('result') as HTMLElement;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

@@ -1,0 +1,106 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+
+const faq = [
+  { q: "Je suis français, puis-je créer une société à Tanger ?", a: "Oui, sans restriction. Vous pouvez créer une SARL, SAS, SARLAU ou SA à 100% étranger. Le seul cas de restriction concerne l'achat de terres agricoles, qui exige une société de droit marocain. Pour le reste, capital libre, dividendes rapatriables (avec règles Office des Changes), exit fluide." },
+  { q: "Convention fiscale franco-marocaine, en bref ?", a: "Signée en 1970, modernisée plusieurs fois. Elle évite la double imposition sur la plupart des revenus : dividendes (retenue 15% Maroc + crédit France), salaires (imposition lieu d'exercice), plus-values immobilières (lieu de l'immeuble), pensions (lieu de résidence). Sa lecture précise détermine vos arbitrages patrimoniaux." },
+  { q: "L'Office des Changes, un obstacle ?", a: "Pas vraiment. C'est un cadre administratif qui assure la traçabilité des flux. Bien fait dès le départ (apport déclaré, justificatifs conservés), il garantit votre droit de rapatrier les bénéfices et le capital quand vous voulez. Mal fait, ça crée des blocages bancaires énervants." },
+  { q: "Statut résident vs non-résident fiscal, comment savoir ?", a: "Vous êtes résident fiscal marocain si votre foyer (famille proche) est au Maroc, OU votre lieu de séjour principal y est (>183 jours), OU le centre de vos intérêts économiques y est. Si aucune des trois ne tient, vous restez résident dans votre pays d'origine. Beaucoup d'expats croient à tort être encore résidents français alors qu'ils sont devenus marocains au sens fiscal." },
+  { q: "SCI marocaine, oui ou non ?", a: "Pour de l'investissement immobilier locatif à Tanger ou ailleurs, oui — mais en sachant qu'au Maroc la SCI est par défaut soumise à l'IS, contrairement à la SCI française classique (IR par transparence). Le régime change tout. On simule avant de monter." },
+];
+---
+<Page
+  title="Expat français investisseur à Tanger | CCME"
+  description="Cabinet expert-comptable spécialisé pour expatriés français, espagnols et belges au Maroc. SCI, convention fiscale, Office des Changes, résidence."
+  eyebrow="Expatriés & investisseurs"
+  heading="Vous investissez au Maroc depuis l'étranger. Voici ce que la plupart ratent au départ."
+  lede="L'erreur la plus fréquente chez les primo-investisseurs : apporter des fonds au Maroc sans déposer l'attestation d'investissement à l'Office des Changes dans les six mois suivant le virement. Résultat — impossible de rapatrier les bénéfices ou de récupérer le capital plus tard. On régularise ce type de situation régulièrement, mais c'est plus simple, et moins coûteux, de le faire correctement dès le départ."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Expatriés' }]}
+  keywords={['expert comptable expatrié Tanger', 'investir Tanger Maroc français', 'SCI Maroc Tanger', 'convention franco marocaine']}
+>
+  <section>
+    <div class="container two-col">
+      <div class="reveal-left">
+        <p class="eyebrow">Notre savoir-faire</p>
+        <h2>Une expertise binationale rare.</h2>
+        <p>Notre cabinet a accompagné des dizaines d'expatriés français qui ont choisi Tanger : retraités qui s'installent, entrepreneurs qui montent une boîte, investisseurs qui placent en immobilier ou en société. À chaque fois, des situations un peu uniques — mais qui rentrent dans des schémas qu'on connaît.</p>
+        <p>Ce qu'on apporte : une lecture fine de la convention fiscale franco-marocaine, une maîtrise de l'Office des Changes côté pratique (banques de Tanger, dossiers, plafonds), et une connaissance du droit immobilier marocain pour les achats à Tanger ville, Malabata, Cap Spartel, ou ailleurs.</p>
+        <p>Et surtout : on coordonne avec votre cabinet français/belge/espagnol si vous en avez un. Pas de rivalité, juste une complémentarité qui évite que vous fassiez le pont entre les deux pays vous-même.</p>
+      </div>
+      <div class="reveal-right">
+        <div class="card-info">
+          <p class="eyebrow">Schémas qu'on traite</p>
+          <ul>
+            <li>Création SARL/SAS marocaine à 100% étranger</li>
+            <li>SCI marocaine pour de l'investissement immobilier</li>
+            <li>Holding marocaine pour structurer un patrimoine</li>
+            <li>Établissement stable d'une société française au Maroc</li>
+            <li>Statut résident fiscal marocain (sortie foyer fiscal France)</li>
+            <li>Compte en devises et rapatriement de bénéfices</li>
+            <li>Achat immobilier locatif Tanger / Malabata / Cap Spartel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-bg">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Trois articles utiles à lire</p>
+        <h2>Le b.a.-ba pour ne pas se tromper.</h2>
+      </div>
+      <div class="grid grid-3">
+        <a href="/blog/expat-francais-investir-tanger" class="card reveal">
+          <span class="tag">Expatriés</span>
+          <h3>Expat français qui investit à Tanger</h3>
+          <p>Statut fiscal, structure juridique, Office des Changes, convention France-Maroc.</p>
+        </a>
+        <a href="/blog/sarlau-vs-sarl-vs-sas" class="card reveal delay-1">
+          <span class="tag">Création</span>
+          <h3>SARLAU, SARL, SAS : laquelle choisir</h3>
+          <p>Comparatif pratique pour un projet à Tanger en 2026.</p>
+        </a>
+        <a href="/blog/zones-franches-tanger-comparatif" class="card reveal delay-2">
+          <span class="tag">Zones franches</span>
+          <h3>TFZ, TAC, Tanger Tech : comparatif</h3>
+          <p>Avantages fiscaux, secteurs cibles, conditions d'agrément.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+  .card-info {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-1);
+  }
+  .card-info ul { padding: 0; list-style: none; display: grid; gap: 10px; font-size: 14.5px; color: var(--ink-soft); margin: 12px 0 0; }
+  .card-info ul li { padding-left: 22px; position: relative; }
+  .card-info ul li {
+    position: relative; padding-left: 26px;
+  }
+  .card-info ul li::before {
+    content: "";
+    position: absolute; left: 0; top: 0.5em;
+    width: 16px; height: 16px;
+    background: var(--gold); border-radius: 50%;
+  }
+  .card-info ul li::after {
+    content: "";
+    position: absolute; left: 4px; top: calc(0.5em + 4px);
+    width: 7px; height: 3px;
+    border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+  }
+  .card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+</style>

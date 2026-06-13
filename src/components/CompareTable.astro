@@ -1,0 +1,132 @@
+---
+export interface CompareRow {
+  label: string;
+  values: string[];
+}
+
+interface Props {
+  /** First entry = row-label column header; rest = data column headers. */
+  columns: string[];
+  rows: CompareRow[];
+  /** Max width of the table wrapper. */
+  narrow?: 'sm' | 'md' | 'lg';
+}
+
+const { columns, rows, narrow = 'md' } = Astro.props;
+const dataColumns = columns.slice(1);
+---
+
+<div class:list={['compare-wrap', narrow && `compare-narrow-${narrow}`]}>
+  <table class="compare compare-desktop">
+    <thead>
+      <tr>{columns.map((col) => <th scope="col">{col}</th>)}</tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <th scope="row">{row.label}</th>
+          {row.values.map((val) => <td>{val}</td>)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <div class="compare-mobile">
+    {rows.map((row) => (
+      <article class="compare-card">
+        <h3 class="compare-card-title">{row.label}</h3>
+        <dl class="compare-card-dl">
+          {dataColumns.map((col, i) => (
+            <div class="compare-card-row">
+              <dt>{col}</dt>
+              <dd>{row.values[i]}</dd>
+            </div>
+          ))}
+        </dl>
+      </article>
+    ))}
+  </div>
+</div>
+
+<style>
+  .compare-wrap {
+    width: 100%;
+  }
+  .compare-narrow-sm { max-width: 920px; margin-inline: auto; }
+  .compare-narrow-md { max-width: 1000px; margin-inline: auto; }
+  .compare-narrow-lg { max-width: 1100px; margin-inline: auto; }
+
+  .compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  .compare th,
+  .compare td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare thead th {
+    background: var(--ink);
+    color: var(--surface);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .compare tbody th[scope='row'] {
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--surface);
+  }
+  .compare tr:nth-child(even) td,
+  .compare tr:nth-child(even) th[scope='row'] {
+    background: var(--paper-2);
+  }
+
+  .compare-mobile { display: none; }
+
+  @media (max-width: 640px) {
+    .compare-desktop { display: none; }
+    .compare-mobile {
+      display: grid;
+      gap: 12px;
+    }
+    .compare-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: 16px 18px;
+    }
+    .compare-card-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--line);
+    }
+    .compare-card-dl { margin: 0; }
+    .compare-card-row + .compare-card-row {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--paper-2);
+    }
+    .compare-card-row dt {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .compare-card-row dd {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+  }
+</style>

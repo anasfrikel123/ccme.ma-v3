@@ -1,0 +1,289 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+
+const faq = [
+  { q: "Pourquoi des fourchettes et pas un prix fixe ?", a: "Parce que la réalité d'une PME varie : volume de pièces, complexité TVA, nombre de salariés, secteur d'activité. On donne une fourchette pour cadrer, puis un devis ferme après un échange de 30 minutes. Pas de surprise une fois engagés." },
+  { q: "Y a-t-il des frais cachés ?", a: "Non. Les opérations exceptionnelles (clôture annuelle, liasse fiscale, modifications statutaires, accompagnement contrôle) sont chiffrées séparément avant intervention. Si on doit faire plus que prévu un mois donné, on prévient." },
+  { q: "Engagement annuel obligatoire ?", a: "Pour la tenue mensuelle, on signe une convention d'un an renouvelable tacitement. Vous pouvez résilier à chaque échéance avec un préavis de 2 mois. Pour les missions ponctuelles (audit, business plan), c'est de la prestation au forfait, sans engagement de durée." },
+  { q: "Comment se passe la facturation ?", a: "Tenue mensuelle facturée le 1er du mois pour le mois en cours, échéance 30 jours. Missions au forfait : 30% à la commande, 70% à la livraison. Paiement par virement bancaire ou prélèvement (RIB français/marocain accepté)." },
+];
+
+// Service + Offer + priceSpecification schema for the six pricing tiers.
+// `priceSpecification` with min/max prices is one of the few price markups
+// Google still uses to enrich service-business listings — and it's the
+// canonical signal AI Mode reads to answer "combien coute X chez Y" queries.
+const SITE = 'https://www.ccme.ma';
+const tarifsSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${SITE}/services/creation-entreprise#offer`,
+      name: 'Création de SARL / SARLAU à Tanger',
+      url: `${SITE}/services/creation-entreprise`,
+      provider: { '@id': `${SITE}/#accounting` },
+      areaServed: { '@type': 'City', name: 'Tanger' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'MAD',
+        price: '3500',
+        availability: 'https://schema.org/InStock',
+        priceValidUntil: '2026-12-31',
+        eligibleRegion: { '@type': 'Country', name: 'Morocco' },
+        description: "Honoraires HT, hors frais administratifs (~1 500 DH). Premier mois de comptabilité offert.",
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${SITE}/services/tenue-comptabilite#offer`,
+      name: 'Tenue de comptabilité mensuelle',
+      url: `${SITE}/services/tenue-comptabilite`,
+      provider: { '@id': `${SITE}/#accounting` },
+      areaServed: { '@type': 'City', name: 'Tanger' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'MAD',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          minPrice: '800',
+          maxPrice: '2500',
+          priceCurrency: 'MAD',
+          unitText: 'MONTH',
+        },
+        availability: 'https://schema.org/InStock',
+        priceValidUntil: '2026-12-31',
+        eligibleRegion: { '@type': 'Country', name: 'Morocco' },
+        description: "Forfait mensuel HT ajusté au volume de pièces et à la complexité TVA. Bilan annuel et liasse fiscale inclus.",
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${SITE}/services/paie-grh#offer`,
+      name: 'Externalisation de la paie',
+      url: `${SITE}/services/paie-grh`,
+      provider: { '@id': `${SITE}/#accounting` },
+      areaServed: { '@type': 'City', name: 'Tanger' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'MAD',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          minPrice: '35',
+          maxPrice: '80',
+          priceCurrency: 'MAD',
+          referenceQuantity: { '@type': 'QuantitativeValue', value: '1', unitCode: 'C62', unitText: 'bulletin' },
+        },
+        availability: 'https://schema.org/InStock',
+        priceValidUntil: '2026-12-31',
+        eligibleRegion: { '@type': 'Country', name: 'Morocco' },
+        description: "Forfait par bulletin HT, dégressif au-delà de 20 salariés. Inclut BDS Damancom, télépaiement CNSS, déclaration IR.",
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${SITE}/services/conseil-fiscal#offer`,
+      name: 'Conseil fiscal',
+      url: `${SITE}/services/conseil-fiscal`,
+      provider: { '@id': `${SITE}/#accounting` },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'MAD',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: '1200',
+          priceCurrency: 'MAD',
+          unitText: 'HOUR',
+        },
+        availability: 'https://schema.org/InStock',
+        priceValidUntil: '2026-12-31',
+        description: "Tarif horaire HT pour missions cadrées ; forfaits mensuels ou annuels sur devis après cadrage.",
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${SITE}/services/domiciliation#offer`,
+      name: 'Domiciliation de siège social à Tanger',
+      url: `${SITE}/services/domiciliation`,
+      provider: { '@id': `${SITE}/#accounting` },
+      areaServed: { '@type': 'City', name: 'Tanger' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'MAD',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          minPrice: '200',
+          maxPrice: '600',
+          priceCurrency: 'MAD',
+          unitText: 'MONTH',
+        },
+        availability: 'https://schema.org/InStock',
+        priceValidUntil: '2026-12-31',
+        description: "Adresse Avenue Moulay Ismail, réception et numérisation du courrier, salles de réunion sur RDV.",
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${SITE}/services/travaux-juridiques#offer`,
+      name: 'Secrétariat juridique annuel',
+      url: `${SITE}/services/travaux-juridiques`,
+      provider: { '@id': `${SITE}/#accounting` },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'MAD',
+        price: '4000',
+        availability: 'https://schema.org/InStock',
+        priceValidUntil: '2026-12-31',
+        description: "Forfait annuel HT pour SARL/SARLAU classique : AGO, PV, registres, dépôt comptes au tribunal.",
+      },
+    },
+  ],
+};
+---
+<Page
+  title="Tarifs cabinet expert-comptable Tanger | CCME"
+  description="Honoraires transparents : tenue comptable dès 800 DH/mois, création SARL dès 3 500 DH, paie 35-80 DH/bulletin. Devis ferme et gratuit."
+  eyebrow="Tarifs"
+  heading="Honoraires transparents, sans surprise."
+  lede="Voici les fourchettes que vous pouvez attendre. Le devis ferme arrive après un premier échange de cadrage gratuit, où on aligne le périmètre avec votre réalité."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Tarifs' }]}
+  keywords={['tarif comptable Tanger', 'prix expert comptable Maroc', 'honoraires cabinet comptable']}
+  schema={tarifsSchema}
+>
+  <section>
+    <div class="container">
+      <h2 class="section-h2 reveal">Forfaits récurrents</h2>
+      <p class="section-lede reveal">Les trois prestations qui couvrent 80&nbsp;% des PME tangéroises : création de société, comptabilité au mois, externalisation de la paie.</p>
+      <div class="grid grid-3">
+        <div class="price-card reveal">
+          <p class="eyebrow">Démarrage</p>
+          <h3>Création SARL</h3>
+          <p class="price">3 500 <span>DH HT</span></p>
+          <p class="price-sub">+ frais administratifs ~1 500 DH</p>
+          <ul>
+            <li>Conseil sur la forme juridique</li>
+            <li>Certificat négatif OMPIC</li>
+            <li>Rédaction des statuts</li>
+            <li>Démarches CRI complètes (RC, IF, CNSS)</li>
+            <li>Publication JAL</li>
+            <li>Premier mois de compta offert</li>
+          </ul>
+          <a href="/contact" class="btn btn-ghost" style="width:100%; justify-content:center">Demander un devis</a>
+        </div>
+
+        <div class="price-card highlight reveal delay-1">
+          <p class="eyebrow">Mensuel</p>
+          <h3>Tenue comptable</h3>
+          <p class="price">800<span>—2 500 DH/mois HT</span></p>
+          <p class="price-sub">selon volume et complexité</p>
+          <ul>
+            <li>Saisie comptable mensuelle</li>
+            <li>Rapprochements bancaires</li>
+            <li>Déclarations TVA mensuelles ou trimestrielles</li>
+            <li>Acomptes IS</li>
+            <li>Tableau de bord mensuel</li>
+            <li>Bilan annuel et liasse fiscale inclus</li>
+          </ul>
+          <a href="/contact" class="btn btn-primary" style="width:100%; justify-content:center">Devis personnalisé</a>
+        </div>
+
+        <div class="price-card reveal delay-2">
+          <p class="eyebrow">Paie</p>
+          <h3>Externalisation paie</h3>
+          <p class="price">35<span>—80 DH/bulletin HT</span></p>
+          <p class="price-sub">forfait dégressif au-delà de 20 salariés</p>
+          <ul>
+            <li>Bulletin de paie mensuel</li>
+            <li>Déclaration BDS Damancom</li>
+            <li>Télépaiement cotisations</li>
+            <li>Déclaration IR sur salaires</li>
+            <li>Soldes de tout compte sur opération</li>
+            <li>Conseils contrats CDI/CDD/ANAPEC</li>
+          </ul>
+          <a href="/contact" class="btn btn-ghost" style="width:100%; justify-content:center">Demander un devis</a>
+        </div>
+      </div>
+
+      <h2 class="section-h2 reveal" style="margin-top: 56px;">Missions ponctuelles &amp; juridique</h2>
+      <p class="section-lede reveal">Au forfait ou à l'heure, en complément ou en autonome — sans engagement de durée.</p>
+      <div class="grid grid-3" style="margin-top: 24px;">
+        <div class="price-card reveal">
+          <p class="eyebrow">Conseil</p>
+          <h3>Conseil fiscal</h3>
+          <p class="price">1 200 <span>DH/h HT</span></p>
+          <p class="price-sub">forfaits possibles</p>
+          <ul>
+            <li>Diagnostic fiscal</li>
+            <li>Optimisation IS, TVA, IR</li>
+            <li>Note de recommandation</li>
+            <li>Mise en œuvre des arbitrages</li>
+          </ul>
+        </div>
+        <div class="price-card reveal delay-1">
+          <p class="eyebrow">Domiciliation</p>
+          <h3>Siège social</h3>
+          <p class="price">200<span>—600 DH/mois HT</span></p>
+          <p class="price-sub">selon formule</p>
+          <ul>
+            <li>Adresse Avenue Moulay Ismail</li>
+            <li>Réception courrier</li>
+            <li>Numérisation et envoi par mail</li>
+            <li>Salles de réunion sur RDV</li>
+          </ul>
+        </div>
+        <div class="price-card reveal delay-2">
+          <p class="eyebrow">Juridique</p>
+          <h3>Secrétariat annuel</h3>
+          <p class="price">4 000 <span>DH/an HT</span></p>
+          <p class="price-sub">SARL/SARLAU classique</p>
+          <ul>
+            <li>AGO annuelle</li>
+            <li>Rédaction PV et registres</li>
+            <li>Dépôt comptes au tribunal</li>
+            <li>AGE en cours d'année</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="disclaim reveal">Tarifs indicatifs HT en dirhams, hors frais administratifs (timbres, redevances, légalisations) qui sont refacturés au coût réel. TVA 20% applicable.</p>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .price-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-pop); }
+  .price-card.highlight { border-color: var(--gold); border-width: 2px; box-shadow: var(--shadow-1); }
+  .price { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.6rem); margin: 0; }
+  .price span { font-family: var(--sans); font-size: 16px; color: var(--muted); font-weight: 500; }
+  .price-sub { color: var(--muted); font-size: 13px; margin-top: -10px; }
+  .price-card ul { padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14.5px; color: var(--ink-soft); margin: 0 0 12px; }
+  .price-card ul li { position: relative; padding-left: 26px; }
+  .price-card ul li::before {
+    content: "";
+    position: absolute; left: 0; top: 0.5em;
+    width: 16px; height: 16px;
+    background: var(--gold); border-radius: 50%;
+  }
+  .price-card ul li::after {
+    content: "";
+    position: absolute; left: 4px; top: calc(0.5em + 4px);
+    width: 7px; height: 3px;
+    border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+  }
+  .price-card .btn { margin-top: auto; }
+  .disclaim { font-size: 12.5px; color: var(--muted); margin-top: 32px; text-align: center; max-width: 80ch; margin-inline: auto; }
+  .section-h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.85rem); margin: 0 0 8px; }
+  .section-lede { color: var(--ink-soft); max-width: 60ch; margin: 0 0 28px; font-size: 15.5px; }
+</style>

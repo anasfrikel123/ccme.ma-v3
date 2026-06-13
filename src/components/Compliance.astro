@@ -1,0 +1,211 @@
+---
+/**
+ * Compliance / institutions strip — horizontal SVG-logo marquee.
+ *
+ * Continuous sideway-scrolling logo ticker for the Moroccan administrations
+ * and platforms the cabinet works with daily. Visual reference is the
+ * standard "trusted by / works with" enterprise logo strip, restyled in
+ * the CCME palette (cream paper, ink type, gold hover).
+ *
+ * IMPLEMENTATION
+ * - Each entry loads a single SVG file from `public/logos/institutions/`.
+ *   Drop a new SVG over the existing slug to swap a logo — no code change.
+ *   See `public/logos/institutions/README.md` for the full slot manifest.
+ * - Track is rendered twice; CSS keyframe translateX(0 → -50%) lands on
+ *   the next copy → seamless infinite loop with zero JS.
+ * - Pause on hover/focus, prefers-reduced-motion turns it into a horizontal
+ *   scroll container, soft mask-image fade on both edges.
+ */
+
+interface Item {
+  /** Slug — must match the filename in `public/logos/institutions/<slug>.svg` */
+  slug: string;
+  /** Full official name — used as the link's accessible label and `<img alt>` */
+  name: string;
+  /** Internal page that explains this institution / our service around it */
+  href: string;
+  /**
+   * Backdrop tone for the slot.
+   *  - `'light'` (default): logo sits directly on the cream marquee.
+   *  - `'dark'`: slot renders a navy chip behind the logo. Use for any
+   *    SVG that was designed white/light-only and would be invisible on
+   *    a cream background (e.g. Tanger Med TMSA, where every path is
+   *    `fill:#FFFFFF`).
+   */
+  tone?: 'light' | 'dark';
+}
+
+const items: Item[] = [
+  { slug: 'oec',                  name: 'Ordre des Experts-Comptables du Maroc',                         href: '/cabinet' },
+  { slug: 'ministere-economie',   name: 'Ministère de l’Économie et des Finances',                       href: '/services/conseil-fiscal' },
+  { slug: 'dgi',                  name: 'Direction Générale des Impôts',                                 href: '/services/conseil-fiscal' },
+  { slug: 'cnss',                 name: 'Caisse Nationale de Sécurité Sociale',                          href: '/services/damancom-cnss' },
+  { slug: 'ompic',                name: 'Office Marocain de la Propriété Industrielle et Commerciale',   href: '/services/creation-entreprise' },
+  { slug: 'office-des-changes',   name: 'Office des Changes',                                            href: '/expat' },
+  { slug: 'tanger-med',           name: 'Tanger Med — autorité portuaire et zones logistiques',          href: '/zones/tanger-med', tone: 'dark' },
+];
+
+// Render the track twice for a seamless keyframe loop:
+// translateX(-50%) on the doubled track lands exactly on the next copy.
+const loop = [...items, ...items];
+---
+<section class="compliance" aria-labelledby="compliance-title">
+  <div class="container">
+    <p class="compliance-eyebrow" id="compliance-title">
+      Conformité quotidienne avec les administrations marocaines
+    </p>
+    <p class="compliance-lede">
+      OEC, Ministère de l’Économie, DGI, CNSS, OMPIC, Office des Changes, Tanger Med —
+      on parle leur langage, on connaît leurs délais, on tient leurs formats.
+    </p>
+  </div>
+
+  <div
+    class="comp-marquee"
+    role="region"
+    aria-label="Administrations et plateformes que nous traitons au quotidien"
+  >
+    <div class="comp-track">
+      {loop.map((it, i) => (
+        <a
+          href={it.href}
+          class="comp-logo"
+          data-tone={it.tone ?? 'light'}
+          aria-hidden={i >= items.length ? 'true' : undefined}
+          tabindex={i >= items.length ? -1 : undefined}
+          aria-label={i < items.length ? it.name : undefined}
+        >
+          <img
+            src={`/logos/institutions/${it.slug}.svg`}
+            alt={it.name}
+            width="160"
+            height="64"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .compliance {
+    padding-block: clamp(40px, 5.5vw, 60px);
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .compliance-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 8px;
+  }
+  .compliance-lede {
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+    max-width: 64ch;
+  }
+
+  /* ── Marquee viewport ─────────────────────────────── */
+  .comp-marquee {
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+            mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+  }
+
+  .comp-track {
+    display: flex;
+    align-items: center;
+    gap: clamp(36px, 6vw, 72px);
+    width: max-content;
+    padding-block: 6px;
+    animation: comp-scroll 38s linear infinite;
+  }
+  .comp-marquee:hover .comp-track,
+  .comp-marquee:focus-within .comp-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes comp-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+
+  /* ── Individual logo slot ─────────────────────────── */
+  .comp-logo {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    padding: 0 6px;
+    border-radius: 8px;
+    text-decoration: none;
+    /* Subtle desaturation by default — full-color on hover so the strip
+       reads as a calm, unified row that lights up on intent. */
+    filter: grayscale(0.15) opacity(0.85);
+    transition: filter var(--t-fast), transform var(--t-fast),
+                background var(--t-fast), box-shadow var(--t-fast);
+  }
+  .comp-logo:hover,
+  .comp-logo:focus-visible {
+    filter: none;
+    transform: translateY(-2px);
+  }
+
+  .comp-logo img {
+    display: block;
+    height: 56px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+  }
+
+  /* Dark backdrop chip for logos that were designed white/light-only
+     (e.g. Tanger Med TMSA — every path is `fill:#FFFFFF`). The chip
+     uses the brand ink color so the row still feels cohesive, with
+     enough horizontal padding to give the logo breathing room. */
+  .comp-logo[data-tone="dark"] {
+    background: var(--ink);
+    padding: 6px 18px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+  .comp-logo[data-tone="dark"]:hover,
+  .comp-logo[data-tone="dark"]:focus-visible {
+    background: var(--accent-2);
+    box-shadow: 0 6px 16px rgba(20, 37, 63, 0.18);
+  }
+
+  /* Reduced motion — no scrolling, layout becomes a horizontal scroll */
+  @media (prefers-reduced-motion: reduce) {
+    .comp-track { animation: none; }
+    .comp-marquee { overflow-x: auto; }
+  }
+
+  @media (max-width: 600px) {
+    .comp-track { gap: 28px; animation-duration: 28s; }
+    .comp-logo { height: 52px; }
+    .comp-logo img { height: 44px; max-width: 160px; }
+  }
+</style>

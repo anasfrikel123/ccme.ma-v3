@@ -1,0 +1,96 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  schema?: Record<string, any> | Record<string, any>[];
+  keywords?: string[];
+}
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogImageAlt,
+  ogType = 'website',
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+  schema,
+  keywords,
+} = Astro.props;
+
+const SITE = 'https://www.ccme.ma';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const fullCanonical = canonical || `${SITE}${path}`;
+
+function resolveOg(p: string): string {
+  if (p === '/' || p === '') return `${SITE}/og/home.jpg`;
+  const m = p.match(/^\/(services|secteurs|zones|quartiers|blog)\/([^/]+)$/);
+  if (m) return `${SITE}/og/${m[1]}/${m[2]}.jpg`;
+  const hub = p.replace(/^\//, '').split('/')[0];
+  const knownHubs = ['services', 'secteurs', 'zones', 'quartiers', 'blog', 'outils', 'comparatifs', 'glossaire', 'avis-clients', 'cabinet', 'tarifs', 'expat', 'contact'];
+  if (knownHubs.includes(hub)) return `${SITE}/og/${hub}.jpg`;
+  return `${SITE}/og/default.jpg`;
+}
+
+const finalOg = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : `${SITE}${ogImage}`)
+  : resolveOg(path);
+
+// Word-boundary match — avoids false positives like "accme" matching "CCME".
+const hasBrand = /\bCCME\b/i.test(title);
+const fullTitle = hasBrand ? title : `${title} — CCME`;
+
+// Social alt: descriptive, not keyword-stuffed SEO title.
+const imageAlt = ogImageAlt ?? description.slice(0, 120).replace(/\s+/g, ' ').trim();
+---
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+{keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+<meta name="author" content="Consulting Maghreb Expertise" />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+<meta name="theme-color" content="#14253f" />
+<meta name="format-detection" content="telephone=no" />
+
+<meta name="geo.region" content="MA-01" />
+<meta name="geo.placename" content="Tanger" />
+<meta name="geo.position" content="35.7802;-5.8136" />
+<meta name="ICBM" content="35.7802, -5.8136" />
+
+<link rel="canonical" href={fullCanonical} />
+<link rel="alternate" hreflang="fr-MA" href={fullCanonical} />
+<link rel="alternate" hreflang="x-default" href={fullCanonical} />
+
+<link rel="alternate" type="application/rss+xml" title="CCME — Le Journal" href={`${SITE}/rss.xml`} />
+
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content="Consulting Maghreb Expertise" />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={finalOg} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:url" content={fullCanonical} />
+<meta property="og:locale" content="fr_MA" />
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={finalOg} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+{schema && (
+  Array.isArray(schema)
+    ? schema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)
+    : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}

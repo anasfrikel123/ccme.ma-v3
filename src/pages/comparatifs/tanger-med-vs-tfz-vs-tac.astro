@@ -1,0 +1,71 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import CompareTable from '~/components/CompareTable.astro';
+
+const faq = [
+  { q: "Quelle zone choisir si je débute en industrie auto ?", a: "TAC (Tanger Automotive City). C'est l'écosystème spécialisé : équipementiers, sous-traitants, douanes, logistique pensés pour l'auto. Vous y trouvez des fournisseurs de proximité." },
+  { q: "Tanger Med, c'est juste pour les exportateurs ?", a: "Non. C'est un complexe portuaire + zone d'accélération industrielle. Production destinée à l'export ET activités logistiques (transit, hub maritime) y sont éligibles. Mais oui, l'orientation export est dominante." },
+  { q: "Peut-on combiner zone franche + zone non-franche ?", a: "Oui, en montant deux entités séparées. Société ZAI pour la production export + société classique pour le marché local. Mais les flux entre les deux sont tracés et taxés normalement. Stratégie courante chez les groupes marocains exportateurs." },
+];
+
+const compareColumns = ['Critère', 'Tanger Med', 'TFZ (Tanger Free Zone)', 'TAC (Tanger Automotive City)'];
+const compareRows = [
+  { label: 'Localisation', values: ['Nord-est, port Tanger Med', 'Sud, près Aouama', 'Sud, Melloussa'] },
+  { label: 'Surface', values: ['~5 000 ha (port + zones)', '~400 ha', '~1 300 ha'] },
+  { label: 'Vocation', values: ['Logistique + export multi-secteur', 'Industrie légère, électronique, textile', 'Automobile + équipementiers'] },
+  { label: 'Régime fiscal', values: ['IS exonéré 5 ans, puis 8,75 %', 'IS exonéré 5 ans, puis 8,75 %', 'IS exonéré 5 ans, puis 8,75 %'] },
+  { label: 'TVA', values: ["Exonérée à l'export", "Exonérée à l'export", "Exonérée à l'export"] },
+  { label: 'Droits de douane', values: ['Suspendus (intrants pour export)', 'Suspendus', 'Suspendus'] },
+  { label: 'Office des Changes', values: ['Régime devises spécifique', 'Régime devises spécifique', 'Régime devises spécifique'] },
+  { label: 'Secteurs phares', values: ['Renault, Yazaki, logistique APM', 'Confection, électronique, plasturgie', 'Renault Tanger, équipementiers'] },
+  { label: 'Connexion logistique', values: ['Port directement', 'Autoroute + 30 min port', 'Autoroute + 25 min port'] },
+  { label: 'Idéal pour', values: ['Export volumineux, hub logistique', 'Industries légères export', 'Automobile, sous-traitance auto'] },
+];
+---
+<Page
+  title="Tanger Med vs TFZ vs TAC | Comparatif zones franches"
+  description="Choisir entre Tanger Med, Tanger Free Zone et Tanger Automotive City. Comparatif fiscal, logistique, secteurs cibles. 2026."
+  eyebrow="Comparatif"
+  heading="Tanger Med vs TFZ vs TAC"
+  lede="Trois zones franches majeures à Tanger. Toutes offrent l'exonération IS 5 ans + taux 8,75 %. Mais elles ne sont pas équivalentes. Quel régime pour quelle activité ?"
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs', href: '/comparatifs' }, { label: 'Zones franches Tanger' }]}
+  keywords={["Tanger Med vs TFZ","TAC vs TFZ","zones franches Tanger comparatif","quelle zone franche choisir Maroc"]}
+>
+  <section>
+    <div class="container">
+      <CompareTable columns={compareColumns} rows={compareRows} narrow="lg" />
+
+      <div class="prose compare-prose">
+        <h2>Notre lecture</h2>
+        <p><strong>Tanger Med</strong>, c'est l'option pour les opérateurs avec gros volumes export et besoin d'accès direct au port. Logistique, agroalimentaire export, équipementiers d'industries lourdes, traders.</p>
+
+        <p><strong>TFZ</strong>, c'est la zone franche "historique" et la plus mature. Bon écosystème pour textile, électronique, plasturgie, sous-traitance industrielle. Beaucoup d'investisseurs européens et asiatiques y sont installés depuis 20 ans.</p>
+
+        <p><strong>TAC</strong>, c'est l'écosystème automobile. Si vous êtes équipementier auto ou sous-traitant Renault, c'est ici. Le tissu industriel autour est entièrement spécialisé.</p>
+
+        <h2>Le régime fiscal commun</h2>
+        <p>Les trois zones partagent le même régime de Zone d'Accélération Industrielle :</p>
+        <ul>
+          <li><strong>5 premières années</strong> : exonération totale IS</li>
+          <li><strong>Années 6 à 30</strong> : taux IS réduit 8,75 %</li>
+          <li><strong>TVA</strong> : exonération sur ventes à l'export et acquisitions de matières premières destinées à l'export</li>
+          <li><strong>Droits d'enregistrement</strong> : exonération sur acquisition terrains pour l'activité</li>
+          <li><strong>Office des Changes</strong> : régime "société installée en zone franche" — comptes en devises, rapatriement bénéfices facilité</li>
+        </ul>
+
+        <h2>Conditions d'éligibilité</h2>
+        <p>Le régime ZAI s'applique sous conditions : activité industrielle ou de service éligible, autorisation administrative, vocation export majoritaire. Pas n'importe quelle activité peut bénéficier (services purs au marché local, négoce sans transformation : non).</p>
+
+        <p>Notre cabinet vérifie l'éligibilité de votre projet en amont — éviter de monter une structure puis se voir refuser le statut.</p>
+
+        <p><a href="/zones/tanger-med">→ Détails Tanger Med</a> · <a href="/zones/tanger-free-zone">TFZ</a> · <a href="/zones/tanger-automotive-city">TAC</a> · <a href="/zones/tanger-tech">Tanger Tech</a> · <a href="/services/creation-entreprise">Création d'entreprise zone franche</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .compare-prose { margin-top: 48px; max-width: 1100px; margin-inline: auto; }
+</style>

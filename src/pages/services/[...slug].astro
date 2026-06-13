@@ -1,0 +1,282 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import ServiceProof from '~/components/ServiceProof.astro';
+import ServiceDetailSidebar from '~/components/ServiceDetailSidebar.astro';
+import { cabinet } from '~/data/cabinet';
+import { reviews } from '~/data/reviews';
+import { getServiceDetail } from '~/data/services-detail';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map(s => ({ params: { slug: s.id }, props: { service: s } }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+const detail = getServiceDetail(service.id);
+
+const SITE = 'https://www.ccme.ma';
+const url = `${SITE}/services/${service.id}`;
+
+const serviceSchema: Record<string, any> = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.data.h1,
+  serviceType: service.data.h1,
+  description: service.data.description,
+  url,
+  inLanguage: 'fr-MA',
+  image: service.data.heroImage ? `${SITE}${service.data.heroImage}` : `${SITE}/images/og-default.jpg`,
+  provider: { '@id': 'https://www.ccme.ma/#accounting' },
+  areaServed: [
+    { '@type': 'City', name: 'Tanger' },
+    { '@type': 'AdministrativeArea', name: 'Tanger-Tétouan-Al Hoceïma' },
+  ],
+  audience: { '@type': 'BusinessAudience', audienceType: 'PME, TPE, professions libérales, expatriés' },
+  aggregateRating: { '@id': 'https://www.ccme.ma/#accounting' },
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'MAD',
+    lowPrice: service.data.priceFrom ?? '800',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      priceCurrency: 'MAD',
+      minPrice: service.data.priceFrom ?? '800',
+      valueAddedTaxIncluded: false,
+    },
+    priceRange: '$$',
+    availability: 'https://schema.org/InStock',
+    seller: { '@id': 'https://www.ccme.ma/#accounting' },
+    eligibleRegion: { '@type': 'Country', name: 'Morocco' },
+  },
+};
+if (service.data.publishedTime) serviceSchema.datePublished = service.data.publishedTime;
+if (service.data.modifiedTime) serviceSchema.dateModified = service.data.modifiedTime;
+
+const subjectById: Record<string, string> = {
+  'controle-contentieux': 'Contrôle DGI / contentieux',
+  'audit': 'Audit / commissariat aux comptes',
+  'domiciliation': 'Domiciliation',
+  'creation-entreprise': "Création d'entreprise",
+  'travaux-juridiques': "Création d'entreprise",
+  'conseil-juridique': "Création d'entreprise",
+};
+const subjectByCategory: Record<string, string> = {
+  comptabilite: 'Tenue comptable mensuelle',
+  fiscalite: 'Conseil fiscal',
+  juridique: "Création d'entreprise",
+  paie: 'Paie & CNSS',
+};
+const contactSubject = subjectById[service.id] ?? subjectByCategory[service.data.category] ?? '';
+const contactHref = contactSubject
+  ? `/contact?sujet=${encodeURIComponent(contactSubject)}`
+  : '/contact';
+
+const matchTag = service.data.category === 'fiscalite' && service.id === 'controle-contentieux'
+  ? 'controle-contentieux'
+  : service.data.category;
+const serviceReviews = reviews
+  .filter(r => r.tags?.includes(matchTag) || r.tags?.includes(service.id))
+  .slice(0, 3);
+
+let updatedLabel: string | null = null;
+if (service.data.modifiedTime) {
+  const d = new Date(service.data.modifiedTime);
+  if (!Number.isNaN(d.getTime())) {
+    updatedLabel = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+}
+
+const intro = detail?.intro?.length ? detail.intro : [service.data.description];
+const steps = detail?.steps ?? [];
+const related = detail?.related ?? [];
+const heroImage = service.data.heroImage;
+const heroWebp = heroImage?.replace(/\.jpe?g$/i, '.webp');
+const imgAlt = service.data.heroAlt ?? `${service.data.h1} — Cabinet expert-comptable CCME, Tanger`;
+---
+<Page
+  title={service.data.title}
+  description={service.data.description}
+  eyebrow={service.data.eyebrow}
+  heading={service.data.h1}
+  lede={service.data.description}
+  breadcrumb={[
+    { label: 'Accueil', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: service.data.h1 },
+  ]}
+  ogImage={heroImage}
+  ogImageAlt={imgAlt}
+  schema={serviceSchema}
+  keywords={service.data.keywords}
+  publishedTime={service.data.publishedTime}
+  modifiedTime={service.data.modifiedTime}
+  preloadImage={heroImage}
+>
+  <section class="svc-detail-block">
+    <div class="container detail-layout">
+      <div class="detail-main reveal">
+        {heroImage && (
+          <figure class="detail-visual">
+            <picture>
+              {heroWebp && <source srcset={heroWebp} type="image/webp" />}
+              <img
+                src={heroImage}
+                alt={imgAlt}
+                width="1100"
+                height="619"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </picture>
+            <figcaption class="dv-tag">{service.data.eyebrow}</figcaption>
+          </figure>
+        )}
+
+        <div class="prose svc-intro">
+          {intro.map((p, i) => (
+            <p class={i === 0 ? 'lead' : undefined}>{p}</p>
+          ))}
+        </div>
+
+        {service.data.bullets.length > 0 && (
+          <div class="svc-section">
+            <div class="svc-section-head">
+              <span class="ss-num">01</span>
+              <h3>Ce que comprend la mission</h3>
+            </div>
+            <ul class="includes">
+              {service.data.bullets.map((item) => (
+                <li>
+                  <span class="ck" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {steps.length > 0 && (
+          <div class="svc-section">
+            <div class="svc-section-head">
+              <span class="ss-num">02</span>
+              <h3>Comment ça se passe</h3>
+            </div>
+            <ol class="detail-steps">
+              {steps.map((s, i) => (
+                <li class="ds">
+                  <span class="dsn">{String(i + 1).padStart(2, '0')}</span>
+                  <div class="ds-body">
+                    <b>{s.t}</b>
+                    <p>{s.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        <div class="prose svc-more">
+          <div class="svc-section-head">
+            <span class="ss-num">{steps.length > 0 ? '03' : '02'}</span>
+            <h3>En détail</h3>
+          </div>
+          <Content />
+        </div>
+
+        {updatedLabel && service.data.modifiedTime && (
+          <p class="aside-updated">
+            Page mise à jour le <time datetime={service.data.modifiedTime}>{updatedLabel}</time>.
+          </p>
+        )}
+      </div>
+
+      <ServiceDetailSidebar contactHref={contactHref} related={related} />
+    </div>
+  </section>
+
+  <ServiceProof />
+
+  {service.data.faq.length > 0 && <FAQ items={service.data.faq} />}
+
+  {serviceReviews.length > 0 && (
+    <section class="svc-reviews" aria-label="Avis clients">
+      <div class="container">
+        <p class="eyebrow reveal">Ce que disent nos clients</p>
+        <div class="svc-reviews-grid">
+          {serviceReviews.map((r, i) => (
+            <blockquote class="svc-review reveal" style={`transition-delay:${i * 80}ms`}>
+              <div class="svc-review-stars" aria-label={`${r.rating} sur 5`}>
+                {Array(r.rating).fill(0).map(() => <span aria-hidden="true">★</span>)}
+              </div>
+              <p>"{r.text}"</p>
+              <footer>
+                <cite>{r.author}</cite>
+                <span>{r.company}</span>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+        <p class="svc-reviews-more reveal">
+          <a href="/avis-clients">Lire tous les témoignages →</a>
+        </p>
+      </div>
+    </section>
+  )}
+</Page>
+
+<style>
+  .detail-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .svc-reviews {
+    background: var(--paper-2);
+    padding-block: clamp(40px, 6vw, 72px);
+    border-top: 1px solid var(--line);
+  }
+  .svc-reviews .eyebrow { margin-bottom: 28px; }
+  .svc-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .svc-review {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color var(--t-med), box-shadow var(--t-med);
+  }
+  .svc-review:hover {
+    border-color: var(--gold);
+    box-shadow: var(--shadow-2);
+  }
+  .svc-review-stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; }
+  .svc-review p {
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+    flex: 1;
+  }
+  .svc-review footer {
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .svc-review cite { font-style: normal; font-weight: 700; font-size: 14px; color: var(--ink); }
+  .svc-review footer span { font-size: 13px; color: var(--muted); }
+  .svc-reviews-more { margin-top: 24px; text-align: right; font-size: 14px; }
+  .svc-reviews-more a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .svc-reviews-more a:hover { text-decoration: underline; }
+</style>

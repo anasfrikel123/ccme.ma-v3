@@ -1,0 +1,78 @@
+{
+  "@context": "https://www.rfc-editor.org/rfc/rfc9727",
+  "linkset": [
+    {
+      "anchor": "https://www.ccme.ma/api/agent-manifest.json",
+      "service-doc": [
+        {
+          "href": "https://www.ccme.ma/.well-known/ai.txt",
+          "type": "text/plain",
+          "title": "CCME AI / Agent policy"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://www.ccme.ma/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.ccme.ma/api/services.json",
+      "service-doc": [
+        {
+          "href": "https://www.ccme.ma/services",
+          "type": "text/html",
+          "title": "Services CCME (page humaine)"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.ccme.ma/api/contact.json",
+      "service-doc": [
+        {
+          "href": "https://www.ccme.ma/contact",
+          "type": "text/html",
+          "title": "Contact CCME (page humaine)"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.ccme.ma/api/cabinet.json",
+      "service-doc": [
+        {
+          "href": "https://www.ccme.ma/cabinet",
+          "type": "text/html",
+          "title": "Le cabinet (page humaine)"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.ccme.ma/api/blog.json",
+      "service-doc": [
+        {
+          "href": "https://www.ccme.ma/blog",
+          "type": "text/html",
+          "title": "Le Journal (page humaine)"
+        }
+      ],
+      "alternate": [
+        {
+          "href": "https://www.ccme.ma/rss.xml",
+          "type": "application/rss+xml",
+          "title": "Flux RSS"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.ccme.ma/api/reviews.json",
+      "service-doc": [
+        {
+          "href": "https://www.ccme.ma/avis-clients",
+          "type": "text/html",
+          "title": "Avis clients (page humaine)"
+        }
+      ]
+    }
+  ]
+}

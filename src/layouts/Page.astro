@@ -1,0 +1,186 @@
+---
+import Base from './Base.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import CTA from '~/components/CTA.astro';
+import '~/styles/pages.css';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+  heading: string;
+  lede?: string;
+  breadcrumb?: { label: string; href?: string }[];
+  ogImage?: string;
+  ogImageAlt?: string;
+  schema?: any;
+  keywords?: string[];
+  showCTA?: boolean;
+  heroImage?: string;
+  heroAlt?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
+}
+const {
+  eyebrow,
+  heading,
+  lede,
+  breadcrumb,
+  showCTA = true,
+  heroImage,
+  heroAlt: heroAltProp,
+  ...seo
+} = Astro.props;
+
+const resolvedHeroAlt = heroAltProp
+  ?? (heroImage && heading ? `${heading} — Cabinet expert-comptable CCME, Tanger` : '');
+
+// When the page ships a hero image, treat it as the LCP candidate and let Base
+// preload the WebP variant in <head>. Real-world impact: ~250-500ms LCP win on
+// 3G/4G mobile loads (the difference between a "good" and "needs improvement"
+// Core Web Vitals score).
+const preloadImage = heroImage || undefined;
+
+const heroWebp = heroImage ? heroImage.replace(/\.jpe?g$/i, '.webp') : '';
+
+// Compose a WebPage schema in the page graph so every Page-layout route
+// emits speakable hints + an Organization-linked publisher entity. This is
+// the post-March-2026 minimum required for AI Mode to confidently resolve
+// the publishing entity behind every page (not just home + blog posts).
+const SITE_BASE = 'https://www.ccme.ma';
+const pagePath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const pageUrl = `${SITE_BASE}${pagePath}`;
+const { title: pageTitle, description: pageDesc, publishedTime: pubT, modifiedTime: modT } = seo as {
+  title: string; description: string; publishedTime?: string; modifiedTime?: string;
+};
+const webPageSchema: Record<string, any> = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: pageTitle,
+  description: pageDesc,
+  inLanguage: 'fr-MA',
+  isPartOf: { '@id': 'https://www.ccme.ma/#website' },
+  about: { '@id': 'https://www.ccme.ma/#accounting' },
+  publisher: { '@id': 'https://www.ccme.ma/#accounting' },
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.page-hero h1', '.page-hero .lede', 'main h2'],
+  },
+};
+if (pubT) webPageSchema.datePublished = pubT;
+if (modT) webPageSchema.dateModified = modT;
+
+// Merge user-supplied schema with the WebPage entry (preserves existing
+// behaviour but adds the speakable + entity-linked WebPage on every route).
+const userSchema = seo.schema;
+const mergedSchema = userSchema
+  ? (Array.isArray(userSchema) ? [...userSchema, webPageSchema] : [userSchema, webPageSchema])
+  : webPageSchema;
+const finalSeo = { ...seo, schema: mergedSchema };
+---
+<Base {...finalSeo} preloadImage={preloadImage}>
+  <header class:list={["page-hero", "hero-bg", heroImage ? "page-hero-with-image" : null]}>
+    <div class="container page-hero-grid">
+      <div class="page-hero-text">
+        {breadcrumb && <Breadcrumb items={breadcrumb} />}
+        {eyebrow && <p class="eyebrow fade-up">{eyebrow}</p>}
+        <h1 class="fade-up d1">{heading}</h1>
+        {lede && <p class="lede fade-up d2">{lede}</p>}
+      </div>
+      {heroImage && (
+        <figure class="page-hero-figure fade-up d2" aria-hidden={resolvedHeroAlt ? undefined : 'true'}>
+          <picture>
+            <source srcset={heroWebp} type="image/webp" />
+            <img
+              src={heroImage}
+              alt={resolvedHeroAlt}
+              width="1200"
+              height="900"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
+          <span class="page-hero-overlay" aria-hidden="true"></span>
+          <span class="page-hero-corner" aria-hidden="true"></span>
+        </figure>
+      )}
+    </div>
+    <div class="blob float" style="top: 10%; right: -120px;"></div>
+  </header>
+  <slot />
+  {showCTA && <CTA />}
+</Base>
+
+<style>
+  .page-hero {
+    padding-block: clamp(40px, 6vw, 80px) clamp(28px, 4vw, 48px);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero h1 { max-width: 22ch; }
+  .page-hero .lede { margin-top: 14px; }
+
+  .page-hero-grid {
+    display: grid;
+    gap: clamp(24px, 4vw, 56px);
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  .page-hero-with-image .page-hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+
+  .page-hero-figure {
+    position: relative;
+    margin: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 24px 60px -28px rgba(20, 37, 63, 0.45);
+    isolation: isolate;
+    border: 1px solid rgba(20, 37, 63, 0.06);
+  }
+  .page-hero-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s ease;
+  }
+  .page-hero-figure:hover img { transform: scale(1.02); }
+
+  /* Branded linear overlay: dark navy → transparent, plus a gold rim
+     so the photo always reads as part of the page, not a stock-image dump. */
+  .page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(135deg, rgba(20, 37, 63, 0.42) 0%, rgba(20, 37, 63, 0.06) 55%, rgba(20, 37, 63, 0) 100%),
+      linear-gradient(0deg, rgba(20, 37, 63, 0.18) 0%, rgba(20, 37, 63, 0) 40%);
+    mix-blend-mode: multiply;
+  }
+  .page-hero-corner {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(380px 220px at 100% 0%, rgba(200, 168, 90, 0.28), transparent 65%);
+  }
+
+  /* Decorative photo shouldn't tab-stop / steal focus */
+  .page-hero-figure :is(img, picture) { user-select: none; }
+
+  @media (max-width: 880px) {
+    .page-hero-with-image .page-hero-grid { grid-template-columns: 1fr; }
+    .page-hero-figure { aspect-ratio: 16 / 10; max-height: 320px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero-figure img { transition: none; }
+    .page-hero-figure:hover img { transform: none; }
+  }
+</style>

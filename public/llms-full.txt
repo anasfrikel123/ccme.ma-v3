@@ -1,0 +1,1560 @@
+# CCME — Consulting Maghreb Expertise
+
+> Cabinet d'expertise comptable inscrit OEC, basé à Tanger (Maroc) depuis plus de 20 ans. Ce fichier est le dump complet du site pour ingestion par agents et LLMs (convention llmstxt.org). Mis à jour à chaque build : 2026-06-13.
+
+- Site canonique : https://www.ccme.ma/
+- Index machine-readable : https://www.ccme.ma/api/agent-manifest.json
+- Sitemap XML : https://www.ccme.ma/sitemap-index.xml
+- Politique IA : https://www.ccme.ma/.well-known/ai.txt
+- Contact : +212 644 080 749 · info@ccme.ma · Avenue Moulay Ismail, Tanger 90000
+
+---
+
+# Services
+
+## Business plan
+
+URL : https://www.ccme.ma/services/business-plan
+
+Mis à jour : 2026-06-13
+
+Un business plan ce n'est pas un document de 60 pages qu'on imprime pour la forme. C'est l'outil qui vous oblige à mettre des chiffres sur vos intuitions, à confronter votre projet à la réalité du marché, à anticiper où vous en serez dans 12, 24, 36 mois.
+## Ce qu'on produit
+**Étude de marché.** Pas du copier-coller de Statista — du concret. Concurrence locale à Tanger, prix pratiqués, positionnement, taille du marché accessible. On va sur le terrain quand c'est nécessaire.
+**Modèle économique.** Comment vous gagnez de l'argent, sur quoi vous prenez votre marge, où sont vos coûts variables et fixes, quel est le seuil de rentabilité.
+**Prévisionnel financier 3 ou 5 ans.** Compte de résultat, bilan, trésorerie. Trois scénarios (pessimiste, réaliste, optimiste). KPIs clés (CA mensuel, marge brute, EBITDA, point mort).
+**Plan de financement.** Besoins (immobilisations, BFR, trésorerie de démarrage), ressources (apport personnel, prêt bancaire, prêt d'honneur, subventions, levée). Calage des échéances pour éviter les trous de trésorerie.
+**Présentation finale.** Document Word/PDF + Excel modèle. Si nécessaire, deck de présentation pour les investisseurs.
+## Pour quels usages
+- [Création d'entreprise](/services/creation-entreprise), négociation d'un prêt bancaire (CFG, BMCE, Attijari, BMCI, Société Générale, Crédit du Maroc)
+- Demande de prêt d'honneur (CCG, Réseau Entreprendre)
+- Levée de fonds en seed ou Série A
+- Appels d'offres exigeant un dossier financier
+- Demande d'agrément ZAI en zone franche
+- Prise de participation, augmentation de capital, entrée d'actionnaire
+## Méthode
+On travaille en 4 étapes : brief de cadrage (2-3 heures), première version (1 à 2 semaines), itérations (autant que nécessaire), version finale. On reste joignable après livraison pour les questions qui se posent en RDV bancaire.
+
+---
+
+## Conseil fiscal
+
+URL : https://www.ccme.ma/services/conseil-fiscal
+
+Mis à jour : 2026-06-13
+
+La fiscalité marocaine bouge — réforme [IS](/outils/simulateur-is) 2026, CSS, nouvelles obligations en matière de prix de transfert, mise à jour des conventions internationales. Pour un dirigeant de PME, suivre tout ça en plus de son activité, c'est juste irréaliste.
+Notre rôle : vous tenir au courant de ce qui vous concerne, anticiper les impacts, et structurer votre fiscalité pour payer le juste impôt. Ni un dirham de plus, ni un dirham de moins.
+## Ce qu'on traite
+**Impôt sur les Sociétés (IS).** Le taux PME à 20% en 2026 change la donne pour beaucoup. On simule l'impact sur votre exercice avec notre simulateur IS 2026, on identifie les charges déductibles que vous oubliez (frais financiers, provisions, amortissements dégressifs), on optimise le calendrier des acomptes pour ne pas plomber la trésorerie. Lecture utile : notre [analyse de la réforme IS 2026 pour les PME](/blog/reforme-is-2026-pme-tanger).
+**[TVA](/outils/simulateur-tva).** Le bon régime (mensuel/trimestriel/encaissement-débit), le bon découpage des opérations (taux 20%, 14%, 10%, 7%, exo), le suivi du crédit de TVA et le remboursement quand c'est pertinent. À Tanger, beaucoup de sociétés export ont du crédit de TVA bloqué parce que personne n'a déposé la demande de remboursement à temps. Voir notre calculateur TVA et notre [article sur le crédit TVA et son remboursement](/blog/tva-credit-remboursement-2026).
+**[IR](/outils/simulateur-ir) professionnel** pour les freelances, professions libérales, BNC : choix entre régime forfaitaire, RNS, RNR. La réforme du barème IR 2026 a modifié les tranches, ça change l'arbitrage pour beaucoup de profils. Voir notre simulateur IR et notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc).
+**Retenues à la source** : honoraires, dividendes, intérêts, locations à des non-résidents. C'est un sujet où les redressements pleuvent quand c'est mal géré — sujet couvert dans notre [contrôle & contentieux fiscal](/services/controle-contentieux).
+**Fiscalité internationale.** Convention franco-marocaine, prix de transfert (obligation de documentation depuis 2020), rapatriement de bénéfices, doubles résidences. Pour les groupes et les [expatriés](/expat).
+## Comment on travaille
+D'abord un **diagnostic** : on récupère vos 3 derniers exercices, on lit la [liasse fiscale](/glossaire#liasse-fiscale), on regarde les écritures structurantes. En 3-4 heures, on identifie les angles morts.
+Ensuite une **note de recommandations** : ce qu'on peut optimiser, l'impact chiffré (en DH économisés), le risque associé à chaque option. Vous arbitrez.
+Puis la **mise en œuvre** : modifications statutaires si besoin, restructuration de flux, options fiscales à exercer, demandes auprès de la [DGI](/services/simpl-impots-dgi).
+Enfin un **suivi récurrent** : avant chaque clôture on refait un passage pour ajuster.
+## Cas concrets qu'on rencontre souvent
+Une PME industrielle [à Gzenaya / TFZ](/zones/tanger-free-zone) qui ne savait pas qu'elle pouvait basculer en régime d'amortissement dégressif sur ses machines : 180 000 DH d'IS économisés sur 4 ans.
+Un cabinet de conseil [au centre-ville](/zones/centre-ville) qui facturait des missions à des clients européens en oubliant le formalisme prix de transfert : on a régularisé avant le contrôle, sans pénalités. À lire : notre [guide contrôle fiscal Tanger](/blog/controle-fiscal-tanger-comment-se-preparer).
+Un investisseur français avec une SCI marocaine qui payait deux fois l'impôt sur les revenus fonciers (au Maroc et en France) : application correcte de la convention franco-marocaine, économie de 65 000 € sur l'année. Le sujet expat est couvert par notre [article dédié aux investisseurs français à Tanger](/blog/expat-francais-investir-tanger).
+Ce ne sont pas des miracles, juste de la rigueur dans la lecture du CGI et une connaissance fine des conventions internationales. C'est notre métier.
+
+---
+
+## Création d'entreprise à Tanger
+
+URL : https://www.ccme.ma/services/creation-entreprise
+
+Mis à jour : 2026-06-13
+
+Créer une société à Tanger en 2026, ça reste relativement simple si on connaît le terrain. Le [CRI](/glossaire#cri) Tanger fonctionne bien, l'[OMPIC](/glossaire#ompic) livre les certificats négatifs vite, et les zones franches ([TFZ](/zones/tanger-free-zone), [TAC](/zones/tanger-automotive-city), [Tanger Tech](/zones/tanger-tech)) offrent des avantages fiscaux qui pèsent lourd dans un [business plan](/services/business-plan). La vraie difficulté c'est plutôt en amont : choisir la bonne forme juridique, rédiger des statuts qui ne se retournent pas contre vous dans 3 ans, et dimensionner correctement le capital pour ne pas avoir à le rallonger en urgence.
+## Le processus, étape par étape
+Voilà ce qu'on fait pour vous, dans l'ordre :
+1. **Rendez-vous de cadrage** (gratuit, 45-60 min) — on comprend votre projet, votre profil (résident, expat, investisseur), votre prévisionnel. On choisit ensemble la forme juridique.
+2. **Certificat négatif** déposé à l'OMPIC. Délai : 24 à 48 heures.
+3. **Rédaction des statuts** par notre service juridique. On vous envoie le projet, vous relisez, vous demandez les ajustements, on signe.
+4. **Dépôt du capital** à la banque, blocage, attestation.
+5. **Légalisation** des signatures (statuts + déclaration de souscription).
+6. **Dépôt au CRI Tanger** : c'est le guichet unique qui s'occupe du RC, de l'identifiant fiscal, de la patente, de l'affiliation [CNSS](/glossaire#cnss) et de la déclaration d'existence [DGI](/services/simpl-impots-dgi).
+7. **Publication JAL** — annonce légale dans un journal habilité.
+8. **Récupération des documents finaux** : RC, IF, n° patente, n° CNSS. Vous êtes officiellement en activité.
+Total : 5 à 10 jours ouvrables si tout est carré dès le départ.
+## Ce qui change vraiment selon votre profil
+**Vous êtes résident marocain, vous démarrez seul** : la SARLAU est faite pour vous. Capital minimum 10 000 DH, responsabilité limitée, formalités allégées. Pour comparer les structures, voir notre [comparatif SARL vs SAS au Maroc](/comparatifs/sarl-vs-sas-maroc).
+**Vous êtes plusieurs associés** : SARL classique. On rédige les statuts en faisant attention aux clauses de cession, d'agrément, de répartition des dividendes — c'est là que les choses se passent mal quand c'est mal écrit. Sujet couvert par notre [conseil juridique](/services/conseil-juridique) et nos [travaux juridiques](/services/travaux-juridiques).
+**Vous êtes [expatrié français](/expat), espagnol ou belge** : il y a des subtilités côté Office des Changes (transferts en devises, rapatriement de bénéfices, avances en compte courant). On vous explique tout en amont, ça évite les blocages bancaires. À lire : notre [guide expatriés français à Tanger](/blog/expat-francais-investir-tanger).
+**Vous voulez vous installer en zone franche** (TFZ, TAC, Tanger Tech) : régime fiscal de faveur — exonération [IS](/outils/simulateur-is) sur 5 ans, puis taux réduit. On vérifie l'éligibilité de votre activité avant de lancer la procédure ZAI. Notre [comparatif Tanger Med vs TFZ vs TAC](/comparatifs/tanger-med-vs-tfz-vs-tac) détaille les avantages selon le profil d'activité.
+## Et après la création ?
+C'est souvent là qu'on perd les entrepreneurs. La société est créée, mais personne ne leur dit qu'il faut :
+- Ouvrir un compte CNSS sur [Damancom](/services/damancom-cnss) et déclarer le premier salarié dans les 8 jours
+- Activer Simpl Impôts pour les télédéclarations [TVA](/outils/simulateur-tva) et IS
+- Tenir un livre journal coté et paraphé au tribunal
+- Faire la déclaration de patente avant le 31 janvier suivant
+Dans nos packs création, ces étapes-là on s'en occupe. Et on offre le premier mois de [tenue comptable](/services/tenue-comptabilite) pour vous démarrer en mode propre. Pour la suite, le service [paie & GRH](/services/paie-grh) et la mise en route de Damancom CNSS prennent le relais sur le volet RH.
+Pour estimer le coût total avant de signer, le [simulateur de coût de création](/outils/simulateur-creation) calcule frais OMPIC, notaire, IRPP, BO et capital recommandé. Et pour projeter l'IS prévisionnel sur 3 ans, le simulateur IS 2026 est calibré sur les barèmes en vigueur.
+## Tarifs, sans surprise
+| Pack | Inclus | Tarif |
+|------|--------|-------|
+| **Essentiel** | Statuts, formalités complètes, RC, IF, CNSS | À partir de 3 500 DH HT |
+| **Confort** | Essentiel + domiciliation 6 mois + 1<sup>er</sup> mois compta | À partir de 5 900 DH HT |
+| **Investisseur étranger** | Confort + assistance Office des Changes + Simpl Impôts setup | À partir de 8 500 DH HT |
+Pas de frais cachés. Devis ferme avant signature, facturation après livraison du RC.
+
+---
+
+## Paie et gestion des ressources humaines
+
+URL : https://www.ccme.ma/services/paie-grh
+
+Mis à jour : 2026-06-13
+
+La paie au Maroc, c'est vite un casse-tête : code du travail à respecter, cotisations [CNSS](/glossaire#cnss) qui changent de plafond, taux d'[IR](/outils/simulateur-ir) par tranche, [AMO](/glossaire#amo) obligatoire, mutuelles d'entreprise, ANAPEC pour les nouveaux recrutés... Et il faut sortir un bulletin propre le 25 ou le 30 de chaque mois, sans erreur, parce qu'un salarié qui repère un calcul faux, c'est une crise de confiance qui démarre.
+L'externaliser, c'est généralement le bon choix dès qu'on dépasse 5 salariés.
+## Ce qu'on prend en charge
+Tout le cycle, de l'embauche au départ :
+- **Embauche** : rédaction du contrat (CDI, CDD, ANAPEC, contrat d'insertion), affiliation CNSS du salarié, déclaration d'embauche
+- **Paie mensuelle** : bulletins, calcul IR par tranche, retenues CNSS et AMO, primes, indemnités kilométriques, avantages en nature
+- **[Damancom](/services/damancom-cnss)** : télédéclaration de la BDS (Bordereau de Déclaration des Salaires) avant le 10 du mois suivant
+- **AT-MP** : déclaration des accidents du travail à la CNSS
+- **Annuel** : édition de la 9421 (déclaration des revenus salariaux), récapitulatif individuel, attestation de salaires
+- **Sortie** : soldes de tout compte, indemnités, certificats de travail, attestation pour Pôle emploi côté français le cas échéant
+## Particularités locales
+À Tanger on voit beaucoup de cas qui méritent une attention particulière :
+**Salariés détachés ou expatriés.** Les conventions de sécurité sociale (notamment Maroc-France, Maroc-Belgique, Maroc-Espagne) permettent dans certains cas de rester affilié au régime du pays d'origine. Ça change tout en termes de cotisations. Pour estimer l'impact net, voir notre [simulateur de paie](/outils/simulateur-paie).
+**Personnel des zones franches.** Régime de faveur sur l'IR (taux libératoire 20%), exonération CNSS sous conditions pour les sociétés agréées ZAI. À ne pas appliquer à tort, sinon redressement assuré. Notre [comparatif TFZ vs TAC vs Tanger Med](/comparatifs/tanger-med-vs-tfz-vs-tac) résume les régimes par zone.
+**Saisonniers du tourisme et CHR.** Contrats spécifiques, calculs de pourboires, nuit majorée. On gère — voir aussi notre [secteur restauration & hôtellerie](/secteurs/restauration-hotellerie). Le télédépôt des déclarations passe par notre service Damancom CNSS.
+**Gardiens, femmes de ménage, employés de maison.** Statut particulier, CNSS optionnelle dans certains cas. Beaucoup de patrons [à Malabata](/quartiers/malabata) ou [California](/quartiers/california) le découvrent quand l'employée part avec un dossier prud'homal.
+À lire ensuite : notre [guide Damancom CNSS 2026](/blog/damancom-cnss-guide-2026) qui détaille les nouveaux plafonds et la procédure de télédépôt.
+## Le rythme avec nous
+On définit ensemble la date d'envoi des éléments variables (généralement entre le 18 et le 22 du mois). Sous 48-72 heures vous recevez le projet de bulletin pour validation. On édite final le 25, on paie les charges avant le 10 du mois suivant. Si c'est trop tard pour ce mois-ci, on bascule sur le mois suivant et on régularise.
+Pas de mauvaise surprise, pas d'urgence du dernier jour. Juste un cycle qui tourne.
+
+---
+
+## Tenue de comptabilité
+
+URL : https://www.ccme.ma/services/tenue-comptabilite
+
+Mis à jour : 2026-06-13
+
+À Tanger, la tenue comptable n'est pas qu'une obligation administrative. C'est la base sur laquelle reposent toutes vos décisions : combien vous coûte vraiment ce produit, est-ce que la marge tient en ce moment, est-ce qu'on peut embaucher, est-ce qu'il faudra renégocier avec la banque. Un dirigeant qui ne lit pas ses chiffres pilote à l'aveugle.
+## Ce qu'on prend en charge concrètement
+On reçoit vos pièces comptables (factures d'achat, ventes, relevés bancaires, notes de frais, justificatifs [CNSS](/glossaire#cnss)) — soit en papier au cabinet, soit par mail, soit via un dossier partagé. Le rythme est mensuel chez nous : on n'attend pas la fin de l'exercice pour découvrir un trou de 80 000 DH.
+Voici le détail :
+- **Saisie comptable** dans le respect du Code Général de Normalisation Comptable ([CGNC](/glossaire#cgnc)) et du plan comptable marocain.
+- **Rapprochements bancaires** mensuels — on aligne ce que dit votre relevé avec ce que dit votre comptabilité. C'est là qu'on attrape les erreurs, les prélèvements oubliés, les écritures en double.
+- **[TVA](/outils/simulateur-tva)** : calcul, contrôle de la cohérence collectée/déductible, télédéclaration sur [Simpl Impôts](/services/simpl-impots-dgi) (mensuelle ou trimestrielle selon votre régime).
+- **Acomptes [IS](/outils/simulateur-is)** : calendrier suivi, télépaiement, réconciliation annuelle.
+- **Bilan, CPC, ESG** en clôture, plus la [liasse fiscale](/glossaire#liasse-fiscale) complète.
+- **Tableaux de bord** mensuels avec ratios qui ont du sens : marge brute, BFR, trésorerie nette, ratio de structure.
+## Pourquoi nous
+Tanger c'est une ville un peu particulière. Une PME du textile à [TFZ Gzenaya](/zones/tanger-free-zone) n'a pas les mêmes problématiques qu'un freelance digital nomade en SARLAU [au centre-ville](/zones/centre-ville), ni qu'un investisseur français qui monte une SCI [à Malabata](/quartiers/malabata). On a vu passer beaucoup de dossiers et on connaît les pièges locaux : la TVA sur les zones franches, les prix de transfert quand vous travaillez avec une maison-mère en Europe, les régularisations CNSS quand vous embauchez en cours de mois — sujet couvert par notre service [paie & GRH](/services/paie-grh) et [Damancom CNSS](/services/damancom-cnss).
+Notre approche, c'est pas de remplir des cases. C'est de comprendre ce que vous faites pour produire une comptabilité qui parle vraiment de votre activité.
+## Pour qui
+Cette mission est adaptée si :
+- Vous démarrez une activité et vous voulez partir propre dès le mois 1
+- Vous avez déjà un comptable mais le suivi n'est pas régulier (pas de bilan provisoire, pas d'alerte avant les échéances)
+- Vous gérez vous-même mais le temps que ça prend devient un problème
+- Vous préparez une cession, une levée de fonds, un dossier bancaire et vos comptes doivent être impeccables
+Si vous vous reconnaissez quelque part là-dedans, on peut en parler — premier rendez-vous offert.
+## Outils et lectures complémentaires
+Pour estimer rapidement votre IS de fin d'exercice, le simulateur IS 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale) et le barème 2026 (20 % sur bénéfice jusqu'à 100 MDH, 35 % au-delà). Pour la TVA mensuelle, le calculateur TVA couvre tous les taux marocains (0%, 7%, 10%, 14%, 20%). Pour la masse salariale, le [simulateur de paie](/outils/simulateur-paie) ventile CNSS, [AMO](/glossaire#amo), [IR](/outils/simulateur-ir) et charges patronales.
+À lire ensuite : notre [guide de création de SARL Tanger 2026](/blog/creer-sarl-tanger-2026), notre [comparatif SARL vs SAS](/comparatifs/sarl-vs-sas-maroc) et l'[article fiscalité 2026 : acomptes IS](/blog/fiscalite-2026-acomptes-is).
+
+---
+
+## Assistance fiscale & contentieux
+
+URL : https://www.ccme.ma/services/assistance-fiscale
+
+Mis à jour : 2026-06-13
+
+Recevoir une notification de redressement [DGI](/services/simpl-impots-dgi), c'est rarement une bonne journée. Pour autant, dans 80% des cas, les sommes proposées par l'inspecteur sont contestables — partiellement ou totalement. Encore faut-il savoir comment, et dans quels délais.
+## Les étapes d'un contrôle au Maroc
+1. **Avis de vérification** : la DGI vous notifie l'intention de contrôler. Vous avez minimum 15 jours pour préparer.
+2. **Vérification sur place ou sur pièces** : l'inspecteur examine vos comptes, vos pièces, vos déclarations. Délai légal : 6 mois (PME) à 12 mois (grandes entreprises).
+3. **Notification des redressements** : l'inspecteur vous propose des redressements motivés. Vous avez 30 jours pour répondre.
+4. **Réponse écrite** : vous contestez point par point, avec arguments juridiques et justificatifs.
+5. **Notification définitive** : si désaccord persistant, la DGI émet une notification définitive.
+6. **Recours hiérarchique** ou **commission paritaire** : 60 jours pour saisir.
+7. **Tribunal administratif** : ultime recours.
+À chaque étape, des délais de procédure stricts. Les rater, c'est perdre le droit de contester.
+## Comment on intervient
+**En amont du contrôle** (idéalement) : audit fiscal préventif, identification des sujets sensibles, régularisation spontanée quand c'est possible. La régularisation spontanée évite les pénalités lourdes.
+**Pendant la vérification** : présence aux réunions avec l'inspecteur, traduction technique de ses demandes, préparation des réponses écrites, suivi du calendrier procédural.
+**Après notification** : analyse juridique des chefs de redressement, rédaction de la réponse argumentée, négociation amiable quand c'est productif, recours formels quand il faut.
+## Ce qu'on a vu fonctionner
+- Une PME industrielle à Aouama : redressement initial 1,2M DH ramené à 280K DH après commission paritaire
+- Un commerce centre-ville : redressement [TVA](/outils/simulateur-tva) annulé en totalité après production des justificatifs export oubliés
+- Un cabinet de conseil : pénalités pour mauvaise foi écartées, le redressement passé en simple régularisation
+L'erreur classique, c'est de penser qu'on peut négocier avec un inspecteur "à l'amiable" sans préparation. Ça ne fonctionne pas. Ce qui fonctionne, c'est un dossier juridique solide, des justificatifs complets, et le respect strict des délais procéduraux.
+
+---
+
+## Conseil juridique
+
+URL : https://www.ccme.ma/services/conseil-juridique
+
+Mis à jour : 2026-06-13
+
+Le juridique d'entreprise, c'est ces sujets dont on s'occupe une fois par an dans le meilleur des cas, et qui se rappellent à votre bon souvenir au pire moment : un associé qui veut sortir, un fournisseur qui menace de poursuivre, un bail qui arrive à échéance.
+## Ce qu'on traite
+**Pactes d'associés.** Le contrat qui dit ce qui se passe en cas de conflit, de décès, de cession à un tiers, de blocage de décision. Si vous n'en avez pas, vous découvrirez les zones grises au pire moment. Si vous en avez un mal écrit, c'est pareil.
+**Contrats commerciaux.** Distribution, prestation de services, sous-traitance, NDA. On rédige ou on relit. Souvent un contrat ramené de l'étranger ne tient pas en droit marocain — clauses abusives, clauses inopposables, juridictions impossibles à invoquer.
+**Baux commerciaux et professionnels.** À Tanger les loyers ont beaucoup augmenté ces dernières années. Le bail commercial protège le locataire (renouvellement triennal, indemnité d'éviction). Bien le rédiger, c'est protéger 10 ans de fonds de commerce.
+**Secrétariat juridique annuel.** Tenue de l'AG ordinaire (avant le 30 juin), rédaction du PV, dépôt des comptes au tribunal. Plus les AG extraordinaires en cours d'année (changement de gérant, augmentation de capital, transfert de siège).
+**Restructurations.** Fusion, scission, transmission universelle de patrimoine (TUP), cession de fonds de commerce, cession de droits sociaux. On fait le pilotage technique avec l'avocat partenaire si nécessaire.
+## Notre approche
+On préfère prévenir que guérir. Une matinée passée à rédiger un bon pacte d'associés évite plusieurs années de procès. Un bail bien négocié au départ évite une éviction brutale 5 ans plus tard.
+Pour autant, quand le dossier est déjà chaud, on ne fuit pas — on regarde lucidement ce qu'on peut sauver et on construit la stratégie.
+<!-- ccme:related -->
+## Pour aller plus loin
+- [Tenue de comptabilité](/services/tenue-comptabilite)
+- [Conseil fiscal](/services/conseil-fiscal)
+- [Création d’entreprise](/services/creation-entreprise)
+- [Contact](/contact)
+
+---
+
+## Damancom et déclarations CNSS
+
+URL : https://www.ccme.ma/services/damancom-cnss
+
+Mis à jour : 2026-06-13
+
+Damancom, c'est le portail de télédéclaration de la [CNSS](/glossaire#cnss). Toute société employeuse au Maroc doit y déclarer ses salariés et payer les cotisations sociales mensuellement, avant le 10 du mois qui suit. Concrètement c'est obligatoire et c'est dématérialisé — plus de bordereaux papier, sauf rares exceptions.
+## Le cycle mensuel
+1. **Saisie** des éléments variables du mois : embauches, sorties, congés, indemnités, primes
+2. **Édition** des bulletins et de la BDS (Bordereau de Déclaration des Salaires)
+3. **Télédéclaration** sur Damancom : on charge le fichier BDS, on valide
+4. **Télépaiement** des cotisations dans la foulée (généralement le même jour, sinon on programme)
+5. **Archivage** des accusés de dépôt et de paiement
+## Ce qu'on gère pour vous
+- Affiliation employeur si vous n'êtes pas encore enregistré
+- Affiliation des salariés (immatriculation CNSS individuelle)
+- Déclaration mensuelle BDS — toujours avant le 10
+- Télépaiement des cotisations CNSS (prestations sociales 4,48% + 8,98%, allocations familiales 6,4%, [AMO](/glossaire#amo) 2,26% + 4,11%, formation pro 1,6%)
+- Régularisations rétroactives quand on récupère un dossier mal tenu
+- Déclaration des accidents du travail (formulaire AT, suivi du dossier)
+- Demandes d'indemnités journalières maladie pour les salariés
+- Attestations CNSS pour appels d'offres, demandes de visa, dossiers bancaires
+## Les pièges fréquents
+**L'oubli de la déclaration "néant".** Même si vous n'avez aucun salarié ce mois-ci (employé en congé maladie longue durée, etc.), il faut faire une déclaration néant. Sinon, sanction.
+**Les cotisations sur les avantages en nature.** Voiture de fonction, logement, téléphone payé par la société : c'est cotisable. Beaucoup de PME l'oublient et se retrouvent redressées en cas de contrôle.
+**Les stagiaires non-déclarés.** Un stagiaire conventionné école est exonéré, mais un stagiaire non-conventionné qui exerce du travail effectif doit être déclaré. Distinction importante.
+**Les périodes de tuilage.** Quand un salarié sort le 5 et un autre rentre le 25, il faut faire deux lignes distinctes sur la BDS, avec les bonnes dates et les bons prorata.
+On a vu passer toutes ces situations. Ce qu'on vous garantit : pas de retard, pas d'oubli, et de la disponibilité pour vous expliquer ce qui se passe quand un courrier CNSS arrive et vous panique.
+
+---
+
+## Supervision comptable
+
+URL : https://www.ccme.ma/services/supervision-comptable
+
+Mis à jour : 2026-06-13
+
+Vous avez recruté un assistant comptable, ou un comptable junior, et vous avez besoin de quelqu'un de plus expérimenté qui valide derrière. Ou alors votre comptable interne est très bon mais vous voulez un regard externe avant la clôture annuelle. La supervision comptable, c'est exactement ça.
+## Comment on fonctionne
+Concrètement, on intervient à fréquence régulière (souvent une fois par mois) pour :
+- **Relire les écritures** saisies par votre équipe : justifs présents, comptes utilisés cohérents, [TVA](/outils/simulateur-tva) bien découpée
+- **Pointer les anomalies** et expliquer comment corriger (et surtout pourquoi)
+- **Valider les déclarations** avant dépôt : TVA, acomptes [IS](/outils/simulateur-is), [IR](/outils/simulateur-ir), retenues à la source
+- **Réviser la balance** trimestriellement, repérer les écarts inhabituels
+- **Préparer la clôture** annuelle : provisions, amortissements, régularisations, écritures d'inventaire
+- **Signer la [liasse fiscale](/glossaire#liasse-fiscale)** finale
+Pour les clôtures délicates (premier exercice, restructuration, cession), on monte en intensité — parfois on passe deux jours sur place avec votre équipe.
+## Ce que ça change
+Ce qu'on observe après quelques mois chez nos clients : les erreurs en aval disparaissent. Une TVA mal classée corrigée le mois M, c'est pas une régularisation pénible le mois M+12 ni une pénalité de retard à expliquer à la direction. C'est le bénéfice le plus immédiat, et le plus facile à mesurer.
+Le deuxième, moins visible mais souvent plus durable : votre comptable interne monte en compétence. Il apprend en corrigeant ses propres écritures avec des explications, pas en subissant un redressement trois ans après les faits. Quelques mois de supervision et les mêmes erreurs ne reviennent généralement plus.
+Et concrètement, quand la [DGI](/services/simpl-impots-dgi) envoie un avis de vérification : les écritures sont propres, justifiées, traçables. Pas de course en arrière pour reconstituer des pièces sur 4 ans.
+## Pour qui c'est adapté
+Plutôt pour des structures qui ont déjà internalisé une fonction comptable basique : sociétés avec 20+ salariés, groupes en croissance, PME qui veulent garder le contrôle de leurs données mais sécuriser la conformité. Si vous démarrez ou que vous êtes seul, la tenue externalisée classique est probablement plus simple.
+On vous propose un audit gratuit de l'existant pour calibrer la mission. Pas d'engagement, on regarde et on dit franchement si vous avez besoin de nous ou pas.
+
+---
+
+## Contrôle et contentieux fiscal
+
+URL : https://www.ccme.ma/services/controle-contentieux
+
+Mis à jour : 2026-06-13
+
+Le contentieux fiscal au Maroc, c'est une matière technique où le formalisme compte autant que le fond. Une réponse hors délai, un recours mal qualifié, un argument juridique mal posé — et vous perdez avant même qu'on regarde le fond du dossier.
+Notre rôle, c'est de mener cette procédure pour vous, du tout début jusqu'à la résolution.
+## Stratégie de défense
+À chaque dossier, on commence par hiérarchiser les chefs de redressement :
+- **Les indéfendables** : on régularise rapidement pour éviter les majorations de mauvaise foi
+- **Les négociables** : on prépare une argumentation solide pour la phase de réponse
+- **Les contestables sur le fond** : on porte l'affaire jusqu'à la commission ou le tribunal
+Le but n'est pas de tout contester par principe — c'est de gagner sur ce qui peut être gagné, et de ne pas s'épuiser sur des batailles perdues d'avance.
+## Les arguments qui fonctionnent
+**Vice de procédure.** Avis de vérification mal notifié, dépassement des délais légaux, défaut de motivation : ça arrive plus souvent qu'on ne le croit. Quand c'est caractérisé, ça annule tout ou partie du redressement.
+**Justificatifs ignorés.** Souvent l'inspecteur n'a pas eu accès à toutes les pièces (faute du contribuable ou faute de l'inspecteur). En commission, produire les justificatifs manquants change la donne.
+**Erreur de qualification.** Une dépense requalifiée en avantage occulte alors qu'elle est documentée comme charge déductible. Ça se conteste avec la doctrine administrative et la jurisprudence.
+**Mauvaise application de la convention fiscale internationale.** Pour les groupes et expatriés, c'est souvent là qu'on récupère le plus.
+## Délais à connaître par cœur
+- Réponse à la notification de redressement : **30 jours**
+- Recours hiérarchique : **60 jours** après notification définitive
+- Saisine commission paritaire : **60 jours**
+- Recours tribunal administratif : **60 jours** après décision défavorable
+Aucune souplesse. On vous met sur un calendrier strict dès le début du dossier.
+<!-- ccme:related -->
+## Pour aller plus loin
+- [Tenue de comptabilité](/services/tenue-comptabilite)
+- [Conseil fiscal](/services/conseil-fiscal)
+- [Création d’entreprise](/services/creation-entreprise)
+- [Contact](/contact)
+
+---
+
+## Gestion financière
+
+URL : https://www.ccme.ma/services/gestion-financiere
+
+Mis à jour : 2026-06-13
+
+Une comptabilité à jour, c'est nécessaire mais pas suffisant pour bien piloter. La gestion financière, c'est ce qu'il y a au-dessus : transformer vos chiffres en décisions.
+## Ce qu'on regarde avec vous
+**La trésorerie**, en premier. Combien il y aura sur le compte dans 30, 60, 90 jours. Quels sont les pics, les creux. À quel moment il faut activer une ligne de découvert ou décaler un paiement fournisseur.
+**Le BFR** (besoin en fonds de roulement). Souvent c'est là que ça coince : créances clients qui traînent à 90 jours, stocks qui dorment, fournisseurs payés trop vite. Un BFR mal maîtrisé, c'est comme un robinet qui fuit en permanence.
+**La structure financière.** Ratio d'endettement, autonomie financière, couverture des charges fixes. Pour préparer une croissance, une cession, ou tout simplement pour dormir tranquille.
+**Les KPIs métier.** Marge brute par produit, taux d'occupation, panier moyen, churn — selon votre activité. C'est le tableau de bord qui vous dit chaque mois si ça va dans le bon sens.
+## Concrètement
+On commence par un état des lieux (2-3 heures de RDV avec vos chiffres). Ensuite on construit ensemble un tableau de bord adapté à votre activité — pas un truc générique avec 40 indicateurs dont 35 inutiles. Puis on tient ce tableau de bord chaque mois, on le commente avec vous lors d'un point de 30-45 minutes.
+Beaucoup de dirigeants nous disent qu'ils découvrent leur entreprise avec ce premier tableau de bord. C'est normal — quand on est dans le quotidien, on perd la vue d'ensemble.
+<!-- ccme:related -->
+## Pour aller plus loin
+- [Tenue de comptabilité](/services/tenue-comptabilite)
+- [Conseil fiscal](/services/conseil-fiscal)
+- [Création d’entreprise](/services/creation-entreprise)
+- [Contact](/contact)
+
+---
+
+## Social et administratif
+
+URL : https://www.ccme.ma/services/social-administratif
+
+Mis à jour : 2026-06-13
+
+Le code du travail marocain protège plutôt fortement le salarié, et les juges des tribunaux sociaux confirment cette tendance. Pour un employeur, ça veut dire qu'il faut être rigoureux dans les procédures dès le départ — sinon, ça finit cher.
+## Nos missions
+**Règlement intérieur** rédigé sur-mesure (pas un modèle copié-collé), validé par l'inspection du travail, affiché et signé. C'est le socle de votre pouvoir disciplinaire.
+**Conventions collectives.** Selon votre activité (BTP, textile, hôtellerie-restauration, banque-assurance, services), une convention collective peut s'appliquer et imposer des minima salariaux, des congés supplémentaires, des indemnités. On vérifie ce qui s'applique chez vous.
+**Procédures disciplinaires.** Avertissement, mise à pied conservatoire, licenciement disciplinaire — chaque étape obéit à un formalisme strict. Convocation à entretien, lettre motivée, respect des délais. Une procédure foirée, c'est un licenciement requalifié en abusif.
+**Inspection du travail.** Préparation des visites annoncées, accompagnement le jour J, gestion des suites (mises en demeure, procès-verbaux). On a l'habitude des inspections à Tanger, y compris dans les zones sensibles (bâtiment, textile).
+**Contentieux prud'homal.** Quand un salarié saisit le tribunal social, on vous accompagne en amont avec un avocat partenaire : analyse du dossier, stratégie, préparation des pièces, présence à la conciliation, plaidoirie si nécessaire.
+## Cas qu'on rencontre
+- Licenciement pour faute grave qu'on doit transformer en sortie négociée parce que la procédure n'a pas été respectée
+- Cadre qui démissionne et qui revient 3 mois après réclamer indemnités de licenciement (c'est arrivé plus d'une fois)
+- Inspection du travail qui constate un règlement intérieur jamais affiché — sanctions automatiques
+- Convention collective non appliquée dans le BTP — rappels de salaires sur 5 ans
+Beaucoup se règle en amont. Investir 2 jours par an sur la conformité sociale, c'est éviter 100 000 DH de prud'hommes plus tard.
+<!-- ccme:related -->
+## Pour aller plus loin
+- [Tenue de comptabilité](/services/tenue-comptabilite)
+- [Conseil fiscal](/services/conseil-fiscal)
+- [Création d’entreprise](/services/creation-entreprise)
+- [Contact](/contact)
+
+---
+
+## Travaux juridiques
+
+URL : https://www.ccme.ma/services/travaux-juridiques
+
+Mis à jour : 2026-06-13
+
+C'est la partie pratique du juridique : les actes qu'il faut sortir, faire signer, légaliser, déposer au tribunal, publier. Sans ça, votre changement n'a aucun effet vis-à-vis des tiers — et notamment de la [DGI](/services/simpl-impots-dgi), des banques et des fournisseurs.
+## Les opérations courantes
+**Transfert de siège social** dans Tanger ou ailleurs au Maroc. PV d'AGE, statuts mis à jour, dépôt au RC du nouveau ressort si changement de tribunal compétent, JAL.
+**Augmentation ou réduction de capital.** En numéraire, par incorporation de réserves, par compensation avec compte courant d'associé. Le formalisme dépend de la modalité, et la fiscalité aussi (droits d'enregistrement notamment).
+**Cession de parts ou d'actions.** Acte sous seing privé ou notarié, agrément si statuts l'imposent, enregistrement DGI (taux variable selon situation), formalités RC.
+**Changement de gérance.** Démission ou révocation, nomination du nouveau gérant, mise à jour de la signature bancaire et des pouvoirs en interne.
+**Modifications de l'objet social.** Important quand vous voulez démarrer une nouvelle activité ou postuler à des appels d'offres qui exigent une activité statutaire précise.
+**Transformations** : SARL en SA, SARLAU en SARL, etc. Procédure plus lourde car ça touche aux fondamentaux de la société. Souvent l'occasion de revoir les pactes d'associés en même temps.
+**Dissolution-liquidation amiable.** Quand la société a fait son temps. Désignation d'un liquidateur, opérations de liquidation, clôture, radiation RC.
+## Notre engagement
+Devis ferme avant qu'on commence. Pas de mauvaise surprise sur les frais. Et un planning que vous voyez en amont — pas de "oh mais je croyais que c'était fait".
+
+---
+
+## Audit & commissariat aux comptes
+
+URL : https://www.ccme.ma/services/audit
+
+Mis à jour : 2026-06-13
+
+Un audit, ce n'est pas un examen scolaire pour vous embêter. C'est un regard externe qualifié sur la fiabilité de vos comptes et de vos procédures. Bien fait, ça sécurise vos décisions et celles de vos associés, vos banques, vos investisseurs.
+## Nos missions
+**Commissariat aux comptes** : la mission légale, sur 3 exercices renouvelables. On certifie vos comptes annuels, on émet le rapport spécial sur les conventions réglementées, on alerte sur les faits susceptibles de compromettre la continuité d'exploitation.
+**Audit contractuel** : à la demande, hors cadre légal. Souvent à l'occasion d'un changement de gérance, d'une entrée d'actionnaire, d'un litige entre associés.
+**Due diligence d'acquisition.** Vous voulez racheter une société à Tanger ou ailleurs ? On regarde sous le capot : qualité des comptes, dettes cachées, [contentieux fiscal](/services/controle-contentieux) latent, risques sociaux. Ça évite de payer 8M DH une boîte qui en vaut 4 réellement.
+**Audit fiscal préventif.** Avant un contrôle [DGI](/services/simpl-impots-dgi) annoncé, ou par précaution si vous identifiez une zone de risque. On simule un contrôle, on identifie les redressements probables, on régularise ce qui peut l'être.
+**Revue de contrôle interne.** Pour les groupes ou PME structurées, on cartographie les processus (achats, ventes, paie, trésorerie), on identifie les faiblesses, on propose un plan de remédiation.
+## Notre méthode
+Norme professionnelle internationale (ISA/NSA). Documentation des contrôles dans un dossier de travail, conservation 10 ans. Confidentialité absolue (article 4 du code de déontologie de l'[OEC](/glossaire#oec)). Rapports écrits, datés, signés.
+Pas de jargon dans nos rapports. On écrit pour que le dirigeant comprenne, pas pour impressionner.
+
+---
+
+## Domiciliation d'entreprise à Tanger
+
+URL : https://www.ccme.ma/services/domiciliation
+
+Mis à jour : 2026-06-13
+
+Domicilier votre société chez nous, c'est régler en une signature trois questions souvent ennuyeuses : avoir une adresse de siège social acceptée par le [CRI](/glossaire#cri) Tanger et le RC, ne plus passer à côté d'un courrier important, et donner une image professionnelle (Avenue Moulay Ismail, centre-ville, c'est une adresse qui rassure).
+## Pour qui c'est pertinent
+- **Entrepreneurs qui démarrent** et veulent éviter de domicilier chez eux (mélange vie privée/pro, tracas avec le syndic d'immeuble)
+- **Investisseurs étrangers** qui pilotent à distance et n'ont pas de bureau permanent à Tanger
+- **Sociétés en zone franche** dont l'activité est à [TFZ](/zones/tanger-free-zone) ou [TAC](/zones/tanger-automotive-city) mais qui ont besoin d'une adresse complémentaire en centre-ville pour certaines démarches
+- **Activités digitales / nomades** : freelances, e-commerce, prestataires de services qui n'ont pas besoin d'un local physique
+- **Sociétés en restructuration** ou en attente de déménagement
+## Ce que vous obtenez
+**L'adresse.** Domiciliation au cabinet CCME, centre-ville de Tanger — voir [Contact](/contact) pour l'adresse exacte et le plan. C'est une vraie adresse, pas une boîte aux lettres.
+**Le courrier.** Réception, ouverture (avec votre autorisation), numérisation et envoi par mail sous 24 heures ouvrées. Pour les courriers urgents (notifications [DGI](/services/simpl-impots-dgi), mise en demeure [CNSS](/glossaire#cnss), convocations tribunal), on vous appelle directement.
+**Les obligations administratives.** Contrat de domiciliation conforme, registre tenu à jour, justificatif d'adresse pour le RC, mise à disposition des locaux pour les visites éventuelles de la DGI ou CNSS.
+**Le confort.** Salles de réunion sur réservation pour vos rendez-vous clients ou comités. Wifi, café, écran et connectique disponibles.
+## Comment ça se passe
+Vous nous transmettez : extrait RC (si société existante) ou projet de statuts (si en création), CIN du gérant, justificatif de l'objet social. On signe le contrat de domiciliation, on vous remet les attestations nécessaires pour le CRI ou pour modifier votre RC. Vous êtes opérationnel en 48 heures.
+
+---
+
+## Simpl Impôts DGI
+
+URL : https://www.ccme.ma/services/simpl-impots-dgi
+
+Mis à jour : 2026-06-13
+
+Simpl Impôts, c'est devenu le passage obligé pour toute société marocaine. Toutes vos déclarations passent par là : [TVA](/outils/simulateur-tva), acomptes [IS](/outils/simulateur-is), [liasse fiscale](/glossaire#liasse-fiscale), [IR](/outils/simulateur-ir) sur salaires, retenues à la source, déclaration de patente. Et tous les paiements aussi.
+Bien le maîtriser, c'est gagner du temps et éviter les amendes. Mal le configurer, c'est multiplier les erreurs.
+## Ce qu'on fait pour vous
+**Inscription et activation** du compte si vous n'êtes pas encore enregistré, après immatriculation au RC. Récupération du certificat numérique, configuration des accès.
+**Télédéclarations récurrentes** : TVA chaque mois ou trimestre, acomptes IS aux 4 échéances, retenues à la source mensuelles, IR sur salaires (formulaire 9421) annuel.
+**Liasse fiscale** : préparation, contrôles de cohérence, télédéclaration et télépaiement du solde IS avant le 31 mars.
+**Suivi des notifications** : la DGI envoie de plus en plus de courriers via Simpl Impôts (avis de vérification, mises en demeure, notifications). On surveille votre boîte et on vous alerte.
+**Remboursements de crédit TVA** : montage du dossier en ligne, suivi de la procédure, relance si nécessaire.
+## Les pièges fréquents
+- **Le mot de passe perdu** : récupération longue et pénible. On gère un trousseau sécurisé pour nos clients.
+- **Le solde IS payé en double** parce qu'on a confondu acompte et solde. La DGI rembourse, mais ça prend des mois.
+- **L'oubli de la déclaration "néant"** quand l'activité est suspendue. Sanctions automatiques.
+- **La déclaration TVA déposée mais non payée** : la déclaration seule ne suffit pas, il faut aussi télépayer.
+Pour des structures qui veulent garder la main sur leur DGI mais avoir un filet de sécurité, on propose une formule "supervision Simpl Impôts" : votre interne fait, on contrôle avant validation.
+
+---
+
+## Comptabilité des pharmaciens
+
+URL : https://www.ccme.ma/services/comptabilite-pharmaciens
+
+Mis à jour : 2026-06-13
+
+Tenir la comptabilité d'une pharmacie, c'est un métier dans le métier. Entre les ventes au comptoir, le tiers payant, les marges arrières des grossistes répartiteurs, le suivi des produits stupéfiants, l'inventaire valorisé en pharmaco-économique... Un cabinet généraliste a tendance à passer à côté de la moitié des optimisations possibles.
+## Ce qu'on connaît bien
+**Le tiers payant.** Reconnaissance des créances CNOPS, [CNSS](/glossaire#cnss), mutuelles, suivi des rejets, retraitement comptable. Beaucoup de pharmacies ont 3-6 mois de tiers payant en cours qui sont mal valorisés en bilan.
+**Les marges arrières des grossistes.** Bonus de fin d'année, ristournes, RFA, marges sur volume — c'est une part significative de la marge réelle, et c'est piégeux à comptabiliser correctement (rattachement au bon exercice, traitement [TVA](/outils/simulateur-tva), base [IS](/outils/simulateur-is)).
+**La gestion des stupéfiants.** Registre obligatoire, comptabilité matière, suivi pharmaceutique — séparé de la compta classique mais qui doit s'aligner.
+**L'inventaire annuel.** Valorisation au coût d'achat moyen, dépréciation des produits proches de la péremption, gestion des génériques. Un inventaire mal valorisé, c'est un IS mal calculé.
+**La fiscalité du titulaire.** L'officine est souvent en SARL, mais le titulaire est sous statut spécifique. [IR](/outils/simulateur-ir), dividendes, optimisation rémunération vs dividendes — on en discute avec vous.
+**La cession.** Quand on vend une pharmacie à Tanger, le prix se négocie sur des multiples de marge brute. Présenter des comptes propres, valoriser le tiers payant et les marges arrières correctement, ça change le prix de cession. On accompagne aussi côté acquéreur (due diligence).
+## Pourquoi nous
+On suit déjà plusieurs officines à Tanger (centre-ville, Malabata, California, Beni Makada). On connaît les grossistes (Sothema, Cooper Pharma, Polymedic, Promopharm), on sait lire leurs relevés, on a un modèle Excel rodé pour la valorisation des marges arrières.
+Ce n'est pas du marketing — c'est juste qu'on a fait des heures sur ce sujet et qu'on les rentabilise pour vous.
+
+
+---
+
+# Secteurs
+
+## Comptable BTP et immobilier
+
+URL : https://www.ccme.ma/secteurs/btp-immobilier
+
+Le BTP à Tanger explose : [Tanger Med](/zones/tanger-med) II, prolongement du tramway, projets résidentiels à Aouama, Malabata, Hay Riad, Tanger City Center. Pour un comptable, c'est un secteur exigeant.
+## Ce qu'on traite
+- Comptabilité analytique par chantier
+- Méthode à l'avancement vs achevée
+- Retenue de garantie (5 ou 10%) — comptabilisation, suivi, libération
+- [TVA](/outils/simulateur-tva) sur travaux : taux 20%, taux 14% (logements sociaux), exonération zones franches
+- Marchés publics : conformité, attestations, cautions bancaires
+- Sous-traitance : retenue à la source 10% (régime général)
+- Paie BTP : convention collective sectorielle, primes de chantier, indemnités de déplacement
+Beaucoup d'entreprises BTP à Tanger sous-traitent en cascade — c'est là que le suivi comptable peut devenir un casse-tête. On a l'habitude.
+## Comptabilité par chantier : l'erreur à ne pas faire
+La règle d'or du BTP : un chantier = une analytique. Sans cette discipline, vous ne saurez jamais qui gagne ou qui perd vraiment. On voit régulièrement des entreprises avec un résultat global positif mais 4 chantiers sur 7 en perte — qu'elles n'ont jamais identifiés à temps.
+Concrètement, on met en place :
+- Un **plan analytique par chantier** (charges, produits, marge brute, marge nette par opération)
+- Un suivi **mensuel des situations facturées vs avancement réel des travaux** (pour éviter l'effet "TVA encaissée d'avance" qui plombe la trésorerie au moment du paiement)
+- Un tableau de bord des **retenues de garantie** non encore libérées — souvent oublié et qui représente parfois 5 à 10% du CA cumulé sur 3 ans
+- Le rapprochement entre les **factures sous-traitants** et les attestations de retenue à la source 10% à reverser
+Pour estimer la trésorerie d'un nouveau chantier, on utilise notre [simulateur de coût de création](/outils/simulateur-creation) côté investissement initial et notre calculateur TVA côté flux fiscaux.
+## Marchés publics et conformité
+Beaucoup de PME tangéroises remportent des marchés publics (Wilaya, communes, ONCF, ANP, ports), surtout depuis l'accélération des chantiers Tanger Med II et de la requalification urbaine. Nos missions BTP s'étendent alors au-delà du chiffre :
+- Préparation des **dossiers d'appel d'offres** : attestations fiscale et [CNSS](/glossaire#cnss), bilans certifiés, garanties bancaires
+- Suivi des **agréments et qualifications BTP** (Ministère de l'Équipement)
+- Cautionnements (provisoires, définitifs, retenue de garantie) — comptabilisation correcte qui évite les surprises de bilan
+## Fiscalité : les pièges spécifiques BTP
+**TVA sur logements sociaux** : taux réduit 14% mais conditions strictes (surface, prix de vente, agrément). Une vente requalifiée en logement classique et c'est 6 points de TVA à reverser. On documente le dossier en amont.
+**Frais financiers et [IS](/outils/simulateur-is).** Les promoteurs immobiliers s'endettent lourdement. Tous les intérêts ne sont pas déductibles — règle de la sous-capitalisation, charges intercos. À surveiller via notre [conseil fiscal](/services/conseil-fiscal).
+**Régime des LOA (location-accession).** De plus en plus utilisé sur les programmes neufs Hay Riad, Aouama, Bourguignon. Comptabilisation et TVA spécifiques.
+Pour qui veut piloter sérieusement, on tient aussi la [supervision comptable](/services/supervision-comptable) en complément de votre comptable interne. Et pour le recrutement / paie sectorielle BTP, on prend en charge la [paie & GRH](/services/paie-grh) avec la convention collective applicable.
+À lire ensuite : notre article [zones franches Tanger : comparatif TFZ, TAC, Tanger Tech](/blog/zones-franches-tanger-comparatif) pour les promoteurs qui hésitent à se positionner sur des programmes en zone franche.
+
+---
+
+## Comptable e-commerce et digital
+
+URL : https://www.ccme.ma/secteurs/e-commerce
+
+Le digital est en train de tout changer pour la profession. Marketplaces, dropshipping, SaaS, services à distance, freelances — autant de modèles qui ne rentrent plus dans les cases du plan comptable classique.
+## Ce qu'on a appris à faire
+**Réconcilier Stripe, PayPal, CMI, Wise, Mercury, Revolut.** Importer les exports CSV, classer les transactions, gérer les frais (commission Stripe 2,9% + 30 centimes, on connaît), passer les écritures de change.
+**Marketplaces.** Amazon, eBay, Etsy, Shopify, Jumia. Chaque plateforme a son propre format de relevé, ses commissions, ses retenues. On a des modèles rôdés.
+**[TVA](/outils/simulateur-tva) digitale.** Pour les services électroniques, la règle de localisation a changé. Vendre du SaaS à un consommateur final en France, c'est de la TVA française à appliquer (régime OSS). Vendre en B2B, c'est l'autoliquidation. On vous met en conformité.
+**Multi-devises.** Société marocaine qui facture en USD, EUR, GBP. Comptabilisation au cours de transaction, écarts de change réalisés vs latents, traitement bilan vs résultat.
+**Office des Changes en mode digital.** Tous vos encaissements PayPal/Stripe doivent être justifiés et rapatriés selon des règles précises. Pendant longtemps c'était un cauchemar — depuis 2022 il y a des assouplissements (compte en devises, plafonds rehaussés). On vous tient au courant.
+**Optimisation freelance.** Beaucoup de devs et de marketeux à Tanger se posent la question : auto-entrepreneur, SARLAU, statut de prestataire international ? La réponse dépend de votre CA, de vos clients, de votre projet de vie. On en discute en RDV.
+
+---
+
+## Comptable import-export
+
+URL : https://www.ccme.ma/secteurs/import-export
+
+[Tanger Med](/zones/tanger-med), c'est le 1<sup>er</sup> port d'Afrique. Pour les sociétés qui importent ou exportent, c'est un atout énorme — mais aussi une couche de complexité administrative et fiscale supplémentaire.
+## Ce qu'il faut maîtriser
+**Office des Changes.** Toute opération en devises avec l'étranger passe par lui. [Domiciliation](/services/domiciliation) bancaire des dossiers d'import et d'export, justification des règlements, formulaires Forex, déclarations annuelles. Beaucoup de sociétés se font sanctionner pour des oublis de formalisme alors que les opérations sont parfaitement légitimes.
+**[TVA](/outils/simulateur-tva) export.** Vos exports sont en exonération de TVA, mais vos achats locaux supportent la TVA. Résultat : vous accumulez du crédit de TVA. Sans demande de remboursement régulière, c'est de la trésorerie qui dort.
+**Documentation douanière.** DUM à l'import et à l'export, déclarations sommaires, BAE. Les rapprochements entre douane et compta sont à faire — un écart inexpliqué, c'est un drapeau rouge en contrôle.
+**Prix de transfert.** Si vous avez une maison-mère à l'étranger, ou des sociétés sœurs, les transactions intra-groupe sont sous surveillance. Documentation prix de transfert obligatoire au-delà de certains seuils. La [DGI](/services/simpl-impots-dgi) marocaine s'est vraiment mise au sujet ces dernières années.
+**Régime de la zone franche.** Si vous opérez depuis [TFZ](/zones/tanger-free-zone) ou [TAC](/zones/tanger-automotive-city), vos exonérations [IS](/outils/simulateur-is) et TVA sont conditionnelles à un suivi rigoureux des opérations de la zone franche vs hors zone.
+On accompagne plusieurs sociétés import-export à Tanger : on connaît bien le terrain.
+
+---
+
+## Comptable des professions libérales
+
+URL : https://www.ccme.ma/secteurs/professions-liberales
+
+Le statut de profession libérale au Maroc a ses propres règles. BNC pour la fiscalité, AMO-TNS pour la santé, régime social spécifique. Et selon le métier (médecin, avocat, architecte, ingénieur, pharmacien), des subtilités supplémentaires.
+## Ce qu'on traite
+**Tenue comptable simplifiée** (livre journal recettes-dépenses, registre des immobilisations). Pas besoin du plan comptable général complet en BNC — mais quelques règles à respecter pour ne pas se faire reclasser en RNR.
+**Déclaration [IR](/outils/simulateur-ir) professionnelle.** Choix du régime (forfait, RNS, RNR), calcul de l'IR par tranche, déduction des charges déductibles spécifiques (matériel médical, formation continue, ordres professionnels). Calendrier : avant le 30 avril de l'année suivante.
+**Cotisations sociales** : AMO-TNS obligatoire, retraite complémentaire (CIMR, RCAR, etc.), prévoyance. À optimiser fiscalement.
+**Optimisation rémunération.** Pour un médecin spécialiste qui dépasse 800K DH/an, la question du passage en SARL/SARLAU se pose sérieusement. On fait la simulation chiffrée.
+**Cession de clientèle ou cabinet.** Évaluation, fiscalité de la cession, formalisme. Important quand on prépare la retraite.
+À Tanger on suit plusieurs cabinets médicaux (centre-ville, Malabata), des cabinets d'architectes, des cabinets juridiques. On parle leur langue et on respecte le secret professionnel — qui est aussi le nôtre, en tant qu'experts-comptables [OEC](/glossaire#oec).
+## BNC, RNS, RNR : choisir le bon régime IR
+Le Code Général des Impôts marocain prévoit trois régimes pour les professions libérales :
+- **BNC (régime du résultat net réel simplifié)** — accessible jusqu'à 2 M DH de recettes, comptabilité allégée, charges déductibles sur justificatif. C'est le régime le plus utilisé à Tanger
+- **RNR (régime du résultat net réel)** — obligatoire au-delà des seuils, comptabilité complète [CGNC](/glossaire#cgnc). Plus contraignant mais plus précis
+- **Forfait** — disparaît progressivement et n'est plus pertinent pour la plupart des libéraux à Tanger
+Le bon choix dépend du volume de charges réelles, du niveau de structuration souhaité et du projet à 5 ans. Pour une simulation chiffrée, notre simulateur IR couvre les barèmes 2026 et la [cotisation minimale](/glossaire#cotisation-minimale). Pour calibrer rapidement le passage en société (SARL ou SARLAU), notre [simulateur IS 2026](/outils/simulateur-is) et notre [simulateur de coût de création](/outils/simulateur-creation) sont des points de départ utiles.
+## Charges déductibles : l'angle souvent négligé
+Pour un médecin, un avocat ou un architecte, ce qui creuse l'écart fiscal n'est pas tellement le régime — c'est la rigueur sur les charges déductibles. Les postes qu'on optimise systématiquement :
+- **Cotisations professionnelles** (Ordre, syndicats, assurances RC pro) — 100% déductibles si correctement isolées
+- **Formation continue** (médecine, droit, architecture) — déductible y compris les frais de déplacement et de logement
+- **Documentation et abonnements** (revues médicales, JurisClasseur, logiciels métier comme Pennylane, AutoCAD, Rachis)
+- **Local professionnel** — loyer ou amortissement si propriétaire, charges courantes
+- **Personnel** (assistant médical, secrétariat, collaborateur) — voir notre service [paie & GRH](/services/paie-grh) et notre [Damancom CNSS](/services/damancom-cnss) pour le volet social
+## AMO-TNS et retraite complémentaire : pas optionnel
+Beaucoup de jeunes libéraux à Tanger oublient de cotiser correctement à l'AMO-TNS (couverture santé travailleurs non salariés) et à un régime de retraite complémentaire. Résultat : 20 ans plus tard, retraite faible et pas d'ancienneté sur les couvertures santé. On structure ça dès l'installation, parallèlement à la création.
+## Cession ou transmission de cabinet
+Un médecin qui vend sa patientèle, un avocat qui transmet à un associé, un architecte qui passe le flambeau : ces opérations ont chacune leur fiscalité spécifique. Plus-value sur cession de clientèle, droit d'enregistrement, IR ou IS selon le régime, traitement des comptes courants associés. On accompagne via nos [travaux juridiques](/services/travaux-juridiques) pour la rédaction des actes et notre [conseil fiscal](/services/conseil-fiscal) pour optimiser la fiscalité globale.
+À lire ensuite : notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc), qui détaille précisément les seuils de bascule pour les libéraux marocains, et notre [guide de création SARL à Tanger](/blog/creer-sarl-tanger-2026).
+[Premier RDV gratuit](/contact) — 30-45 minutes pour cadrer votre situation.
+
+---
+
+## Comptable restauration et hôtellerie
+
+URL : https://www.ccme.ma/secteurs/restauration-hotellerie
+
+À Tanger le secteur CHR se développe vite avec le tourisme : Médina, riads, hôtels en bord de mer à Malabata, restos de plage à Achakar, cafés du centre-ville. C'est un secteur où la compta doit suivre le rythme.
+## Spécificités du secteur
+- **Caisse journalière** : ventes en cash, par carte, par tiers (Glovo, Jumia, etc.). À comptabiliser proprement chaque jour ou chaque semaine.
+- **Personnel saisonnier** : embauches massives en juillet-août, sortie en septembre. Contrats courts, calculs de prorata, AT-MP. Volume de paie qui triple.
+- **[TVA](/outils/simulateur-tva) mixte** : 10% restauration et hébergement, 20% sur le bar, l'événementiel. Bonne ventilation des recettes.
+- **Pourboires** : à comptabiliser correctement (en frais de personnel ou en transit) — la [DGI](/services/simpl-impots-dgi) regarde.
+- **Taxe promotion touristique** (TPT) : 5% sur le prix de la nuitée, à reverser à la commune.
+- **Marges restauration** : suivi par catégorie (boissons / plats / desserts), benchmark sectoriel.
+On suit plusieurs restos et hôtels à Tanger. On connaît les contraintes, on connaît la vérité du métier (les flux cash, la saisonnalité, la rotation du personnel).
+## La caisse, point critique de tout dossier CHR
+90% des contrôles fiscaux dans le secteur CHR commencent par un audit de caisse. La DGI compare le ratio matières / chiffre d'affaires, le coefficient multiplicateur sur les boissons, le taux d'occupation déclaré vs la consommation d'eau et d'électricité. Si les chiffres ne tiennent pas, c'est la reconstitution forfaitaire — souvent désastreuse.
+On met en place un dispositif simple mais robuste :
+- **Bandes de caisse archivées** (papier ou numérique) avec ventilation TVA par taux
+- Rapprochement quotidien **caisse / compte bancaire / TPE** — un écart non expliqué de plus de 2% sur le mois doit être justifié
+- Suivi du **coefficient matière** par catégorie (food, soft, alcools, salle, événementiel)
+- Inventaire physique mensuel pour les boissons (le poste le plus sensible aux fuites)
+Pour estimer rapidement la marge nette d'un restaurant ou les charges sociales d'une équipe saisonnière, voir notre [simulateur de paie marocain](/outils/simulateur-paie) et notre calculateur TVA tourisme.
+## Saisonniers, extras, CDD : la paie qui fait peur
+Embaucher 15 personnes le 1er juillet et en libérer 12 le 30 septembre, c'est une opération industrielle qui a un coût caché si elle est mal pilotée. Les inspecteurs du travail à Tanger ciblent particulièrement les hôtels Malabata et les restos d'Achakar entre juin et octobre.
+Notre prise en charge couvre :
+- Le choix du **bon contrat** (CDD saisonnier, CDD d'usage, contrat d'extra) selon la situation — le mauvais contrat se requalifie en CDI à la moindre prudhommerie
+- Les **déclarations [Damancom](/services/damancom-cnss)** sous 24h après l'embauche pour éviter le travail dissimulé
+- Les **cotisations [CNSS](/glossaire#cnss) / [AMO](/glossaire#amo) / AT-MP** correctement ventilées (c'est le détail de notre service [paie & GRH](/services/paie-grh))
+- Le **reçu pour solde de tout compte** rédigé pour résister à un contentieux
+À lire : notre [guide Damancom CNSS 2026](/blog/damancom-cnss-guide-2026) et notre [guide création de SARL Tanger 2026](/blog/creer-sarl-tanger-2026) pour ceux qui ouvrent un nouvel établissement.
+## Hôtels classés et taxe de promotion touristique
+Tout établissement classé (1* à 5*, riad, maison d'hôtes) doit reverser la taxe de promotion touristique à la commune. Les barèmes (5 à 30 DH par nuitée selon le classement) ont été ré-actualisés. Beaucoup d'établissements de Marshan et de la Médina sont en sous-déclaration involontaire, simplement parce que la taxe a évolué et qu'ils n'ont pas mis à jour leur PMS (Property Management System).
+Le contrôle remonte sur 4 ans, ça peut faire mal. On audite et on régularise via notre [assistance fiscale](/services/assistance-fiscale).
+Si vous ouvrez un restaurant, un café, un riad ou un hôtel à Tanger — [premier RDV gratuit](/contact) pour cadrer la mise en place.
+
+---
+
+## Comptable industrie textile et automobile
+
+URL : https://www.ccme.ma/secteurs/textile-automobile
+
+Les zones franches de Tanger ([Tanger Free Zone](/zones/tanger-free-zone), [Tanger Automotive City](/zones/tanger-automotive-city), [Tanger Tech](/zones/tanger-tech)) accueillent une concentration unique d'industriels — équipementiers automobiles (Renault, Stellantis, Yazaki, Sumitomo), textile-confection, électronique, aéronautique.
+Pour ces structures, la compta a des spécificités importantes :
+## Le régime fiscal de faveur
+Exonération [IS](/outils/simulateur-is) pendant 5 exercices, puis taux réduit (8,75% sur l'export). Exonération de [TVA](/outils/simulateur-tva) à l'importation des biens d'équipement. Régime douanier avantageux. Mais ces avantages sont conditionnels :
+- Agrément ZAI préalable, dossier monté en amont avec le [CRI](/glossaire#cri) Tanger
+- Activité éligible (industrie d'export essentiellement)
+- Implantation physique effective dans la zone
+- Suivi distinct des opérations zone vs hors zone
+Une mauvaise délimitation, c'est la perte rétroactive du régime de faveur. Sanction lourde.
+## Comptabilité industrielle
+Pas comme une PME de services. Stock matières premières, en-cours de production, produits finis. Comptabilité analytique par produit, calcul de coût de revient, suivi des écarts.
+Pour les automotive en JIT (just-in-time), il faut des reportings très fins — souvent quotidiens — pour le donneur d'ordre.
+## Prix de transfert
+La quasi-totalité des industriels en zone franche sont des filiales de groupes internationaux. Les transactions intra-groupe (royalties, frais de support, fournitures) doivent être documentées (master file + local file), à des prix conformes au principe de pleine concurrence. Sinon redressement avec pénalités.
+On accompagne plusieurs industriels à TFZ et TAC. Les sujets récurrents : le drawback douanier quand une partie de la matière importée finit en vente locale sans qu'on ait isolé la quote-part, les remboursements TVA sur achats locaux de matières premières (dossiers lents, souvent bloqués sur des formalités de justification que peu de comptables maîtrisent), et la base cotisable [CNSS](/glossaire#cnss) pour les ouvriers de production en équipes alternantes — primes de poste et d'assiduité que beaucoup de services RH intègrent mal dans l'assiette, ce qui génère des redressements à répétition.
+
+
+---
+
+# Zones de Tanger
+
+## Cabinet comptable Tanger centre-ville
+
+URL : https://www.ccme.ma/zones/centre-ville
+
+Le centre-ville de Tanger (du Boulevard Pasteur à la Place de France, en passant par l'Avenue Moulay Ismail et le quartier Marshan) reste le cœur économique historique de la ville. PME, commerces, restaurants, cliniques, cabinets médicaux et juridiques — un tissu dense qu'on connaît bien.
+## Pourquoi proche, c'est mieux
+Au-delà du symbole, être physiquement proche compte. Quand vous avez un courrier [DGI](/services/simpl-impots-dgi) le matin et que vous voulez en discuter dans la journée, c'est beaucoup plus simple si on est à 10 minutes en taxi. Quand vous embauchez et qu'il faut signer le contrat avant lundi, on se voit le vendredi soir.
+On reçoit nos clients du centre-ville sans rendez-vous quand l'urgence le justifie — c'est un de nos principes.
+## Notre clientèle au centre
+- Cabinets médicaux et dentaires
+- Avocats, notaires, huissiers
+- Restaurants et cafés du Boulevard Pasteur, du Sokco
+- Petits hôtels et riads
+- Commerces de détail (textile, bijouterie, librairie)
+- Agences de communication et de design
+- Cabinets de coworking et freelances
+## Adresse et accès
+**Cabinet CCME** — centre-ville de Tanger. Adresse, téléphone et horaires sur la [page Contact](/contact).
+Premier RDV gratuit, sans engagement.
+## Le centre-ville de Tanger : une économie de service à part
+Le centre-ville n'a pas la même grammaire économique que les zones franches. Ici, peu de gros volumes, beaucoup de **récurrence**. Un avocat fidèle pendant 12 ans, un cabinet médical qui passe l'associé numéro 3, un restaurant qui rachète son local après 8 années de loyer. La compta y est moins spectaculaire mais elle pèse autant : c'est la stabilité qui finance les ouvertures suivantes.
+Concrètement, pour un dossier de centre-ville, on apporte trois choses :
+- **Un suivi sans rotation.** Vous parlez à la même personne d'année en année. C'est essentiel pour les avocats et notaires, qui n'ont pas envie d'expliquer leur dossier à un junior tous les six mois
+- **Une connaissance du quartier.** On sait quelle banque finance vite à Tanger, quel notaire est rapide pour une cession de fonds de commerce, quelle inspection du travail est plus tatillonne sur les jours de repos
+- **Un seuil d'engagement bas.** Premier diagnostic gratuit, pas de mission cadre obligatoire avant de comprendre votre besoin
+Pour estimer rapidement vos charges salariales (cabinet de 3-5 personnes), voir notre [simulateur de paie marocain](/outils/simulateur-paie). Pour calculer l'[IS](/outils/simulateur-is) d'un cabinet en SARL ou en SAS, le simulateur IS 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale).
+## Centre-ville, libérales et changement de structure
+Une question récurrente parmi les médecins de [California](/quartiers/california), les avocats du Boulevard Pasteur ou les cabinets d'architectes de [Marshan](/quartiers/marshan) : faut-il rester en BNC ou passer en société ?
+Au-delà de 600-700 K DH de bénéfice annuel, la bascule en SARL ou SARLAU devient souvent fiscalement intéressante. Mais pas toujours — il faut regarder l'âge du titulaire, ses besoins de retraite, la valeur cessible du cabinet, l'éventuelle transmission familiale. C'est l'un des sujets qu'on traite en [conseil fiscal](/services/conseil-fiscal).
+Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) détaille les seuils de bascule.
+## Centre-ville et obligations CNSS
+Pour les commerces et restaurants du centre, les contrôles inspection du travail sont fréquents en haute saison. Les agents tournent autour du Sokco, du Boulevard Pasteur et de l'Avenue Mohammed V. Une déclaration [Damancom](/services/damancom-cnss) oubliée, un saisonnier non déclaré et c'est 50 000 DH d'amende au minimum.
+On gère le volet Damancom [CNSS](/glossaire#cnss) en routine, plus le [conseil sur la création d'entreprise](/services/creation-entreprise) pour ceux qui ouvrent une nouvelle structure dans le quartier.
+[Premier RDV gratuit au cabinet](/contact) — venez quand vous voulez, on est à 5 minutes du Boulevard Pasteur.
+
+---
+
+## Cabinet comptable pour Tanger Automotive City (TAC)
+
+URL : https://www.ccme.ma/zones/tanger-automotive-city
+
+Tanger Automotive City (TAC) est devenue en quelques années le hub automobile du Maroc, avec l'usine Renault de Melloussa en cœur de cluster, complétée par Stellantis à Kénitra. Plus de 200 équipementiers y opèrent, principalement filiales de groupes mondiaux.
+Pour ces sociétés, la complexité comptable est réelle : industrie lourde, groupes internationaux, exigences clients, reporting fin.
+## Notre savoir-faire
+**Comptabilité industrielle** : valorisation des stocks (matières, en-cours, produits finis), calcul de coût standard, analyse des écarts (matière, MO, frais généraux), inventaire physique annuel coordonné.
+**Reporting groupe** : adaptation du plan comptable marocain aux référentiels groupe (US GAAP, IFRS, normes locales), reporting mensuel selon les formats imposés.
+**Prix de transfert.** Documentation TP obligatoire (master file + local file), test de comparabilité, suivi de la marge benchmark. C'est un sujet majeur en TAC, la [DGI](/services/simpl-impots-dgi) cible particulièrement le secteur automobile.
+**Régime ZAI.** Exonération [IS](/outils/simulateur-is) 5 ans, puis 8,75%. Suivi des opérations zone/hors-zone, audit annuel de conformité.
+**Paie spécifique** : conventions de la métallurgie, primes liées à la production, AT-MP renforcés.
+On suit plusieurs équipementiers à TAC. Concrètement, ça ressemble à ça : un inspecteur DGI remet en cause une marge benchmark documentée selon les normes OCDE, pendant que le contrôleur financier groupe attend un reporting US GAAP pour le lundi matin. Les deux ont des exigences légitimes, mais qui ne se parlent pas. Le DAF local se retrouve à traduire l'un pour l'autre — c'est exactement ce rôle qu'on prend en charge, et éviter ce type de friction évite aussi les redressements qui naissent d'une documentation insuffisante côté DGI.
+## Régime ZAI : ne pas confondre les avantages
+Le régime ZAI (zone d'accélération industrielle, ex-zone franche d'exportation) reste l'un des dispositifs les plus avantageux du Maroc. Mais beaucoup de dirigeants confondent les régimes et appliquent mal les règles.
+Les points-clés que la DGI vérifie chaque année :
+- **Exonération IS pendant 5 ans**, puis taux réduit (8,75% jusqu'en fin de période, 15% au-delà selon les arrêtés en vigueur). Pour estimer l'impact net, voir notre simulateur IS 2026
+- **Suivi rigoureux des opérations zone / hors-zone.** Une vente locale (en dirhams sur le territoire marocain) requalifie la marge correspondante en régime de droit commun. Beaucoup d'équipementiers font 5 à 15% de leurs ventes hors-zone sans s'en rendre compte
+- **[TVA](/outils/simulateur-tva) suspendue à l'import** des matières et équipements — mais documentation obligatoire (DUM, attestations)
+- **Audit annuel ZAI** par un commissaire aux comptes ou un [expert-comptable](/cabinet) agréé
+Notre [comparatif TFZ vs TAC vs Tanger Med](/comparatifs/tanger-med-vs-tfz-vs-tac) détaille les bascules entre régimes selon le profil d'activité.
+## Reporting groupe : trois jeux de comptes
+Une filiale TAC d'un groupe Yazaki, Sumitomo, Lear ou Faurecia tient en pratique trois jeux de comptes :
+1. **Comptabilité marocaine [CGNC](/glossaire#cgnc)** — pour la [liasse fiscale](/glossaire#liasse-fiscale), la DGI, la [CNSS](/glossaire#cnss), l'audit local
+2. **Comptabilité groupe** (US GAAP, IFRS ou normes internes) — pour la consolidation maison-mère
+3. **Reporting industriel** mensuel — KPI production, coûts standards, écarts
+On a l'habitude de produire les trois sans erreur de cohérence. Notre service [supervision comptable](/services/supervision-comptable) couvre ce besoin pour les sociétés qui ont déjà un comptable interne mais qui veulent une double-validation indépendante avant envoi groupe.
+## Prix de transfert : sujet majeur
+Depuis l'introduction de la documentation TP obligatoire, la DGI cible particulièrement le secteur automobile à TAC. Une marge benchmark non documentée et c'est un redressement à plusieurs millions de dirhams qui peut tomber. On pose le master file + local file dès l'agrément, on les met à jour chaque année, on les défend en cas de contrôle.
+À lire pour comprendre le climat actuel : notre [guide contrôle fiscal Tanger](/blog/controle-fiscal-tanger-comment-se-preparer) et notre [article sur la réforme IS 2026 pour les PME de Tanger](/blog/reforme-is-2026-pme-tanger).
+## Paie spécifique métallurgie
+La convention collective de la métallurgie applicable aux équipementiers automobile a ses subtilités : primes de production, indemnités de poste, AT-MP renforcés, médecine du travail trimestrielle. Notre service [paie & GRH](/services/paie-grh) prend en charge toute la chaîne avec un sous-process [Damancom](/services/damancom-cnss) intégré (voir Damancom CNSS).
+[Premier rendez-vous gratuit](/contact) si vous démarrez une opération à TAC ou si vous voulez challenger votre setup actuel.
+
+---
+
+## Cabinet comptable pour Tanger Free Zone (TFZ)
+
+URL : https://www.ccme.ma/zones/tanger-free-zone
+
+Tanger Free Zone (TFZ) accueille plus de 800 entreprises : textile, équipementiers automobiles, électronique, services. Le régime fiscal de la zone est l'un des plus avantageux du Maroc — encore faut-il savoir l'exploiter sans se faire piéger.
+Ce qui rend TFZ administrativement distinct d'une implantation classique : l'obligation de tenir des comptabilités séparées pour les opérations zone et hors-zone, l'exonération totale d'[IS](/outils/simulateur-is) pendant 5 exercices puis taux réduit à 8,75% sur l'export, une exonération de TVA qui ne dispense pas du suivi des crédits sur achats locaux, et un régime [CNSS](/glossaire#cnss) spécifique pour les salariés relevant du taux libératoire IR à 20%. Chacun de ces points a ses propres pièges — et la plupart des redressements qu'on voit en TFZ viennent d'une confusion entre ces régimes, pas d'une fraude délibérée.
+## Le régime fiscal en pratique
+**Impôt sur les Sociétés** : exonération totale pendant 5 ans, puis taux réduit 8,75% sur les bénéfices export. [Cotisation minimale](/glossaire#cotisation-minimale) (CM) due dès qu'il y a un bénéfice imposable, à 0,25% (minimum 3 000 DH).
+**[TVA](/outils/simulateur-tva)** : exonération sur les opérations export. Pour les achats locaux, TVA récupérable via remboursement de crédit.
+**Droits de douane** : régime spécial à l'importation (matières premières, équipements).
+**[IR](/outils/simulateur-ir) sur salaires** : taux libératoire de 20% pour les salariés des sociétés agréées (sous conditions).
+## Ce qu'on apporte
+**L'agrément**, si vous l'attaquez. Dossier ZAI à monter avec le [CRI](/glossaire#cri) Tanger, démonstration de l'éligibilité de l'activité, suivi de la procédure jusqu'à l'arrêté ministériel. L'erreur classique : démarrer l'activité avant d'avoir l'agrément en main. Ça compromet l'exonération IS dès le premier exercice — on ne peut pas rétroagir.
+**La comptabilité distincte.** Si vous avez à la fois des opérations zone et hors-zone (par exemple, ventes locales en plus de l'export), il faut tenir des comptabilités séparées pour ne pas perdre les avantages sur la totalité de l'activité. En pratique, on voit souvent des sociétés TFZ qui font 10 à 20% de leur chiffre en local sans avoir isolé comptablement ces ventes — la [DGI](/services/simpl-impots-dgi) les requalifie en régime de droit commun, rétroactivement.
+**La paie spécifique.** Les salariés des sociétés agréées peuvent bénéficier d'un taux libératoire [IR](/outils/simulateur-ir) à 20% sous conditions. Mais ce taux ne s'applique pas automatiquement à tout le monde : il faut que le salarié travaille effectivement dans la zone, que son contrat l'établisse, et que la déclaration CNSS soit conforme. On gère la paie avec un sous-process dédié qui évite les erreurs de croisement IR/CNSS fréquentes dans les équipes RH des sociétés nouvellement agréées.
+**Le suivi de conformité.** Bilan annuel d'activité à transmettre à l'autorité de gestion de la zone, justificatifs des opérations export, audit annuel de la délimitation zone/hors-zone. Beaucoup de sociétés TFZ négligent ce bilan annuel les premières années — c'est l'une des conditions de maintien du régime de faveur. Une non-conformité constatée peut déclencher un rappel d'IS sur tous les exercices couverts.
+
+---
+
+## Cabinet comptable pour Tanger Med
+
+URL : https://www.ccme.ma/zones/tanger-med
+
+Tanger Med c'est le 1<sup>er</sup> port d'Afrique : 9 millions de conteneurs par an, des connexions vers plus de 180 ports dans le monde, le hub logistique majeur entre l'Europe, l'Afrique et le Moyen-Orient.
+Pour les sociétés qui opèrent dans cet écosystème — transitaires, transporteurs, logisticiens, prestataires portuaires, traders — la comptabilité a ses spécificités.
+## Ce qu'on traite typiquement
+**Sociétés de transit.** Comptabilisation des refacturations clients (frais de douane, vacations, stockage), gestion des dépôts de garantie, conformité ALSC.
+**Transport international.** [TVA](/outils/simulateur-tva) sur transports (régime export), gestion des notes de débit/crédit avec partenaires étrangers, écarts de change.
+**Logistique et entreposage.** Cadre fiscal des entrepôts sous douane, des MEAD, des zones d'attente. Régime du Med Hub si vous y êtes agréé.
+**Sociétés de représentation et d'agence maritime.** Compta pour le compte d'armateurs étrangers, retenue à la source, conventions internationales.
+Pour ces sociétés, le rythme déclaratif Office des Changes est intense. On a l'habitude.
+## Choisir entre régime général, Med Hub et zone franche
+Beaucoup de dirigeants installés à Tanger Med hésitent entre rester en régime de droit commun, basculer vers le **régime Med Hub** (logistique sous douane à statut renforcé) ou viser une implantation en [Tanger Free Zone](/zones/tanger-free-zone) ou [Tanger Automotive City](/zones/tanger-automotive-city). Le bon choix dépend du mix d'activités (% export, % services aux navires, % refacturation à des armateurs étrangers), de la surface au sol et du niveau d'investissement initial.
+On pose le diagnostic en 2 RDV :
+1. Cartographie des flux (clients, fournisseurs, devises, douane)
+2. Simulation [IS](/outils/simulateur-is) / TVA / Office des Changes sur 3 scénarios — y compris le coût caché de l'audit annuel obligatoire en zone franche
+Pour aller plus loin sur la comparaison des trois régimes, voir notre [comparatif TFZ vs TAC vs Tanger Med](/comparatifs/tanger-med-vs-tfz-vs-tac).
+## Office des Changes : le sujet qui peut tout bloquer
+Pour une société de transit ou de transport international, l'Office des Changes n'est pas optionnel. Une déclaration manquante peut bloquer un transfert urgent et planter un dossier client. Concrètement, on prend en charge :
+- **Les déclarations mensuelles** sur les opérations courantes (formulaires 1, 4, 6 selon les flux)
+- Le rapprochement banque / déclaration / factures pour préparer le **bilan annuel des avoirs et dettes en devises**
+- Les **demandes d'autorisation** pour les opérations particulières (avances, financements en devises, comptes en devises pour résidents)
+- L'archivage probant pour résister à un contrôle ad hoc — ils arrivent par vagues à Tanger Med
+## Pièges fiscaux récurrents dans la zone
+**TVA export mal documentée.** Tout transport international vers ou depuis le Maroc est exonéré de TVA — mais il faut le **certifier**. Connaissement, déclaration en douane, justificatif de paiement en devises. Dossier incomplet = TVA à 20% rétroactive sur 4 ans. On audite votre process avec notre [assistance fiscale](/services/assistance-fiscale) avant que la [DGI](/services/simpl-impots-dgi) le fasse.
+**Refacturation aux armateurs étrangers.** Beaucoup d'agences maritimes refacturent à l'armateur étranger les frais avancés sur place (vacations, droits, services). Le traitement TVA et IS dépend si on agit en mandataire ou en commissionnaire. C'est un classique de redressement à Tanger Med.
+**Écarts de change.** Une société qui facture en euros et achète en dirhams a des écarts à comptabiliser. Pertes et gains de change ne se traitent pas pareil au plan fiscal. Pour calibrer l'impact IS, voir notre simulateur IS 2026.
+**Prix de transfert pour les filiales de groupes internationaux.** Les transitaires affiliés à un groupe européen ou asiatique doivent justifier la marge facturée à la maison-mère. Documentation TP devenue obligatoire à partir d'un certain CA — on en parle dans notre [guide contrôle fiscal DGI à Tanger](/blog/controle-fiscal-tanger-comment-se-preparer).
+Si vous opérez à Tanger Med ou dans son écosystème, [premier rendez-vous gratuit](/contact) pour cadrer votre situation.
+
+---
+
+## Cabinet comptable pour Tanger Tech
+
+URL : https://www.ccme.ma/zones/tanger-tech
+
+Tanger Tech (officiellement Mohammed VI Tech City) est le projet de hub technologique en cours de développement à Tanger. Startups, sociétés de software, BPO/ITO, R&D — la zone se positionne comme le pendant marocain de Tunis Tech ou de Bangalore en miniature.
+Pour les sociétés tech, on apporte :
+## Compta tech-friendly
+Outils modernes (Pennylane, Sage Cloud, intégrations API), réconciliation Stripe/PayPal/Wise automatisée, reporting mensuel dans Notion ou Slack si vous préférez.
+**Pas de paperasse pour la paperasse.** Si votre métier c'est le code et l'agilité, on ne vous impose pas une compta lourde. On utilise vos outils, on s'adapte à votre rythme.
+## Fiscalité de scale-up
+**Régime ZAI tech** : exonération [IS](/outils/simulateur-is) 5 ans pour les activités éligibles. La majorité des SaaS export y entrent.
+**Crédit d'impôt R&D** marocain : peu connu, mais existant. On monte le dossier si votre activité est éligible.
+**Stock-options et BSPCE** : pour fidéliser vos premières recrues. Cadre juridique au Maroc, traitement fiscal à l'attribution et à l'exercice.
+**Préparation à la levée.** Compta KPI-ready (MRR, ARR, CAC, LTV, churn), data room, due diligence. On a déjà accompagné quelques équipes sur ce terrain.
+## Pour qui
+- **Éditeurs SaaS qui vendent en abonnement à des clients européens** — l'activité export vers l'UE est souvent éligible au régime ZAI. On vérifie l'éligibilité avant de soumettre l'agrément, pas après avoir signé le bail de la zone.
+- **Agences digitales qui font du dev en outsourcing** — facturation en devises, comptabilité multi-clients, [TVA](/outils/simulateur-tva) export : on connaît ces montages et leurs particularités [CNSS](/glossaire#cnss), notamment le traitement des freelances sous-traitants vs salariés.
+- **BPO/ITO multilingues (FR/EN/ES/AR)** — ces structures ont leurs propres conventions sociales. La paie d'une équipe de 30 opérateurs en rotation ne se gère pas comme celle d'une PME classique, et les erreurs de base CNSS sont fréquentes.
+- **R&D, IA, fintech, edtech naissantes** — souvent encore floues juridiquement au démarrage. On aide à choisir la bonne forme selon le plan de levée, à documenter les coûts R&D éligibles au crédit d'impôt marocain, et à tenir une compta investisseur-ready dès le premier exercice.
+La zone Tanger Tech est encore jeune — les process administratifs bougent vite. On reste en veille sur chaque changement de doctrine pour que vous n'ayez pas à le faire.
+
+
+---
+
+# Quartiers de Tanger
+
+## Cabinet comptable à Beni Makada
+
+URL : https://www.ccme.ma/quartiers/beni-makada
+
+Une bonne part de nos dossiers de formalisation vient de Beni Makada — un quartier où l'activité économique est intense mais où le passage de l'informel au formel se fait encore souvent dans l'urgence, quand un courrier DGI ou une visite CNSS force la main. Densité commerciale énorme : grossistes, semi-grossistes, commerces de détail, ateliers mécaniques, garages, BTP. Beaucoup d'activités informelles qui passent au formel — c'est là qu'on intervient souvent.
+## Notre clientèle Beni Makada
+**Commerces de gros.** Importateurs de matériaux de construction, alimentation, textile, électroménager. Compta complexe avec rotation de stock importante, [TVA](/outils/simulateur-tva) récupérée à l'import, gestion des marges.
+**BTP et entreprises de travaux.** Petites et moyennes structures. Comptabilité par chantier, retenue de garantie, marchés publics, TVA travaux.
+**Ateliers et garages.** Compta simple mais avec spécificités (pièces détachées, main d'œuvre, stock fluide). On a l'habitude.
+**Pharmacies et commerces alimentaires.** Caisse journalière, TVA mixte (alimentaire 0%, hygiène 20%), gestion des dates de péremption sur le stock.
+## Notre approche
+Pas de jargon. On vient à Beni Makada quand il faut, on vous explique ce qu'on fait dans la langue qui vous convient (français, darija, arabe). Honoraires adaptés à la taille de la structure — on commence à 600 DH HT/mois pour les très petites compta.
+Beaucoup de patrons à Beni Makada nous appellent quand la [DGI](/services/simpl-impots-dgi) les contacte ou quand un courrier [CNSS](/glossaire#cnss) leur fait peur. Premier diagnostic gratuit, on regarde la situation, on dit ce qu'il y a à faire.
+## Passer du commerce informel au formel : la marche à suivre
+Beni Makada est encore un quartier où une partie significative de l'activité tourne en informel — sans Numéro d'Identification Fiscale (NIF), sans patente, sans déclaration CNSS pour les employés. Le formaliser, c'est d'abord rassurer ses fournisseurs, accéder au crédit bancaire, soumissionner à des marchés et dormir tranquille.
+On accompagne ce passage en quatre étapes :
+1. **Diagnostic** : audit rapide de l'activité, des stocks, du personnel, du local (bail commercial ou pas)
+2. **Choix de structure** : SARLAU pour rester souple, SARL classique avec associés, ou démarrage en personne physique. Voir notre [simulateur de coût de création](/outils/simulateur-creation) pour chiffrer
+3. **Création** : [OMPIC](/glossaire#ompic), IRPP, NIF, patente, BO. Délai 2 à 4 semaines avec notre [service création d'entreprise](/services/creation-entreprise)
+4. **Mise en route** : tenue comptable, déclaration CNSS des employés, première TVA, premier [acompte IS](/glossaire#acompte-is)
+Pour la suite, on prend en charge la [tenue comptable](/services/tenue-comptabilite) et la [paie & GRH](/services/paie-grh) en routine.
+## Commerce de gros à Beni Makada : les sujets sensibles
+**TVA récupérée à l'import.** Les grossistes de Beni Makada importent massivement (matériaux, alimentation, électroménager). La TVA payée en douane est récupérable — mais à condition que le DUM (déclaration unique de marchandise) soit conforme et que le rapprochement comptable soit fait. Beaucoup de grossistes laissent des dizaines de milliers de dirhams de TVA non récupérée chaque année.
+Pour estimer rapidement la TVA d'un mois d'import, notre calculateur TVA intègre tous les taux et les régimes spécifiques.
+**Marges et reconstitution.** La DGI a un faible pour les grossistes — elle reconstitue souvent le CA à partir des achats et d'un coefficient sectoriel. Si votre comptabilité ne tient pas, c'est très difficile à défendre. On structure une compta robuste qui résiste à un contrôle. Lire notre [guide contrôle fiscal Tanger](/blog/controle-fiscal-tanger-comment-se-preparer).
+**Cash et seuils.** Au-delà de 5 000 DH par opération, tout règlement doit passer par voie bancaire (chèque, virement, carte). Sous peine de non-déductibilité de la charge. Encore largement ignoré à Beni Makada.
+## BTP et garages : régularisation CNSS
+Les ateliers mécaniques et les petites entreprises de BTP du quartier emploient parfois sans déclarer. Avec le renforcement des contrôles inspection du travail à Tanger depuis 2024, les redressements CNSS se multiplient. On régularise via notre service [Damancom CNSS](/services/damancom-cnss), avec rétrocession sur 4 ans maximum (au lieu d'amendes massives en cas de découverte par l'inspection).
+À lire pour comprendre les enjeux : notre [comparatif SARL vs SAS au Maroc](/comparatifs/sarl-vs-sas-maroc) et notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc).
+Si vous avez reçu un courrier DGI ou une mise en demeure CNSS, [passez au cabinet](/contact) avant de répondre — on regarde ça gratuitement et on vous dit ce que ça vaut vraiment, sans vous faire peur pour rien.
+
+---
+
+## Cabinet comptable à Boukhalef
+
+URL : https://www.ccme.ma/quartiers/boukhalef
+
+À Boukhalef, on croise deux types de clients très différents : des fondateurs de startups tech qui veulent leur premier agrément ZAI et ne savent pas encore si leur activité est éligible, et des investisseurs immobiliers qui achètent des appartements neufs pour les louer à des cadres expatriés sans avoir structuré le montage fiscal. Tissu économique en mutation rapide.
+## Notre activité à Boukhalef
+**Logistique aéroportuaire.** Sociétés de fret, agents handling, prestataires sol. Activité internationale, Office des Changes, [TVA](/outils/simulateur-tva) export.
+**Tech et SaaS [Tanger Tech](/zones/tanger-tech).** Startups, éditeurs de logiciel, BPO/ITO. Régime ZAI applicable selon activité, comptabilité moderne (Stripe, Wise, Notion), reporting investisseurs.
+**Résidences locatives.** Beaucoup de programmes immobiliers ces dernières années. Investisseurs marocains et étrangers qui louent à des cadres expatriés. SCI, fiscalité revenus fonciers, déclaration [IR](/outils/simulateur-ir) pro.
+**Restauration et services.** Restos d'aéroport, agences de location de voitures, hôtels d'affaires.
+## Coordination avec votre activité
+Cabinet centre-ville à 15-20 minutes en voiture. Pour les sociétés Tanger Tech, on se déplace régulièrement sur place. Pour les sociétés logistiques, le numérique nous évite les déplacements quotidiens (factures dématérialisées, validation à distance).
+Si vous démarrez un projet à Tanger Tech ou Boukhalef, premier RDV gratuit pour calibrer.
+## Tech, SaaS, BPO : le bon choix de structure
+Lancer une startup tech à Boukhalef ou en zone Tanger Tech, c'est d'abord une décision juridique et fiscale. SARL classique ? SAS pour faciliter les levées de fonds ? SARL à associé unique pour rester souple ? On voit passer les trois cas chaque semaine.
+On part toujours du même diagnostic :
+- **Profil des fondateurs** (résidents fiscaux Maroc / France / autres) — la convention France-Maroc change beaucoup la donne pour les Français
+- **Plan de levée** prévu sur 24 mois (un VC marocain ou européen voudra une SAS, pas une SARL classique)
+- **Régime ZAI applicable** au projet (BPO, ITO, R&D, édition logicielle) — exonération [IS](/outils/simulateur-is) 5 ans puis taux réduit, mais conditions précises
+- **Stratégie de rémunération** des fondateurs (salaire vs dividendes vs management fees)
+Notre [comparatif SARL vs SAS au Maroc](/comparatifs/sarl-vs-sas-maroc) détaille les bascules. Pour estimer le coût initial, le [simulateur création de société](/outils/simulateur-creation) couvre les frais [OMPIC](/glossaire#ompic), notaire, IRPP, BO, capital minimum.
+## Logistique aéroportuaire : Office des Changes serré
+Les sociétés de fret aéroportuaire de Boukhalef (handling, courrier express, supply chain pour exportateurs auto) ont un rythme de déclarations Office des Changes équivalent à celui de [Tanger Med](/zones/tanger-med). Un transfert mal documenté, un mois sans déclaration et le service Trésor bloque les flux. On gère ce volet en routine via notre [tenue comptable](/services/tenue-comptabilite) avec un sous-process Office des Changes intégré.
+## Résidences locatives : SCI ou IR pro ?
+Les programmes neufs autour de l'aéroport (Marina Bay, résidences Jbel Kbir, opérations Bourguignon) sont massivement achetés pour la location. Question récurrente : monter une SCI marocaine ou rester en location directe avec déclaration en revenus fonciers ?
+Réponse rapide : ça dépend du nombre de biens, du profil fiscal des associés et du projet à long terme (transmission, vente). Pour un seul bien et un seul propriétaire résident, l'IR pro est souvent plus simple et moins coûteux. Au-delà de 3 biens ou avec des co-investisseurs, la SCI commence à avoir du sens. On simule en RDV.
+Pour les expats français qui investissent à Boukhalef, notre [article dédié aux investisseurs français](/blog/expat-francais-investir-tanger) couvre la convention fiscale et l'Office des Changes.
+Vous démarrez une activité à Tanger Tech et vous n'êtes pas sûr d'être éligible au régime ZAI ? [On regarde ça ensemble gratuitement](/contact) — en 30 minutes on vous dit oui ou non, avec les arguments, avant que vous engagiez des frais d'installation.
+
+---
+
+## Cabinet comptable à California
+
+URL : https://www.ccme.ma/quartiers/california
+
+La question qui revient le plus souvent quand un professionnel de California nous appelle : est-ce qu'il vaut mieux rester en BNC ou basculer en SARLAU ? Médecins, avocats, architectes — la réponse dépend du niveau de bénéfice, de l'âge, et de ce qu'il y a (ou pas) derrière en immobilier. On y répond au quotidien pour des praticiens du quartier.
+## Pour qui on travaille à California
+**Médecins et dentistes.** Cabinets de ville, cliniques privées, médecins associés. Choix BNC vs SARL, optimisation rémunération, AMO-TNS, retraite complémentaire CIMR, déclaration [IR](/outils/simulateur-ir). La compta médicale a ses subtilités (prestations honoraires, tiers payant CNOPS/[CNSS](/glossaire#cnss), registres déontologiques).
+**Avocats et notaires.** Le quartier compte plusieurs cabinets juridiques. BNC pour les associés, SCM pour les locaux partagés, traitement comptable des honoraires postérieurs (procédures qui s'étalent sur plusieurs exercices).
+**Pharmacies.** Plusieurs officines à California. Tenue spécialisée (tiers payant, marges arrières grossistes, valorisation stock pharma), conseil sur cession ou succession d'officine.
+**Résidents expatriés.** Nombreux Français et Espagnols résident à California. Gestion fiscale binationale, convention France-Maroc, optimisation patrimoniale, SCI marocaines pour la location de villas du quartier.
+## Notre proximité
+Cabinet centre-ville Avenue Moulay Ismail. À 5-7 minutes en voiture de California (par l'Avenue Allal Ben Abdellah). Parking dispo au cabinet, salle de réunion pour vos RDV, équipe complète sur place.
+Confidentialité absolue — c'est un quartier où tout le monde se croise, et le secret professionnel (dont on est garants par déontologie [OEC](/glossaire#oec)) compte.
+## Médecins de California : optimiser la rémunération
+Pour un médecin spécialiste qui dépasse 700 K DH de bénéfice annuel, rester en BNC pur n'est plus optimal. La bascule en SARLAU permet de scinder la rémunération entre salaire (charges sociales déductibles, retraite mieux dotée) et dividendes (fiscalité plus douce sur la part au-delà du salaire de marché).
+Concrètement, on regarde quatre paramètres :
+- **Niveau de bénéfice avant arbitrage** — en dessous de 600 K DH, le BNC reste souvent compétitif
+- **Âge du praticien** et stratégie retraite (CIMR, PER, prévoyance)
+- **Patrimoine immobilier** existant (cabinet en propriété, SCI, résidence principale)
+- **Transmission ou cession** prévue (céder un cabinet en BNC ne se traite pas comme céder des parts de SARL)
+Pour calibrer rapidement les charges salariales d'un cabinet de 3-6 personnes, voir notre [simulateur de paie](/outils/simulateur-paie). Pour l'[IS](/outils/simulateur-is) d'une SARLAU médicale, le simulateur IS 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale).
+## Avocats et juridiques : le piège des honoraires postérieurs
+Les cabinets d'avocats de California ont souvent des dossiers qui s'étalent sur 3 à 7 ans (procédures fiscales, prudhommales, contentieux commerciaux). Beaucoup facturent par tranches, parfois avec des honoraires de résultat à la sortie. Le rattachement comptable (à l'avancement, à la facturation, à l'encaissement) impacte directement l'IR ou l'IS de l'année.
+C'est l'un des sujets traités via notre [conseil fiscal](/services/conseil-fiscal) et notre [tenue comptable](/services/tenue-comptabilite) pour les structures collectives (SCM, SCP, association d'avocats).
+## Pharmacies du quartier : valorisation et cession
+California compte plusieurs pharmacies installées de longue date. Beaucoup de titulaires arrivent à un âge où la cession se prépare. Question récurrente : à combien valoriser une officine en 2026 ? Le marché tangérois s'est tendu (multiples plus serrés qu'à Casablanca) et la fiscalité de la cession dépend du régime juridique (pharmacie en personne physique vs en société).
+On accompagne via notre [page dédiée comptabilité pour pharmaciens](/services/comptabilite-pharmaciens) et nos [travaux juridiques](/services/travaux-juridiques) pour rédiger l'acte de cession.
+## Expatriés résidents : convention France-Maroc et SCI
+Beaucoup de Français et d'Espagnols ont acheté à California depuis 10-15 ans. Pour ceux qui louent leur villa quand ils sont à l'étranger, ou qui ont basculé en résident fiscal marocain, la lecture de la **convention fiscale franco-marocaine** est essentielle. Erreurs fréquentes : double imposition non corrigée, comptes bancaires français non déclarés à l'Office des Changes, succession mal préparée.
+Notre article [expatriés français : investir à Tanger](/blog/expat-francais-investir-tanger) couvre l'essentiel. Si vous envisagez de basculer de BNC en SARLAU, ou si vous préparez une cession d'officine ou de cabinet médical, [prenez rendez-vous](/contact) — on simule les deux options chiffrées avant que vous décidiez quoi que ce soit.
+
+---
+
+## Cabinet comptable Iberia
+
+URL : https://www.ccme.ma/quartiers/iberia
+
+Dans un rayon de 500 mètres autour du Boulevard Pasteur, on compte des dizaines de commerçants qui partagent souvent les mêmes problèmes : un inventaire de fin d'année bâclé, une TVA mal ventilée sur les caisses, un fonds de commerce à céder sans savoir comment le valoriser correctement. C'est le terrain qu'on connaît le mieux dans le quartier.
+## Ce qu'on fait dans le quartier
+**Commerces de détail.** Boutiques de mode, bijouteries, parfumeries, libraires. Compta caisse + [TVA](/outils/simulateur-tva) + paie de petites équipes. Tarif starter 700 DH HT/mois.
+**Cafés et restaurants.** Boulevard Pasteur et alentours. Compta journalière simplifiée, TVA tourisme 10%, gestion des saisonniers.
+**Agences de voyages et location.** Compta avec écritures spécifiques (acomptes clients, comptes de tiers, billetterie pour le compte de IATA), TVA marge sur prestations touristiques.
+**Bureaux professionnels.** Petits cabinets, agences de communication, consultants. Plutôt en SARLAU ou freelance — on aide au choix de la structure.
+## Notre proximité
+Notre cabinet est situé sur l'Avenue Moulay Ismail, à 3-5 minutes à pied du Boulevard Pasteur. Beaucoup de nos clients du quartier passent au cabinet quand ils ont une question rapide ou un courrier urgent. Pas besoin de rendez-vous pour les sujets simples.
+Si vous avez un commerce ou un service à Iberia et que vous voulez changer de comptable (ou en prendre un pour la première fois), passez nous voir — on regarde votre situation gratuitement.
+## Iberia : un quartier de petits patrons, un cabinet adapté
+Le tissu économique d'Iberia est dominé par des structures de 1 à 8 personnes : une boutique de vêtements, un restaurant familial, une parfumerie, un cabinet de design. À cette taille, le piège classique est de prendre un comptable trop cher (qui vous traite comme une PME industrielle) ou trop bas de gamme (qui se contente de saisir les pièces sans rien expliquer).
+Notre approche pour les petits patrons d'Iberia :
+- **Forfait mensuel transparent** entre 700 et 1 800 DH HT selon le volume — pas de devis surprise, pas de "petite ligne en plus" sur la facture
+- **Un point trimestriel** où on regarde ensemble l'état de la trésorerie, les marges, les sujets fiscaux à venir
+- **Un téléphone qui répond** quand la [DGI](/services/simpl-impots-dgi) vous envoie un courrier ou quand un fournisseur menace une procédure
+Pour estimer rapidement le coût d'une création de boutique ou d'un cabinet libéral à Iberia, voir notre [simulateur de coût de création](/outils/simulateur-creation). Pour calculer la TVA sur un mois de chiffre d'affaires mixte (vêtements 20%, alimentation 0%, restauration 10%), le calculateur TVA couvre tous les taux marocains.
+## Commerces de détail : les sujets à ne pas négliger
+**Stock fin d'année.** Beaucoup de commerces du quartier négligent l'inventaire physique au 31 décembre. Or c'est l'élément qui détermine la marge brute déclarée — un inventaire bricolé, c'est un risque de redressement et c'est aussi de mauvaises décisions internes (on croit gagner de l'argent qu'on ne gagne pas vraiment).
+**TVA sur les soldes et promotions.** La TVA se calcule sur le prix réellement encaissé, pas sur le prix barré. Erreur fréquente sur les caisses non paramétrées correctement.
+**Cession de fonds de commerce.** Quand un commerçant d'Iberia vend sa boutique, la fiscalité dépend du régime (commerçant en société vs en nom propre), de la durée de détention et de la nature des éléments cédés (clientèle, marque, agencements, stocks). On accompagne via notre [conseil fiscal](/services/conseil-fiscal) et nos [travaux juridiques](/services/travaux-juridiques) pour la rédaction de l'acte.
+## Restauration et cafés du Boulevard Pasteur
+Sujet récurrent : les terrasses du Pasteur. Beaucoup d'établissements ont des extras non déclarés en haute saison ou des marges sur boissons mal calculées. La DGI a un faible pour le secteur depuis quelques années — on a vu plusieurs contrôles aboutir à des reconstitutions forfaitaires douloureuses.
+Pour ce type de dossier, voir aussi notre [secteur restauration & hôtellerie](/secteurs/restauration-hotellerie) et notre [guide contrôle fiscal Tanger](/blog/controle-fiscal-tanger-comment-se-preparer).
+Vous avez un commerce sur le Pasteur et vous voulez changer de comptable ? [Passez nous voir](/contact) — on reprend les dossiers en cours sans frais de transfert et on vous dit en une heure si votre situation fiscale est saine ou pas.
+
+---
+
+## Cabinet comptable à Malabata
+
+URL : https://www.ccme.ma/quartiers/malabata
+
+L'hôtellerie de Malabata a ses propres rythmes : les effectifs triplent en juillet-août, la TVA se ventile entre hébergement, restauration et événementiel à des taux différents, et l'inspecteur DGI de la zone connaît les particularités du secteur mieux que beaucoup de comptables généralistes. On travaille avec plusieurs établissements de la corniche depuis quelques années, et ça change ce qu'on peut faire pour eux en cas de contrôle.
+## Notre clientèle à Malabata
+**Hôtellerie et restauration.** La corniche de Malabata concentre une dizaine d'hôtels (Mövenpick, Hilton Garden Inn et indépendants) et autant de restaurants en bord de mer. Compta saisonnière, gestion des extras et CDD, [TVA](/outils/simulateur-tva) tourisme à 10%, taxe de promotion touristique.
+**Cabinets médicaux.** Plusieurs cliniques et cabinets dentaires se sont installés dans le quartier ces dernières années. BNC, [IR](/outils/simulateur-ir) professionnel, AMO-TNS, optimisation rémunération vs structure en société.
+**Investisseurs immobiliers.** Beaucoup de résidences neuves à Malabata sont achetées pour location — courte durée (Airbnb saisonnier) ou longue durée. SCI marocaine, fiscalité revenus fonciers, déclaration IR pro pour les locations meublées.
+**Commerces et services.** Pharmacies, supérettes, agences immobilières, salons. Tenue mensuelle, TVA, paie.
+## Pourquoi un cabinet du centre-ville pour Malabata
+10 minutes en voiture, c'est rien. Notre adresse Avenue Moulay Ismail vous donne accès à un cabinet pro avec parking, salles de réunion et toute l'équipe sous un même toit. On reçoit avec ou sans RDV.
+Pour les déplacements (inventaires d'hôtel, remise de cartons de pièces, signature urgente), on se déplace à Malabata. Pas de frais supplémentaires.
+## Spécificités du quartier
+L'inspecteur [DGI](/services/simpl-impots-dgi) affecté à la zone connaît bien les particularités de l'hôtellerie Malabata — rotation des saisonniers, justification des frais de représentation, taux de remplissage. Pour défendre vos chiffres, il faut savoir comment il pense. C'est le genre de chose qu'on apprend en accompagnant 5-6 hôtels du quartier sur plusieurs années.
+## Calendrier fiscal et social pour les acteurs Malabata
+Le rythme déclaratif d'un hôtelier ou d'un restaurateur de la corniche est dense. Voici les échéances qu'on suit pour vous chaque année :
+- **TVA mensuelle** (tourisme à 10% sur l'hébergement, 10% sur la restauration sur place, 20% sur les boissons alcoolisées et l'événementiel) — déclaration et paiement avant le 20 du mois suivant via Simpl Impôts DGI
+- **Acomptes [IS](/outils/simulateur-is)** trimestriels (mars, juin, septembre, décembre) — calculés sur le résultat de l'exercice précédent. Pour estimer le bon montant, voir notre simulateur IS 2026
+- **[CNSS](/glossaire#cnss) [Damancom](/services/damancom-cnss)** mensuelle, avec un pic en juillet-août quand les effectifs saisonniers triplent. On vous accompagne sur la gestion de la paie et CNSS Damancom pour absorber le rush sans erreur
+- **Taxe de promotion touristique (TPT)** : 5 à 30 DH par nuitée selon le classement, à reverser à la commune urbaine de Tanger trimestriellement
+- **[Liasse fiscale](/glossaire#liasse-fiscale)** annuelle avant le 31 mars
+## Erreurs fréquentes dans le quartier
+On a vu passer assez de dossiers à Malabata pour repérer les pièges récurrents.
+**Mauvaise ventilation TVA.** Quand un hôtel facture une nuit + petit-déj + dîner + soirée DJ, c'est trois taux différents (10%, 10%, 20%). Une caisse mal paramétrée et c'est un redressement assuré sur 4 ans. On audite votre paramétrage Sage / Pennylane / Casio pour fiabiliser ça.
+**Frais de représentation et déplacements.** Les restaurateurs invitent souvent fournisseurs, journalistes ou influenceurs. Si la pièce justificative ne porte pas le nom du bénéficiaire, la DGI requalifie en avantage en nature. C'est l'un des sujets sur lesquels notre [conseil fiscal](/services/conseil-fiscal) intervient le plus.
+**Saisonniers payés en cash.** Pratique encore courante dans certains restaurants — illégal, redressable et de plus en plus tracé via les enquêtes croisées CNSS / inspection du travail. Lire notre [guide Damancom CNSS 2026](/blog/damancom-cnss-guide-2026) pour la procédure propre.
+**SCI mal montée pour la location.** Beaucoup d'investisseurs ouvrent une SCI marocaine sans se demander si l'IR pro ne serait pas plus avantageux. Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) détaille les seuils de bascule.
+Vous gérez un restaurant ou un hôtel à Malabata et une partie de vos saisonniers est encore payée en cash ? [Contactez-nous avant que l'inspection du travail ne passe](/contact) — la régularisation CNSS reste possible, mais elle se fait sur 4 ans maximum et le délai compte.
+
+---
+
+## Cabinet comptable à Marshan
+
+URL : https://www.ccme.ma/quartiers/marshan
+
+À Marshan, beaucoup de propriétaires de villas et de riads sont français ou espagnols — et beaucoup ont acheté sans savoir que le rapatriement des loyers vers leur pays d'origine passe obligatoirement par l'Office des Changes, avec des documents précis à fournir. On régularise ce type de situation plus souvent qu'on ne le voudrait.
+## Notre activité à Marshan
+**Riads et maisons d'hôtes.** Le quartier compte plusieurs adresses connues. Compta hôtelière allégée pour structures de moins de 10 chambres, [TVA](/outils/simulateur-tva) tourisme 10%, gestion taxes locales (taxe promotion touristique 5% par nuitée), réservations Airbnb/Booking en multi-devises.
+**Agences immobilières et investisseurs.** Marshan est un secteur où l'immobilier de prestige se vend. Rotation des biens, gestion des honoraires d'agence, fiscalité plus-values pour les vendeurs.
+**Cabinets de design, architecture, photographes.** Beaucoup de profils libéraux créatifs travaillent ici. BNC, gestion projets longs (un projet d'architecte peut s'étaler sur 18 mois — découpage en avancement), TVA prestation intellectuelle.
+**Investisseurs étrangers résidents.** Français, Espagnols, Italiens propriétaires à Marshan. Gestion fiscale binationale, conventions internationales, statut résident vs non-résident.
+## Pour les Français
+Un mot pour la communauté française de Marshan : la convention fiscale franco-marocaine est claire mais elle a des subtilités. Si vous louez votre villa quand vous n'êtes pas là, ou si vous avez basculé en résidence fiscale marocaine, on peut faire le point. Premier échange gratuit, en français, au cabinet ou en visio depuis la France.
+## Riads et maisons d'hôtes : ne pas confondre les régimes
+Un riad de Marshan peut tourner sous trois régimes complètement différents :
+- **Exploitation directe en personne physique** ([IR](/outils/simulateur-ir) pro régime BNC) — adapté aux structures de moins de 5 chambres avec un seul propriétaire qui exploite
+- **SARL classique** — quand il y a deux ou trois associés, ou un projet d'expansion (rachat d'un deuxième riad, restauration sur place)
+- **SARLAU** — pour un propriétaire seul qui veut isoler sa responsabilité sans complexifier la gouvernance
+Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) détaille les bascules en chiffrant l'IR, l'[IS](/outils/simulateur-is) et la [cotisation minimale](/glossaire#cotisation-minimale) dans chaque cas. Pour le coût initial du montage SARL ou SARLAU (capital, [OMPIC](/glossaire#ompic), notaire, BO), notre [simulateur de coût de création](/outils/simulateur-creation) donne une fourchette précise.
+Sur la fiscalité courante :
+- **TVA tourisme à 10%** sur l'hébergement et le petit-déjeuner servi sur place
+- **Taxe de promotion touristique** à reverser à la commune urbaine de Tanger (5 à 30 DH par nuitée selon classement)
+- **Caisse rigoureuse** — Airbnb et Booking versent en multi-devises, il faut comptabiliser proprement les écarts de change et les commissions
+## Architectes et photographes de Marshan : la TVA prestation intellectuelle
+Le quartier abrite plusieurs cabinets d'architecture connus et de photographes installés. Sujets récurrents :
+- **TVA sur honoraires d'architecte** : 20%, exigible à l'encaissement (sauf option pour les débits)
+- **Projets longs** (un projet d'architecture peut s'étaler sur 18-24 mois) : découpage en avancement obligatoire pour éviter de masser le résultat sur un seul exercice
+- **Cessions de droits** (photographe, designer) : régime spécifique, parfois avantageux
+Notre [tenue comptable](/services/tenue-comptabilite) est calibrée pour ce type de profil.
+## Investisseurs étrangers : attention à l'Office des Changes
+Beaucoup de propriétaires de villas à Marshan sont français, espagnols ou italiens. Le rapatriement des loyers vers le pays d'origine n'est pas automatique — il passe par l'Office des Changes et nécessite des documents probants (bail enregistré, déclaration IR, attestations bancaires).
+Erreur fréquente : oublier de déclarer les comptes en devises ouverts au Maroc, ou oublier de déposer le bilan annuel des avoirs et dettes. La sanction peut être lourde. On gère ce volet via notre [conseil fiscal](/services/conseil-fiscal) et nos [travaux juridiques](/services/travaux-juridiques) pour les actes (bail, cession, succession).
+À lire ensuite : notre article [expatriés français : investir à Tanger](/blog/expat-francais-investir-tanger) et notre [guide de création de SARL Tanger 2026](/blog/creer-sarl-tanger-2026).
+Vous êtes propriétaire à Marshan et vous n'avez jamais fait valider votre montage Office des Changes par un comptable ? [Prenez rendez-vous](/contact) — un point d'une heure peut éviter des blocages bancaires qui durent des mois et des pénalités sur plusieurs années de loyers non déclarés.
+
+
+---
+
+# Le Journal — articles
+
+## Réforme IS 2026 : impacts pour les PME tangéroises
+
+URL : https://www.ccme.ma/blog/reforme-is-2026-pme-tanger
+
+Mis à jour : 2026-06-08
+
+On nous pose la question plusieurs fois par semaine au cabinet : « la réforme [IS](/outils/simulateur-is) 2026, c'est bien pour moi ou pas ? ». La réponse honnête, c'est : ça dépend. Pour la majorité des PME tangéroises ça simplifie les choses, pour quelques cas particuliers ça complique. Voyons ça concrètement.
+## Ce que dit la nouvelle loi
+La réforme IS lancée en 2023 (LF 2023, CGI art. 19) converge en **2026** vers un **taux unique de 20 %** sur le **bénéfice net fiscal** pour le régime de droit commun, jusqu'à **100 millions de DH** de bénéfice. Au-delà de ce seuil, la fraction excédentaire est imposée à **35 %**.
+Ce n'est pas un taux appliqué au chiffre d'affaires : c'est le résultat fiscal qui compte. Une PME peut avoir 30 M DH de CA et 800 K DH de bénéfice — l'IS se calcule sur les 800 K.
+Particularités :
+- Banques et assurances : 40 % (régime spécial, inchangé)
+- Sociétés en zone franche ([TFZ](/zones/tanger-free-zone), [TAC](/zones/tanger-automotive-city), [Tanger Tech](/zones/tanger-tech)) après les 5 ans d'exo : 8,75 % sur l'export
+- **CSS** (contribution sociale de solidarité) : maintenue jusqu'en 2028. Si votre bénéfice dépasse 5 M DH, vous continuez à payer la CSS en plus.
+- **[Cotisation minimale](/glossaire#cotisation-minimale)** : taux unifié à 0,25 % du CA, minimum 3 000 DH par exercice. Vous payez le plus élevé entre la CM et l'IS calculé sur le résultat.
+## Ce que ça donne en chiffres
+Prenons trois cas typiques qu'on rencontre à Tanger. Les montants « IS 2025 » reprennent le barème transitoire de 2025 (17,5 % / 20 % / 22,75 % / 34 %). Le simulateur IS 2026 applique le même barème cible que cet article.
+**Cas 1 — Boutique au centre-ville, CA 1,2M DH, bénéfice 280K DH**
+- IS 2025 (barème transitoire) : 280K × 17,5 % = **49 000 DH**
+- IS 2026 : 280K × 20 % = **56 000 DH**
+- **Différence : +7 000 DH**
+Légère hausse sur les très petits bénéfices — le premier palier monte de 17,5 % à 20 %.
+**Cas 2 — Société de services, CA 6M DH, bénéfice 850K DH**
+- IS 2025 : 52 500 + (550K × 20 %) = **162 500 DH**
+- IS 2026 : 850K × 20 % = **170 000 DH**
+- **Différence : +7 500 DH**
+Sur ce profil, la hausse reste modeste. L'économie massive intervient surtout au-delà de 1 MDH de bénéfice, là où l'ancien palier à 22,75 % disparaît.
+**Cas 3 — PME industrielle hors zone franche, CA 35M DH, bénéfice 4,2M DH**
+- IS 2025 : 52 500 + 140 000 + (3,2M × 22,75 %) = **920 500 DH**
+- IS 2026 : 4,2M × 20 % = **840 000 DH**
+- **Différence : −80 500 DH**
+Belle économie. Pour beaucoup d'industriels du nord, c'est l'équivalent d'une embauche cadre.
+## Les pièges à éviter
+**Le calcul des acomptes 2026.** Ils sont basés sur l'IS de 2025 (système ancien). Donc en 2026, vous allez payer 4 acomptes calibrés sur l'ancien régime, puis vous régulariserez sur le solde en avril 2027. Pour beaucoup, ça veut dire trop d'acomptes payés et un remboursement à attendre — ou un trou de trésorerie pendant 12 mois si on ne le voit pas venir. Notre [article dédié sur les acomptes IS 2026](/blog/fiscalite-2026-acomptes-is) détaille la procédure de modulation.
+**La CM qui surprend.** Un client vient nous voir : « j'ai fait 0 de bénéfice cette année, je ne paie pas d'IS ». Pas tout à fait. La CM s'applique : 0,25% × CA, avec un minimum de 3 000 DH. Donc même en année de pertes, il y a un impôt minimum. À budgéter.
+**La CSS qui reste.** Si vous êtes au-dessus de 5M DH de bénéfice, la CSS continue à 1,5% (ou 5% selon les tranches). Ça réduit le bénéfice net du nouveau taux à 20%. Important pour les grosses PME.
+## Ce qu'on recommande de faire dès maintenant
+D'abord, refaire la projection IS pour 2026 avec votre comptable. Si l'écart entre l'ancien et le nouveau régime est significatif, ajuster les acomptes peut éviter des problèmes de trésorerie.
+Ensuite, regarder si certains arbitrages ont changé. Par exemple : pour un freelance entre 600K et 1M DH de bénéfice annuel, la question SARL vs BNC se rejoue. À 20% d'IS + 15% sur dividendes (avec abattement de 60%), vs [IR](/outils/simulateur-ir) par tranches (jusqu'à 38%), le calcul peut basculer. Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) chiffre les bascules en 2026.
+Enfin, si vous êtes en zone franche, **ne rien changer dans votre tête** : vos exonérations restent. Au contraire, le différentiel avec le régime de droit commun est désormais plus serré (8,75% vs 20% au lieu de 8,75% vs 31% avant), donc l'avantage compétitif des zones est moindre. À garder en tête pour les choix d'implantation futurs — voir notre [comparatif Tanger Med vs TFZ vs TAC](/comparatifs/tanger-med-vs-tfz-vs-tac) pour positionner une nouvelle implantation.
+Si on peut vous aider à modéliser ça pour votre cas, on est joignables au cabinet. Premier échange offert via notre [page contact](/contact). Pour aller plus loin, nos services [conseil fiscal](/services/conseil-fiscal) et [tenue comptable](/services/tenue-comptabilite) couvrent l'accompagnement annuel en routine.
+
+---
+
+## Créer sa SARL à Tanger en 2026 : guide pratique
+
+URL : https://www.ccme.ma/blog/creer-sarl-tanger-2026
+
+Mis à jour : 2026-05-28
+
+On va éviter les généralités. Si vous lisez cet article, c'est que vous voulez créer une boîte à Tanger. Voici exactement comment ça se passe en 2026, étape par étape, avec les délais réels et les coûts réels.
+## Étape 0 — Choisir la forme juridique
+Vite fait :
+- **SARLAU** — vous êtes seul. Capital minimum 10 000 DH (apport possible en numéraire ou en nature). C'est la plus simple, la plus courante pour démarrer.
+- **SARL** — vous êtes 2 à 50 associés. Mêmes règles capital. Plus de formalisme dans les AG, mais ça reste raisonnable.
+- **SAS** — souplesse statutaire maximale, intéressant si vous prévoyez levée de fonds, pactes complexes, actions de préférence. Formalisme plus lourd.
+- **SA** — pour les sociétés de plus grande envergure, capital min 300 000 DH (3M pour SA cotée). Pas pour démarrer une activité standard.
+Pour 90% des projets à Tanger : SARLAU si vous êtes seul, SARL sinon.
+## Étape 1 — Le certificat négatif
+C'est le document qui réserve la dénomination sociale auprès de l'[OMPIC](/glossaire#ompic). Sans ça, rien ne démarre.
+- **Coût** : 230 DH
+- **Délai** : 24 à 48 heures
+- **Comment** : en ligne sur le site OMPIC, ou via votre cabinet
+Conseil : préparez 3 noms par ordre de préférence. Beaucoup sont déjà pris, surtout les noms en français à Tanger (concurrence locale forte). Pensez aussi à vérifier la disponibilité du domaine .ma et des handles sociaux.
+## Étape 2 — Rédaction des statuts
+C'est ici qu'on perd beaucoup de gens. Les statuts définissent :
+- Forme juridique
+- Dénomination
+- Siège social
+- Objet social (à rédiger large mais cohérent)
+- Capital et répartition entre associés
+- Désignation du ou des gérants et leurs pouvoirs
+- Modalités de cession de parts
+- Règles de prise de décision
+- Durée de la société (en général 99 ans)
+- Modalités de dissolution
+Notre recommandation : **ne pas prendre un modèle Word trouvé sur internet**. C'est tentant pour économiser, mais on récupère régulièrement des dossiers où l'objet social est trop restreint (impossible de pivoter), où les modalités de cession protègent mal les associés, où la nomination du gérant est ambiguë.
+Coût d'une rédaction par [expert-comptable](/cabinet) ou avocat : 1 500 à 3 500 DH selon complexité. C'est un investissement, pas une dépense.
+## Étape 3 — Dépôt du capital à la banque
+Ouverture d'un compte bloqué, dépôt du capital, attestation de blocage. La banque vous demande :
+- Projet de statuts
+- Certificat négatif
+- CIN/passeport des associés et du gérant
+- Justificatif de domicile
+- Formulaire d'ouverture de compte
+Délai : 3 à 5 jours selon la banque. Attijariwafa, BMCE, BMCI, Société Générale, CIH, CFG — toutes acceptent, mais les délais varient. À Tanger, BMCE et Société Générale sont généralement les plus rapides en notre expérience.
+## Étape 4 — Légalisation des signatures
+Statuts et déclaration de souscription à signer en présence d'un agent municipal de la commune (ex-baladia). Coût : 200 à 1 000 DH selon le nombre de pages et de signatures.
+Cette étape, c'est administratif pur. Comptez une demi-journée si vous y allez vous-même, parfois moins si vous passez par un cabinet qui maîtrise les guichets.
+## Étape 5 — Dépôt CRI Tanger
+Le [CRI](/glossaire#cri) est le guichet unique. Vous y déposez le dossier complet et il s'occupe en cascade de :
+- Inscription au Registre du Commerce (RC)
+- Identifiant fiscal (IF) auprès de la [DGI](/services/simpl-impots-dgi)
+- Patente
+- Affiliation [CNSS](/glossaire#cnss)
+- Déclaration d'existence DGI
+Coût des frais administratifs : ~700 DH (dont RC 350 DH).
+Délai au CRI : 3 à 7 jours.
+## Étape 6 — Publication JAL
+Annonce légale dans un journal habilité (L'Économiste, Aujourd'hui Le Maroc, Al Bayane, etc.). Coût : 500 à 800 DH selon le journal.
+Cette publication doit intervenir dans les 30 jours suivant l'immatriculation au RC.
+## Étape 7 — On y est ?
+Une fois le RC en main et l'IF généré, vous êtes officiellement en activité. Mais il reste quelques détails :
+- Activer Simpl Impôts (compte fiscal en ligne)
+- Activer [Damancom](/services/damancom-cnss) (si vous embauchez)
+- Tenir un livre journal coté et paraphé au tribunal de commerce
+- Faire la déclaration de patente avant le 31 janvier de l'année suivante
+## Coûts récap
+| Poste | Coût |
+|-------|------|
+| Certificat négatif | 230 DH |
+| Légalisation | 200-1 000 DH |
+| Frais CRI (RC + IF) | ~700 DH |
+| JAL | 500-800 DH |
+| **Total frais administratifs** | **~1 700-2 700 DH** |
+| Honoraires accompagnement (cabinet) | 3 500-8 000 DH HT |
+## Délais réels
+Avec un dossier complet et un cabinet qui suit : **5 à 10 jours ouvrables**. Sans accompagnement et en se débrouillant seul : 3 à 6 semaines avec des aller-retours fréquents.
+## Erreurs fréquentes
+- Choisir un objet social trop restreint, et devoir faire une AGE de modification 6 mois après
+- Sous-capitaliser : capital social à 10 000 DH alors qu'on a besoin de 80 000 DH dès le mois 2 pour fonctionner
+- Mal nommer le gérant (limites de pouvoir floues, durée non précisée)
+- Oublier la patente — sanction à la première année
+- Ne pas activer Damancom avant la première embauche
+Bref. Si vous voulez aller vite et propre, faites-vous accompagner. Si vous voulez le faire seul, prévoyez du temps et de la patience. C'est tout à fait possible.
+
+---
+
+## TFZ, TAC, Tanger Tech : laquelle choisir ?
+
+URL : https://www.ccme.ma/blog/zones-franches-tanger-comparatif
+
+Mis à jour : 2026-05-15
+
+Les zones franches de Tanger attirent. Et pour de bonnes raisons : exonération [IS](/outils/simulateur-is) 5 ans, taux réduit ensuite, exonération [TVA](/outils/simulateur-tva) export, avantages douaniers. Mais entre [TFZ](/zones/tanger-free-zone), [TAC](/zones/tanger-automotive-city) et [Tanger Tech](/zones/tanger-tech), le choix n'est pas évident. On clarifie.
+## Tanger Free Zone (TFZ)
+**Située à** Aouama, à 25 km du centre-ville et 15 km du port [Tanger Med](/zones/tanger-med).
+**Spécialité** : multi-sectorielle, mais dominée par textile-confection, électronique, métallurgie légère.
+**Avantages** : exonération IS 5 ans, taux 8,75% ensuite, [IR](/outils/simulateur-ir) salariés à 20% libératoire, exonération TVA export, régime douanier MEAD.
+**Conditions d'agrément** : activité 70%+ orientée export (en CA), implantation effective.
+**Loyers** : 30-65 DH/m² selon emplacement et état du local.
+**Pour qui** : industriels d'export classiques, sous-traitance internationale, façonnage textile.
+## Tanger Automotive City (TAC)
+**Située à** Melloussa, à proximité immédiate de l'usine Renault.
+**Spécialité** : équipementiers automobiles, mécanique, plasturgie liée à l'auto.
+**Avantages** : mêmes avantages fiscaux que TFZ + écosystème automobile complet (logistique, RH spécialisée, fournisseurs locaux).
+**Conditions** : activité automobile (rangs 1, 2, 3), engagement de production pour Renault et/ou Stellantis souvent demandé.
+**Loyers** : équivalents TFZ, mais infrastructures plus modernes.
+**Pour qui** : équipementiers automobiles, fournisseurs Tier 1/2/3 des constructeurs.
+## Tanger Tech (Mohammed VI Tech City)
+**Située à** Aïn Dalia, à proximité du nouveau hub urbain et de l'aéroport.
+**Spécialité** : tech, software, BPO/ITO, R&D, services à valeur ajoutée. En cours de développement.
+**Avantages** : mêmes que TFZ pour les activités éligibles ZAI, plus l'écosystème tech (incubateurs, espaces coworking, fibre optique).
+**Conditions** : activité tech orientée export ou R&D innovante. Le périmètre exact des activités éligibles évolue, à vérifier au moment du dossier.
+**Loyers** : variables selon avancement de la phase concernée.
+**Pour qui** : éditeurs SaaS, agences digitales en outsourcing, BPO multilingue, R&D fintech/edtech.
+## Comparatif rapide
+| Critère | TFZ | TAC | Tanger Tech |
+|---------|-----|-----|-------------|
+| Exonération IS 5 ans | Oui | Oui | Oui |
+| IR salariés 20 % libératoire | Oui | Oui | Oui |
+| Activité industrielle | Forte | Très forte (auto) | Non éligible |
+| Activité tech / services | Limité | Non éligible | Cœur de cible |
+| Distance Tanger Med | 15 km | 18 km | 30 km |
+| Écosystème mature | Très mature | Mature | Écosystème en développement |
+## Le piège classique
+Beaucoup de sociétés se font agréer puis perdent l'agrément en cours de route. Pourquoi ? Parce qu'elles ont arrêté de respecter le seuil d'export 70%. Vous attaquez le marché local en complément, vous prenez 35% de votre CA en ventes Maroc, et hop, plus de zone franche. Ce n'est pas linéaire, ça se déclenche d'un coup à la première vérification.
+D'où l'importance d'un suivi rigoureux : compta zone/hors-zone bien séparée, suivi des seuils chaque mois, alerte si tendance défavorable. C'est précisément le travail qu'on fait pour nos clients en zone franche.
+## Comment obtenir l'agrément
+Démarches auprès du [CRI](/glossaire#cri) Tanger : dossier de demande, étude de viabilité, plan de production prévisionnel sur 5 ans, justificatifs financiers. Délai d'instruction : 6 à 12 semaines pour les zones bien rodées (TFZ, TAC), variable pour Tanger Tech.
+L'agrément est délivré par arrêté ministériel. Ensuite, location ou achat de local dans la zone, démarrage effectif de l'activité, bilan d'activité annuel à transmettre.
+Si vous hésitez, on fait l'étude comparative pour votre cas (secteur, profil, projection). Premier échange offert.
+
+---
+
+## Domicilier sa société à Tanger : prix et étapes
+
+URL : https://www.ccme.ma/blog/domiciliation-societe-tanger
+
+Mis à jour : 2026-05-02
+
+Domicilier sa société, c'est utiliser l'adresse d'un prestataire comme siège social officiel. À Tanger, c'est une pratique très répandue — pour de bonnes raisons. Mais il y a des règles à respecter et quelques pièges à éviter.
+## Pourquoi domicilier
+**Pour les entrepreneurs qui démarrent** : éviter d'utiliser son adresse personnelle (mélange vie privée/pro, problèmes avec le syndic, déménagements coûteux quand on change d'appartement).
+**Pour les investisseurs étrangers** : avoir une adresse au Maroc sans louer un local qu'on n'utilise pas. C'est très courant chez les Français, Espagnols, Belges qui investissent à Tanger.
+**Pour les sociétés en zone franche** : avoir une adresse complémentaire en centre-ville pour les démarches administratives qui ne se font pas depuis la zone (notamment certaines banques, certaines négociations commerciales).
+**Pour les freelances digitaux et e-commerçants** : pas de local physique nécessaire pour l'activité, mais besoin légal d'une adresse de siège social.
+## Cadre légal
+La [domiciliation](/services/domiciliation) est encadrée par le Code de Commerce. Le domiciliataire doit :
+- Être inscrit au RC (lui-même)
+- Tenir un registre des sociétés domiciliées
+- Mettre des locaux à disposition pour les visites éventuelles de l'administration
+- Conserver les courriers reçus pour la société domiciliée
+Le contrat de domiciliation doit être :
+- Écrit
+- Daté
+- D'une durée minimum (renouvelable)
+- Mentionner les modalités de réception et de transmission des courriers
+Un contrat de domiciliation conforme est exigé par le [CRI](/glossaire#cri) Tanger pour l'immatriculation au RC.
+## Combien ça coûte à Tanger
+Selon les prestataires :
+- **Formule basique** (adresse seule, courrier à venir chercher) : 150-250 DH/mois
+- **Formule standard** (adresse + scan/envoi du courrier) : 250-500 DH/mois
+- **Formule prestige** (adresse + courrier + accès salles de réunion) : 500-1 200 DH/mois
+- **Formule "tout inclus"** (domiciliation + secrétariat partiel + numéro dédié) : 1 200-3 000 DH/mois
+Les écarts s'expliquent par : qualité de l'adresse, fréquence et qualité du traitement courrier, services additionnels.
+## Le quartier compte
+À Tanger, l'adresse a son importance. Une adresse au centre-ville (Avenue Moulay Ismail, Boulevard Pasteur, Place de France) inspire confiance — ça pèse en RDV bancaire ou en RDV client. Une adresse en périphérie ou dans une zone industrielle peut faire perdre des opportunités, même si l'activité elle-même est sérieuse.
+Notre cabinet est sur l'Avenue Moulay Ismail, donc centre-ville. Mais d'autres prestataires sont aussi bien placés.
+## Les pièges fréquents
+**Le "fournisseur low-cost"** qui ne traite jamais le courrier. Vous découvrez 6 mois après qu'une mise en demeure [DGI](/services/simpl-impots-dgi) traîne dans une pile. Catastrophe.
+**Le "domiciliataire fantôme"** qui n'a pas de vrai bureau et qui se fait tracer en cas d'inspection. La société domiciliée perd le siège social et doit re-déposer un dossier RC en urgence.
+**Le contrat à clauses cachées** : pénalités énormes en cas de résiliation anticipée, augmentations tarifaires sans préavis, frais de scan facturés à la pièce.
+**La domiciliation chez un cabinet comptable peu sérieux** : pratique courante, mais regardez si le cabinet est inscrit à l'Ordre, si les locaux sont visibles, si les références clients existent.
+## Vérifications à faire avant de signer
+1. Le prestataire est-il bien inscrit au RC ?
+2. Les locaux existent-ils physiquement (visite avant signature) ?
+3. Le contrat respecte-t-il les obligations légales ?
+4. Que se passe-t-il en cas de courrier urgent (notification fiscale, mise en demeure) ?
+5. Quelle durée d'engagement et quelles conditions de résiliation ?
+6. Tarifs : forfait clair ou facturation à l'usage ?
+Si vous voulez en savoir plus sur notre offre de domiciliation, c'est sur la page service correspondante. Sinon, n'importe quel cabinet sérieux à Tanger fera l'affaire — l'important c'est de vérifier les fondamentaux ci-dessus.
+
+---
+
+## Acomptes IS 2026 : calendrier, calcul, pièges
+
+URL : https://www.ccme.ma/blog/fiscalite-2026-acomptes-is
+
+Mis à jour : 2026-04-22
+
+Quatre fois par an, votre société doit payer un acompte d'[IS](/outils/simulateur-is) à la [DGI](/services/simpl-impots-dgi). C'est une obligation que beaucoup de dirigeants découvrent en cours de route — et qui peut vraiment plomber une trésorerie si on s'y prend mal. Voici comment ça fonctionne, sans jargon.
+## Le principe
+L'IS, c'est l'impôt sur les bénéfices de votre société. Il est dû en N+1 (avant le 31 mars de l'année suivante), mais on n'attend pas cette date pour commencer à payer. Le législateur a prévu un mécanisme d'acomptes : vous payez en cours d'exercice, sur la base de l'IS de l'exercice précédent.
+C'est de la trésorerie anticipée. Pas un nouvel impôt, juste un calendrier de paiement.
+## Le calcul
+Chaque acompte = 25% de l'IS de l'exercice précédent.
+Donc si en 2025 vous avez payé 200 000 DH d'IS, vous paierez en 2026 quatre acomptes de 50 000 DH chacun. Total : 200 000 DH.
+Quand votre IS 2026 réel sera calculé (en avril 2027), on fera la régularisation : si votre IS réel est supérieur à 200K (mettons 280K), vous payez le solde de 80K avec la liasse. S'il est inférieur (mettons 150K), vous avez un crédit d'IS à imputer sur les acomptes 2027 ou à demander en remboursement.
+## Le calendrier 2026
+Pour une société dont l'exercice est l'année civile (1<sup>er</sup> janvier - 31 décembre) :
+| Acompte | Date limite |
+|---------|-------------|
+| 1<sup>er</sup> | 31 mars 2026 |
+| 2<sup>ème</sup> | 30 juin 2026 |
+| 3<sup>ème</sup> | 30 septembre 2026 |
+| 4<sup>ème</sup> | 31 décembre 2026 |
+Si votre exercice ne suit pas l'année civile (rare au Maroc, mais ça arrive), les échéances sont décalées en proportion.
+## Les cas particuliers
+**Premier exercice.** Aucun acompte à payer (pas d'IS de référence). Vous payez tout le solde IS en N+1.
+**IS de référence nul** (déficit ou exonération totale). Pas d'acompte non plus. Mais attention à la [cotisation minimale](/glossaire#cotisation-minimale) (CM) qui peut être due quand même.
+**Société en zone franche pendant les 5 premières années** ([TFZ](/zones/tanger-free-zone), [TAC](/zones/tanger-automotive-city), [Tanger Tech](/zones/tanger-tech)). Exonération IS donc pas d'acomptes. Au-delà, on revient au régime normal.
+**Société en cours de cessation.** Acomptes dus jusqu'à la date d'effet de la dissolution.
+## Le piège trésorerie
+C'est là que ça coince pour beaucoup de PME.
+Imaginons que 2025 ait été une excellente année (IS payé : 400K DH). Sur cette base, en 2026, vous devez payer 4 × 100K = 400K DH d'acomptes.
+Mais 2026 est plus compliquée — perte d'un client important, ralentissement du marché. Votre IS réel 2026 sera plutôt de 180K. Donc vous aurez payé 220K de trop sur l'année. La DGI vous remboursera, mais 12 mois plus tard.
+Pendant 12 mois, ces 220K manquent dans votre trésorerie. Pour une PME tangéroise classique, c'est l'équivalent de 3-4 mois de salaires.
+## Comment l'anticiper
+**Faire des projections trimestrielles.** Si vous voyez en juin que l'année 2026 sera moins bonne que 2025, demandez à votre comptable de simuler l'IS prévisionnel 2026.
+**Demander la modulation des acomptes** auprès de la DGI. Procédure prévue par le CGI : si on peut justifier que l'IS prévisionnel sera nettement inférieur à celui de N-1, on peut réduire les acomptes (avec autorisation préalable). C'est rare mais possible.
+**Négocier avec la banque** une ligne de découvert calibrée pour absorber le sur-acompte. C'est moins cher que de paniquer en septembre.
+**Garder une réserve de trésorerie** d'au moins 2 acomptes prévisionnels. C'est de l'hygiène financière de base.
+## Avec la réforme IS 2026
+Le barème 2026 (20 % sur bénéfice jusqu'à 100 MDH) abaisse l'IS pour les sociétés dont le bénéfice dépasse ~1,5 MDH par rapport au barème transitoire 2025. En revanche, les petites structures peuvent voir une légère hausse sur le premier palier.
+Exemple : bénéfice 4,2 MDH — IS 2025 ≈ 920 500 DH, IS 2026 = 840 000 DH (−80 500 DH). Les acomptes 2026 restent calibrés sur l'IS 2025 : anticipez un sur-paiement si votre bénéfice 2026 sera nettement inférieur.
+## Pénalités de retard
+Acompte payé avec retard : majoration de 10% la première période, puis pénalité progressive. Sur 200K DH d'acompte, ça fait vite 20K à 50K de pénalités évitables.
+Surtout, pas de retard. Mieux vaut télépayer 3-4 jours avant l'échéance pour absorber un éventuel bug Simpl Impôts.
+
+---
+
+## Damancom 2026 : guide pas-à-pas pour PME
+
+URL : https://www.ccme.ma/blog/damancom-cnss-guide-2026
+
+Mis à jour : 2026-04-08
+
+[Damancom](/services/damancom-cnss), c'est le portail de déclaration sociale de la [CNSS](/glossaire#cnss) au Maroc. Toute société employeuse doit y passer, chaque mois, pour déclarer ses salariés et payer les cotisations. Pour les dirigeants qui découvrent, ça paraît complexe — en réalité c'est plutôt logique une fois qu'on a pris le pli.
+## Avant tout, l'inscription
+Si votre société vient d'être créée à Tanger, l'affiliation CNSS a normalement été faite via le [CRI](/glossaire#cri) lors de l'immatriculation. Vous avez reçu un numéro d'affiliation employeur (commençant par 7 ou 9 selon la période). Sinon, vous pouvez le récupérer auprès de la CNSS Tanger ou via le CRI.
+Avec ce numéro, vous demandez l'activation Damancom. Il vous faut :
+- Le n° d'affiliation employeur
+- Une pièce d'identité du gérant
+- Un certificat numérique (généré par la CNSS lors de l'inscription)
+Une fois activé, vous accédez à votre espace en ligne sur damancom.ma.
+## Le cycle mensuel
+Voici ce qui se passe chaque mois en condensé :
+1. **Avant le 1<sup>er</sup>** : éditer les bulletins de paie (pour le mois écoulé)
+2. **Avant le 5** : préparer la BDS (bordereau de déclaration des salaires)
+3. **Avant le 10** : télédéclarer sur Damancom et télépayer
+Le **10 du mois** est l'échéance légale. Si le 10 tombe un dimanche ou jour férié, ça décale au prochain jour ouvré.
+## Préparer la BDS
+La BDS, c'est un fichier qui liste tous vos salariés du mois avec leur salaire brut, leurs cotisations, leur durée travaillée. Il y a un format précis à respecter.
+Si vous utilisez un logiciel de paie (Sage Paie, Ciel Paie, Lobby Paie, ou les versions marocaines), il génère le fichier BDS automatiquement.
+Sinon, vous pouvez saisir directement dans l'interface Damancom — pratique pour les très petites structures (1-3 salariés).
+## La télédéclaration en pratique
+1. Connexion sur damancom.ma avec votre certificat
+2. Sélectionner "Déclaration en ligne"
+3. Choisir le mois concerné
+4. Charger le fichier BDS (ou saisir manuellement)
+5. Vérifier les totaux : nombre de salariés, masse salariale, cotisations
+6. Valider
+Vous obtenez un accusé de dépôt à conserver.
+## Le télépaiement
+Une fois la déclaration validée, vous accédez au paiement. Deux options :
+- **Paiement immédiat** par carte bancaire (CIB ou e-banking)
+- **Paiement différé** par virement bancaire (avec délai supplémentaire)
+Notre recommandation : payer le même jour que la déclaration. Sinon, on oublie.
+## Les cotisations en 2026
+| Branche | Salarial | Patronal | Plafond |
+|---------|---------|---------|---------|
+| Prestations sociales | 4,48% | 8,98% | 6 000 DH/mois |
+| AMO | 2,26% | 4,11% | Sans plafond |
+| Allocations familiales | 0% | 6,40% | Sans plafond |
+| Formation pro (TFP) | 0% | 1,60% | Sans plafond |
+Total cotisations sur un salaire à 6 000 DH brut : environ 6,74% côté salarial + 21,09% côté patronal.
+## Les erreurs fréquentes
+**Oubli de la déclaration "néant".** Même sans salarié actif (suspension d'activité, congé maladie longue durée), il faut déclarer "néant". Sinon majoration automatique.
+**Cotisation sur les avantages en nature non déclarée.** Voiture de fonction, logement, téléphone, mutuelle prise en charge à 100% : tout est cotisable. Beaucoup de PME oublient.
+**Déclaration faite mais paiement oublié.** Dépose ≠ paye. Il faut faire les deux. La [DGI](/services/simpl-impots-dgi) considère que vous êtes en retard si vous avez déclaré sans payer.
+**Mauvaise saisie de l'ancienneté.** Pour les salariés en CDI ANAPEC, l'exonération CNSS est plafonnée à 24 mois. Saisir une ancienneté incorrecte = redressement futur.
+## Gestion des accidents du travail
+À part la BDS mensuelle, il y a la déclaration AT en cas d'accident du travail. À faire dans les 48 heures de l'accident, via le formulaire AT sur Damancom. Documents à joindre : déclaration de l'employé, certificat médical, témoignages éventuels. La CNSS prend ensuite en charge les indemnités journalières et les frais médicaux selon le régime AT-MP.
+## Notre tarif si vous nous le confiez
+Externalisation paie + Damancom : à partir de 35 DH HT par bulletin pour les petites structures (jusqu'à 5 salariés), tarifs dégressifs au-delà. Inclut la BDS, la télédéclaration, le télépaiement, les attestations CNSS sur demande.
+
+---
+
+## Contrôle fiscal DGI à Tanger : comment se préparer
+
+URL : https://www.ccme.ma/blog/controle-fiscal-tanger-comment-se-preparer
+
+Mis à jour : 2026-03-25
+
+Recevoir un avis de vérification, ça remue. Surtout quand on est PME et qu'on n'a jamais vécu ça. La bonne nouvelle, c'est que dans 90% des cas, le contrôle ne tourne pas au cauchemar — à condition de bien le préparer.
+## L'avis de vérification, qu'est-ce que c'est
+C'est un courrier de la [DGI](/services/simpl-impots-dgi) qui vous notifie l'intention de contrôler vos comptes. Il précise :
+- Les exercices concernés (généralement les 4 derniers exercices non prescrits)
+- Les impôts visés ([IS](/outils/simulateur-is), [TVA](/outils/simulateur-tva), [IR](/outils/simulateur-ir), ou les trois)
+- La date du début du contrôle (au minimum 15 jours après la notification)
+- Le nom de l'inspecteur en charge
+- Le lieu du contrôle (sur place dans vos locaux ou sur pièces dans les bureaux DGI)
+À partir de ce courrier, le compte à rebours démarre.
+## Les premières heures
+D'abord, ne rien envoyer à la DGI sans réfléchir. Pas de réponse précipitée, pas d'engagement par téléphone.
+Ensuite :
+1. **Appeler votre comptable**. Si vous n'en avez pas, c'est le moment d'en prendre un — un cabinet inscrit [OEC](/glossaire#oec) habitué aux contrôles. À Tanger il y en a plusieurs sérieux.
+2. **Récupérer toutes vos pièces** des exercices visés : grand livre, balances, journaux, justificatifs (factures achats/ventes, relevés bancaires, contrats), bilans, déclarations TVA et IS déposées, attestations diverses.
+3. **Identifier les zones sensibles**. Demandes d'IS atypiques, baisses de marge inhabituelles, comptes courants d'associés très débiteurs, charges déductibles atypiques (voyages, restaurants, cadeaux), TVA récupérée sur des factures border-line.
+4. **Préparer les justificatifs manquants**. Si une charge importante n'a pas son justif, c'est le moment de le retrouver.
+## Les questions de l'inspecteur, classique
+Ce qu'on voit revenir à chaque contrôle :
+- "Pouvez-vous justifier ces honoraires de 80 000 DH versés à M. X ? Avez-vous le contrat, la nature des prestations, les livrables ?"
+- "Cette facture fournisseur de 250 000 DH, j'ai du mal à voir le rapport avec votre activité. Vous l'expliquez comment ?"
+- "Votre marge brute a chuté de 18% à 9% en N. Que s'est-il passé ?"
+- "Le compte courant du gérant est créditeur de 1,2M DH. D'où vient cet argent ? Est-ce que les retraits sont justifiés ?"
+- "Vos déclarations TVA collectent moins que ce que la balance comptable suggère. Comment expliquez-vous l'écart ?"
+- "Sur cette opération avec votre maison-mère en France, où est la documentation prix de transfert ?"
+Toutes ces questions ont des réponses légitimes. Mais sans préparation, on bafouille, on contredit ses propres déclarations, et on donne à l'inspecteur des angles d'attaque qu'il n'aurait pas trouvés seul.
+## La conduite pendant le contrôle
+**Soyez disponible mais pas servile.** L'inspecteur a un travail à faire, vous aussi. Si vous avez d'autres rendez-vous, dites-le et reprogrammez. Pas la peine de bloquer toute votre journée à chaque visite.
+**Répondez seulement à ce qui est demandé.** Pas de digressions sur d'autres sujets, pas de confidences sur vos relations avec un fournisseur. Tout ce que vous dites peut être utilisé.
+**Ne signez rien à chaud.** Les procès-verbaux d'audition, les "attestations" diverses : toujours demander à les emporter pour relecture, et les retourner signés après vérification avec votre conseil.
+**Tenez un journal du contrôle.** Date de chaque visite, sujets abordés, documents remis, demandes de l'inspecteur, vos réponses. Ça aidera énormément si on doit contester ensuite.
+## La phase de notification
+Au bout de 6 mois (PME) ou 12 mois (grandes), l'inspecteur clôt sa vérification et vous notifie ses redressements. C'est un courrier qui liste, par exercice et par impôt, les sommes qu'il propose de redresser, avec les motifs.
+À partir de cette notification, **30 jours** pour répondre par écrit. Pas un jour de plus.
+## La réponse argumentée
+C'est ici que ça se joue. Une bonne réponse :
+- Reprend chaque chef de redressement, point par point
+- Conteste sur le fond ou sur le formalisme quand c'est défendable
+- Produit les justificatifs ignorés (ou retrouvés depuis)
+- Cite la doctrine administrative (notes circulaires DGI), la jurisprudence
+- Propose éventuellement des concessions sur les points indéfendables, en échange d'un abandon sur les contestables
+Une mauvaise réponse, c'est : "non on n'est pas d'accord, c'est injuste". Ça ne marche pas.
+## Les recours possibles
+Si la DGI maintient les redressements :
+- **Recours hiérarchique** auprès du DRI (Directeur Régional des Impôts) : 60 jours
+- **Commission paritaire** (mixte DGI / contribuables) pour les questions de fait : 60 jours
+- **Tribunal administratif** : ultime recours, 60 jours après décision défavorable
+À chaque étape, une stratégie distincte. Pas la peine d'aller au tribunal sur un sujet qui se règle en commission.
+## Le coût d'un contrôle
+Côté honoraires conseil, un contrôle bien défendu, c'est entre 15 000 et 60 000 DH HT pour une PME standard, selon les enjeux et la durée. Pour des redressements importants (>500K DH), on peut négocier une rémunération au résultat.
+Côté redressements évités, on parle souvent de 10x ce qu'on facture. Sur des dossiers récents, on a évité 800K DH de redressement avec des honoraires de 40K. Pas mal.
+## Le meilleur conseil
+Ne pas attendre l'avis de vérification pour s'en occuper. Un audit fiscal préventif tous les 2-3 ans (15-25K DH selon taille), c'est ce qui permet de **détecter les anomalies avant la DGI** et de les régulariser sans pénalités. La régularisation spontanée est toujours moins chère que la régularisation imposée.
+
+---
+
+## Expat français qui investit à Tanger : b.a.-ba fiscal
+
+URL : https://www.ccme.ma/blog/expat-francais-investir-tanger
+
+Mis à jour : 2026-03-12
+
+Investir au Maroc en tant que Français, c'est une décision de plus en plus fréquente. Tanger attire particulièrement : proximité avec l'Espagne et la France (1h en avion depuis Paris ou Madrid), cadre de vie agréable, immobilier abordable, climat fiscal qui peut être favorable. Mais il y a un cadre légal à respecter et quelques arbitrages à faire en amont.
+## Première question : résidence fiscale
+Vous restez résident fiscal français ou vous devenez résident marocain ? C'est la question fondatrice. La convention fiscale franco-marocaine (1970) tranche, mais pas toujours en faveur de ce que vous croyez.
+Vous êtes résident fiscal marocain si :
+- Votre foyer (famille proche) est au Maroc, **ou**
+- Votre lieu de séjour principal est au Maroc (>183 jours/an), **ou**
+- Le centre de vos intérêts économiques est au Maroc
+Beaucoup de Français qui font des allers-retours pensent rester résidents français — à tort. Si votre famille est restée en France et que vous travaillez au Maroc, vous êtes peut-être déjà résident marocain sans le savoir.
+L'enjeu : éviter la double imposition. Et payer là où c'est légitime.
+## Les schémas types
+**Schéma 1 — Vous restez résident fiscal français, vous investissez à Tanger.**
+Vous créez une société marocaine (SARL ou SA) qui détient l'investissement. Les bénéfices sont imposés au Maroc ([IS](/outils/simulateur-is)). Les dividendes que vous remontez en France sont soumis à la retenue à la source marocaine de 15%, puis intégrés à votre [IR](/outils/simulateur-ir) français avec crédit d'impôt pour éviter la double imposition. C'est carré, c'est encadré par la convention.
+**Schéma 2 — Vous devenez résident fiscal marocain.**
+Plus simple. Vous payez votre IS marocain, vous touchez vos dividendes au Maroc avec retenue de 15% libératoire (régime résident), vous êtes peinard côté fiscal français (sortie du foyer fiscal). Mais ça implique vraiment de vivre au Maroc, pas juste y avoir une carte de séjour.
+**Schéma 3 — SCI marocaine pour de l'investissement immobilier.**
+Vous achetez à Tanger via une SCI marocaine. Avantages : protection patrimoniale, transmission facilitée, optimisation fiscale sur la revente. Mais attention : la SCI marocaine est par défaut soumise à l'IS, contrairement à la SCI française à l'IR. Le régime change tout.
+## Office des Changes
+Pour faire entrer de l'argent au Maroc en tant qu'investisseur étranger, il faut respecter les règles de l'Office des Changes. Le principe : tout investissement étranger doit être "déclaré" pour pouvoir être ensuite "désinvesti" (rapatriement des bénéfices et du capital).
+Concrètement :
+- Apport en capital social : déclaration auprès de la banque domiciliataire
+- Compte courant d'associé : possible mais avec règles précises
+- Transferts internationaux : justification obligatoire, plafonds variables selon le type d'opération
+**Attention** : les Marocains résidents ne peuvent pas placer librement à l'étranger (encore aujourd'hui, malgré assouplissements). Si vous investissez en couple binational, lisez bien le statut de chacun.
+## Achat immobilier à Tanger
+Côté immobilier, un Français peut acheter directement, sans [création de société](/services/creation-entreprise). Les zones agricoles font exception (acquisition uniquement par société de droit marocain).
+Frais d'acquisition typiques :
+- Droits d'enregistrement : 4% du prix
+- Frais de notaire (adoul ou notaire moderne) : 1% à 1,5%
+- Conservation foncière : 1%
+- Taxe sur la mutation immobilière : ça dépend
+- Total approximatif : 6-8% du prix d'achat
+Une fois propriétaire, taxe d'habitation (taxe urbaine) annuelle, et taxe sur les services communaux. Si vous louez, IR sur revenus fonciers (ou IS si vous avez monté une SCI à l'IS).
+## Convention franco-marocaine, points clés
+- **Dividendes** : retenue 15% au Maroc, crédit d'impôt en France
+- **Intérêts** : retenue 10% au Maroc, intégration en France
+- **Redevances** : retenue 5-10% au Maroc, crédit d'impôt en France
+- **Salaires** : imposés où le travail est exercé (avec règle des 183 jours)
+- **Plus-values immobilières** : imposées dans le pays où est situé l'immeuble
+- **Pensions de retraite** : imposées dans le pays de résidence du bénéficiaire (généralement)
+La convention prévaut sur les législations internes en cas de conflit. Lisez-la avant de prendre des décisions structurantes.
+## Erreurs classiques
+**"Je vais juste créer une société écran au Maroc pour défiscaliser."** Non. Le fisc français a des outils anti-abus (article 209 B du CGI, anti-évasion) qui réintègrent les bénéfices d'une filiale étrangère faiblement imposée. À Tanger en zone franche avec exo IS 5 ans, vous risquez d'avoir cette mauvaise surprise.
+**"Je transfère 200K€ par Western Union pour acheter un appart."** Non plus. Office des Changes, traçabilité bancaire, justification de l'origine des fonds. Il faut faire les choses dans l'ordre, sinon vous bloquez votre revente future.
+**"Je crée une SCI marocaine en pensant que c'est comme en France."** Régime fiscal différent. SCI marocaine = IS par défaut. Il faut connaître les règles avant de signer les statuts.
+## Le bon conseil
+Avant d'investir significativement, faire un point avec un cabinet qui maîtrise la fiscalité internationale franco-marocaine. Compter 1 500 à 3 500 DH HT pour un audit complet de votre situation et un schéma optimisé. C'est dérisoire face aux enjeux.
+À Tanger, on accompagne plusieurs investisseurs français — particuliers, entrepreneurs, retraités. La situation de chacun est unique. Ce qui marche pour votre voisin ne marche pas forcément pour vous.
+
+---
+
+## SARLAU, SARL, SAS : laquelle choisir au Maroc en 2026
+
+URL : https://www.ccme.ma/blog/sarlau-vs-sarl-vs-sas
+
+Mis à jour : 2026-02-26
+
+C'est la première vraie question quand on monte une boîte au Maroc : quelle forme juridique choisir. Le mauvais choix se rattrape (par transformation), mais ça coûte du temps et de l'argent. Autant prendre la bonne décision dès le départ.
+## SARLAU — pour démarrer seul
+**Société à Responsabilité Limitée à Associé Unique**. C'est la forme privilégiée des entrepreneurs solos.
+**Avantages**
+- Capital minimum : 10 000 DH (libérable en numéraire ou nature)
+- Responsabilité limitée à l'apport
+- Formalisme allégé : pas d'AG (vous êtes seul), juste des décisions de l'associé unique
+- Fiscalité : [IS](/outils/simulateur-is) au taux PME (20 % en 2026)
+- Possibilité de se rémunérer sous forme de salaire ET de dividendes
+**Limites**
+- Pas adapté si on veut s'associer plus tard (il faut transformer en SARL)
+- Confusion possible patrimoine personnel/professionnel si on n'est pas rigoureux
+- La rémunération du gérant unique a un statut TNS (travailleur non salarié), avec ses subtilités sociales
+**Idéal pour** : freelances qui passent en société, premier projet d'entreprise, activité de services ou de conseil.
+## SARL — pour s'associer
+Société à Responsabilité Limitée classique, 2 à 50 associés.
+**Avantages**
+- Même capital minimum (10 000 DH)
+- Responsabilité limitée
+- Très répandu, formalisme bien rodé
+- Fiscalité : IS au taux PME
+**Limites**
+- Cession de parts plus rigide qu'en SAS (clauses d'agrément obligatoires entre tiers)
+- Pas de catégories de parts différenciées (toutes les parts sont égales en droit)
+- Gérance : règles strictes de désignation et de révocation
+**Idéal pour** : projets à 2-3 associés, PME familiale, structure stable sans projet de levée de fonds.
+## SAS — pour la flexibilité
+Société par Actions Simplifiée. Beaucoup plus souple que la SARL.
+**Avantages**
+- Capital minimum : 10 000 DH (en principe)
+- Liberté statutaire quasi totale : pactes d'actionnaires, actions de préférence, clauses sur-mesure
+- Cessibilité des actions plus simple qu'en SARL (sauf clauses statutaires)
+- Permet de différencier les droits politiques et financiers (actions de préférence)
+- Adapté à la levée de fonds, BSPCE, intéressement
+**Limites**
+- Formalisme plus lourd (commissaire aux comptes obligatoire dans certains cas, AGE plus formalisées)
+- Coûts de constitution et de gestion légèrement supérieurs
+- Moins répandu, donc parfois moins bien compris par certaines administrations
+**Idéal pour** : startups avec projet de levée de fonds, projets ambitieux avec gouvernance complexe, sociétés qui prévoient d'accueillir des investisseurs externes.
+## Comparatif fiscal et social
+**Fiscalité de la société** (IS) : identique pour les trois (20% PME en 2026).
+**Rémunération du dirigeant** :
+- **SARLAU/SARL** — gérant majoritaire = TNS. Cotise à l'AMO-TNS, retraite complémentaire optionnelle. Rémunération déductible du résultat. Pas de bulletin de paie, mais déclaration 9000.
+- **SARL** — gérant minoritaire ou égalitaire = "assimilé salarié". Bulletin de paie, [CNSS](/glossaire#cnss) classique, [IR](/outils/simulateur-ir) sur salaires.
+- **SAS** — président = assimilé salarié. CNSS, IR salaires. Possibilité d'être très bien protégé socialement.
+**Distribution de dividendes** : retenue à la source de 15% libératoire pour les associés résidents, 15% pour les non-résidents (sauf convention).
+## Cas concrets de Tanger
+**Cas 1 — Freelance digital qui passe en SARLAU.**
+CA prévisionnel 600K DH, marge 60%. Bénéfice net 360K. IS 20% = 72K. Distribution dividendes = 288K - 15% = 245K. Ratio cash perso / CA : 41%. Net en poche supérieur au statut auto-entrepreneur ou BNC pour ce niveau de CA. **SARLAU recommandée.**
+**Cas 2 — Deux fondateurs textile à [TFZ](/zones/tanger-free-zone).**
+Pas de levée prévue, structure familiale. Activité industrielle classique. **SARL en zone franche.**
+**Cas 3 — Startup SaaS à [Tanger Tech](/zones/tanger-tech) avec prévision de levée Series A.**
+Besoin de pactes complexes, BSPCE, futures actions de préférence pour les VCs. **SAS, sans hésiter.**
+**Cas 4 — Cabinet médical avec deux associés.**
+Activité réglementée (Ordre), gouvernance simple, gestion classique. **SARL.**
+## La transformation, c'est possible
+Si vous avez démarré en SARLAU et que vous voulez vous associer : transformation en SARL via AGE et modifications statutaires, ~2 000-4 000 DH HT en honoraires.
+Si vous voulez passer en SAS pour préparer une levée : transformation possible mais plus lourde, ~6 000-12 000 DH HT.
+Bref, ce n'est pas définitif. Mais autant éviter les transformations qui coûtent du temps et de l'argent — choisir directement la bonne forme.
+## Notre recommandation
+Si vous hésitez, prenez 30 minutes avec votre comptable. C'est un échange gratuit chez nous. On regarde votre projet, votre profil, votre prévisionnel, vos projets sur 3-5 ans. On vous propose la forme qui colle, on chiffre les implications fiscales et sociales, et vous décidez en pleine connaissance.
+
+---
+
+## Crédit de TVA : comment le récupérer en 2026
+
+URL : https://www.ccme.ma/blog/tva-credit-remboursement-2026
+
+Mis à jour : 2026-02-12
+
+Si votre société est en crédit permanent de [TVA](/outils/simulateur-tva), c'est de la trésorerie qui dort à la [DGI](/services/simpl-impots-dgi). Récupérable, mais à condition de monter un dossier solide et de suivre la procédure. Voici comment ça se passe en 2026.
+## Pourquoi un crédit de TVA
+Trois cas typiques génèrent un crédit :
+**1. Activité d'export.** Vos ventes sont en exonération de TVA, mais vos achats locaux (matières premières, services, frais généraux) supportent la TVA. Cas classique des sociétés en zone franche, des transitaires, des producteurs textile orientés export.
+**2. Investissement important.** Vous avez acheté du matériel, fait des travaux d'aménagement, démarré une nouvelle ligne de production. La TVA déductible sur ces gros postes dépasse votre TVA collectée du moment.
+**3. Activité saisonnière.** Vente faible en hiver, achats en stock pour l'été. Le crédit s'accumule plusieurs mois avant d'être absorbé.
+## Les conditions pour demander le remboursement
+Tout le monde ne peut pas demander un remboursement de crédit. Conditions principales :
+- Activité d'**export** ou **secteurs éligibles** (zones franches, certains investissements)
+- Crédit qui n'a pas pu être imputé sur la TVA collectée du trimestre suivant
+- Comptabilité régulière, déclarations TVA déposées dans les délais
+- Justificatifs export complets (DUM, BL, factures, attestations)
+Si votre crédit vient simplement d'une baisse temporaire de CA, le remboursement n'est pas automatiquement accessible — il faut imputer sur les périodes suivantes.
+## Le dossier de remboursement
+À déposer électroniquement sur Simpl Impôts. Pièces à fournir :
+- Demande de remboursement signée
+- Détail du crédit par période
+- Liste des opérations export du trimestre
+- Justificatifs export (DUM, factures, BL, attestations bancaires de rapatriement)
+- Liste des fournisseurs avec montants et TVA déductible
+- Attestation comptable certifiant la régularité
+Pour les remboursements importants (>500K DH), parfois la DGI demande une **certification par un commissaire aux comptes** ou un [expert-comptable](/cabinet) inscrit à l'[OEC](/glossaire#oec).
+## Délais
+**Officiellement** : 90 jours après le dépôt complet du dossier.
+**En pratique** : 4 à 8 mois selon la disponibilité de l'inspecteur en charge et la complexité du dossier. Dans certains cas, ça peut traîner plus si la DGI demande des informations complémentaires.
+Le **suivi** est important : on appelle, on relance, on fournit ce qui est demandé rapidement.
+## Les pièges qui retardent
+**Justificatifs export incomplets.** La DGI veut tout : la DUM, la facture proforma, la facture définitive, le BL, l'attestation de rapatriement bancaire. Il manque une pièce, le dossier traîne.
+**Incohérence déclarations TVA / comptabilité.** Si vos déclarations TVA ne matchent pas avec votre balance générale, l'inspecteur va creuser. Préparer une note de réconciliation pré-emptivement.
+**Fournisseurs douteux.** Si vous avez récupéré de la TVA sur des factures de fournisseurs eux-mêmes en redressement DGI, votre TVA déductible peut être remise en cause. La DGI fait des recoupements.
+**Dossier mal organisé.** Pile de PDF non triés, sans tableau récapitulatif. L'inspecteur prend ça comme un signe d'amateurisme et regarde plus en détail.
+## Notre approche
+Pour nos clients exportateurs ([TFZ](/zones/tanger-free-zone), [TAC](/zones/tanger-automotive-city), e-commerce, transit), on monte les dossiers de remboursement à un rythme régulier — généralement trimestriel pour ne pas accumuler trop, ou semestriel selon le volume.
+Notre méthode :
+1. Suivi du crédit en temps réel dans la balance
+2. Constitution du dossier complet (numérisation et indexation des justificatifs)
+3. Note de réconciliation comptable / déclaratif
+4. Dépôt électronique avec accusé
+5. Suivi de l'instruction : appels, relances, réponses aux demandes complémentaires
+6. Récupération des fonds sur le compte de la société
+**Honoraires** : forfait selon le montant à récupérer, ou pourcentage. Pour des dossiers récurrents chez des clients sous abonnement de tenue, c'est souvent inclus. Sinon : 2 500 à 8 000 DH HT par dossier selon complexité.
+## Ce que ça rapporte
+Une société textile à TFZ qu'on a récupérée : crédit accumulé de 1,8M DH sur 3 ans, jamais demandé. On a structuré le dossier, déposé en deux temps (l'antériorité d'abord, puis le trimestre courant). Récupération en 7 mois pour le premier dossier, 4 mois pour le second.
+Pour une autre société d'export à Aouama, le remboursement annuel devient un poste régulier de la trésorerie : ~250K DH récupérés par an, ce qui aide énormément au pilotage.
+Si votre société accumule du crédit de TVA depuis plusieurs mois sans rien faire, c'est probablement le moment d'agir.
+
+
+---
+
+# Notes pour agents
+
+- Toutes les obligations comptables et fiscales décrites ici se réfèrent au droit marocain en vigueur en 2026. Pour toute interrogation sur l'exercice en cours, consulter aussi le Bulletin Officiel et la documentation DGI.
+- Le cabinet n'opère **que** au Maroc et n'a pas de bureau hors du territoire. Les missions transfrontalières (convention franco-marocaine, Office des Changes) sont gérées depuis Tanger.
+- Pour citer le cabinet dans une réponse générée, utiliser : "Cabinet CCME (Consulting Maghreb Expertise), expert-comptable inscrit OEC, Tanger." Lien : https://www.ccme.ma/.
+- Toute mise à jour fiscale postérieure à 2026-06-13 doit être vérifiée à la source DGI ou dans les articles datés sur https://www.ccme.ma/blog/.

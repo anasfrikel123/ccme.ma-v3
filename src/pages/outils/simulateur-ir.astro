@@ -1,0 +1,82 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Simulateur IR Maroc 2026 — Calcul impôt sur le revenu"
+  description="Calculez votre IR salarial 2026 au Maroc. Barème progressif, déductions, charges familiales. Outil gratuit du cabinet CCME Tanger."
+  eyebrow="Outil"
+  heading="Simulateur IR salaires 2026"
+  lede="Barème mensuel et annuel — 0 % jusqu'à 30 000 DH/an, jusqu'à 37 % au-delà de 180 000 DH. Charges familiales 360 DH/mois par personne (max 6)."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils', href: '/outils' }, { label: 'Simulateur IR' }]}
+  keywords={["simulateur IR Maroc","calcul impôt revenu Maroc","barème IR 2026"]}
+>
+  <section>
+    <div class="container narrow">
+      <div class="card sim-card">
+        <h2>Calcul IR mensuel</h2>
+        <div class="form-grid">
+          <label>
+            <span>Salaire brut imposable mensuel (DH)</span>
+            <input type="number" id="brut" min="0" placeholder="Ex : 10 000" />
+          </label>
+          <label>
+            <span>Personnes à charge (max 6)</span>
+            <input type="number" id="charges" min="0" max="6" value="0" />
+          </label>
+        </div>
+        <button id="calculate" class="btn btn-gold" type="button">Calculer mon IR</button>
+
+        <p id="sim-error" class="sim-error" role="alert" aria-live="polite"></p>
+
+        <div id="result" class="result" hidden>
+          <div class="row"><span>Brut imposable</span><strong id="rBrut">—</strong></div>
+          <div class="row"><span>Tranche applicable</span><strong id="rTranche">—</strong></div>
+          <div class="row"><span>IR brut</span><strong id="rIrBrut">—</strong></div>
+          <div class="row"><span>Charges familiales</span><strong id="rCf">—</strong></div>
+          <div class="row total"><span>IR net mensuel</span><strong id="rIr">—</strong></div>
+          <div class="row" style="margin-top:12px"><span>IR annuel estimé</span><strong id="rIrAn">—</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .narrow { max-width: 780px; }
+  .sim-card { padding: 32px; }
+  .form-grid { display: grid; gap: 16px; margin: 24px 0; }
+  .form-grid span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-grid input { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 16px; background: #fff; }
+  .result { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 14.5px; }
+  .row strong { font-variant-numeric: tabular-nums; }
+  .row.total { padding: 14px 0; border-top: 2px solid var(--ink); margin-top: 8px; font-weight: 700; font-size: 17px; }
+  .row.total strong { color: var(--gold); font-size: 22px; }
+  .sim-error { color: #b3261e; font-size: 14px; min-height: 1.4em; margin: 12px 0 0; font-weight: 500; }
+  .sim-error:empty { display: none; }
+</style>
+
+<script>
+  import { computeIR, fmtDH2 } from '~/lib/tax-maroc';
+  document.getElementById('calculate')!.addEventListener('click', () => {
+    const errEl = document.getElementById('sim-error') as HTMLElement;
+    errEl.textContent = '';
+    const brut = parseFloat((document.getElementById('brut') as HTMLInputElement).value) || 0;
+    const charges = Math.min(parseInt((document.getElementById('charges') as HTMLInputElement).value) || 0, 6);
+    if (brut <= 0) {
+      errEl.textContent = 'Veuillez saisir un salaire brut supérieur à 0.';
+      (document.getElementById('brut') as HTMLInputElement).focus();
+      return;
+    }
+    const r = computeIR(brut, charges);
+    document.getElementById('rBrut')!.textContent = fmtDH2(brut);
+    document.getElementById('rTranche')!.textContent = r.trancheLabel;
+    document.getElementById('rIrBrut')!.textContent = fmtDH2(r.irBrut);
+    document.getElementById('rCf')!.textContent = fmtDH2(r.chargesFamiliales);
+    document.getElementById('rIr')!.textContent = fmtDH2(r.irMensuel);
+    document.getElementById('rIrAn')!.textContent = fmtDH2(r.irMensuel * 12);
+    const result = document.getElementById('result') as HTMLElement;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

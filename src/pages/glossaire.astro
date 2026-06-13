@@ -1,0 +1,137 @@
+---
+import Page from '~/layouts/Page.astro';
+
+const terms = [
+  { letter: 'A', term: 'AMO', definition: "Assurance Maladie Obligatoire. Cotisation 2,26 % salarié + 4,11 % employeur, sans plafond. Gérée par la CNSS depuis 2005.", related: '/services/damancom-cnss' },
+  { letter: 'A', term: 'Acompte IS', definition: "Versement provisionnel d'IS payé chaque trimestre (mars, juin, septembre, décembre) basé sur l'IS de l'exercice précédent. Régularisation après dépôt de la liasse fiscale.", related: '/blog/reforme-is-2026-pme-tanger' },
+  { letter: 'A', term: 'Affiliation CNSS', definition: "Inscription obligatoire à la Caisse Nationale de Sécurité Sociale dès l'embauche du premier salarié. Numéro d'affiliation à 7 chiffres.", related: '/services/damancom-cnss' },
+  { letter: 'A', term: 'Apport en numéraire', definition: "Apport d'argent au capital d'une société, libéré au moment de la constitution (au moins 25 % pour SARL, 100 % pour SA).", related: '/services/creation-entreprise' },
+  { letter: 'B', term: 'Bilan comptable', definition: "État de synthèse présentant le patrimoine de l'entreprise à une date donnée. Actif (ce qu'elle possède) = Passif (ce qu'elle doit). Dépôt obligatoire après l'AG.", related: '/services/tenue-comptabilite' },
+  { letter: 'B', term: 'BO (Bulletin Officiel)', definition: "Publication officielle marocaine où sont publiées les lois et les annonces légales (création, modification, dissolution de sociétés).", related: '/services/creation-entreprise' },
+  { letter: 'B', term: 'BNC', definition: "Bénéfices Non Commerciaux — régime fiscal des professions libérales (avocats, médecins, consultants). Imposition à l'IR avec abattement de 25 %.", related: '/services/conseil-fiscal' },
+  { letter: 'C', term: 'CGNC', definition: "Code Général de Normalisation Comptable. Référentiel comptable marocain de 1992 — règles d'évaluation, plan comptable, états de synthèse.", related: '/services/tenue-comptabilite' },
+  { letter: 'C', term: 'CIMR', definition: "Caisse Interprofessionnelle Marocaine de Retraite. Retraite complémentaire facultative, taux contractuel typique 3-6 % de la rémunération.", related: '/services/paie-grh' },
+  { letter: 'C', term: 'CNSS', definition: "Caisse Nationale de Sécurité Sociale. Plafond mensuel 6 000 DH (CNSS) et sans plafond (AMO). Gestion via Damancom.", related: '/services/damancom-cnss' },
+  { letter: 'C', term: 'Cotisation minimale', definition: "Montant minimum d'IS dû même en cas de déficit ou de faible bénéfice. 0,25 % du chiffre d'affaires HT, minimum 3 000 DH.", related: '/outils/simulateur-is' },
+  { letter: 'C', term: 'CRI', definition: "Centre Régional d'Investissement. Guichet unique pour la création d'entreprise (à Tanger : CRI Tanger-Tétouan-Al Hoceïma).", related: '/services/creation-entreprise' },
+  { letter: 'D', term: 'Damancom', definition: "Plateforme en ligne de la CNSS pour les déclarations sociales mensuelles (BDS) et le paiement des cotisations. Obligatoire pour toute entreprise affiliée.", related: '/services/damancom-cnss' },
+  { letter: 'D', term: 'DGI', definition: "Direction Générale des Impôts. Administration fiscale marocaine. Plateforme principale : Simpl-Impôts (Simpl-IS, Simpl-TVA, Simpl-IR).", related: '/services/simpl-impots-dgi' },
+  { letter: 'D', term: 'Dividendes', definition: "Distribution de bénéfices aux associés. Imposés à la retenue à la source 15 % (libératoire IR), versés sur résultats nets après IS.", related: '/services/conseil-fiscal' },
+  { letter: 'E', term: 'Exercice comptable', definition: "Période de 12 mois sur laquelle est calculé le résultat. Au Maroc, généralement 1er janvier - 31 décembre.", related: '/services/tenue-comptabilite' },
+  { letter: 'F', term: 'Fiduciaire', definition: "Cabinet d'expertise comptable. Au Maroc, le terme désigne souvent les cabinets de petite taille proposant tenue + paie.", related: '/cabinet' },
+  { letter: 'G', term: 'GIPA', definition: "Garantie d'indemnité de perte d'emploi. Cotisation patronale 0,38 % (plafonnée 6 000 DH) versée à la CNSS.", related: '/services/damancom-cnss' },
+  { letter: 'I', term: 'ICE', definition: "Identifiant Commun de l'Entreprise. Numéro unique à 15 chiffres reliant CNSS, DGI, RC. Obligatoire sur factures et contrats.", related: '/services/creation-entreprise' },
+  { letter: 'I', term: 'IF (Identifiant Fiscal)', definition: "Numéro attribué par la DGI à chaque contribuable. Distinct de l'ICE.", related: '/services/simpl-impots-dgi' },
+  { letter: 'I', term: 'IS (Impôt sur les Sociétés)', definition: "Impôt sur le bénéfice fiscal des sociétés. Barème droit commun 2026 : 20 % jusqu'à 100 MDH de bénéfice, 35 % au-delà (LF 2026 / CGI art. 19).", related: '/outils/simulateur-is' },
+  { letter: 'I', term: 'IR (Impôt sur le Revenu)', definition: "Impôt progressif sur les revenus des personnes physiques (salaires, BNC, fonciers, capitaux). Barème mensuel/annuel.", related: '/outils/simulateur-ir' },
+  { letter: 'I', term: 'IR professionnel', definition: "Régime IR appliqué aux personnes physiques exerçant une activité professionnelle (auto-entrepreneurs, BNC, BIC). Alternative à l'IS.", related: '/blog/sarlau-vs-sarl-vs-sas' },
+  { letter: 'L', term: 'Liasse fiscale', definition: "Ensemble de tableaux et états annexés à la déclaration IS. À déposer dans les 3 mois suivant la clôture (avant 31 mars pour exercice civil).", related: '/services/conseil-fiscal' },
+  { letter: 'O', term: 'OEC', definition: "Ordre des Experts-Comptables du Maroc. Inscription obligatoire pour exercer l'expertise comptable. Garant de la déontologie.", related: '/cabinet' },
+  { letter: 'O', term: 'OMPIC', definition: "Office Marocain de la Propriété Industrielle et Commerciale. Délivre certificat négatif, gère le registre du commerce et les marques/brevets.", related: '/services/creation-entreprise' },
+  { letter: 'P', term: 'Patente', definition: "Ancien nom de la taxe professionnelle. Calculée sur la valeur locative des locaux + équipements. Exonération 5 ans pour entreprises nouvelles.", related: '/services/conseil-fiscal' },
+  { letter: 'P', term: 'Plan comptable', definition: "Liste codifiée des comptes à utiliser. Au Maroc : Plan Comptable Général de l'Entreprise (PCGE) à 7 classes.", related: '/services/tenue-comptabilite' },
+  { letter: 'R', term: 'RC (Registre du Commerce)', definition: "Inscription obligatoire au tribunal de commerce pour toutes les sociétés. Numéro mentionné sur factures, en-têtes, contrats.", related: '/services/creation-entreprise' },
+  { letter: 'R', term: 'Redressement fiscal', definition: "Notification d'un manquement fiscal après contrôle DGI. Étapes : avis de vérification → réunion → notification → réponse → conciliation → CNRF.", related: '/services/controle-contentieux' },
+  { letter: 'S', term: 'SARL', definition: "Société à Responsabilité Limitée. Forme la plus répandue au Maroc. 1 à 50 associés, capital librement fixé. Responsabilité limitée aux apports.", related: '/services/creation-entreprise' },
+  { letter: 'S', term: 'SARLAU', definition: "SARL à Associé Unique. Variante de SARL avec un seul associé. Idéale pour entrepreneur individuel souhaitant la responsabilité limitée.", related: '/services/creation-entreprise' },
+  { letter: 'S', term: 'SA', definition: "Société Anonyme. Capital minimum 300 000 DH (3 MDH si appel public à l'épargne). Conseil d'administration ou directoire. Commissaires aux comptes obligatoires.", related: '/services/creation-entreprise' },
+  { letter: 'S', term: 'SAS', definition: "Société par Actions Simplifiée. Liberté statutaire, idéale pour startups et investisseurs. Capital librement fixé.", related: '/services/creation-entreprise' },
+  { letter: 'S', term: 'Simpl-Impôts', definition: "Plateforme DGI pour télédéclarations et télépaiements (Simpl-IS, Simpl-TVA, Simpl-IR). Obligatoire pour toutes les déclarations fiscales.", related: '/services/simpl-impots-dgi' },
+  { letter: 'T', term: 'TFZ', definition: "Tanger Free Zone. Zone d'accélération industrielle. Exonération IS 5 ans, puis taux réduit 8,75 %. TVA exonérée à l'export.", related: '/zones/tanger-free-zone' },
+  { letter: 'T', term: 'TVA', definition: "Taxe sur la Valeur Ajoutée. Taux Maroc : 20 % (standard), 14 % (BTP, transport), 10 % (tourisme), 7 % (eau, électricité, médicaments).", related: '/outils/simulateur-tva' },
+  { letter: 'T', term: 'Taxe professionnelle', definition: "Anciennement patente. Taxe locale due par les professionnels. Exonération 5 ans pour création.", related: '/services/conseil-fiscal' },
+  { letter: 'T', term: 'Taxe de formation pro', definition: "Charge patronale 1,6 % plafonnée à 6 000 DH/mois. Versée à la CNSS, finance l'OFPPT.", related: '/outils/simulateur-paie' },
+  { letter: 'T', term: 'Tanger Med', definition: "Complexe portuaire et zone d'accélération industrielle au nord-est de Tanger. Régime fiscal favorable. Plus grand port d'Afrique.", related: '/zones/tanger-med' },
+  { letter: 'Z', term: 'Zone d\'accélération industrielle', definition: "Ancien nom : zone franche. Régime fiscal privilégié : exonération IS totale 5 ans, taux réduit 8,75 % ensuite. TFZ, TAC, Tanger Tech.", related: '/blog/zones-franches-tanger-comparatif' },
+];
+
+// Group by letter
+const grouped = terms.reduce((acc, t) => {
+  if (!acc[t.letter]) acc[t.letter] = [];
+  acc[t.letter].push(t);
+  return acc;
+}, {} as Record<string, typeof terms>);
+const letters = Object.keys(grouped).sort();
+
+const SITE = 'https://www.ccme.ma';
+const slugify = (s: string) =>
+  s.toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+// 2026-aligned: DefinedTermSet + nested DefinedTerm. Per the post-March-2026
+// schema research, this is the highest-leverage type for definition-intent
+// queries: AI Mode (Gemini) cites DefinedTerm pages preferentially when
+// answering "what is X?" queries. Each term gets a stable @id so it can be
+// referenced from blog posts via the `mentions` property.
+const glossarySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  '@id': `${SITE}/glossaire#termset`,
+  name: 'Glossaire comptable et fiscal Maroc',
+  description: "Glossaire CCME : 40+ termes de comptabilité, fiscalité, paie et droit des sociétés au Maroc, définis par notre cabinet inscrit à l'OEC.",
+  inLanguage: 'fr-MA',
+  url: `${SITE}/glossaire`,
+  publisher: { '@id': 'https://www.ccme.ma/#accounting' },
+  hasDefinedTerm: terms.map(t => ({
+    '@type': 'DefinedTerm',
+    '@id': `${SITE}/glossaire#${slugify(t.term)}`,
+    name: t.term,
+    description: t.definition,
+    inDefinedTermSet: { '@id': `${SITE}/glossaire#termset` },
+    url: `${SITE}/glossaire#${slugify(t.term)}`,
+    ...(t.related ? { sameAs: `${SITE}${t.related}` } : {}),
+  })),
+};
+---
+<Page
+  title="Glossaire comptable et fiscal Maroc | Définitions"
+  description="Glossaire compta et fiscalité Maroc : IS, TVA, CNSS, AMO, liasse fiscale, cotisation minimale. 40+ définitions par notre cabinet à Tanger."
+  eyebrow="Glossaire"
+  heading="Glossaire comptable & fiscal Maroc"
+  lede="40+ termes définis simplement. De A (AMO) à Z (Zone d'accélération industrielle). Pour comprendre vite ce que dit votre comptable, votre banquier ou la DGI."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Glossaire' }]}
+  keywords={["glossaire comptable Maroc","définitions fiscales Maroc","termes compta IS TVA CNSS","lexique expert comptable"]}
+  schema={glossarySchema}
+>
+  <section>
+    <div class="container">
+      <nav class="alpha-nav reveal" aria-label="Index alphabétique">
+        {letters.map(l => <a href={`#letter-${l}`}>{l}</a>)}
+      </nav>
+
+      {letters.map(l => (
+        <div class="letter-block reveal" id={`letter-${l}`}>
+          <h2>{l}</h2>
+          <dl class="terms">
+            {grouped[l].map(t => (
+              <div class="term" id={slugify(t.term)} itemscope itemtype="https://schema.org/DefinedTerm">
+                <dt itemprop="name">{t.term}</dt>
+                <dd>
+                  <span itemprop="description">{t.definition}</span>
+                  <a href={t.related} class="related" itemprop="sameAs">→ En savoir plus</a>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </div>
+  </section>
+</Page>
+
+<style>
+  .alpha-nav { display: flex; flex-wrap: wrap; gap: 6px; padding: 16px; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-md); margin-bottom: 48px; position: sticky; top: 80px; z-index: 10; backdrop-filter: blur(8px); background: rgba(244,241,236,0.95); }
+  .alpha-nav a { display: inline-block; min-width: 36px; padding: 8px 12px; text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 6px; font-weight: 700; color: var(--ink); text-decoration: none; font-size: 14px; transition: all .2s; }
+  .alpha-nav a:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+  .letter-block { margin-bottom: 56px; scroll-margin-top: 160px; }
+  .letter-block h2 { font-size: 56px; color: var(--gold); margin: 0 0 24px; line-height: 1; font-family: var(--serif); }
+  .terms { display: grid; gap: 24px; }
+  .term { padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .term dt { font-weight: 700; font-size: 20px; color: var(--ink); margin-bottom: 8px; font-family: var(--serif); }
+  .term dd { margin: 0; color: var(--ink-soft); line-height: 1.65; }
+  .related { display: inline-block; margin-top: 12px; color: var(--gold); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .related:hover { text-decoration: underline; }
+</style>

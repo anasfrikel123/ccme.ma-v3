@@ -1,0 +1,64 @@
+---
+import { cabinet } from '~/data/cabinet';
+interface Props {
+  title?: string;
+  text?: string;
+  variant?: 'default' | 'compact';
+}
+const {
+  title = 'Premier échange gratuit. Sans engagement.',
+  text = "On regarde ensemble vos chiffres, vos obligations, votre fiscalité — et on voit où on peut vous faire gagner du temps. 30 minutes, par téléphone ou au cabinet.",
+  variant = 'default'
+} = Astro.props;
+---
+<section class={`cta-band ${variant === 'compact' ? 'cta-compact' : ''}`}>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div>
+        <p class="eyebrow">Prendre contact</p>
+        <h2>{title}</h2>
+        <p class="lede">{text}</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-gold">Demander un devis</a>
+        <a href={cabinet.phone.tel} class="btn btn-ghost">{cabinet.phone.display}</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .cta-band {
+    background: var(--ink);
+    color: #fff;
+    padding-block: clamp(48px, 7vw, 80px);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: "";
+    position: absolute;
+    inset: -50% -10% auto auto;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,168,90,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 { color: #fff; max-width: 22ch; }
+  .cta-band .eyebrow { color: var(--gold); }
+  .cta-band .lede { color: rgba(255,255,255,0.78); max-width: 56ch; }
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-end; }
+  .cta-band .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.4); }
+  .cta-band .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: #fff; color: #fff; }
+  .cta-compact { padding-block: clamp(32px, 5vw, 48px); }
+  @media (max-width: 800px) {
+    .cta-inner { grid-template-columns: 1fr; }
+    .cta-actions { justify-content: flex-start; }
+  }
+</style>

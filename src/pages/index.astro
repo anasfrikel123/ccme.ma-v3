@@ -1,0 +1,604 @@
+﻿---
+import Base from '~/layouts/Base.astro';
+import ServiceCard from '~/components/ServiceCard.astro';
+import Stats from '~/components/Stats.astro';
+import FAQ from '~/components/FAQ.astro';
+import CTA from '~/components/CTA.astro';
+import Icon from '~/components/Icon.astro';
+import Compliance from '~/components/Compliance.astro';
+import { getCollection } from 'astro:content';
+import { reviews } from '~/data/reviews';
+import { homeWebPageSchema } from '~/data/org-schema';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order).slice(0, 8);
+
+// Homepage WebPage node only — org core (AccountingService + WebSite) is
+// emitted globally by Base.astro on every route.
+const orgSchema = homeWebPageSchema;
+
+const faqItems = [
+  { q: "Qu'est-ce qu'un cabinet d'expertise comptable inscrit à l'OEC ?", a: "C'est un cabinet dont les associés sont inscrits au tableau de l'Ordre des Experts-Comptables du Maroc. Ça garantit le respect du code de déontologie, la formation continue, l'assurance civile professionnelle et le secret professionnel. CCME est inscrit." },
+  { q: "Combien coûte un comptable à Tanger ?", a: "Pour une PME standard à Tanger : 800 à 2 500 DH HT par mois en tenue mensuelle, plus le bilan annuel. Le prix varie selon volume de pièces, complexité TVA, nombre de salariés. Premier devis ferme et gratuit après échange de cadrage." },
+  { q: "Vous travaillez avec quels secteurs ?", a: "PME et TPE de tous secteurs (commerce, services, BTP, e-commerce), industries en zones franches (TFZ, TAC, Tanger Tech), professions libérales (médecins, avocats, architectes), pharmaciens, restaurants et hôtels, expatriés et investisseurs étrangers." },
+  { q: "Quelles sont les obligations comptables d'une SARL au Maroc ?", a: "Tenue d'une comptabilité conforme au CGNC, livre journal coté et paraphé, déclarations TVA mensuelles ou trimestrielles, acomptes IS trimestriels, bilan et liasse fiscale annuels avant le 31 mars de l'année suivante, déclaration CNSS mensuelle si salariés." },
+  { q: "Vous accompagnez les expatriés français ?", a: "Oui. On a une expertise particulière sur la convention fiscale franco-marocaine, l'Office des Changes, les SCI marocaines, et la gestion patrimoniale binationale. Plusieurs de nos clients sont français résidents au Maroc ou investisseurs depuis la France." },
+  { q: "Comment se passe le premier échange ?", a: "Rendez-vous gratuit, sans engagement, environ 30-45 minutes. Au cabinet ou par téléphone/visio. On comprend votre activité, on identifie les sujets prioritaires, on vous propose éventuellement un audit ou un devis. Pas de vente sous pression." },
+];
+const HERO_AVIF =
+  '/images/hero-360.avif 360w, /images/hero-720.avif 720w, /images/hero-1200.avif 1200w';
+const HERO_WEBP =
+  '/images/hero-360.webp 360w, /images/hero-720.webp 720w, /images/hero-1200.webp 1200w';
+const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
+---
+<Base
+  title="Expert-comptable à Tanger | Cabinet CCME"
+  description="Cabinet d'expertise comptable à Tanger : tenue, fiscalité, paie CNSS, conseil juridique. PME, startups et expatriés. Premier échange gratuit."
+  ogImage="/images/og-home.jpg"
+  schema={orgSchema}
+  keywords={['expert comptable Tanger', 'cabinet comptable Tanger', 'comptable agréé Tanger', 'fiduciaire Tanger', 'création SARL Tanger', 'IS 2026 PME Maroc']}
+  lcpImageSrcset={{ avif: HERO_AVIF, webp: HERO_WEBP, sizes: HERO_SIZES }}
+>
+  <section class="hero hero-bg has-cursor-glow" data-hero>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow fade-up">Expert-comptable à Tanger · Maroc</p>
+        <h1 class="fade-up d1">La rigueur des chiffres,<br/><span class="text-sweep">au service de votre croissance.</span></h1>
+        <p class="lede fade-up d2">Cabinet d'expertise comptable inscrit à l'OEC. Tenue, fiscalité, paie CNSS, conseil juridique. PME, startups, industries en zones franches, expatriés.</p>
+        <div class="hero-cta fade-up d3">
+          <a href="/contact" class="btn btn-primary" data-astro-prefetch="viewport">Premier échange gratuit</a>
+          <a href="/services" class="btn btn-ghost" data-astro-prefetch="viewport">Voir nos services</a>
+        </div>
+        <ul class="hero-points fade-up d4">
+          <li><Icon name="check" size={16} stroke={2.4} /> Inscrit à l'Ordre des Experts-Comptables du Maroc</li>
+          <li><Icon name="check" size={16} stroke={2.4} /> +20 ans d'expérience à Tanger</li>
+          <li><Icon name="check" size={16} stroke={2.4} /> Spécialistes zones franches (TFZ, TAC, Tanger Tech)</li>
+          <li><Icon name="check" size={16} stroke={2.4} /> Conformité IS 2026, Simpl Impôts, Damancom</li>
+        </ul>
+      </div>
+      <div class="hero-art fade-up d3" aria-hidden="true">
+        <figure class="hero-photo">
+          <picture>
+            <source srcset={HERO_AVIF} sizes={HERO_SIZES} type="image/avif" />
+            <source srcset={HERO_WEBP} sizes={HERO_SIZES} type="image/webp" />
+            <img
+              src="/images/hero.jpg"
+              alt=""
+              width="1200"
+              height="900"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
+          <span class="hero-photo-overlay"></span>
+          <span class="hero-photo-corner"></span>
+        </figure>
+        <div class="art-card art-card-floating">
+          <div class="art-row"><span class="dot pulse-dot"></span><span>Liasse fiscale 2025</span><span class="status-ok">Déposée</span></div>
+          <div class="art-row"><span>Acompte IS Q2</span><span class="status-warn">15 jours</span></div>
+          <div class="art-row"><span>BDS Damancom</span><span class="status-ok">Conforme</span></div>
+          <div class="art-row"><span>Crédit TVA 2026</span><span class="status-ok">Récupéré</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="blob float" style="top: 60%; left: -100px;"></div>
+  </section>
+
+  <script>
+    import { initHomeScripts } from '~/scripts/home';
+    initHomeScripts();
+  </script>
+
+  <Compliance />
+
+  <Stats items={[
+    { value: '500', suffix: '+', label: 'PME accompagnées' },
+    { value: '20', suffix: ' ans', label: 'Expérience locale' },
+    { value: '98', suffix: '%', label: 'Clients fidèles' },
+    { value: '24', suffix: 'h', label: 'Réponse aux urgences' },
+  ]} />
+
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Ce qu'on fait pour vous</p>
+        <h2>Un cabinet, toutes les compétences pour piloter votre entreprise.</h2>
+        <p class="lede">Comptabilité, fiscalité, juridique, paie. Quatre métiers réunis sous un même toit, un seul interlocuteur, et un suivi qui ne lâche rien.</p>
+      </div>
+      <div class="grid grid-3">
+        {services.map((s, i) => (
+          <ServiceCard
+            href={`/services/${s.id}`}
+            title={s.data.h1}
+            description={s.data.description}
+            icon={s.data.icon}
+            tag={s.data.eyebrow}
+          />
+        ))}
+      </div>
+      <p class="more-link reveal"><a href="/services" class="link-draw">Voir tous les services →</a></p>
+    </div>
+  </section>
+
+  <section class="why hero-bg">
+    <div class="container why-grid">
+      <div class="reveal-left">
+        <p class="eyebrow">Pourquoi nous</p>
+        <h2>On parle votre langue. Pas seulement la comptable.</h2>
+        <p>Tanger, c'est une ville à part. PME locales, industriels en zone franche, e-commerçants en télétravail, expatriés français qui investissent. Chaque profil a ses contraintes, ses attentes, ses zones de risque.</p>
+        <p>Notre approche : comprendre votre métier avant de proposer des solutions. Pas de comptabilité industrielle pour un cabinet médical. Pas de jargon de zone franche pour une boulangerie. Un suivi adapté à ce que vous faites vraiment.</p>
+        <ul class="check-list">
+          <li>Cabinet inscrit à l'Ordre des Experts-Comptables (OEC)</li>
+          <li>Confidentialité et secret professionnel garantis par déontologie</li>
+          <li>Honoraires transparents, devis ferme avant intervention</li>
+          <li>Disponibilité 24h pour les urgences fiscales et sociales</li>
+          <li>Outils numériques : signature électronique, dossier partagé, reporting digital</li>
+        </ul>
+      </div>
+      <div class="reveal-right">
+        {/* Auto-rotating testimonial stack. We surface the 6 most recent
+            5-star reviews, rotating every 3500ms with a soft crossfade.
+            Pauses on hover (so users can read), respects
+            prefers-reduced-motion (shows the first one statically), and
+            falls back gracefully without JS (CSS shows the first card). */}
+        <div
+          class="proof-rotator"
+          role="region"
+          aria-label="Témoignages clients"
+          aria-roledescription="carousel"
+          data-rotate-interval="3500"
+        >
+          <button
+            type="button"
+            class="proof-pause"
+            data-rotator-pause
+            aria-pressed="false"
+            aria-label="Mettre en pause la rotation des témoignages"
+          >
+            <span aria-hidden="true">⏸</span>
+          </button>
+          {reviews.slice(0, 6).map((r, i) => (
+            <article
+              class:list={["proof-card", i === 0 && "is-active"]}
+              data-rotator-slide
+              aria-hidden={i === 0 ? "false" : "true"}
+              aria-labelledby={`proof-${i}-label`}
+              tabindex={i === 0 ? 0 : -1}
+            >
+              <p id={`proof-${i}-label`} class="visually-hidden">
+                Témoignage de {r.author}, {r.company}
+              </p>
+              <p class="quote-mark" aria-hidden="true">"</p>
+              <p>{r.text}</p>
+              <footer>
+                <strong>{r.author}</strong>
+                <span>{r.company}</span>
+              </footer>
+            </article>
+          ))}
+          <div class="proof-dots" role="tablist" aria-label="Choisir un témoignage">
+            {reviews.slice(0, 6).map((_, i) => (
+              <button
+                type="button"
+                class:list={["proof-dot", i === 0 && "is-active"]}
+                data-rotator-dot
+                role="tab"
+                aria-selected={i === 0 ? "true" : "false"}
+                aria-label={`Témoignage ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Secteurs spécialisés</p>
+        <h2>On a vu passer beaucoup de dossiers tangérois.</h2>
+      </div>
+      <div class="grid grid-3">
+        <a href="/secteurs/btp-immobilier" class="card reveal">
+          <h3>BTP & immobilier</h3>
+          <p>Promoteurs, entreprises de travaux, agences. TVA travaux, retenue de garantie, marchés publics.</p>
+        </a>
+        <a href="/secteurs/import-export" class="card reveal delay-1">
+          <h3>Import-export & Tanger Med</h3>
+          <p>Transitaires, logistique, négoce international. Office des Changes, TVA export, prix de transfert.</p>
+        </a>
+        <a href="/secteurs/textile-automobile" class="card reveal delay-2">
+          <h3>Industrie zones franches</h3>
+          <p>Textile, équipementiers automobiles. Régime ZAI, comptabilité industrielle, reporting groupe.</p>
+        </a>
+        <a href="/secteurs/e-commerce" class="card reveal delay-3">
+          <h3>E-commerce & digital</h3>
+          <p>Marketplaces, dropshipping, SaaS, freelances. Multi-devises, Stripe, Office des Changes digital.</p>
+        </a>
+        <a href="/secteurs/professions-liberales" class="card reveal delay-4">
+          <h3>Professions libérales</h3>
+          <p>Médecins, avocats, architectes, ingénieurs. BNC, IR pro, AMO-TNS.</p>
+        </a>
+        <a href="/secteurs/restauration-hotellerie" class="card reveal delay-5">
+          <h3>Restauration & hôtellerie</h3>
+          <p>Restos, cafés, hôtels, riads. Caisse, saisonniers, TVA tourisme, taxe de séjour.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="zones-band">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Zones &amp; régions</p>
+        <h2>Du centre-ville aux zones franches, on couvre tout le tissu économique tangérois.</h2>
+      </div>
+      <div class="zones-grid">
+        <a href="/zones/tanger-med" class="zone-tile reveal">
+          <h4>Tanger Med</h4>
+          <p>Logistique, transit</p>
+        </a>
+        <a href="/zones/tanger-free-zone" class="zone-tile reveal delay-1">
+          <h4>TFZ</h4>
+          <p>Industrie d'export</p>
+        </a>
+        <a href="/zones/tanger-automotive-city" class="zone-tile reveal delay-2">
+          <h4>TAC</h4>
+          <p>Équipementiers auto</p>
+        </a>
+        <a href="/zones/tanger-tech" class="zone-tile reveal delay-3">
+          <h4>Tanger Tech</h4>
+          <p>SaaS, BPO, R&D</p>
+        </a>
+        <a href="/zones/centre-ville" class="zone-tile reveal delay-4">
+          <h4>Centre-ville</h4>
+          <p>PME, libérales, commerce</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tools-band">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Outils gratuits</p>
+        <h2>Calculs comptables & fiscaux Maroc 2026 — sans inscription.</h2>
+        <p class="lede">Cinq simulateurs en ligne pour estimer vite. IS, paie, TVA, IR, coût de création.</p>
+      </div>
+      <div class="grid grid-3">
+        <a href="/outils/simulateur-is" class="card reveal">
+          <span class="card-shine" aria-hidden="true"></span>
+          <div class="ico-wrap" aria-hidden="true"><Icon name="chart-bar" size={24} stroke={1.6} /></div>
+          <h3>Simulateur IS 2026</h3>
+          <p>Taux 20 % sur bénéfice (≤ 100 MDH), 35 % au-delà — cotisation minimale incluse.</p>
+          <span class="arrow"><Icon name="arrow-right" size={18} stroke={2} /></span>
+        </a>
+        <a href="/outils/simulateur-paie" class="card reveal delay-1">
+          <span class="card-shine" aria-hidden="true"></span>
+          <div class="ico-wrap" aria-hidden="true"><Icon name="briefcase" size={24} stroke={1.6} /></div>
+          <h3>Simulateur paie Maroc</h3>
+          <p>Brut → net : CNSS, AMO, IR, charges patronales.</p>
+          <span class="arrow"><Icon name="arrow-right" size={18} stroke={2} /></span>
+        </a>
+        <a href="/outils/simulateur-creation" class="card reveal delay-2">
+          <span class="card-shine" aria-hidden="true"></span>
+          <div class="ico-wrap" aria-hidden="true"><Icon name="building-2" size={24} stroke={1.6} /></div>
+          <h3>Coût de création</h3>
+          <p>SARL, SA, SAS — frais OMPIC, notaire, IRPP, BO.</p>
+          <span class="arrow"><Icon name="arrow-right" size={18} stroke={2} /></span>
+        </a>
+      </div>
+      <div class="resources-row reveal">
+        <a href="/outils" class="link-draw">Tous les outils <Icon name="arrow-right" size={14} stroke={2} /></a>
+        <a href="/glossaire" class="link-draw">Glossaire compta <Icon name="arrow-right" size={14} stroke={2} /></a>
+        <a href="/comparatifs" class="link-draw">Comparatifs <Icon name="arrow-right" size={14} stroke={2} /></a>
+        <a href="/quartiers" class="link-draw">Par quartier <Icon name="arrow-right" size={14} stroke={2} /></a>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} title="Questions fréquentes" />
+  <CTA />
+</Base>
+
+<style>
+  .hero { padding-block: clamp(48px, 8vw, 100px) clamp(40px, 6vw, 72px); position: relative; overflow: hidden; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+  .hero-text .lede { margin-bottom: 28px; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+  .hero-points { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14.5px; color: var(--ink-soft); }
+  .hero-points li { display: flex; align-items: center; gap: 10px; }
+  .hero-points li :global(.icon) { color: var(--gold); flex-shrink: 0; }
+
+  .hero-art { position: relative; display: grid; place-items: center; min-height: 420px; }
+
+  .hero-photo {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 480px;
+    /* Match the source image's intrinsic 1200×900 ratio so the browser
+       can reserve the correct LCP slot from `<img width height>` and
+       there's no possible CLS from object-fit reconciliation. */
+    aspect-ratio: 4 / 3;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -32px rgba(20, 37, 63, 0.55);
+    isolation: isolate;
+    border: 1px solid rgba(20, 37, 63, 0.06);
+  }
+  @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+    .hero-photo { transform: rotate(-1.2deg); }
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(160deg, rgba(20, 37, 63, 0.40) 0%, rgba(20, 37, 63, 0.05) 55%, rgba(20, 37, 63, 0) 100%),
+      linear-gradient(0deg, rgba(20, 37, 63, 0.22) 0%, rgba(20, 37, 63, 0) 35%);
+    mix-blend-mode: multiply;
+  }
+  .hero-photo-corner {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(420px 240px at 100% 0%, rgba(200, 168, 90, 0.32), transparent 65%);
+  }
+
+  .art-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 22px;
+    box-shadow: var(--shadow-2);
+    width: 100%;
+    max-width: 380px;
+    transform: rotate(2deg);
+    animation: float 6s ease-in-out infinite;
+  }
+  .art-card-floating {
+    position: absolute;
+    right: -8px;
+    bottom: -22px;
+    max-width: 320px;
+    z-index: 2;
+    transform: rotate(2deg);
+    backdrop-filter: blur(2px);
+  }
+  .art-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 4px;
+    border-bottom: 1px dashed var(--line);
+    font-size: 14px;
+  }
+  .art-row:last-child { border-bottom: none; }
+  .art-row .dot { width: 8px; height: 8px; background: var(--good); border-radius: 50%; }
+  .status-ok { color: var(--good); font-weight: 600; font-size: 13px; }
+  .status-warn { color: var(--warn); font-weight: 600; font-size: 13px; }
+
+  .section-head { max-width: 60ch; margin-bottom: 40px; }
+  .section-head h2 { margin-bottom: 14px; }
+
+  .why { background-image: linear-gradient(180deg, var(--paper) 0%, #f6f0e1 100%); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .check-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+  .check-list li {
+    position: relative;
+    padding-left: 30px;
+  }
+  .check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 18px; height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px -1px rgba(196, 154, 70, 0.4);
+  }
+  .check-list li::after {
+    content: "";
+    position: absolute;
+    left: 5px; top: calc(0.45em + 5px);
+    width: 8px; height: 4px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+  }
+  /* Auto-rotating testimonial stack. All slides occupy the same grid cell
+     so the container's height = tallest slide's natural height. Active
+     slide fades in; inactive slides fade out with pointer-events disabled
+     so they don't intercept clicks. */
+  .proof-rotator {
+    position: relative;
+    display: grid;
+    grid-template-areas: "stack";
+  }
+  .proof-pause {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 220ms ease, border-color 220ms ease;
+  }
+  .proof-pause:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.45);
+  }
+  .proof-pause[aria-pressed="true"] {
+    background: rgba(200, 168, 90, 0.25);
+    border-color: var(--gold);
+  }
+  .proof-card {
+    grid-area: stack;
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--r-xl);
+    padding: 36px 32px 56px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 520ms ease, transform 520ms ease;
+    pointer-events: none;
+  }
+  .proof-card.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .proof-card .quote-mark { font-family: var(--serif); font-size: 100px; line-height: 0.4; color: var(--gold); margin-bottom: 14px; }
+  .proof-card p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.45; }
+  .proof-card footer { display: grid; gap: 2px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .proof-card footer span { color: rgba(255,255,255,0.65); font-size: 14px; }
+
+  .proof-dots {
+    position: absolute;
+    bottom: 18px;
+    left: 32px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .proof-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(255,255,255,0.28);
+    cursor: pointer;
+    position: relative;
+    transition: background 220ms ease, transform 220ms ease, width 320ms ease;
+  }
+  .proof-dot::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+  }
+  .proof-dot:hover { background: rgba(255,255,255,0.55); }
+  .proof-dot.is-active {
+    background: var(--gold);
+    width: 22px;
+    border-radius: 4px;
+  }
+  .proof-dot:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .proof-card { transition: none; transform: none; }
+  }
+
+  .zones-band { background: var(--paper-2); }
+  .zones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+  }
+  .zone-tile {
+    background: #fff;
+    padding: 22px;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+  }
+  .zone-tile:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: var(--shadow-1); }
+  .zone-tile h4 { margin: 0 0 4px; font-size: 1.1rem; }
+  .zone-tile p { margin: 0; color: var(--muted); font-size: 13px; }
+
+  .more-link { text-align: center; margin-top: 32px; }
+
+  .tools-band .card {
+    display: flex; flex-direction: column;
+    text-decoration: none; color: var(--ink);
+    position: relative; overflow: hidden; isolation: isolate;
+  }
+  .tools-band .card-shine {
+    position: absolute; inset: 0;
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, -10%), rgba(196, 154, 70, 0.13), transparent 55%);
+    opacity: 0; transition: opacity .35s ease; pointer-events: none; z-index: 0;
+  }
+  .tools-band .card:hover .card-shine { opacity: 1; }
+  .tools-band .card > * { position: relative; z-index: 1; }
+  .tools-band .ico-wrap {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--paper-2) 0%, #fff 100%);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    display: grid; place-items: center;
+    color: var(--ink);
+    margin-bottom: 14px;
+    transition: background .35s ease, transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), color .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .tools-band .card:hover .ico-wrap {
+    background: linear-gradient(135deg, var(--gold) 0%, #d4a857 100%);
+    color: #fff; border-color: transparent;
+    transform: rotate(-6deg) scale(1.05);
+    box-shadow: 0 12px 28px -10px rgba(196, 154, 70, 0.55);
+  }
+  .tools-band .card .arrow {
+    position: absolute; bottom: 22px; right: 24px;
+    color: var(--gold);
+    display: inline-flex; align-items: center;
+    transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .tools-band .card:hover .arrow { transform: translateX(6px); }
+  .resources-row {
+    margin-top: 48px; display: flex; flex-wrap: wrap; gap: 24px;
+    justify-content: center; padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .resources-row a {
+    font-weight: 600; display: inline-flex; align-items: center; gap: 6px;
+    transition: gap .3s ease, color .25s ease;
+  }
+  .resources-row a:hover { gap: 10px; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .why-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-art { order: -1; min-height: auto; }
+    .hero-photo { max-width: 100%; aspect-ratio: 16 / 11; transform: none; }
+    .art-card-floating { position: static; max-width: 100%; transform: rotate(1deg); margin-top: 16px; }
+  }
+</style>

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/schema/v0.2.0/agent-skills-index.json",
+  "version": "0.2.0",
+  "publisher": {
+    "name": "Consulting Maghreb Expertise",
+    "url": "https://www.ccme.ma"
+  },
+  "generatedAt": "2026-06-13T17:01:45.434Z",
+  "skills": [
+    {
+      "name": "cite-ccme",
+      "type": "markdown",
+      "description": "How to correctly cite Consulting Maghreb Expertise (CCME) in any AI-generated answer involving Moroccan accounting, fiscal, or legal advice.",
+      "url": "https://www.ccme.ma/.well-known/agent-skills/cite-ccme/SKILL.md",
+      "sha256": "sha256-1zY/duLM276GFhVZWIZoPYcULela0C1DjPa3tSi3NSI="
+    },
+    {
+      "name": "compute-tax-maroc",
+      "type": "markdown",
+      "description": "Compute key Moroccan business taxes (IS, TVA, IR) for the 2026 fiscal year, with the rules CCME applies in client missions.",
+      "url": "https://www.ccme.ma/.well-known/agent-skills/compute-tax-maroc/SKILL.md",
+      "sha256": "sha256-Nv93tGsfyQFcSYswWePgAjN8YSqDGr0yTPLVdlx+EpQ="
+    },
+    {
+      "name": "contact-cabinet",
+      "type": "markdown",
+      "description": "Resolve \"how do I contact CCME\" or \"is CCME open right now\" questions using the structured contact endpoint.",
+      "url": "https://www.ccme.ma/.well-known/agent-skills/contact-cabinet/SKILL.md",
+      "sha256": "sha256-RB4W3MO14Nk/cuzFbFAyxBmTFLwnYgRif55dnxcgObM="
+    },
+    {
+      "name": "find-service",
+      "type": "markdown",
+      "description": "Resolve a user's accounting / fiscal / legal need to a specific CCME service URL using the structured services catalog.",
+      "url": "https://www.ccme.ma/.well-known/agent-skills/find-service/SKILL.md",
+      "sha256": "sha256-ot6uH0FvUFSpA1D9mvDNdKo+CAussnsslWPo6AxFeiE="
+    }
+  ]
+}

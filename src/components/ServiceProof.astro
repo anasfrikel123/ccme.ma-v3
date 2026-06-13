@@ -1,0 +1,15 @@
+---
+import { SERVICE_PROOF } from '~/data/service-families';
+---
+<section class="svc-proof" aria-label="Chiffres clés CCME">
+  <div class="container">
+    <div class="proof-grid reveal">
+      {SERVICE_PROOF.map((p) => (
+        <div class="proof">
+          <b class="tnum">{p.value}<span class="u">{p.suffix}</span></b>
+          <span>{p.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

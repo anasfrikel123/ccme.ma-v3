@@ -1,0 +1,72 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import AsideCard from '~/components/AsideCard.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const list = await getCollection('quartiers');
+  return list.map(q => ({ params: { slug: q.id }, props: { quartier: q } }));
+}
+const { quartier } = Astro.props;
+const { Content } = await render(quartier);
+// Quartiers use a slug-derived hero image (one photo per neighborhood).
+const heroImage = quartier.data.heroImage ?? `/images/quartiers/${quartier.id}.jpg`;
+---
+<Page
+  title={quartier.data.title}
+  description={quartier.data.description}
+  eyebrow={quartier.data.eyebrow}
+  heading={quartier.data.h1}
+  lede={quartier.data.description}
+  breadcrumb={[
+    { label: 'Accueil', href: '/' },
+    { label: 'Quartiers', href: '/quartiers' },
+    { label: quartier.data.h1 },
+  ]}
+  ogImage={heroImage}
+  ogImageAlt={quartier.data.heroAlt ?? `${quartier.data.h1} — Cabinet expert-comptable CCME, Tanger`}
+  heroImage={heroImage}
+  heroAlt={quartier.data.heroAlt}
+  keywords={quartier.data.keywords}
+>
+  <section>
+    <div class="container service-grid">
+      <div class="prose reveal"><Content /></div>
+      <aside class="reveal-right">
+        {quartier.data.bullets.length > 0 && (
+          <AsideCard eyebrow="On accompagne">
+            <ul class="bullet-list">{quartier.data.bullets.map(b => <li>{b}</li>)}</ul>
+          </AsideCard>
+        )}
+        {quartier.data.landmarks.length > 0 && (
+          <AsideCard eyebrow="Repères du quartier" class="aside-card-spaced">
+            <ul class="bullet-list">{quartier.data.landmarks.map(l => <li>{l}</li>)}</ul>
+          </AsideCard>
+        )}
+        <div class="aside-card aside-card-spaced aside-location">
+          <p class="eyebrow aside-location-eyebrow">Cabinet centre-ville</p>
+          <p class="aside-location-text">Avenue Moulay Ismail<br/>90000 Tanger</p>
+          <a href="/contact" class="btn btn-gold" style="display:inline-block">Prendre RDV</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  {quartier.data.faq.length > 0 && <FAQ items={quartier.data.faq} />}
+</Page>
+
+<style>
+  .aside-card-spaced { margin-top: 16px; }
+  .aside-location {
+    background: var(--ink);
+    color: var(--surface);
+    border-color: var(--ink);
+  }
+  .aside-location-eyebrow { color: var(--gold); }
+  .aside-location-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #e9e6e0;
+    margin: 0 0 12px;
+  }
+</style>

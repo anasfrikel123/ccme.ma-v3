@@ -1,0 +1,36 @@
+# Cloudflare Pages redirects config.
+# Replaces the previous vercel.json redirects stanza.
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+#
+# Format: <from> <to> <status> (default 302; use 301 for permanent)
+
+# Legacy .html service slugs -> Astro routes
+/Tenue-Comptabilite.html         /services/tenue-comptabilite          301
+/Supervision-Comptable.html      /services/supervision-comptable       301
+/Gestion-Financiere.html         /services/gestion-financiere          301
+/Comptabilite-Pharmaciens.html   /services/comptabilite-pharmaciens    301
+/Conseil-Fiscal.html             /services/conseil-fiscal              301
+/Assistance-Fiscale.html         /services/assistance-fiscale          301
+/Controle-Contentieux.html       /services/controle-contentieux        301
+/Simpl-Impots-DGI.html           /services/simpl-impots-dgi            301
+/Creation-Entreprise.html        /services/creation-entreprise         301
+/Conseil-Juridique.html          /services/conseil-juridique           301
+/Travaux-Juridiques.html         /services/travaux-juridiques          301
+/Domiciliation.html              /services/domiciliation               301
+/Paie-GRH.html                   /services/paie-grh                    301
+/Damancom-CNSS.html              /services/damancom-cnss               301
+/Social-Administratif.html       /services/social-administratif        301
+/Business-Plan.html              /services/business-plan               301
+
+# Legacy section landing pages
+/Services.html                   /services                             301
+/Cabinet.html                    /cabinet                              301
+/Contact.html                    /contact                              301
+/Documentation.html              /documentation                        301
+/Blogs.html                      /blog                                 301
+/Confidentialite.html            /confidentialite                      301
+/Mentions-Legales.html           /mentions-legales                     301
+
+# Legacy /blogs prefix
+/blogs                           /blog                                 301
+/blogs/:slug                     /blog/:slug                           301

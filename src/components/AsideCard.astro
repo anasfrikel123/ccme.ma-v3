@@ -1,0 +1,13 @@
+---
+interface Props {
+  eyebrow: string;
+  class?: string;
+}
+
+const { eyebrow, class: className = '' } = Astro.props;
+---
+
+<div class:list={['aside-card', className]}>
+  <p class="eyebrow">{eyebrow}</p>
+  <slot />
+</div>

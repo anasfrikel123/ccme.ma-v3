@@ -1,0 +1,52 @@
+---
+import Article from '~/layouts/Article.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(p => ({ params: { slug: p.id }, props: { post: p } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Compute word count + reading time from raw markdown body for schema.
+const rawBody = (post.body || '').replace(/```[\s\S]*?```/g, ' ').replace(/[#>*_`\[\]\(\)\-]/g, ' ');
+const wordCount = rawBody.split(/\s+/).filter(Boolean).length;
+const minutes = Math.max(1, Math.round(wordCount / 220));
+const timeRequired = `PT${minutes}M`;
+
+const allPosts = await getCollection('blog');
+const related = (post.data.related || [])
+  .map(slug => allPosts.find(p => p.id === slug))
+  .filter(Boolean)
+  .slice(0, 3)
+  .map(p => ({
+    title: p!.data.title,
+    href: `/blog/${p!.id}`,
+    cat: p!.data.category,
+  }));
+
+if (related.length < 3) {
+  const fallback = allPosts
+    .filter(p => p.id !== post.id && p.data.category === post.data.category)
+    .slice(0, 3 - related.length)
+    .map(p => ({ title: p.data.title, href: `/blog/${p.id}`, cat: p.data.category }));
+  related.push(...fallback);
+}
+---
+<Article
+  title={post.data.title}
+  description={post.data.description}
+  category={post.data.category}
+  publishedTime={post.data.publishedTime}
+  modifiedTime={post.data.modifiedTime}
+  author={post.data.author}
+  heroImage={post.data.heroImage}
+  keywords={post.data.keywords}
+  related={related}
+  wordCount={wordCount}
+  timeRequired={timeRequired}
+  about={post.data.about}
+>
+  <Content />
+</Article>

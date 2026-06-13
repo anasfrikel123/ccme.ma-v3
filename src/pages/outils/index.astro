@@ -1,0 +1,94 @@
+---
+import Page from '~/layouts/Page.astro';
+import Icon from '~/components/Icon.astro';
+import { collectionPageSchema } from '~/lib/collection-schema';
+
+const SITE = 'https://www.ccme.ma';
+const tools = [
+  { slug: 'simulateur-is', title: 'Simulateur IS 2026', desc: 'Calculez votre IS au barème 2026 : 20 % sur bénéfice jusqu\'à 100 MDH, 35 % au-delà. Cotisation minimale incluse.', icon: 'chart-bar' as const },
+  { slug: 'simulateur-paie', title: 'Simulateur paie & charges sociales', desc: 'Du salaire brut au net : CNSS, AMO, IR, taxe formation. Charges patronales incluses.', icon: 'briefcase' as const },
+  { slug: 'simulateur-creation', title: "Coût de création d'entreprise", desc: 'SARL, SARLAU, SA, SAS — coût total des démarches : OMPIC, frais notaire, dépôt capital, IRPP, publication.', icon: 'building-2' as const },
+  { slug: 'simulateur-tva', title: 'Calcul TVA Maroc', desc: 'TTC ↔ HT, taux 20%, 14%, 10%, 7%. TVA collectée vs déductible.', icon: 'receipt' as const },
+  { slug: 'simulateur-ir', title: 'Simulateur IR (revenus salariaux)', desc: 'Barème IR 2026, abattement professionnel, charges familiales.', icon: 'user-tie' as const },
+];
+const hubSchema = collectionPageSchema({
+  url: `${SITE}/outils`,
+  name: 'Simulateurs comptables et fiscaux Maroc 2026',
+  description: 'IS, paie CNSS, TVA, IR, coût création société — outils gratuits conformes aux barèmes 2026.',
+  items: tools.map((t) => ({ url: `/outils/${t.slug}`, name: t.title })),
+});
+---
+<Page
+  title="Simulateurs IS, paie, TVA Maroc 2026 | Outils CCME"
+  description="Simulateurs en ligne gratuits : impôt sur les sociétés 2026, paie marocaine, charges sociales CNSS, TVA, IR salaires. Calculs conformes aux barèmes 2026."
+  eyebrow="Outils gratuits"
+  heading="Simulateurs comptables & fiscaux Maroc 2026."
+  lede="Cinq outils en ligne gratuits, calculs à jour 2026. Pour les entrepreneurs qui veulent estimer rapidement, les RH qui valident une fiche de paie, ou le boss qui prépare un BP."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils' }]}
+  keywords={["simulateur IS Maroc 2026","calcul paie Maroc","simulateur CNSS","calcul TVA Maroc","simulateur création entreprise Maroc"]}
+  schema={hubSchema}
+>
+  <section>
+    <div class="container">
+      <div class="grid grid-3">
+        {tools.map(t => (
+          <a href={`/outils/${t.slug}`} class="card reveal tool-card">
+            <span class="card-shine" aria-hidden="true"></span>
+            <div class="ico-wrap" aria-hidden="true">
+              <Icon name={t.icon} size={26} stroke={1.6} />
+            </div>
+            <h3>{t.title}</h3>
+            <p>{t.desc}</p>
+            <span class="arrow">
+              Ouvrir l'outil
+              <Icon name="arrow-right" size={18} stroke={2} />
+            </span>
+          </a>
+        ))}
+      </div>
+      <p class="footnote">
+        Calculs indicatifs basés sur les barèmes officiels 2026. Pour une étude personnalisée, <a href="/contact">contactez le cabinet</a>.
+      </p>
+    </div>
+  </section>
+</Page>
+<style>
+  .tool-card {
+    display: flex; flex-direction: column;
+    text-decoration: none; color: var(--ink);
+    position: relative; overflow: hidden; isolation: isolate;
+    transition: transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .35s ease, box-shadow .35s ease;
+  }
+  .tool-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 24px 48px -16px rgba(15, 17, 22, 0.18); }
+  .card-shine {
+    position: absolute; inset: 0;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, -10%), rgba(196, 154, 70, 0.14), transparent 55%);
+    opacity: 0; transition: opacity .35s ease; pointer-events: none; z-index: 0;
+  }
+  .tool-card:hover .card-shine { opacity: 1; }
+  .tool-card > * { position: relative; z-index: 1; }
+  .ico-wrap {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--paper-2) 0%, #fff 100%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    display: grid; place-items: center;
+    color: var(--ink);
+    margin-bottom: 18px;
+    transition: background .35s ease, transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), color .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .tool-card:hover .ico-wrap {
+    background: linear-gradient(135deg, var(--gold) 0%, #d4a857 100%);
+    color: #fff; border-color: transparent;
+    transform: rotate(-6deg) scale(1.05);
+    box-shadow: 0 12px 28px -10px rgba(196, 154, 70, 0.55);
+  }
+  .arrow {
+    color: var(--gold); margin-top: auto; padding-top: 16px;
+    font-weight: 600; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: gap .3s ease;
+  }
+  .tool-card:hover .arrow { gap: 12px; }
+  .footnote { margin-top: 48px; text-align: center; color: var(--ink-soft); font-size: 14px; }
+</style>

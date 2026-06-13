@@ -1,0 +1,129 @@
+---
+import '~/styles/fonts.css';
+import '~/styles/global.css';
+import '~/styles/animations.css';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import SEO from '~/components/SEO.astro';
+import { agentEndpoints } from '~/data/agent-tools';
+import { orgCoreGraph } from '~/data/org-schema';
+import { mergeSchemaGraph } from '~/lib/collection-schema';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  /** Descriptive alt for og:image / twitter:image (defaults to description excerpt). */
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  schema?: any;
+  keywords?: string[];
+  bodyClass?: string;
+  /** LCP candidate. Resolved to its .webp twin when given a .jpg/.jpeg path. */
+  preloadImage?: string;
+  /** Responsive LCP preload (homepage hero). Overrides simple preloadImage when set. */
+  lcpImageSrcset?: {
+    avif?: string;
+    webp: string;
+    sizes: string;
+  };
+  /**
+   * Optional sibling URL to the page's clean markdown source. Emits
+   *   <link rel="alternate" type="text/markdown" href="...">
+   * for AI crawlers that prefer raw markdown to HTML.
+   */
+  markdownUrl?: string;
+}
+const { bodyClass = '', preloadImage, lcpImageSrcset, markdownUrl, schema, ...seo } = Astro.props;
+const mergedSchema = mergeSchemaGraph(orgCoreGraph, schema);
+const lcpHref = preloadImage
+  ? preloadImage.replace(/\.jpe?g$/i, '.webp')
+  : '';
+const heroSrcset = lcpImageSrcset?.webp ?? '';
+const heroAvif = lcpImageSrcset?.avif ?? '';
+const heroSizes = lcpImageSrcset?.sizes ?? '';
+---
+<!DOCTYPE html>
+<html lang="fr-MA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/cme-logo-96.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/cme-logo-192.png" />
+    <link rel="preload" href="/fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/hanken-400.woff2" as="font" type="font/woff2" crossorigin />
+    {lcpImageSrcset ? (
+      <>
+        {heroAvif && (
+          <link
+            rel="preload"
+            as="image"
+            href="/images/hero-720.avif"
+            imagesrcset={heroAvif}
+            imagesizes={heroSizes}
+            type="image/avif"
+            fetchpriority="high"
+          />
+        )}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-720.webp"
+          imagesrcset={heroSrcset}
+          imagesizes={heroSizes}
+          type="image/webp"
+          fetchpriority="high"
+        />
+      </>
+    ) : lcpHref ? (
+      <link
+        rel="preload"
+        as="image"
+        href={lcpHref}
+        type="image/webp"
+        fetchpriority="high"
+      />
+    ) : null}
+    {markdownUrl && (
+      <link rel="alternate" type="text/markdown" href={markdownUrl} title="Source markdown" />
+    )}
+    <SEO {...seo} schema={mergedSchema} />
+  </head>
+  <body class={bodyClass}>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    {/* WebMCP — exposes the same machine-readable surface that
+        /api/agent-manifest.json declares, but as in-page JS tools the
+        browser-resident agent can call directly. Tool definitions come
+        from src/data/agent-tools.ts (single source) so the HTTP manifest
+        and the JS tool list never drift apart. */}
+    <script
+      type="application/json"
+      data-webmcp-tools
+      set:html={JSON.stringify(
+        agentEndpoints.map((e) => ({
+          name: e.webmcpName,
+          description: e.description,
+          path: e.path,
+        })),
+      )}
+    />
+    <script>
+      import { initWebMcp } from '~/scripts/webmcp';
+      initWebMcp();
+    </script>
+    <script>
+      import { initSiteScripts } from '~/scripts/site';
+      initSiteScripts();
+    </script>
+  </body>
+</html>

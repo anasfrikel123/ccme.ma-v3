@@ -1,0 +1,121 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Coût de création d'entreprise Maroc 2026 | Outil"
+  description="Calculez le coût total de création d'une SARL, SARLAU, SA, SAS au Maroc en 2026. OMPIC, notaire, capital, IRPP, publication. Estimation gratuite."
+  eyebrow="Outil"
+  heading="Coût de création d'entreprise — Maroc 2026"
+  lede="Détail complet : OMPIC (certificat négatif, dépôt statuts), notaire, dépôt capital, IRPP (droits enregistrement), publication BO, taxe professionnelle. Honoraires cabinet inclus en option."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils', href: '/outils' }, { label: 'Simulateur création' }]}
+  keywords={["coût création SARL Maroc","prix création entreprise Tanger","frais création société Maroc"]}
+>
+  <section>
+    <div class="container narrow">
+      <div class="card sim-card">
+        <h2>Estimer mon coût</h2>
+        <div class="form-grid">
+          <label>
+            <span>Forme juridique</span>
+            <select id="forme">
+              <option value="sarlau">SARLAU (associé unique)</option>
+              <option value="sarl">SARL (plusieurs associés)</option>
+              <option value="sa">SA (société anonyme)</option>
+              <option value="sas">SAS / SA simplifiée</option>
+            </select>
+          </label>
+          <label>
+            <span>Capital social (DH)</span>
+            <input type="number" id="capital" min="0" placeholder="Ex : 100 000" value="100000" />
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="acte" />
+            <span>Acte notarié (vs sous seing privé)</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="cabinet" checked />
+            <span>Honoraires cabinet (constitution clé en main)</span>
+          </label>
+        </div>
+        <button id="calculate" class="btn btn-gold" type="button">Estimer le coût total</button>
+
+        <p id="sim-error" class="sim-error" role="alert" aria-live="polite"></p>
+
+        <div id="result" class="result" hidden>
+          <div class="row"><span>Certificat négatif (OMPIC)</span><strong>230 DH</strong></div>
+          <div class="row"><span>Droits enregistrement (1 % du capital, min 1 000 DH)</span><strong id="rDroits">—</strong></div>
+          <div class="row"><span>Dépôt légal & immatriculation RC</span><strong>350 DH</strong></div>
+          <div class="row"><span>Patente / Identification fiscale</span><strong>0 DH</strong></div>
+          <div class="row"><span>Notaire (acte authentique)</span><strong id="rNotaire">—</strong></div>
+          <div class="row"><span>Publication BO + journal d'annonces</span><strong>800 DH</strong></div>
+          <div class="row"><span>Honoraires cabinet (constitution)</span><strong id="rCabinet">—</strong></div>
+          <hr/>
+          <div class="row total"><span>Coût total estimé</span><strong id="rTotal">—</strong></div>
+          <p class="note" id="rNote"></p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:48px">
+        <h2>Détail des étapes</h2>
+        <ol>
+          <li><strong>Certificat négatif</strong> via <a href="https://www.ompic.ma" rel="nofollow noopener" target="_blank">OMPIC</a> — 230 DH, valable 1 mois</li>
+          <li><strong>Rédaction des statuts</strong> — sous seing privé OK pour SARL/SARLAU, acte notarié obligatoire pour SA</li>
+          <li><strong>Blocage du capital</strong> en banque (BMCE, Attijari, Banque Populaire, AWB…) — attestation</li>
+          <li><strong>Enregistrement</strong> auprès de l'IRPP (1 % du capital, minimum 1 000 DH)</li>
+          <li><strong>Dépôt légal</strong> au tribunal de commerce — RC + IF + ICE</li>
+          <li><strong>Publication</strong> au Bulletin Officiel + journal d'annonces légales</li>
+          <li><strong>Affiliation CNSS</strong> dès le premier salarié</li>
+        </ol>
+        <p>À Tanger, on fait tout ça via le <strong>CRI Tanger-Tétouan-Al Hoceïma</strong> — guichet unique, environ 7-15 jours selon les pièces.</p>
+        <p><a href="/services/creation-entreprise">→ Création d'entreprise clé en main</a></p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .narrow { max-width: 780px; }
+  .sim-card { padding: 32px; }
+  .form-grid { display: grid; gap: 16px; margin: 24px 0; }
+  .form-grid label.checkbox { display: flex; align-items: center; gap: 12px; }
+  .form-grid label.checkbox span { margin: 0; text-transform: none; letter-spacing: normal; font-weight: 500; font-size: 14px; }
+  .form-grid span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-grid input, .form-grid select { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 16px; background: #fff; }
+  .form-grid input:focus, .form-grid select:focus { outline: 2px solid var(--gold); }
+  .result { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .row { display: flex; justify-content: space-between; padding: 10px 0; gap: 16px; font-size: 14.5px; }
+  .row strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .row.total { padding: 16px 0; border-top: 2px solid var(--ink); margin-top: 12px; font-size: 17px; font-weight: 700; }
+  .row.total strong { color: var(--gold); font-size: 22px; }
+  .note { margin-top: 16px; font-size: 13px; color: var(--ink-soft); padding: 12px; background: var(--paper-2); border-radius: var(--r-md); }
+  .sim-error { color: #b3261e; font-size: 14px; min-height: 1.4em; margin: 12px 0 0; font-weight: 500; }
+  .sim-error:empty { display: none; }
+</style>
+
+<script>
+  import { computeCreation, fmtDH, type FormeJuridique } from '~/lib/tax-maroc';
+  document.getElementById('calculate')!.addEventListener('click', () => {
+    const errEl = document.getElementById('sim-error') as HTMLElement;
+    errEl.textContent = '';
+    const forme = (document.getElementById('forme') as HTMLSelectElement).value as FormeJuridique;
+    const capital = parseFloat((document.getElementById('capital') as HTMLInputElement).value) || 0;
+    const acte = (document.getElementById('acte') as HTMLInputElement).checked;
+    const cabinet = (document.getElementById('cabinet') as HTMLInputElement).checked;
+    if (capital <= 0) {
+      errEl.textContent = 'Veuillez saisir un capital social supérieur à 0.';
+      (document.getElementById('capital') as HTMLInputElement).focus();
+      return;
+    }
+    const r = computeCreation({ forme, capital, acteNotarie: acte, cabinet });
+    document.getElementById('rDroits')!.textContent = fmtDH(r.droitsEnregistrement);
+    document.getElementById('rNotaire')!.textContent = r.notaire > 0 ? fmtDH(r.notaire) : 'Non applicable';
+    document.getElementById('rCabinet')!.textContent = r.honorairesCabinet > 0 ? fmtDH(r.honorairesCabinet) : 'Aucun (DIY)';
+    document.getElementById('rTotal')!.textContent = fmtDH(r.total);
+    document.getElementById('rNote')!.textContent = r.note === 'sa'
+      ? 'La SA exige un acte notari\u00e9 et un capital minimum de 300 000 DH (3 MDH si appel public \u00e0 l\u2019\u00e9pargne). Compter aussi un commissaire aux comptes (1 500-3 000 DH/mois).'
+      : 'Estimation pour un dossier standard. D\u00e9lai CRI Tanger : 7-15 jours en moyenne.';
+    const result = document.getElementById('result') as HTMLElement;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

@@ -1,0 +1,48 @@
+---
+import Page from '~/layouts/Page.astro';
+import { getCollection } from 'astro:content';
+import { collectionPageSchema } from '~/lib/collection-schema';
+
+const SITE = 'https://www.ccme.ma';
+const quartiers = await getCollection('quartiers');
+const hubSchema = collectionPageSchema({
+  url: `${SITE}/quartiers`,
+  name: 'Comptable par quartier de Tanger — CCME',
+  description: 'Expert-comptable de proximité : Malabata, California, Boukhalef, Beni Makada, Marshan, Iberia.',
+  items: quartiers.map((q) => ({ url: `/quartiers/${q.id}`, name: q.data.h1 })),
+});
+---
+<Page
+  title="Comptable par quartier de Tanger | Cabinet local"
+  description="Expert-comptable de proximité pour tous les quartiers de Tanger : Malabata, California, Boukhalef, Beni Makada, Marshan, Iberia. Cabinet centre-ville."
+  eyebrow="Quartiers"
+  heading="Votre comptable, là où vous êtes."
+  lede="Centre-ville, Malabata, California, Boukhalef… On pratique chaque coin de Tanger. Cabinet centre — déplacements quand il faut."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Quartiers' }]}
+  keywords={["expert comptable quartier Tanger","cabinet comptable proximité Tanger","comptable Malabata California Marshan"]}
+  schema={hubSchema}
+>
+  <section>
+    <div class="container">
+      <div class="grid grid-2">
+        {quartiers.map(q => (
+          <a href={`/quartiers/${q.id}`} class="card reveal">
+            <p class="eyebrow">{q.data.eyebrow}</p>
+            <h3>{q.data.h1}</h3>
+            <p>{q.data.description}</p>
+            {q.data.landmarks.length > 0 && (
+              <ul class="landmarks">{q.data.landmarks.slice(0,3).map(l => <li>{l}</li>)}</ul>
+            )}
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Page>
+<style>
+  .card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); }
+  .card .arrow { color: var(--gold); margin-top: auto; padding-top: 12px; font-size: 22px; }
+  .landmarks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .landmarks li { font-size: 12px; padding: 4px 10px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); }
+</style>

@@ -1,0 +1,231 @@
+---
+import Base from './Base.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  publishedTime: string;
+  modifiedTime?: string;
+  author?: string;
+  heroImage?: string;
+  ogImage?: string;
+  keywords?: string[];
+  related?: { title: string; href: string; cat: string }[];
+  wordCount?: number;
+  timeRequired?: string;
+  /** Frontmatter `about` keys map article to canonical entities (DefinedTerm IDs / Service URLs). */
+  about?: string[];
+}
+const {
+  title, description, category, publishedTime, modifiedTime,
+  author = 'Équipe CCME', heroImage, related = [], wordCount, timeRequired, about = [], ...rest
+} = Astro.props;
+
+const SITE = 'https://www.ccme.ma';
+const url = `${SITE}${Astro.url.pathname}`;
+
+// Map known author display names to canonical Person entities defined on /cabinet#<id>.
+// New named contributors can be added here without touching every blog post.
+const authorMap: Record<string, { id: string; name: string; jobTitle: string; sameAs?: string[] }> = {
+  'Hicham Bennani': {
+    id: 'hicham-bennani',
+    name: 'Hicham Bennani',
+    jobTitle: 'Expert-comptable inscrit à l\'OEC',
+    sameAs: ['https://www.linkedin.com/company/consulting-maghreb-expertises/'],
+  },
+  'Salma El Idrissi': {
+    id: 'salma-el-idrissi',
+    name: 'Salma El Idrissi',
+    jobTitle: 'Responsable fiscalité & contentieux',
+    sameAs: ['https://www.linkedin.com/company/consulting-maghreb-expertises/'],
+  },
+  'Yassine Ouali': {
+    id: 'yassine-ouali',
+    name: 'Yassine Ouali',
+    jobTitle: 'Responsable paie & social',
+    sameAs: ['https://www.linkedin.com/company/consulting-maghreb-expertises/'],
+  },
+};
+
+const authorPerson = authorMap[author]
+  ? {
+      '@type': 'Person',
+      '@id': `${SITE}/cabinet#${authorMap[author].id}`,
+      name: authorMap[author].name,
+      jobTitle: authorMap[author].jobTitle,
+      worksFor: { '@id': 'https://www.ccme.ma/#accounting' },
+      url: `${SITE}/cabinet#${authorMap[author].id}`,
+      ...(authorMap[author].sameAs ? { sameAs: authorMap[author].sameAs } : {}),
+    }
+  : { '@type': 'Organization', '@id': 'https://www.ccme.ma/#accounting', name: 'Équipe CCME' };
+
+const articleSchema: Record<string, any> = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: publishedTime,
+  dateModified: modifiedTime || publishedTime,
+  author: authorPerson,
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://www.ccme.ma/#accounting',
+    name: 'Consulting Maghreb Expertise',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE}/images/cme-logo-512.png`,
+      width: 512,
+      height: 512,
+    },
+  },
+  image: heroImage ? `${SITE}${heroImage}` : `${SITE}/images/og-default.jpg`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  url,
+  inLanguage: 'fr-MA',
+  articleSection: category,
+  isAccessibleForFree: true,
+  // Speakable hints flag the most citable passage of the article so AI Mode
+  // (Gemini) and Google Assistant can pick a precise quote when summarising.
+  // Per the post-March-2026 schema research, Speakable is one of the few
+  // surviving "passage identification" signals that still influences AI
+  // citation precision even though it no longer triggers a SERP feature.
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', '.lede', '.prose > p:first-of-type', '.prose h2'],
+  },
+};
+if (wordCount && wordCount > 0) articleSchema.wordCount = wordCount;
+if (timeRequired) articleSchema.timeRequired = timeRequired;
+
+// `about` lets blog posts declare which canonical entities they discuss —
+// glossary DefinedTerm IDs, Service URLs, the cabinet itself. Gemini uses
+// these entity links during query fan-out to decide whether the article
+// answers related sub-queries.
+if (about.length) {
+  articleSchema.about = about.map(a => {
+    if (a.startsWith('http')) return { '@id': a };
+    if (a.startsWith('#')) return { '@id': `${SITE}/glossaire${a}` };
+    if (a.startsWith('/')) return { '@id': `${SITE}${a}` };
+    return { '@type': 'Thing', name: a };
+  });
+}
+---
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  ogImage={heroImage}
+  schema={articleSchema}
+  markdownUrl={`${url}.md`}
+  {...rest}
+>
+  <article class="article">
+    <header class="article-hero hero-bg">
+      <div class="container">
+        <Breadcrumb items={[
+          { label: 'Accueil', href: '/' },
+          { label: 'Le Journal', href: '/blog' },
+          { label: title }
+        ]} />
+        <p class="eyebrow fade-up">{category}</p>
+        <h1 class="fade-up d1">{title}</h1>
+        <p class="lede fade-up d2">{description}</p>
+        <p class="article-meta fade-up d3">
+          <time datetime={publishedTime}>{new Date(publishedTime).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <span aria-hidden="true"> · </span>
+          <span>{author}</span>
+          {timeRequired && (
+            <>
+              <span aria-hidden="true"> · </span>
+              <span>{Math.max(1, parseInt(timeRequired.replace(/\D/g, ''), 10))} min de lecture</span>
+            </>
+          )}
+        </p>
+      </div>
+    </header>
+
+    {heroImage && (
+      <figure class="article-figure container reveal-scale" aria-hidden="true">
+        <picture>
+          <source srcset={heroImage.replace(/\.jpe?g$/i, '.webp')} type="image/webp" />
+          <img src={heroImage} alt={title} width="1200" height="675" loading="eager" decoding="async" fetchpriority="high" />
+        </picture>
+      </figure>
+    )}
+
+    <div class="container article-body">
+      <div class="prose reveal">
+        <slot />
+      </div>
+
+      <aside class="article-cta">
+        <p class="eyebrow">Besoin d'aide concrète ?</p>
+        <h3>On regarde votre dossier ensemble.</h3>
+        <p>Premier échange de 30 minutes, gratuit, sans engagement.</p>
+        <a href="/contact" class="btn btn-primary">Prendre contact</a>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="related" aria-label="Articles liés">
+        <div class="container">
+          <h2 class="reveal">À lire ensuite</h2>
+          <div class="grid grid-3">
+            {related.map((r, i) => (
+              <a href={r.href} class="card reveal" style={`transition-delay:${i * 80}ms`}>
+                <span class="tag">{r.cat}</span>
+                <h3>{r.title}</h3>
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .article-hero { padding-block: clamp(36px, 5vw, 64px) clamp(20px, 3vw, 32px); }
+  .article-hero h1 { max-width: 26ch; }
+  .article-meta { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .article-figure {
+    margin-block: 24px;
+  }
+  .article-figure img {
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-2);
+  }
+  .article-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 56px;
+    padding-block: clamp(28px, 4vw, 48px);
+  }
+  .article-cta {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    height: fit-content;
+    position: sticky;
+    top: 96px;
+  }
+  .article-cta h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .article-cta p { font-size: 14.5px; color: var(--ink-soft); }
+  .article-cta .btn { margin-top: 8px; }
+
+  .related { padding-block: clamp(40px, 6vw, 72px); background: var(--paper-2); }
+  .related h2 { margin-bottom: 28px; }
+  .related .card { color: var(--ink); text-decoration: none; display: flex; flex-direction: column; gap: 10px; }
+  .related .arrow { color: var(--gold); margin-top: auto; }
+
+  @media (max-width: 900px) {
+    .article-body { grid-template-columns: 1fr; }
+    .article-cta { position: static; }
+  }
+</style>

@@ -1,0 +1,132 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Simulateur paie Maroc 2026 — Brut, net, charges CNSS"
+  description="Calcul gratuit du salaire net à partir du brut au Maroc. CNSS (4,48 %), AMO (2,26 %), IR progressif, charges patronales. Conforme barèmes 2026."
+  eyebrow="Outil"
+  heading="Simulateur paie Maroc 2026"
+  lede="Du brut au net — CNSS, AMO, IR. Et aussi le coût total employeur (charges patronales). Plafond CNSS 6 000 DH."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils', href: '/outils' }, { label: 'Simulateur paie' }]}
+  keywords={["simulateur paie Maroc","calcul net brut Maroc","CNSS AMO IR","charges patronales Maroc"]}
+>
+  <section>
+    <div class="container narrow">
+      <div class="card sim-card">
+        <h2>Calcul du net (Maroc 2026)</h2>
+        <div class="form-grid">
+          <label>
+            <span>Salaire brut mensuel (DH)</span>
+            <input type="number" id="brut" placeholder="Ex : 8 000" min="0" />
+          </label>
+          <label>
+            <span>Personnes à charge (max 6)</span>
+            <input type="number" id="charges" min="0" max="6" value="0" />
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="cimr" />
+            <span>Cotisation CIMR retraite (3 % - optionnel)</span>
+          </label>
+        </div>
+        <button id="calculate" class="btn btn-gold" type="button">Calculer</button>
+
+        <p id="sim-error" class="sim-error" role="alert" aria-live="polite"></p>
+
+        <div id="result" class="result" hidden>
+          <h3>Côté salarié</h3>
+          <div class="row"><span>Brut</span><strong id="rBrut">—</strong></div>
+          <div class="row"><span>CNSS (4,48 % plafonné 6 000 DH)</span><strong id="rCnss">—</strong></div>
+          <div class="row"><span>AMO (2,26 %)</span><strong id="rAmo">—</strong></div>
+          <div class="row"><span>CIMR (3 %)</span><strong id="rCimr">—</strong></div>
+          <div class="row"><span>Frais professionnels (20 % plafonné)</span><strong id="rFp">—</strong></div>
+          <div class="row"><span>IR brut (barème progressif)</span><strong id="rIrBrut">—</strong></div>
+          <div class="row"><span>Charges familiales (360 DH × pers.)</span><strong id="rCf">—</strong></div>
+          <div class="row total"><span>Net à payer</span><strong id="rNet">—</strong></div>
+
+          <h3 style="margin-top:24px">Côté employeur</h3>
+          <div class="row"><span>CNSS patronal (8,98 % plafonné)</span><strong id="rCnssP">—</strong></div>
+          <div class="row"><span>AMO patronal (4,11 %)</span><strong id="rAmoP">—</strong></div>
+          <div class="row"><span>Allocations familiales (6,4 % plafonné 6 000 DH)</span><strong id="rAf">—</strong></div>
+          <div class="row"><span>Taxe formation prof. (1,6 % plafonné 6 000 DH)</span><strong id="rTfp">—</strong></div>
+          <div class="row total"><span>Coût total employeur</span><strong id="rCout">—</strong></div>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:48px">
+        <h2>Bases de calcul (2026)</h2>
+        <ul>
+          <li>CNSS salarié : 4,48 % plafonné à 6 000 DH (soit 268,80 DH max)</li>
+          <li>CNSS patronal : 8,98 % plafonné à 6 000 DH</li>
+          <li>AMO salarié : 2,26 % sans plafond</li>
+          <li>AMO patronal : 4,11 % sans plafond</li>
+          <li>Allocations familiales : 6,4 % plafonné 6 000 DH (employeur)</li>
+          <li>Taxe formation pro : 1,6 % plafonné 6 000 DH (employeur)</li>
+        </ul>
+        <p><strong>Barème IR mensuel 2026 :</strong></p>
+        <ul>
+          <li>0 → 2 500 DH : 0 %</li>
+          <li>2 501 → 4 166 DH : 10 % (déduction 250)</li>
+          <li>4 167 → 5 000 DH : 20 % (déduction 666,67)</li>
+          <li>5 001 → 6 666 DH : 30 % (déduction 1 166,67)</li>
+          <li>6 667 → 15 000 DH : 34 % (déduction 1 433,33)</li>
+          <li>Au-delà : 37 % (déduction 1 883,33)</li>
+        </ul>
+        <p>Frais professionnels : 25 % du brut imposable jusqu'à 6 250 DH/mois (max 75 000 DH/an), puis 20 %.</p>
+        <p><a href="/services/paie-grh">→ Externaliser la paie et la GRH</a></p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .narrow { max-width: 780px; }
+  .sim-card { padding: 32px; }
+  .form-grid { display: grid; gap: 16px; margin: 24px 0; }
+  .form-grid label { display: block; }
+  .form-grid label.checkbox { display: flex; align-items: center; gap: 12px; }
+  .form-grid label.checkbox span { margin: 0; text-transform: none; letter-spacing: normal; font-weight: 500; font-size: 14px; }
+  .form-grid span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-grid input[type="number"] { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 16px; background: #fff; }
+  .form-grid input:focus { outline: 2px solid var(--gold); }
+  .result h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin: 0 0 12px; }
+  .result { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .row { display: flex; justify-content: space-between; padding: 8px 0; gap: 16px; font-size: 14.5px; }
+  .row strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .row.total { padding: 14px 0; border-top: 1px solid var(--ink); margin-top: 8px; font-size: 16px; font-weight: 700; }
+  .row.total strong { color: var(--gold); font-size: 20px; }
+  .sim-error { color: #b3261e; font-size: 14px; min-height: 1.4em; margin: 12px 0 0; font-weight: 500; }
+  .sim-error:empty { display: none; }
+</style>
+
+<script>
+  import { computePaie, fmtDH2 } from '~/lib/tax-maroc';
+  document.getElementById('calculate')!.addEventListener('click', () => {
+    const errEl = document.getElementById('sim-error') as HTMLElement;
+    errEl.textContent = '';
+    const brut = parseFloat((document.getElementById('brut') as HTMLInputElement).value) || 0;
+    const charges = Math.min(parseInt((document.getElementById('charges') as HTMLInputElement).value) || 0, 6);
+    const cimrOn = (document.getElementById('cimr') as HTMLInputElement).checked;
+    if (brut <= 0) {
+      errEl.textContent = 'Veuillez saisir un salaire brut supérieur à 0.';
+      (document.getElementById('brut') as HTMLInputElement).focus();
+      return;
+    }
+    const r = computePaie({ brut, charges, cimr: cimrOn });
+    document.getElementById('rBrut')!.textContent = fmtDH2(r.brut);
+    document.getElementById('rCnss')!.textContent = fmtDH2(r.salarie.cnss);
+    document.getElementById('rAmo')!.textContent = fmtDH2(r.salarie.amo);
+    document.getElementById('rCimr')!.textContent = fmtDH2(r.salarie.cimr);
+    document.getElementById('rFp')!.textContent = fmtDH2(r.salarie.fraisProfessionnels);
+    document.getElementById('rIrBrut')!.textContent = fmtDH2(r.salarie.irBrut);
+    document.getElementById('rCf')!.textContent = fmtDH2(r.salarie.chargesFamiliales);
+    document.getElementById('rNet')!.textContent = fmtDH2(r.salarie.net);
+    document.getElementById('rCnssP')!.textContent = fmtDH2(r.patronal.cnss);
+    document.getElementById('rAmoP')!.textContent = fmtDH2(r.patronal.amo);
+    document.getElementById('rAf')!.textContent = fmtDH2(r.patronal.allocationsFamiliales);
+    document.getElementById('rTfp')!.textContent = fmtDH2(r.patronal.taxeFormationPro);
+    document.getElementById('rCout')!.textContent = fmtDH2(r.coutEmployeur);
+    const result = document.getElementById('result') as HTMLElement;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

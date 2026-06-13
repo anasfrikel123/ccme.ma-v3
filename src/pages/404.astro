@@ -1,0 +1,70 @@
+---
+import Base from '~/layouts/Base.astro';
+---
+<Base
+  title="Page introuvable | CCME"
+  description="La page demandée n'existe pas ou a été déplacée. Voici les liens utiles pour repartir : services, blog, simulateurs, contact."
+  noindex={true}
+>
+  <section class="notfound hero-bg">
+    <div class="container">
+      <p class="eyebrow fade-up">Erreur 404</p>
+      <h1 class="fade-up d1">Cette page s'est égarée.</h1>
+      <p class="lede fade-up d2">Probablement déplacée ou supprimée. Voici quelques chemins utiles pour repartir du bon pied.</p>
+      <div class="links fade-up d3">
+        <a href="/" class="btn btn-primary">Accueil</a>
+        <a href="/services" class="btn btn-ghost">Services</a>
+        <a href="/blog" class="btn btn-ghost">Le Journal</a>
+        <a href="/contact" class="btn btn-ghost">Contact</a>
+      </div>
+
+      <nav class="popular fade-up d4" aria-label="Pages populaires">
+        <h2>Pages les plus consultées</h2>
+        <ul>
+          <li><a href="/services/tenue-comptabilite">Tenue de comptabilité</a></li>
+          <li><a href="/services/creation-entreprise">Création d'entreprise</a></li>
+          <li><a href="/services/conseil-fiscal">Conseil fiscal</a></li>
+          <li><a href="/outils/simulateur-is">Simulateur IS 2026</a></li>
+          <li><a href="/outils/simulateur-paie">Simulateur paie</a></li>
+          <li><a href="/glossaire">Glossaire comptable</a></li>
+          <li><a href="/tarifs">Tarifs</a></li>
+          <li><a href="/cabinet">Cabinet</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound { padding-block: clamp(64px, 10vw, 120px) clamp(48px, 8vw, 96px); }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .popular {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .popular h2 {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .popular ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px 24px;
+  }
+  .popular a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 14.5px;
+    transition: color var(--t-fast);
+  }
+  .popular a:hover, .popular a:focus-visible { color: var(--gold); }
+  .fade-up.d4 { animation-delay: .35s; }
+</style>

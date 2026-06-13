@@ -1,0 +1,44 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import AsideCard from '~/components/AsideCard.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const list = await getCollection('zones');
+  return list.map(z => ({ params: { slug: z.id }, props: { zone: z } }));
+}
+const { zone } = Astro.props;
+const { Content } = await render(zone);
+---
+<Page
+  title={zone.data.title}
+  description={zone.data.description}
+  eyebrow={zone.data.eyebrow}
+  heading={zone.data.h1}
+  lede={zone.data.description}
+  breadcrumb={[
+    { label: 'Accueil', href: '/' },
+    { label: 'Zones', href: '/zones' },
+    { label: zone.data.h1 },
+  ]}
+  ogImage={zone.data.heroImage}
+  ogImageAlt={zone.data.heroAlt ?? `${zone.data.h1} — Cabinet expert-comptable CCME, Tanger`}
+  heroImage={zone.data.heroImage}
+  heroAlt={zone.data.heroAlt}
+  keywords={zone.data.keywords}
+>
+  <section>
+    <div class="container service-grid">
+      <div class="prose reveal"><Content /></div>
+      {zone.data.bullets.length > 0 && (
+        <aside class="reveal-right">
+          <AsideCard eyebrow="Points clés">
+            <ul class="bullet-list">{zone.data.bullets.map(b => <li>{b}</li>)}</ul>
+          </AsideCard>
+        </aside>
+      )}
+    </div>
+  </section>
+  {zone.data.faq.length > 0 && <FAQ items={zone.data.faq} />}
+</Page>

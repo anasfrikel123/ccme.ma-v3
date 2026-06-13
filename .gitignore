@@ -1,0 +1,22 @@
+node_modules
+dist
+.astro
+.env
+.env.local
+# Negate the repo-root `.env.*` rule for the template file — the example
+# documents required env vars and is meant to be tracked.
+!.env.example
+.DS_Store
+.vscode
+.vercel
+# OG cards regenerated at every build by scripts/generate-og.mjs
+public/og
+# Source-asset drop folder for institution logos. Files here get routed
+# into public/logos/institutions/<slug>.svg by hand; no need to ship the
+# originals in the repo.
+svgs/
+# Playwright + Lighthouse CI artifacts
+test-results/
+playwright-report/
+.lighthouseci/
+audit-build.log

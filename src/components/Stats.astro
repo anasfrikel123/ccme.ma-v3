@@ -1,0 +1,45 @@
+---
+interface Stat { value: string; label: string; suffix?: string; }
+interface Props { items: Stat[]; }
+const { items } = Astro.props;
+---
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      {items.map((s, i) => (
+        <div class="stat reveal" style={`transition-delay:${i * 80}ms`}>
+          <p class="stat-value counter" data-counter={`${s.value}${s.suffix || ''}`}>{s.value}{s.suffix || ''}</p>
+          <p class="stat-label">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  .stats-band {
+    background: var(--paper-2);
+    border-block: 1px solid var(--line);
+    padding-block: clamp(36px, 6vw, 64px);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    text-align: center;
+  }
+  .stat-value {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--ink);
+    margin: 0;
+    line-height: 1;
+  }
+  .stat-label {
+    margin-top: 6px;
+    font-size: 13.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 600;
+  }
+</style>

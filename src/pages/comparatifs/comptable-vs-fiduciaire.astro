@@ -1,0 +1,76 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import CompareTable from '~/components/CompareTable.astro';
+
+const faq = [
+  { q: "Comment vérifier qu'un cabinet est inscrit à l'OEC ?", a: "Sur le site officiel de l'Ordre des Experts-Comptables du Maroc (oec-maroc.com). Tous les experts-comptables agréés y figurent par région. Tanger compte une cinquantaine d'inscrits." },
+  { q: "Mon comptable n'est pas expert-comptable, c'est grave ?", a: "Pour tenir la compta : non, pas de problème. Un comptable diplômé peut faire la tenue. Pour signer un bilan officiel pour les banques ou DGI sur des dossiers sensibles, l'expert-comptable apporte un cachet et une responsabilité juridique. Pour les contrôles fiscaux, l'expert-comptable est plus armé." },
+];
+
+const compareColumns = ['Critère', 'Expert-comptable (OEC)', 'Fiduciaire / cabinet comptable'];
+const compareRows = [
+  { label: 'Diplôme', values: ['Bac+8 + stage 3 ans + examen national OEC', 'Variable (Bac+3 à Bac+5)'] },
+  { label: 'Inscription Ordre', values: ['Obligatoire (OEC Maroc)', 'Aucune obligation'] },
+  { label: 'Tenue comptabilité', values: ['Oui', 'Oui'] },
+  { label: 'Signature bilans officiels', values: ['Oui (cachet OEC)', 'Non (juste préparation)'] },
+  { label: 'Commissariat aux comptes', values: ['Oui (CAC distinct)', 'Non'] },
+  { label: 'Audit légal', values: ['Oui', 'Non'] },
+  { label: 'Conseil fiscal complexe', values: ['Pleinement compétent', 'Limité'] },
+  { label: 'Représentation DGI (contentieux)', values: ['Oui (avec mandat)', 'Limité'] },
+  { label: 'Garantie responsabilité civile', values: ['Obligatoire (RC pro)', 'Variable'] },
+  { label: 'Tarifs typiques', values: ['15-50 % plus élevés', 'Plus accessibles'] },
+  { label: 'Idéal pour', values: ['PME > 10 salariés, audits, fiscalité complexe, expat, contrôles', 'TPE, commerces, compta de routine'] },
+];
+---
+<Page
+  title="Expert-comptable vs fiduciaire | Différence au Maroc"
+  description="Quelle est la différence entre un expert-comptable et une fiduciaire au Maroc ? Compétences, responsabilités, tarifs, quand choisir lequel."
+  eyebrow="Comparatif"
+  heading="Expert-comptable vs fiduciaire"
+  lede="Au Maroc, les deux mots circulent. Concrètement, qu'est-ce que ça change pour vous ? Compétences, garanties, tarifs."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs', href: '/comparatifs' }, { label: 'Comptable vs fiduciaire' }]}
+  keywords={["expert comptable vs fiduciaire","différence comptable fiduciaire Maroc","OEC Maroc","comptable agréé Tanger"]}
+>
+  <section>
+    <div class="container">
+      <CompareTable columns={compareColumns} rows={compareRows} narrow="md" />
+
+      <div class="prose compare-prose">
+        <h2>Notre cabinet : OEC inscrit</h2>
+        <p>Consulting Maghreb Expertise est inscrit à l'Ordre des Experts-Comptables du Maroc, région Tanger-Tétouan. Cela signifie : déontologie OEC, secret professionnel renforcé, RC pro obligatoire, conseil de discipline en cas de manquement.</p>
+
+        <p>Concrètement, ce qui change pour vous :</p>
+        <ul>
+          <li><strong>Bilans signés OEC</strong> — meilleure crédibilité auprès des banques pour les financements</li>
+          <li><strong>Représentation devant la DGI</strong> en cas de contrôle ou contentieux, avec mandat formel</li>
+          <li><strong>Conseil fiscal sécurisé</strong> — un avis OEC engage notre responsabilité, pas juste un "il paraît que"</li>
+          <li><strong>Préparation des dossiers de cession / valorisation</strong> reconnus par les acquéreurs et les fonds</li>
+        </ul>
+
+        <h2>Quand un cabinet non-OEC suffit</h2>
+        <p>Si vous êtes une TPE simple (commerce, restaurant, petit service), un comptable diplômé qui n'est pas expert-comptable peut très bien tenir votre compta. C'est moins cher, et pour de la routine, ça marche.</p>
+
+        <p>Le moment où il faut un expert-comptable :</p>
+        <ul>
+          <li>Vous passez le seuil 50 MDH de CA (CAC obligatoire)</li>
+          <li>Vous avez 10+ salariés</li>
+          <li>Vous préparez un dossier de financement bancaire significatif</li>
+          <li>La DGI vous a notifié un contrôle ou un avis de vérification</li>
+          <li>Vous gérez une activité multi-sociétés ou internationale</li>
+          <li>Vous voulez vendre ou faire entrer un investisseur</li>
+        </ul>
+
+        <h2>Le piège des "soit-disant comptables"</h2>
+        <p>À Tanger, on a vu des dossiers gérés par des "comptables" qui n'avaient ni diplôme ni RC pro. Erreurs fiscales accumulées, retards CNSS, impossibilité de récupérer les pièces quand l'activité s'arrêtait. Vérifiez toujours : <strong>diplôme + RC pro + idéalement OEC</strong>.</p>
+
+        <p><a href="/cabinet">→ En savoir plus sur notre cabinet et son équipe</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .compare-prose { margin-top: 48px; max-width: 1000px; margin-inline: auto; }
+</style>

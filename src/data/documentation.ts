@@ -159,7 +159,7 @@ export const DOC_GROUPS: DocGroup[] = [
         href: `${LEGACY_FILES}/communiqu%C3%A9+-TH+et+TSC+_ach%C3%A9vement_+2026-+FR+(2).pdf`,
       },
       { name: 'Communiqué TSAV 2026 (FR)', format: 'PDF', href: `${LEGACY_FILES}/communiqu%C3%A9_+TSAV+_FR_2026.pdf` },
-      { name: 'Communiqué TSAV 2026 (AR)', format: 'PDF', href: `${LEGACY_FILES}/Communiqu%C3%A9+_TSAV+_AR_2026.pdf` },
+      { name: 'Communiqué TSAV 2026 (AR)', format: 'PDF', href: `${LEGACY_FILES}/Communiqu%C3%A9+_TSAV+_AR+2026.pdf` },
     ],
   },
   {

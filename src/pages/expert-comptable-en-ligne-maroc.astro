@@ -1,0 +1,91 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import { getCollection } from 'astro:content';
+
+const SITE = 'https://ccme.ma';
+const villes = (await getCollection('villes')).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+const national = villes.filter((v) => v.data.scope === 'national');
+const regional = villes.filter((v) => v.data.scope !== 'national');
+
+const faq = [
+  { q: "Un expert-comptable à distance, est-ce sérieux et légal au Maroc ?", a: "Tout à fait. La quasi-totalité des obligations passe aujourd'hui par des portails : déclarations fiscales via Simpl-DGI, déclarations sociales via Damancom-CNSS, télépaiement, et échange de pièces par espace partagé. Un expert-comptable inscrit à l'Ordre des Experts-Comptables (OEC) peut donc tenir votre comptabilité, certifier vos comptes et vous représenter où que vous soyez au Maroc. La distance n'a plus d'incidence ni sur la légalité, ni sur la qualité." },
+  { q: "Comment se passe la collaboration concrètement ?", a: "Vous nous transmettez vos factures, relevés et documents via un espace partagé sécurisé (ou par photo). Nous tenons la comptabilité, produisons vos déclarations de TVA, d'IS et vos bulletins de paie, et vous recevons chaque mois vos états financiers et un tableau de bord clair. Les échanges se font par visio, téléphone et e-mail, avec un interlocuteur dédié qui connaît votre dossier." },
+  { q: "Est-ce moins cher qu'un cabinet local ?", a: "Souvent, oui — surtout face aux grands cabinets des quartiers d'affaires de Casablanca ou Rabat, dont les honoraires reflètent des frais de structure élevés. Vous payez l'expertise et le suivi, pas le loyer d'une tour de bureaux. Nos fourchettes sont publiées et un devis ferme est établi après un échange de cadrage gratuit." },
+  { q: "Quelles villes couvrez-vous ?", a: "Toutes. Nous accompagnons des entreprises partout au Maroc — Casablanca, Rabat, Marrakech, Agadir, Fès, Kénitra et l'ensemble du nord (Tanger, Tétouan, Asilah, Larache…). Pour les villes proches de Tanger, nous nous déplaçons aussi sur rendez-vous." },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${SITE}/expert-comptable-en-ligne-maroc#faq`,
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AccountingService',
+  '@id': `${SITE}/expert-comptable-en-ligne-maroc#service`,
+  name: 'Expert-comptable en ligne au Maroc — CCME',
+  description: 'Cabinet OEC qui tient la comptabilité, la fiscalité et la paie à distance pour les entreprises de tout le Maroc.',
+  url: `${SITE}/expert-comptable-en-ligne-maroc`,
+  areaServed: { '@type': 'Country', name: 'Maroc' },
+  provider: { '@id': 'https://ccme.ma/#accounting' },
+};
+---
+<Page
+  title="Expert-comptable en ligne au Maroc"
+  description="Cabinet OEC qui tient votre comptabilité, fiscalité et paie 100% à distance, partout au Maroc : Casablanca, Rabat, Marrakech, Agadir, Fès, Kénitra…"
+  eyebrow="Partout au Maroc"
+  heading="Expert-comptable en ligne, partout au Maroc"
+  lede="Un cabinet inscrit à l'Ordre des Experts-Comptables qui tient votre comptabilité, votre fiscalité et votre paie 100% à distance — la rigueur d'un grand cabinet, sans la contrainte de la distance."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Expert-comptable en ligne' }]}
+  keywords={["expert comptable en ligne Maroc","comptable à distance Maroc","expert comptable en ligne","cabinet comptable en ligne Maroc"]}
+  schema={[serviceSchema, faqSchema]}
+>
+  <section>
+    <div class="container">
+      <div class="prose" style="max-width: 880px;">
+        <h2>La comptabilité ne dépend plus de la géographie</h2>
+        <p>Déclarations fiscales via <a href="/services/simpl-impots-dgi">Simpl-DGI</a>, déclarations sociales via <a href="/services/damancom-cnss">Damancom-CNSS</a>, télépaiement, échange de pièces par espace partagé : aujourd'hui, l'essentiel du travail comptable est dématérialisé. Que vous soyez à Casablanca, Agadir ou Tanger, ce qui compte n'est plus la proximité du cabinet, mais sa <strong>compétence</strong>, sa <strong>réactivité</strong> et son <strong>prix</strong>.</p>
+        <p>CCME est un cabinet inscrit à l'<a href="/glossaire#oec">Ordre des Experts-Comptables (OEC)</a> — la seule habilitation qui permet de certifier des comptes et d'engager une responsabilité professionnelle. Nous accompagnons des entreprises partout au Maroc, avec un interlocuteur dédié et des honoraires transparents.</p>
+
+        <h2>Ce que nous faisons à distance</h2>
+        <ul>
+          <li><a href="/services/tenue-comptabilite">Tenue comptable</a> et états de synthèse, avec reporting mensuel.</li>
+          <li><a href="/services/conseil-fiscal">Conseil fiscal</a>, TVA, IS et optimisation dans le cadre légal.</li>
+          <li><a href="/services/paie-grh">Paie et social</a> : bulletins et déclarations CNSS pour vos équipes.</li>
+          <li><a href="/services/creation-entreprise">Création de société</a> et <a href="/services/accompagnement-financement">accompagnement au financement</a>.</li>
+          <li>Et tous nos <a href="/services">services</a>, avec 7 <a href="/outils">simulateurs</a> gratuits pour estimer vos impôts.</li>
+        </ul>
+      </div>
+
+      <h2>Nos pages par ville</h2>
+      <p>Un accompagnement pensé pour l'écosystème de chaque ville :</p>
+      <div class="link-grid">
+        {national.map((v) => (
+          <a class="link-card" href={`/expert-comptable-${v.id}`}><strong>{v.data.h1.replace(', en ligne', '')}</strong><span>{v.data.description}</span></a>
+        ))}
+      </div>
+
+      <h2>Dans la région de Tanger</h2>
+      <p>Pour le nord, nous nous déplaçons aussi sur rendez-vous :</p>
+      <div class="link-grid">
+        <a class="link-card" href="/expert-comptable-tanger"><strong>Expert-comptable Tanger</strong><span>Notre cabinet et son équipe.</span></a>
+        {regional.map((v) => (
+          <a class="link-card" href={`/expert-comptable-${v.id}`}><strong>{v.data.h1}</strong><span>{v.data.eyebrow} · à {v.data.distance}.</span></a>
+        ))}
+      </div>
+
+      <div class="prose" style="max-width: 880px; margin-top: 32px;">
+        <p>Où que soit votre entreprise au Maroc, <a href="/contact">parlons de votre dossier</a> — premier échange de cadrage gratuit, sans engagement.</p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+<style>
+  .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 18px 0 8px; }
+  .link-card { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: var(--ink); border: 1px solid var(--line); border-radius: 12px; padding: 16px; transition: border-color .2s, transform .2s; }
+  .link-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .link-card strong { font-size: 15px; }
+  .link-card span { font-size: 13px; color: var(--muted, #6b6b6b); line-height: 1.45; }
+</style>

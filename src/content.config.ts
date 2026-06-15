@@ -153,6 +153,8 @@ const villes = defineCollection({
     eyebrow: z.string(),
     /** Distance from Tanger, e.g. "45 km". */
     distance: z.string(),
+    /** 'regional' = on-site visits possible; 'national' = 100% remote. */
+    scope: z.enum(['regional', 'national']).default('regional'),
     keywords: z.array(z.string()).default([]),
     heroImage: z.string().optional(),
     heroAlt: z.string().optional(),

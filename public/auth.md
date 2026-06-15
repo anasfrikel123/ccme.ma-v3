@@ -4,6 +4,13 @@ This document describes how AI agents and LLM tools can authenticate and interac
 
 ## Registration
 
+```yaml
+registration_required: false
+register_uri: null      # no registration — APIs are open, read-only
+auth_type: none         # no OAuth/OIDC; no API key or token needed
+protected_resources: [] # none exposed to agents
+```
+
 Currently, the CCME agent-facing APIs and tools are **publicly accessible** for discovery and informational queries (read-only). No API key or registration is required for:
 - `/api/services.json`
 - `/api/blog.json`

@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+# Content Signals (contentsignals.org / IETF AIPREF). CCME welcomes AI search,
+# answer-generation and training. Flip ai-train=no to opt out of model training.
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 # AI crawlers — explicitly allowed.
 # Updated 2026-06-13. See /.well-known/ai.txt for the full policy and

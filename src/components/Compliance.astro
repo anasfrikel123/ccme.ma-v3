@@ -64,8 +64,8 @@ const COPIES = 4;
               >
                 <img
                   src={`/logos/institutions/${it.slug}.svg${it.slug === 'damancom' ? '?v=2' : ''}`}
-                  alt=""
-                  aria-hidden="true"
+                  alt={isPrimary ? it.name : ''}
+                  aria-hidden={isPrimary ? undefined : 'true'}
                   width="160"
                   height="56"
                   loading={isPrimary ? 'eager' : 'lazy'}

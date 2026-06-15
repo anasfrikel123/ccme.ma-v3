@@ -20,7 +20,7 @@ const legalIdsLine = formatLegalIdsLine();
       </div>
 
       <div>
-        <h3>Comptabilité</h3>
+        <p class="foot-h">Comptabilité</p>
         <ul>
           <li><a href="/services/tenue-comptabilite">Tenue comptable</a></li>
           <li><a href="/services/supervision-comptable">Supervision</a></li>
@@ -33,7 +33,7 @@ const legalIdsLine = formatLegalIdsLine();
       </div>
 
       <div>
-        <h3>Fiscalité &amp; juridique</h3>
+        <p class="foot-h">Fiscalité &amp; juridique</p>
         <ul>
           <li><a href="/services/conseil-fiscal">Conseil fiscal</a></li>
           <li><a href="/services/assistance-fiscale">Assistance fiscale</a></li>
@@ -46,7 +46,7 @@ const legalIdsLine = formatLegalIdsLine();
       </div>
 
       <div>
-        <h3>Paie &amp; social</h3>
+        <p class="foot-h">Paie &amp; social</p>
         <ul>
           <li><a href="/services/paie-grh">Paie &amp; GRH</a></li>
           <li><a href="/services/damancom-cnss">Damancom CNSS</a></li>
@@ -57,7 +57,7 @@ const legalIdsLine = formatLegalIdsLine();
       </div>
 
       <div>
-        <h3>Ressources</h3>
+        <p class="foot-h">Ressources</p>
         <ul>
           <li><a href="/outils">Outils &amp; simulateurs</a></li>
           <li><a href="/calendrier-fiscal-2026">Calendrier fiscal 2026</a></li>
@@ -90,7 +90,7 @@ const legalIdsLine = formatLegalIdsLine();
       </div>
 
       <div>
-        <h3>Cabinet</h3>
+        <p class="foot-h">Cabinet</p>
         <ul>
           <li><a href="/cabinet">Le cabinet</a></li>
           <li><a href="/secteurs">Secteurs</a></li>
@@ -181,7 +181,7 @@ const legalIdsLine = formatLegalIdsLine();
     grid-template-columns: 1.6fr repeat(5, 1fr);
     gap: clamp(20px, 2.4vw, 36px);
   }
-  .foot-grid h3,
+  .foot-grid .foot-h,
   .foot-grid h4 {
     font-family: var(--sans);
     font-size: 11px;
@@ -193,7 +193,7 @@ const legalIdsLine = formatLegalIdsLine();
     position: relative;
     padding-bottom: 10px;
   }
-  .foot-grid h3::after,
+  .foot-grid .foot-h::after,
   .foot-grid h4::after {
     content: "";
     position: absolute;

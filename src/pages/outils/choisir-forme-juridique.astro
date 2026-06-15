@@ -1,0 +1,198 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Quelle forme juridique choisir ? Maroc"
+  description="Outil gratuit : auto-entrepreneur, SARLAU, SARL, SAS ou SA ? Répondez à 4 questions et obtenez la forme juridique adaptée à votre projet au Maroc 2026."
+  eyebrow="Outil"
+  heading="Quelle forme juridique pour votre entreprise ?"
+  lede="Auto-entrepreneur, SARLAU, SARL, SAS ou SA ? Répondez à quatre questions et obtenez une recommandation argumentée, adaptée à votre projet au Maroc."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils', href: '/outils' }, { label: 'Choisir sa forme juridique' }]}
+  keywords={["quelle forme juridique choisir Maroc","SARL ou SAS Maroc","statut juridique entreprise Maroc","auto-entrepreneur ou société Maroc"]}
+>
+  <section>
+    <div class="container narrow">
+      <div class="card sim-card">
+        <h2>Votre projet en 4 questions</h2>
+        <div class="form-grid">
+          <label>
+            <span>Combien serez-vous ?</span>
+            <select id="associes">
+              <option value="seul">Je me lance seul(e)</option>
+              <option value="plusieurs">2 à 50 associés</option>
+              <option value="nombreux">Nombreux actionnaires / appel public à l'épargne</option>
+            </select>
+          </label>
+          <label>
+            <span>Voulez-vous protéger votre patrimoine personnel (responsabilité limitée) ?</span>
+            <select id="resp">
+              <option value="oui">Oui, c'est important</option>
+              <option value="non">Pas indispensable au départ</option>
+            </select>
+          </label>
+          <label>
+            <span>Type d'activité</span>
+            <select id="activite">
+              <option value="services">Prestations de services</option>
+              <option value="commercial">Commerce, industrie ou artisanat</option>
+            </select>
+          </label>
+          <label>
+            <span>Chiffre d'affaires annuel prévu (DH)</span>
+            <input type="number" id="ca" min="0" placeholder="Ex : 300 000" value="300000" />
+          </label>
+          <label>
+            <span>Prévoyez-vous de lever des fonds ou faire entrer des investisseurs ?</span>
+            <select id="levee">
+              <option value="non">Non, pas pour l'instant</option>
+              <option value="oui">Oui, c'est au programme</option>
+            </select>
+          </label>
+        </div>
+        <button id="calculate" class="btn btn-gold" type="button">Voir la forme recommandée</button>
+        <div id="result" class="result" hidden>
+          <p class="reco-eyebrow">Forme recommandée</p>
+          <h3 id="rTitle"></h3>
+          <p id="rTagline" class="reco-tagline"></p>
+          <ul id="rPoints" class="reco-points"></ul>
+          <p id="rCaveat" class="note"></p>
+          <div id="rLinks" class="reco-links"></div>
+        </div>
+      </div>
+      <div class="prose" style="margin-top:48px">
+        <p class="disclaimer">Cette recommandation est <strong>indicative</strong> : le bon choix dépend aussi de votre fiscalité, de vos charges réelles et de votre projet. Estimez le <a href="/outils/simulateur-creation">coût de création</a>, comparez <a href="/comparatifs/freelance-vs-societe-maroc">freelance vs société</a>, ou lisez le <a href="/blog/sarlau-vs-sarl-vs-sas">comparatif SARLAU / SARL / SAS</a>.</p>
+        <p><a href="/services/creation-entreprise">Création d'entreprise clé en main avec CCME</a> · <a href="/contact">Échange gratuit de cadrage</a></p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .narrow { max-width: 780px; }
+  .sim-card { padding: 32px; }
+  .form-grid { display: grid; gap: 16px; margin: 24px 0; }
+  .form-grid span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; }
+  .form-grid input, .form-grid select { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 16px; background: #fff; }
+  .form-grid input:focus, .form-grid select:focus { outline: 2px solid var(--gold); }
+  .result { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .reco-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin: 0; }
+  #rTitle { margin: 6px 0 4px; font-size: 26px; }
+  .reco-tagline { font-size: 16px; color: var(--ink-soft); margin: 0 0 16px; }
+  .reco-points { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 8px; }
+  .reco-points li { padding-left: 24px; position: relative; font-size: 14.5px; }
+  .reco-points li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .note { margin-top: 12px; font-size: 13px; color: var(--ink-soft); padding: 12px; background: var(--paper-2); border-radius: var(--r-md); }
+  .reco-links { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .reco-links a { font-weight: 600; color: var(--gold); font-size: 14px; }
+  .disclaimer { font-size: 13.5px; color: var(--ink-soft); }
+</style>
+
+<script>
+  type Reco = { title: string; tagline: string; points: string[]; caveat: string; links: { href: string; label: string }[] };
+  const RECOS: Record<string, Reco> = {
+    auto: {
+      title: "Auto-entrepreneur",
+      tagline: "Le point d'entrée le plus simple pour tester une activité en solo.",
+      points: [
+        "Une personne physique, formalités minimales",
+        "Impôt libératoire sur le chiffre d'affaires (0,5 % services / 1 % commercial), pas de TVA",
+        "Plafonds : 500 000 DH (services) / 2 000 000 DH (commerce, industrie, artisanat)",
+        "Comptabilité réduite à un simple registre des recettes",
+      ],
+      caveat: "Contrepartie : responsabilité illimitée (patrimoine personnel engagé) et charges réelles non déductibles. Avec de grosses charges ou près des plafonds, la SARLAU devient plus avantageuse.",
+      links: [
+        { href: "/auto-entrepreneur-maroc", label: "Guide auto-entrepreneur" },
+        { href: "/services/creation-entreprise", label: "Se lancer avec CCME" },
+      ],
+    },
+    sarlau: {
+      title: "SARLAU — SARL à associé unique",
+      tagline: "La forme idéale pour un entrepreneur seul qui veut protéger son patrimoine.",
+      points: [
+        "Un seul associé",
+        "Capital minimum 10 000 DH",
+        "Responsabilité limitée à votre apport",
+        "Imposée à l'IS sur le bénéfice : charges et TVA déductibles",
+        "Formalisme allégé (décisions de l'associé unique, pas d'AG)",
+      ],
+      caveat: "Un peu plus de formalités qu'un auto-entrepreneur, mais vous protégez votre patrimoine et déduisez vos charges réelles — décisif dès que l'activité grossit.",
+      links: [
+        { href: "/services/creation-entreprise", label: "Créer ma SARLAU" },
+        { href: "/outils/simulateur-creation", label: "Estimer le coût" },
+        { href: "/blog/sarlau-vs-sarl-vs-sas", label: "SARLAU vs SARL vs SAS" },
+      ],
+    },
+    sarl: {
+      title: "SARL",
+      tagline: "Le standard des PME à plusieurs associés.",
+      points: [
+        "De 2 à 50 associés",
+        "Capital minimum 10 000 DH",
+        "Responsabilité limitée aux apports",
+        "IS sur le bénéfice ; dividendes : retenue à la source de 15 %",
+        "Structure stable, bien connue des banques",
+      ],
+      caveat: "Moins souple que la SAS pour la gouvernance ou faire entrer des investisseurs. Si une levée de fonds est prévue, regardez la SAS.",
+      links: [
+        { href: "/services/creation-entreprise", label: "Créer ma SARL" },
+        { href: "/blog/sarlau-vs-sarl-vs-sas", label: "SARLAU vs SARL vs SAS" },
+      ],
+    },
+    sas: {
+      title: "SAS — société par actions simplifiée",
+      tagline: "La plus souple pour les projets à investisseurs ou à gouvernance sur-mesure.",
+      points: [
+        "Un associé ou plus, capital libre",
+        "Grande liberté statutaire : pactes d'associés, catégories d'actions",
+        "Idéale pour lever des fonds et faire entrer des investisseurs",
+        "Gouvernance définie librement dans les statuts",
+      ],
+      caveat: "Formalisme un peu plus lourd (commissaire aux comptes dans certains cas). À cadrer avec un expert pour rédiger statuts et pacte.",
+      links: [
+        { href: "/services/creation-entreprise", label: "Créer ma SAS" },
+        { href: "/services/conseil-juridique", label: "Conseil juridique" },
+      ],
+    },
+    sa: {
+      title: "SA — société anonyme",
+      tagline: "Pour les grandes structures et l'appel public à l'épargne.",
+      points: [
+        "Minimum 5 actionnaires",
+        "Capital minimum 300 000 DH (3 000 000 DH si appel public à l'épargne)",
+        "Acte notarié et commissaire aux comptes obligatoires",
+        "Gouvernance formalisée (conseil d'administration ou directoire)",
+      ],
+      caveat: "Lourde et coûteuse : à réserver aux grands projets. Pour la plupart des PME, une SARL ou une SAS suffit.",
+      links: [
+        { href: "/services/creation-entreprise", label: "Être accompagné" },
+        { href: "/contact", label: "En parler avec un expert" },
+      ],
+    },
+  };
+
+  function decide(): string {
+    const associes = (document.getElementById('associes') as HTMLSelectElement).value;
+    const resp = (document.getElementById('resp') as HTMLSelectElement).value;
+    const activite = (document.getElementById('activite') as HTMLSelectElement).value;
+    const ca = parseFloat((document.getElementById('ca') as HTMLInputElement).value) || 0;
+    const levee = (document.getElementById('levee') as HTMLSelectElement).value;
+    if (associes === 'nombreux') return 'sa';
+    if (levee === 'oui') return 'sas';
+    if (associes === 'plusieurs') return 'sarl';
+    const plafond = activite === 'services' ? 500000 : 2000000;
+    if (resp === 'non' && ca > 0 && ca <= plafond) return 'auto';
+    return 'sarlau';
+  }
+
+  document.getElementById('calculate')!.addEventListener('click', () => {
+    const r = RECOS[decide()];
+    document.getElementById('rTitle')!.textContent = r.title;
+    document.getElementById('rTagline')!.textContent = r.tagline;
+    document.getElementById('rPoints')!.innerHTML = r.points.map((p) => '<li>' + p + '</li>').join('');
+    document.getElementById('rCaveat')!.textContent = r.caveat;
+    document.getElementById('rLinks')!.innerHTML = r.links.map((l) => '<a href="' + l.href + '">' + l.label + ' &rarr;</a>').join('');
+    const result = document.getElementById('result') as HTMLElement;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

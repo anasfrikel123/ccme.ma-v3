@@ -1,0 +1,65 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+
+const faq = [
+  { q: "¿Trabajan con inversores extranjeros y clientes de habla hispana?", a: "Sí — es una de nuestras especialidades. Trabajamos a diario con inversores españoles, franceses, belgas y de otros países que crean o gestionan empresas en Tánger. Nos ocupamos de toda la contabilidad y de las obligaciones fiscales locales conforme a la ley marroquí, y le informamos en español claro (o en francés). Nunca tendrá que enfrentarse solo a la administración marroquí ni en un idioma que no domina." },
+  { q: "¿Qué es un experto contable colegiado (OEC) y por qué importa?", a: "En Marruecos, solo un despacho inscrito en el Ordre des Experts-Comptables (OEC) puede ostentar legalmente el título de experto contable, certificar cuentas anuales y disponer de un seguro de responsabilidad profesional. Muchas 'gestorías' en Tánger no están colegiadas: pueden llevar la contabilidad básica, pero no certificar cuentas ante un banco o un inversor, ni responder si cometen un error. CCME está inscrita en el OEC. Para un inversor extranjero, esa es la diferencia entre un gestor y un socio responsable de verdad." },
+  { q: "¿Pueden constituir mi empresa en una zona franca de Tánger?", a: "Sí. Acompañamos a inversores extranjeros en Tanger Free Zone (TFZ), Tanger Automotive City (TAC), Tanger Tech y en la plataforma de Tanger Med. Estas zonas ofrecen un régimen de impuesto de sociedades específico y ventajas aduaneras, pero también obligaciones particulares —declaraciones ante la Office des Changes sobre los flujos en divisas y una articulación concreta entre exenciones y declaración fiscal—. Nos encargamos de la constitución y del cumplimiento continuo." },
+  { q: "¿Cómo gestionan la repatriación de beneficios y las normas de divisas?", a: "Toda operación en divisas con el extranjero pasa por la Office des Changes. Gestionamos la domiciliación del expediente de importación/exportación, justificamos las transferencias y estructuramos correctamente la repatriación de dividendos al socio extranjero —de modo que sus beneficios salgan de Marruecos de forma legal y sin demoras—. Es un punto delicado frecuente para las empresas de capital extranjero, y lo conocemos bien." },
+  { q: "¿Necesito estar en Marruecos para trabajar con ustedes?", a: "No. Todo puede gestionarse de forma remota y digital: usted envía los documentos a través de un espacio compartido, nosotros los procesamos y le devolvemos sus cuentas y un cuadro de mando mensual. Tenemos clientes a los que nunca hemos visto en persona y cuya contabilidad funciona sin problemas desde hace años. La primera consulta es gratuita y puede hacerse por videollamada." },
+];
+
+const SITE = 'https://ccme.ma';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${SITE}/asesoria-contable-tanger-espanol#faq`,
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<Page
+  lang="es"
+  title="Asesoría contable en Tánger en español"
+  description="Experto contable colegiado (OEC) en Tánger, Marruecos para inversores españoles: constitución de empresas, zonas francas, impuestos y nóminas."
+  eyebrow="Para inversores extranjeros"
+  heading="Asesoría contable en Tánger, en español"
+  lede="Despacho de expertos contables colegiado (OEC) en Tánger que trabaja con inversores españoles y empresarios de habla hispana: constitución de empresas, zonas francas, fiscalidad, nóminas e informes, en español claro."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Asesoría en español' }]}
+  keywords={["asesor contable Tánger español","gestoría Marruecos español","experto contable Tánger","contable para inversores españoles Marruecos"]}
+  schema={faqSchema}
+>
+  <section>
+    <div class="container">
+      <div class="prose" style="max-width: 900px; margin-inline: auto;">
+
+        <h2>Un verdadero experto contable, no una simple gestoría</h2>
+        <p>CCME (Consulting Maghreb Expertise) es un despacho de expertos contables con sede en Tánger, inscrito en el <strong>Ordre des Experts-Comptables (OEC)</strong> y al servicio de sus clientes desde hace más de 20 años. Trabajamos con cientos de empresas en el norte de Marruecos, entre ellas muchas sociedades de capital extranjero e inversores internacionales que necesitan un socio local de confianza —y con quien poder hablar en español—.</p>
+
+        <h2>Qué hacemos por los inversores extranjeros</h2>
+        <ul>
+          <li><strong>Constitución de empresas</strong> — SARL, SARLAU o SAS, desde la estructura jurídica hasta el registro. Ver <a href="/services/creation-entreprise">creación de empresas</a>.</li>
+          <li><strong>Implantación y cumplimiento en zona franca</strong> — <a href="/zones/tanger-free-zone">Tanger Free Zone</a>, <a href="/zones/tanger-med">Tanger Med</a>, Automotive City y Tanger Tech: el régimen favorable, bien aplicado.</li>
+          <li><strong>Contabilidad externalizada</strong> — contabilidad completa con informes mensuales a su matriz. Ver <a href="/services/externalisation-comptable">externalización contable</a>.</li>
+          <li><strong>Asesoría fiscal</strong> — impuesto de sociedades (IS), IVA y optimización dentro de la ley: <a href="/services/conseil-fiscal">asesoría fiscal</a>.</li>
+          <li><strong>Nóminas y seguridad social</strong> — nóminas y declaraciones a la CNSS para su equipo en Marruecos.</li>
+          <li><strong>Office des Changes y dividendos</strong> — cumplimiento en materia de divisas y repatriación legal de beneficios al socio extranjero.</li>
+        </ul>
+
+        <h2>Por qué Tánger</h2>
+        <p>Tánger es la puerta entre Europa y África, sede de <a href="/zones/tanger-med">Tanger Med</a> —el mayor puerto de África— y de varias zonas francas con un régimen fiscal y aduanero favorable. Para un inversor español, combina proximidad, ventaja de costes y un marco favorable a los negocios. Le ayudamos a aprovecharlo sin un solo error de cumplimiento.</p>
+
+        <h2>Cómo trabajamos con clientes internacionales</h2>
+        <p>Todo es digital y compatible con el trabajo a distancia: usted envía sus documentos a través de un espacio compartido, nosotros los procesamos y presentamos, y recibe cuentas mensuales claras y un cuadro de mando —en español—. Un único interlocutor dedicado que conoce su expediente y responde con rapidez. Nuestros honorarios son transparentes y se fijan por adelantado; consulte nuestras <a href="/tarifs">tarifas</a>.</p>
+
+        <p>¿Está pensando en invertir o ya opera en Tánger? La primera consulta es gratuita. También tenemos una guía dedicada para <a href="/expat">expatriados y socios extranjeros</a>.</p>
+        <p><a href="/contact">→ Reserve una primera consulta gratuita</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>

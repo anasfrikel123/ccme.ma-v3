@@ -1,6 +1,7 @@
 ---
 title: "TPI : vendre un bien immobilier au Maroc en 2026 — CCME"
 description: "Comment se calcule la TPI à la vente d'un bien au Maroc, quelles exonérations existent et comment ne payer que le juste montant. Estimez votre TPI."
+answer: "La TPI (taxe sur les profits immobiliers) s'applique à la plus-value réalisée lors de la vente d'un bien au Maroc, calculée sur l'écart entre le prix de cession et le prix d'acquisition réévalué. Plusieurs exonérations existent, notamment pour la résidence principale détenue depuis une durée minimale : bien calculer la TPI évite de payer plus que le dû."
 category: "Fiscalité"
 publishedTime: "2026-06-14"
 keywords:

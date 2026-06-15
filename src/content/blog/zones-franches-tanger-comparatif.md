@@ -1,6 +1,7 @@
 ---
 title: "Zones franches de Tanger : TFZ, TAC ou Tanger Tech ? — CCME"
 description: "Comparatif des zones franches de Tanger : avantages fiscaux, secteurs cibles, conditions d'agrément et coûts. Choisissez la bonne zone. Parlons-en."
+answer: "Tanger Free Zone (TFZ), Tanger Automotive City (TAC) et Tanger Tech relèvent du régime des zones d'accélération industrielle (ZAI), avec des avantages fiscaux (exonération puis taux réduit d'IS) et douaniers. Le bon choix dépend de votre secteur, de vos besoins logistiques et des conditions d'agrément propres à chaque zone."
 category: "Zones franches"
 publishedTime: "2026-05-15"
 keywords:

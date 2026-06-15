@@ -1,6 +1,7 @@
 ---
 title: "Fermer une société au Maroc : la dissolution — CCME"
 description: "Dissolution, liquidation, radiation du RC et clôture fiscale : fermez proprement votre SARL ou SA. Besoin d'aide pour la fermeture ? Parlons-en."
+answer: "Fermer une société au Maroc se fait en deux temps : la dissolution (décision des associés, nomination d'un liquidateur, publication) puis la liquidation (réalisation de l'actif, apurement du passif, clôture des comptes), avant la radiation au registre de commerce. Comptez plusieurs mois et une situation fiscale à jour."
 category: "Juridique"
 publishedTime: "2026-06-14"
 keywords:

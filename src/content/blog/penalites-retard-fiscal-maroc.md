@@ -1,6 +1,7 @@
 ---
 title: "Pénalités de retard fiscal au Maroc : les éviter — CCME"
 description: "Retard de déclaration ou de paiement à la DGI ou la CNSS : comment fonctionnent majorations et pénalités au Maroc, et comment les éviter. Parlons-en."
+answer: "Un retard de déclaration ou de paiement à la DGI ou à la CNSS déclenche une majoration et des pénalités calculées sur les droits dus, qui s'accumulent tant que la situation n'est pas régularisée. Déclarer sans attendre, même en cas de difficulté de paiement, et régulariser vite limite fortement le coût final."
 category: "Fiscalité"
 publishedTime: "2026-06-15"
 keywords:

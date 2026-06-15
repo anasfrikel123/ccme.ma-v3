@@ -1,6 +1,7 @@
 ---
 title: "Créer sa SARL à Tanger en 2026 : guide complet — CCME"
 description: "Toutes les étapes pour créer une SARL à Tanger : certificat négatif, statuts, CRI, RC, IF, CNSS. Délais, coûts, pièges à éviter. On s'occupe de tout."
+answer: "Créer une SARL à Tanger passe par le certificat négatif (OMPIC), la rédaction puis l'enregistrement des statuts, le dépôt du capital, l'immatriculation au registre de commerce via le CRI, et enfin l'obtention de l'IF et de l'ICE et l'affiliation CNSS. Le parcours prend généralement une à deux semaines."
 category: "Création d'entreprise"
 publishedTime: "2026-05-28"
 modifiedTime: "2026-05-28"

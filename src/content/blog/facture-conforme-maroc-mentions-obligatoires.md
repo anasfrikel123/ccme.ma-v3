@@ -1,6 +1,7 @@
 ---
 title: "Facture conforme au Maroc : mentions obligatoires — CCME"
 description: "Quelles mentions sur une facture au Maroc (ICE, IF, RC, TVA) ? Le guide pour facturer sans risque de rejet ni de redressement. Sécurisez vos factures."
+answer: "Une facture conforme au Maroc doit indiquer l'identité et l'ICE des deux parties, l'IF et le RC du vendeur, un numéro et une date, le détail des biens ou services, le prix HT, le taux et le montant de TVA, et le total TTC. L'absence d'une mention obligatoire (l'ICE notamment) peut faire rejeter la déduction et déclencher un redressement."
 category: "Fiscalité"
 publishedTime: "2026-06-15"
 keywords:

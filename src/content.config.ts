@@ -65,6 +65,8 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    /** 1-2 sentence direct answer rendered as a 'Réponse rapide' callout (AI Overview / featured-snippet bait). */
+    answer: z.string().optional(),
     category: z.string(),
     publishedTime: z.string(),
     modifiedTime: z.string().optional(),

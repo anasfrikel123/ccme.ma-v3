@@ -1,6 +1,7 @@
 ---
 title: "Expat français : investir à Tanger, le b.a.-ba fiscal — CCME"
 description: "Français qui investit au Maroc : statut fiscal, structure juridique, Office des Changes et convention France-Maroc, simplement. 1er échange gratuit."
+answer: "Un investisseur français à Tanger choisit d'abord sa structure (SARL, SARLAU ou SCI selon le projet), puis s'appuie sur la convention fiscale franco-marocaine pour éviter la double imposition et respecte les règles de l'Office des Changes pour les apports et le rapatriement des bénéfices. Un accompagnement local sécurise statut fiscal et résidence."
 category: "Expatriés"
 publishedTime: "2026-03-12"
 keywords:

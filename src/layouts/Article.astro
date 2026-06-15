@@ -10,6 +10,7 @@ interface Props {
   publishedTime: string;
   modifiedTime?: string;
   author?: string;
+  answer?: string;
   heroImage?: string;
   ogImage?: string;
   keywords?: string[];
@@ -21,7 +22,7 @@ interface Props {
 }
 const {
   title, description, category, publishedTime, modifiedTime,
-  author = 'Équipe CCME', heroImage, related = [], wordCount, timeRequired, about = [], ...rest
+  author = 'Équipe CCME', answer, heroImage, related = [], wordCount, timeRequired, about = [], ...rest
 } = Astro.props;
 
 const SITE = 'https://ccme.ma';
@@ -95,7 +96,7 @@ const articleSchema: Record<string, any> = {
   isAccessibleForFree: true,
   speakable: {
     '@type': 'SpeakableSpecification',
-    cssSelector: ['h1', '.lede', '.prose > p:first-of-type', '.prose h2'],
+    cssSelector: ['h1', '.lede', '.quick-answer p', '.prose > p:first-of-type', '.prose h2'],
   },
 };
 if (wordCount && wordCount > 0) articleSchema.wordCount = wordCount;
@@ -200,6 +201,12 @@ const initials = author
 
     <div class="container article-body">
       <div class="prose reveal" data-article-prose>
+        {answer && (
+          <aside class="quick-answer" aria-label="Réponse rapide">
+            <p class="quick-answer-label">Réponse rapide</p>
+            <p>{answer}</p>
+          </aside>
+        )}
         <slot />
       </div>
 
@@ -320,6 +327,24 @@ const initials = author
 </script>
 
 <style>
+  /* —— Quick-answer callout (direct answer for AI Overviews / snippets) —— */
+  .quick-answer {
+    margin: 0 0 32px;
+    padding: 20px 24px;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+    background: linear-gradient(180deg, color-mix(in oklch, var(--gold) 9%, #fff) 0%, var(--paper-2) 100%);
+  }
+  .quick-answer-label {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0 0 6px;
+  }
+  .quick-answer p:last-child { margin: 0; font-size: 1.05rem; line-height: 1.6; color: var(--ink); }
   .article-hero {
     padding-block: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 40px);
   }

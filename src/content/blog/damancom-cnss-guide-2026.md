@@ -1,6 +1,7 @@
 ---
 title: "Damancom 2026 : guide pas-à-pas CNSS pour PME — CCME"
 description: "Déclarer la CNSS chaque mois sur Damancom : connexion, BDS, télépaiement et gestion des erreurs, sans jargon. Externalisez votre paie à Tanger."
+answer: "Damancom est le portail de télédéclaration des cotisations sociales de la CNSS : chaque mois, l'employeur y dépose le bordereau de déclaration des salaires (BDS), le valide et télépaie avant l'échéance. L'inscription se fait en ligne à partir de votre numéro d'affiliation employeur."
 category: "Paie & social"
 publishedTime: "2026-04-08"
 keywords:

@@ -1,6 +1,7 @@
 ---
 title: "Crédit de TVA : comment le récupérer en 2026 — CCME"
 description: "Remboursement du crédit de TVA au Maroc : conditions, dossier, délais et suivi, pour exportateurs et investissements. On défend votre dossier."
+answer: "Un crédit de TVA apparaît quand la TVA déductible dépasse la TVA collectée, fréquent chez les exportateurs et après un investissement. Son remboursement par la DGI suppose un dossier complet et conforme déposé dans les délais ; c'est le suivi rigoureux du dossier qui débloque effectivement le remboursement."
 category: "Fiscalité"
 publishedTime: "2026-02-12"
 keywords:

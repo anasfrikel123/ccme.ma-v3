@@ -1,6 +1,7 @@
 ---
 title: "Contrôle fiscal DGI à Tanger : comment se préparer — CCME"
 description: "Avis de vérification reçu ? Les bonnes étapes pour préparer le contrôle, bâtir vos arguments et limiter les redressements. Faites-vous accompagner."
+answer: "Dès réception de l'avis de vérification, vous disposez d'un délai (au moins 15 jours) avant le début du contrôle : rassemblez la comptabilité et les pièces justificatives de la période, vérifiez la cohérence de vos déclarations et faites-vous assister par un expert-comptable pour cadrer les échanges et limiter les redressements."
 category: "Fiscalité"
 publishedTime: "2026-03-25"
 keywords:

@@ -1,6 +1,7 @@
 ---
 title: "Domicilier sa société à Tanger : prix et étapes — CCME"
 description: "Domiciliation d'entreprise à Tanger : cadre légal, prix moyens, services inclus et pièges à éviter. Adresse de siège dès 200 DH/mois. Devis gratuit."
+answer: "La domiciliation fixe le siège social de votre société à une adresse professionnelle, sans louer de local. À Tanger, le service inclut généralement la gestion du courrier et la réception des notifications fiscales, à partir d'environ 200 DH/mois, dans le cadre d'un contrat de domiciliation encadré par la loi."
 category: "Juridique"
 publishedTime: "2026-05-02"
 keywords:

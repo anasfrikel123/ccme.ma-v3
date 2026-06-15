@@ -1,6 +1,7 @@
 ---
 title: "Aides à l'investissement au Maroc 2026 : le guide — CCME"
 description: "Charte de l'investissement, primes et conventions avec l'État : quelles aides pour votre projet au Maroc et comment les obtenir. On vous guide."
+answer: "La Charte de l'investissement ouvre droit à des primes (commune, territoriale, sectorielle) et, pour les grands projets, à des conventions avec l'État. Le dossier se monte et se dépose via le CRI de votre région ; le montant dépend du secteur, de la zone et des emplois créés."
 category: "Création d'entreprise"
 publishedTime: "2026-06-14"
 keywords:

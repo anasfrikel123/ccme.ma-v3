@@ -1,6 +1,7 @@
 ---
 title: "Acomptes IS 2026 : calendrier, calcul et pièges — CCME"
 description: "Comment calculer vos 4 acomptes d'IS en 2026, à quelles dates les payer et comment éviter les surprises de trésorerie. Faites vérifier vos calculs."
+answer: "L'IS au Maroc se paie par quatre acomptes provisionnels égaux chacun à 25 % de l'impôt de l'exercice précédent, à régler avant la fin des 3e, 6e, 9e et 12e mois de l'exercice. Le solde est régularisé à la déclaration annuelle ; un acompte mal calibré crée surtout un décalage de trésorerie."
 category: "Fiscalité"
 publishedTime: "2026-04-22"
 keywords:

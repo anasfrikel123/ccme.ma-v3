@@ -8,13 +8,13 @@ import Icon from '~/components/Icon.astro';
 import Compliance from '~/components/Compliance.astro';
 import { getCollection } from 'astro:content';
 import { reviews } from '~/data/reviews';
-import { homeWebPageSchema } from '~/data/org-schema';
+import { homeWebPageSchema, orgRatingNode } from '~/data/org-schema';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order).slice(0, 8);
 
 // Homepage WebPage node only — org core (AccountingService + WebSite) is
 // emitted globally by Base.astro on every route.
-const orgSchema = homeWebPageSchema;
+const orgSchema = [homeWebPageSchema, orgRatingNode];
 
 const faqItems = [
   { q: "Qu'est-ce qu'un cabinet d'expertise comptable inscrit à l'OEC ?", a: "C'est un cabinet dont les associés sont inscrits au tableau de l'Ordre des Experts-Comptables du Maroc. Ça garantit le respect du code de déontologie, la formation continue, l'assurance civile professionnelle et le secret professionnel. CCME est inscrit." },

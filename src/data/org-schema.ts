@@ -120,25 +120,6 @@ const accountingNode = {
     name: cabinet.oec.authority,
     url: cabinet.oec.authorityUrl,
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: averageRating,
-    reviewCount: String(reviewCount),
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: reviews.slice(0, 3).map((r) => ({
-    '@type': 'Review',
-    author: { '@type': 'Person', name: r.author },
-    datePublished: r.date,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(r.rating),
-      bestRating: '5',
-      worstRating: '1',
-    },
-    reviewBody: r.text,
-  })),
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Services CCME',
@@ -165,6 +146,36 @@ const accountingNode = {
       ]),
     ],
   },
+} as const;
+
+/**
+ * Rating fragment for the #accounting entity. Emitted ONLY on home, /cabinet
+ * and /avis-clients (the pages that legitimately represent the reviewed
+ * business) — NOT on every service/city page, to comply with Google's policy
+ * against self-serving review snippets on a business's own service pages.
+ */
+export const orgRatingNode = {
+  '@type': cabinet.type,
+  '@id': ACCOUNTING_ID,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: averageRating,
+    reviewCount: String(reviewCount),
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: reviews.slice(0, 3).map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.author },
+    datePublished: r.date,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: String(r.rating),
+      bestRating: '5',
+      worstRating: '1',
+    },
+    reviewBody: r.text,
+  })),
 } as const;
 
 /** WebSite node — no SearchAction (no on-site search handler exists). */

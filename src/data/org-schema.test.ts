@@ -1,5 +1,5 @@
 ﻿import { describe, expect, it } from 'vitest';
-import { orgGraph, orgCoreGraph, homeWebPageSchema, accountingId, websiteId } from './org-schema';
+import { orgGraph, orgCoreGraph, orgRatingNode, homeWebPageSchema, accountingId, websiteId } from './org-schema';
 import { cabinet } from './cabinet';
 import { reviewCount, averageRating } from './reviews';
 
@@ -34,11 +34,11 @@ describe('orgCoreGraph — global entity contract', () => {
   });
 
   it('AggregateRating uses real review-count and computed average', () => {
-    const accounting = orgCoreGraph['@graph'][0] as {
+    const rating = orgRatingNode as {
       aggregateRating: { ratingValue: string; reviewCount: string };
     };
-    expect(Number(accounting.aggregateRating.reviewCount)).toBe(reviewCount);
-    expect(accounting.aggregateRating.ratingValue).toBe(averageRating);
+    expect(Number(rating.aggregateRating.reviewCount)).toBe(reviewCount);
+    expect(rating.aggregateRating.ratingValue).toBe(averageRating);
   });
 
   it('exposes the canonical @id values consumers reference', () => {

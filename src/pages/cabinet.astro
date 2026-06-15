@@ -1,5 +1,6 @@
 ﻿---
-import Page from '~/layouts/Page.astro';
+import Page from '~/layouts/Page.astro';
+import { orgRatingNode } from '~/data/org-schema';
 import { cabinet, yearsInBusiness } from '~/data/cabinet';
 import { CABINET_VALUES } from '~/data/service-families';
 
@@ -76,7 +77,7 @@ const cabinetStats = [
   lede="Consulting Maghreb Expertise accompagne entrepreneurs, PME et expatriés au Maroc avec une expertise comptable, fiscale et juridique rigoureuse et personnalisée."
   breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Le cabinet' }]}
   keywords={['cabinet expertise comptable Tanger', 'expert comptable inscrit OEC', 'CCME Tanger']}
-  schema={teamSchema}
+  schema={[...teamSchema, orgRatingNode]}
 >
   <section>
     <div class="container lead-2col">

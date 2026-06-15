@@ -3,7 +3,7 @@ import Page from '~/layouts/Page.astro';
 import FAQ from '~/components/FAQ.astro';
 import ServiceProof from '~/components/ServiceProof.astro';
 import ServiceDetailSidebar from '~/components/ServiceDetailSidebar.astro';
-import { reviews, averageRating, reviewCount } from '~/data/reviews';
+import { reviews } from '~/data/reviews';
 import { getServiceDetail } from '~/data/services-detail';
 import { getCollection, render } from 'astro:content';
 
@@ -36,13 +36,6 @@ const serviceSchema: Record<string, any> = {
     { '@type': 'AdministrativeArea', name: 'Tanger-Tétouan-Al Hoceïma' },
   ],
   audience: { '@type': 'BusinessAudience', audienceType: 'PME, TPE, professions libérales, expatriés' },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: averageRating,
-    reviewCount: String(reviewCount),
-    bestRating: '5',
-    worstRating: '1',
-  },
   offers: {
     '@type': 'AggregateOffer',
     priceCurrency: 'MAD',

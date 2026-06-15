@@ -11,6 +11,13 @@ const faq = [
 ];
 
 const SITE = 'https://ccme.ma';
+const alternates = [
+  { hreflang: 'fr', href: `${SITE}/expat` },
+  { hreflang: 'en', href: `${SITE}/english-speaking-accountant-tanger` },
+  { hreflang: 'es', href: `${SITE}/asesoria-contable-tanger-espanol` },
+  { hreflang: 'ar', href: `${SITE}/arabic-accountant-tanger` },
+  { hreflang: 'x-default', href: `${SITE}/english-speaking-accountant-tanger` },
+];
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -24,6 +31,7 @@ const faqSchema = {
 ---
 <Page
   lang="es"
+  alternates={alternates}
   title="Asesoría contable en Tánger en español"
   description="Experto contable colegiado (OEC) en Tánger, Marruecos para inversores españoles: constitución de empresas, zonas francas, impuestos y nóminas."
   eyebrow="Para inversores extranjeros"

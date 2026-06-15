@@ -41,8 +41,10 @@ interface Props {
    * for AI crawlers that prefer raw markdown to HTML.
    */
   markdownUrl?: string;
+  dir?: string;
+  alternates?: { hreflang: string; href: string }[];
 }
-const { bodyClass = '', preloadImage, lcpImageSrcset, markdownUrl, schema, lang = 'fr-MA', ...seo } = Astro.props;
+const { bodyClass = '', preloadImage, lcpImageSrcset, markdownUrl, schema, lang = 'fr-MA', dir = 'ltr', alternates, ...seo } = Astro.props;
 const mergedSchema = mergeSchemaGraph(orgCoreGraph, schema);
 const lcpHref = preloadImage
   ? preloadImage.replace(/\.jpe?g$/i, '.webp')
@@ -52,7 +54,7 @@ const heroAvif = lcpImageSrcset?.avif ?? '';
 const heroSizes = lcpImageSrcset?.sizes ?? '';
 ---
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang={lang} dir={dir}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -110,7 +112,10 @@ const heroSizes = lcpImageSrcset?.sizes ?? '';
     {markdownUrl && (
       <link rel="alternate" type="text/markdown" href={markdownUrl} title="Source markdown" />
     )}
-    <SEO {...seo} schema={mergedSchema} />
+    {alternates && alternates.map((a) => (
+      <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+    ))}
+    <SEO {...seo} schema={mergedSchema} customAlternates={Boolean(alternates)} />
     {import.meta.env.PROD && <Analytics />}
   </head>
   <body class={bodyClass}>

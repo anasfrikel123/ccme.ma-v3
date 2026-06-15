@@ -17,6 +17,8 @@ interface Props {
    * commitment ("3 min de lecture · …").
    */
   readingMinutes?: number;
+  /** Page supplies its own hreflang cluster; skip default self pair. */
+  customAlternates?: boolean;
 }
 const {
   title,
@@ -31,6 +33,7 @@ const {
   schema,
   keywords,
   readingMinutes,
+  customAlternates = false,
 } = Astro.props;
 
 const SITE = 'https://ccme.ma';
@@ -109,8 +112,12 @@ const imageAlt = ogImageAlt ?? description.slice(0, 120).replace(/\s+/g, ' ').tr
 <meta name="ICBM" content="35.7802, -5.8136" />
 
 <link rel="canonical" href={fullCanonical} />
-<link rel="alternate" hreflang="fr-MA" href={fullCanonical} />
-<link rel="alternate" hreflang="x-default" href={fullCanonical} />
+{!customAlternates && (
+  <>
+    <link rel="alternate" hreflang="fr-MA" href={fullCanonical} />
+    <link rel="alternate" hreflang="x-default" href={fullCanonical} />
+  </>
+)}
 
 <link rel="alternate" type="application/rss+xml" title="CCME — Le Journal" href={`${SITE}/rss.xml`} />
 

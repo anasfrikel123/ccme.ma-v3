@@ -1,7 +1,7 @@
 ---
-title: "Comptable Iberia Tanger | Centre commerçant"
+title: "Comptable à Iberia, Tanger : centre commerçant — CCME"
 h1: "Cabinet comptable Iberia"
-description: "Expert-comptable pour commerces, restaurants, agences du quartier Iberia à Tanger. Centre commerçant et résidentiel."
+description: "Expert-comptable pour commerces, restaurants et agences du quartier Iberia à Tanger, centre commerçant et résidentiel. Cabinet proche. 1er échange gratuit."
 eyebrow: "Quartier Iberia"
 keywords:
   - "expert comptable Iberia Tanger"

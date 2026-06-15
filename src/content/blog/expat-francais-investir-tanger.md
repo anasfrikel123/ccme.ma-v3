@@ -1,6 +1,6 @@
 ---
-title: "Expat français qui investit à Tanger : b.a.-ba fiscal"
-description: "Vous êtes français et vous voulez investir au Maroc, à Tanger. Statut fiscal, structure juridique, Office des Changes, convention France-Maroc."
+title: "Expat français : investir à Tanger, le b.a.-ba fiscal — CCME"
+description: "Français qui investit au Maroc : statut fiscal, structure juridique, Office des Changes et convention France-Maroc, simplement. 1er échange gratuit."
 category: "Expatriés"
 publishedTime: "2026-03-12"
 keywords:

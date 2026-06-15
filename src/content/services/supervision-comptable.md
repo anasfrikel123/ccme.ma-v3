@@ -1,7 +1,7 @@
 ---
-title: "Supervision comptable Tanger | Contrôle qualité"
+title: "Supervision comptable à Tanger : contrôle qualité — CCME"
 h1: "Supervision comptable"
-description: "Vous avez un comptable interne ou un assistant ? On supervise les écritures, on valide la liasse fiscale, on sécurise vos clôtures. Cabinet à Tanger."
+description: "Vous avez un comptable interne ? On supervise les écritures, valide la liasse fiscale et sécurise vos clôtures à Tanger. Cabinet OEC. 1er échange gratuit."
 eyebrow: "Comptabilité"
 category: "comptabilite"
 icon: "file-search"

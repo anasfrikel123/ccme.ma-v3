@@ -1,6 +1,6 @@
 ---
-title: "Damancom 2026 : guide pas-à-pas pour PME"
-description: "Comment utiliser Damancom pour déclarer la CNSS chaque mois : connexion, BDS, télépaiement, gestion des erreurs. Sans jargon."
+title: "Damancom 2026 : guide pas-à-pas CNSS pour PME — CCME"
+description: "Déclarer la CNSS chaque mois sur Damancom : connexion, BDS, télépaiement et gestion des erreurs, sans jargon. Externalisez votre paie à Tanger."
 category: "Paie & social"
 publishedTime: "2026-04-08"
 keywords:

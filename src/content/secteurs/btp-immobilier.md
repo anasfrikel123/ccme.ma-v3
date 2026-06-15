@@ -1,7 +1,7 @@
 ---
-title: "Comptable BTP et immobilier Tanger | Spécialiste"
+title: "Comptable BTP & immobilier à Tanger : spécialiste — CCME"
 h1: "Comptable BTP et immobilier"
-description: "Tenue comptable, fiscalité et paie pour entreprises BTP, promoteurs immobiliers, agences à Tanger. TVA travaux, retenue de garantie, agréments."
+description: "Comptabilité, fiscalité et paie pour le BTP, les promoteurs immobiliers et agences à Tanger : TVA travaux, retenue de garantie, agréments. Parlons-en."
 eyebrow: "Secteurs"
 keywords:
   - "comptable BTP Tanger"

@@ -1,6 +1,6 @@
 ---
-title: "Contrôle fiscal sur 4 ans : zéro redressement final"
-description: "PME industrielle, 38 salariés, contrôle DGI sur 4 exercices. Notification de 1,2 MDH ramenée à 0 après réponse motivée et observations. Chronologie complète."
+title: "Contrôle fiscal sur 4 ans : zéro redressement — CCME"
+description: "PME industrielle, 38 salariés, contrôle DGI sur 4 exercices : notification de 1,2 MDH ramenée à 0 après réponse motivée. La méthode. Échange gratuit."
 sector: "Industrie & manufacturing"
 service: "/services/controle-contentieux"
 zone: "Tanger Free Zone"

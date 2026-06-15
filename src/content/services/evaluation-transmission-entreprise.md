@@ -1,7 +1,7 @@
 ---
-title: "Évaluation & transmission d'entreprise Tanger"
+title: "Évaluation & transmission d'entreprise à Tanger — CCME"
 h1: "Évaluation & transmission d'entreprise"
-description: "Évaluation d'entreprise, cession de parts, due diligence et transmission familiale à Tanger. Expert-comptable OEC pour valoriser et céder au juste prix."
+description: "Évaluation d'entreprise, cession de parts et transmission familiale à Tanger. Expert-comptable OEC pour céder au juste prix. 1er échange gratuit."
 eyebrow: "Juridique"
 category: "juridique"
 icon: "trending-up"

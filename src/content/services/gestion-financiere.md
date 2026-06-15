@@ -1,7 +1,7 @@
 ---
-title: "Gestion financière Tanger | Trésorerie"
+title: "Gestion financière à Tanger : trésorerie & BFR — CCME"
 h1: "Gestion financière"
-description: "Pilotage de trésorerie, plan de financement, BFR, négociation bancaire, KPIs financiers. Cabinet expert-comptable à Tanger."
+description: "Pilotage de trésorerie, plan de financement, BFR, négociation bancaire et KPIs financiers à Tanger. Cabinet expert-comptable OEC. 1er échange gratuit."
 eyebrow: "Comptabilité"
 category: "comptabilite"
 icon: "briefcase"

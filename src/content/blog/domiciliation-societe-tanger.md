@@ -1,6 +1,6 @@
 ---
-title: "Domicilier sa société à Tanger : prix et étapes"
-description: "Tout ce qu'il faut savoir sur la domiciliation d'entreprise à Tanger : cadre légal, prix moyens, services inclus, pièges à éviter."
+title: "Domicilier sa société à Tanger : prix et étapes — CCME"
+description: "Domiciliation d'entreprise à Tanger : cadre légal, prix moyens, services inclus et pièges à éviter. Adresse de siège dès 200 DH/mois. Devis gratuit."
 category: "Juridique"
 publishedTime: "2026-05-02"
 keywords:

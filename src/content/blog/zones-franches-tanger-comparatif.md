@@ -1,6 +1,6 @@
 ---
-title: "TFZ, TAC, Tanger Tech : laquelle choisir ?"
-description: "Comparatif pratique des zones franches de Tanger : avantages fiscaux, secteurs cibles, conditions d'agrément, coûts d'implantation."
+title: "Zones franches de Tanger : TFZ, TAC ou Tanger Tech ? — CCME"
+description: "Comparatif des zones franches de Tanger : avantages fiscaux, secteurs cibles, conditions d'agrément et coûts. Choisissez la bonne zone. Parlons-en."
 category: "Zones franches"
 publishedTime: "2026-05-15"
 keywords:

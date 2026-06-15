@@ -1,6 +1,6 @@
 ---
-title: "Restaurant Tanger : paie conforme −96K DH"
-description: "Restaurant centre-ville, 22 salariés, paie en interne non conforme. Audit, mise aux normes Damancom, optimisation cotisations légales. Process en 6 semaines."
+title: "Restaurant Tanger : paie remise aux normes, −96K DH — CCME"
+description: "Restaurant centre-ville, 22 salariés, paie interne non conforme : audit, mise aux normes Damancom et optimisation des cotisations. La méthode détaillée."
 sector: "Hôtellerie & restauration"
 service: "/services/paie-grh"
 zone: "Tanger centre"

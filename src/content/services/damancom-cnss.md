@@ -1,7 +1,7 @@
 ---
-title: "Damancom CNSS Tanger | Déclarations sociales en ligne"
+title: "Damancom & déclarations CNSS en ligne à Tanger — CCME"
 h1: "Damancom et déclarations CNSS"
-description: "Inscription Damancom, déclaration mensuelle BDS, télépaiement cotisations CNSS et AMO. Cabinet à Tanger pour PME et professions libérales."
+description: "Inscription Damancom, déclaration mensuelle BDS, télépaiement des cotisations CNSS et AMO à Tanger pour PME et professions libérales. 1er échange gratuit."
 eyebrow: "Paie & social"
 category: "paie"
 icon: "shield"

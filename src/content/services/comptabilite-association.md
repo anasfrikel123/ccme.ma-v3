@@ -1,7 +1,7 @@
 ---
-title: "Comptabilité association & coopérative Tanger"
+title: "Comptabilité d'association & coopérative à Tanger — CCME"
 h1: "Comptabilité des associations & coopératives"
-description: "Tenue comptable, déclarations et conformité pour associations, ONG, coopératives et OSBL à Tanger. Gestion des subventions et reporting aux bailleurs."
+description: "Tenue comptable, déclarations et conformité pour associations, ONG, coopératives et OSBL à Tanger : gestion des subventions et reporting aux bailleurs."
 eyebrow: "Comptabilité"
 category: "comptabilite"
 icon: "users"

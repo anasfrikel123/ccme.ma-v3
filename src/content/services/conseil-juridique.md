@@ -1,7 +1,7 @@
 ---
-title: "Conseil juridique Tanger | Sociétés"
+title: "Conseil juridique à Tanger : droit des sociétés — CCME"
 h1: "Conseil juridique"
-description: "Conseil en droit des sociétés, contrats commerciaux, baux, pactes d'associés, secrétariat juridique annuel. Cabinet expert-comptable à Tanger."
+description: "Conseil en droit des sociétés, contrats commerciaux, baux, pactes d'associés et secrétariat juridique annuel à Tanger. Cabinet OEC. 1er échange gratuit."
 eyebrow: "Juridique"
 category: "juridique"
 icon: "library"

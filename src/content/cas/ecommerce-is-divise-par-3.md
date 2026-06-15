@@ -1,6 +1,6 @@
 ---
-title: "E-commerçant Tanger : IS divisé par 3 en 18 mois"
-description: "Boutique Shopify CA 4,2 MDH, IS passé de 168K à 56K DH/an. Optimisation TVA export, choix régime statut, prix de transfert intra-groupe. Méthode et chiffres."
+title: "E-commerçant à Tanger : IS divisé par 3 en 18 mois — CCME"
+description: "Boutique Shopify, CA 4,2 MDH : IS passé de 168K à 56K DH/an grâce à l'optimisation TVA export et au régime adapté. La méthode détaillée. Parlons-en."
 sector: "E-commerce & digital"
 service: "/services/conseil-fiscal"
 zone: "Tanger Tech"

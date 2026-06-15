@@ -1,7 +1,7 @@
 ---
-title: "Comptable import-export Tanger | Commerce intl"
+title: "Comptable import-export à Tanger : commerce intl — CCME"
 h1: "Comptable import-export"
-description: "Cabinet pour sociétés import-export, négoce international, opérations Tanger Med. Office des Changes, douane, TVA export, prix de transfert."
+description: "Cabinet pour sociétés d'import-export, négoce international et opérations Tanger Med : Office des Changes, douane, TVA export et prix de transfert."
 eyebrow: "Secteurs"
 keywords:
   - "comptable import export Tanger"

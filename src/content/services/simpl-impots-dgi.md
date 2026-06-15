@@ -1,7 +1,7 @@
 ---
-title: "Simpl Impôts DGI Tanger | Télédéclaration paiement"
+title: "Simpl Impôts DGI à Tanger : télédéclaration — CCME"
 h1: "Simpl Impôts DGI"
-description: "Inscription, configuration et utilisation de Simpl Impôts pour TVA, IS, IR, retenues à la source. Cabinet expert-comptable à Tanger."
+description: "Inscription, configuration et utilisation de Simpl Impôts pour la TVA, l'IS, l'IR et les retenues à la source. Cabinet à Tanger. Parlons-en."
 eyebrow: "Fiscalité"
 category: "fiscalite"
 icon: "monitor"

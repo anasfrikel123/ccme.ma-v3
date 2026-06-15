@@ -1,6 +1,6 @@
 ---
-title: "Réforme IS 2026 : impacts pour les PME tangéroises"
-description: "Taux IS 20% sur bénéfice jusqu'à 100 MDH en 2026, CSS prolongée, cotisation minimale 0,25%. Exemples chiffrés tangérois alignés simulateur."
+title: "Réforme IS 2026 : impacts pour les PME de Tanger — CCME"
+description: "IS à 20 % jusqu'à 100 MDH en 2026, CSS prolongée, cotisation minimale 0,25 % : exemples chiffrés pour PME tangéroises. Simulez votre IS gratuitement."
 category: "Fiscalité"
 publishedTime: "2026-06-08"
 modifiedTime: "2026-06-08"

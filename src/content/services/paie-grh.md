@@ -1,7 +1,7 @@
 ---
-title: "Paie et GRH Tanger | Externalisation CNSS Damancom"
+title: "Paie & GRH à Tanger : externalisation CNSS Damancom — CCME"
 h1: "Paie et gestion des ressources humaines"
-description: "Bulletins de paie, déclarations CNSS via Damancom, IR sur salaires, contrats de travail, soldes de tout compte. Externalisation paie pour PME à Tanger."
+description: "Bulletins de paie, déclarations CNSS via Damancom, IR sur salaires, contrats et soldes de tout compte. Externalisation paie pour PME à Tanger. Parlons-en."
 eyebrow: "Paie & social"
 category: "paie"
 icon: "users"

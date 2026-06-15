@@ -1,7 +1,7 @@
 ---
-title: "Gestion sociale et admin. Tanger | Inspection travail"
+title: "Gestion sociale & administrative à Tanger — CCME"
 h1: "Social et administratif"
-description: "Règlement intérieur, conventions collectives, procédures disciplinaires, inspection du travail, contentieux prud'homal. Cabinet Tanger."
+description: "Règlement intérieur, conventions collectives, procédures disciplinaires, inspection du travail et contentieux prud'homal à Tanger. Cabinet OEC. Parlons-en."
 eyebrow: "Paie & social"
 category: "paie"
 icon: "clipboard"

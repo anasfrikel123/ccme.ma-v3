@@ -1,7 +1,7 @@
 ---
-title: "Comptable pharmacien Tanger | Spécialiste officines"
+title: "Comptable pour pharmaciens à Tanger : officines — CCME"
 h1: "Comptabilité des pharmaciens"
-description: "Cabinet spécialisé pour officines à Tanger. Tenue, fiscalité, paie, gestion des stocks, marges et marges arrières. Conseil OEC."
+description: "Cabinet spécialisé pour les officines à Tanger : tenue, fiscalité, paie, gestion des stocks et des marges arrières. Conseil d'un cabinet OEC. Parlons-en."
 eyebrow: "Spécialisé"
 category: "comptabilite"
 icon: "pill"

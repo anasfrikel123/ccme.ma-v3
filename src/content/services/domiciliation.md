@@ -1,7 +1,7 @@
 ---
-title: "Domiciliation société Tanger | Adresse centre-ville"
+title: "Domiciliation de société à Tanger : centre-ville — CCME"
 h1: "Domiciliation d'entreprise à Tanger"
-description: "Adresse de siège social à Tanger centre-ville, gestion du courrier, notifications fiscales. À partir de 200 DH/mois. Cabinet CCME, Avenue Moulay Ismail."
+description: "Adresse de siège social à Tanger centre-ville, gestion du courrier et notifications fiscales, à partir de 200 DH/mois. Cabinet CCME, Avenue Moulay Ismail."
 eyebrow: "Juridique"
 category: "juridique"
 icon: "map-pin"

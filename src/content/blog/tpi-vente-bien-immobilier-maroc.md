@@ -1,6 +1,6 @@
 ---
-title: "TPI : vendre un bien immobilier au Maroc"
-description: "Comment se calcule la TPI à la vente d'un bien immobilier au Maroc, quelles exonérations existent et comment ne payer que ce que vous devez. Guide 2026."
+title: "TPI : vendre un bien immobilier au Maroc en 2026 — CCME"
+description: "Comment se calcule la TPI à la vente d'un bien au Maroc, quelles exonérations existent et comment ne payer que le juste montant. Estimez votre TPI."
 category: "Fiscalité"
 publishedTime: "2026-06-14"
 keywords:

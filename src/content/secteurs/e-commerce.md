@@ -1,7 +1,7 @@
 ---
-title: "Comptable e-commerce Tanger | Marketplace et SaaS"
+title: "Comptable e-commerce à Tanger : marketplace & SaaS — CCME"
 h1: "Comptable e-commerce et digital"
-description: "Cabinet pour e-commerçants, dropshippers, freelances digitaux, SaaS. Stripe, PayPal, CMI, marketplaces internationales, TVA digitale."
+description: "Cabinet pour e-commerçants, dropshippers, freelances digitaux et SaaS : Stripe, PayPal, CMI, marketplaces internationales, TVA digitale. Échange gratuit."
 eyebrow: "Secteurs"
 keywords:
   - "comptable e-commerce Maroc"

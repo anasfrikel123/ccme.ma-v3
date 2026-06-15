@@ -1,6 +1,6 @@
 ---
-title: "Expat : SARL Tanger Med en 21 jours"
-description: "Investisseur belge, projet logistique TFZ. Création SARL, ouverture compte, validation foncière, première facture en 21 jours calendaires. Process et écueils."
+title: "Expat : SARL en zone Tanger Med créée en 21 jours — CCME"
+description: "Investisseur belge, projet logistique TFZ : SARL, compte bancaire, validation foncière et 1re facture en 21 jours. La méthode. 1er échange gratuit."
 sector: "Logistique & transport"
 service: "/services/creation-entreprise"
 zone: "Tanger Med"

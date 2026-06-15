@@ -1,7 +1,7 @@
 ---
-title: "Comptable Souani Tanger | Quartier commerçant"
+title: "Comptable à Souani, Tanger : quartier commerçant — CCME"
 h1: "Cabinet comptable à Souani"
-description: "Expert-comptable pour commerces, professions libérales et PME du quartier Souani à Tanger. Comptabilité, TVA, paie et conseil fiscal, à deux pas du centre."
+description: "Expert-comptable pour commerces, professions libérales et PME du quartier Souani à Tanger : comptabilité, TVA, paie et conseil fiscal, près du centre."
 eyebrow: "Quartier Souani"
 keywords:
   - "expert comptable Souani"

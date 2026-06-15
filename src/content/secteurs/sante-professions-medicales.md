@@ -1,7 +1,7 @@
 ---
-title: "Comptable santé Tanger | Cliniques & médecins"
+title: "Comptable santé à Tanger : cliniques & médecins — CCME"
 h1: "Comptable santé & professions médicales"
-description: "Cabinet pour cliniques, médecins, dentistes, laboratoires et professionnels de santé à Tanger : comptabilité, IR/IS, TVA, paie et fiscalité du praticien."
+description: "Cabinet pour cliniques, médecins, dentistes et laboratoires à Tanger : comptabilité, IR/IS, TVA, paie et fiscalité du praticien. 1er échange gratuit."
 eyebrow: "Secteurs"
 keywords:
   - "comptable médecin Tanger"

@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Tétouan | cabinet OEC"
+title: "Expert-comptable à Tétouan | cabinet OEC — CCME"
 h1: "Expert-comptable à Tétouan"
-description: "Cabinet d'expertise comptable OEC pour les entreprises de Tétouan : textile, offshoring, commerce, tourisme côtier. Basé à Tanger, à 60 km."
+description: "Cabinet d'expertise comptable OEC pour Tétouan : textile, offshoring, commerce et tourisme côtier. Basé à Tanger, à 60 km. 1er échange gratuit, en ligne."
 eyebrow: "Ville de Tétouan"
 distance: "60 km"
 keywords:

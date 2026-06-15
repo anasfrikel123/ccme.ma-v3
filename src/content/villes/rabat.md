@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Rabat | en ligne"
+title: "Expert-comptable à Rabat, 100 % en ligne — CCME"
 h1: "Expert-comptable à Rabat, en ligne"
-description: "Cabinet OEC qui accompagne à distance les services, professions libérales, tech et associations de Rabat-Salé : compta, fiscalité, paie."
+description: "Cabinet OEC qui suit à distance les services, professions libérales, tech et associations de Rabat-Salé : compta, fiscalité, paie. 1er échange gratuit."
 eyebrow: "Ville de Rabat"
 distance: "250 km"
 scope: national

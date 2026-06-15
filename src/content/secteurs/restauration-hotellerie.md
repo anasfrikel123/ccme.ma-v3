@@ -1,7 +1,7 @@
 ---
-title: "Comptable CHR Tanger | Restaurants, cafés, hôtels"
+title: "Comptable CHR à Tanger : restaurants, cafés, hôtels — CCME"
 h1: "Comptable restauration et hôtellerie"
-description: "Cabinet pour restaurants, cafés, hôtels, riads à Tanger. Caisse, paie saisonniers, TVA tourisme, taxe de séjour, classement."
+description: "Cabinet pour restaurants, cafés, hôtels et riads à Tanger : caisse, paie des saisonniers, TVA tourisme, taxe de séjour, classement. 1er échange gratuit."
 eyebrow: "Secteurs"
 keywords:
   - "comptable restaurant Tanger"

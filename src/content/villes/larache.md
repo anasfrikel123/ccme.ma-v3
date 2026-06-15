@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Larache | cabinet OEC"
+title: "Expert-comptable à Larache | cabinet OEC — CCME"
 h1: "Expert-comptable à Larache"
-description: "Cabinet d'expertise comptable OEC pour les entreprises de Larache : pêche, conserverie, agriculture et agro-industrie, commerce. Basé à Tanger."
+description: "Cabinet d'expertise comptable OEC pour Larache : pêche, conserverie, agriculture, agro-industrie et commerce. Basé à Tanger. 1er échange gratuit, en ligne."
 eyebrow: "Ville de Larache"
 distance: "85 km"
 keywords:

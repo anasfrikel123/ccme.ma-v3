@@ -1,7 +1,7 @@
 ---
-title: "Conseil fiscal Tanger | Optimisation IS, TVA, IR"
+title: "Conseil fiscal à Tanger : optimisation IS, TVA, IR — CCME"
 h1: "Conseil fiscal"
-description: "Optimisation IS 2026, TVA, IR, prix de transfert, zones franches. Expert-comptable agréé OEC à Tanger pour PME, groupes et expatriés."
+description: "Optimisation IS 2026, TVA, IR, prix de transfert et zones franches. Expert-comptable inscrit à l'OEC à Tanger pour PME, groupes et expatriés. Parlons-en."
 eyebrow: "Fiscalité"
 category: "fiscalite"
 icon: "scale"

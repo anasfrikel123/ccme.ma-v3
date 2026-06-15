@@ -1,7 +1,7 @@
 ---
-title: "Comptable Beni Makada Tanger | Quartier industriel"
+title: "Comptable à Beni Makada, Tanger : zone industrielle — CCME"
 h1: "Cabinet comptable à Beni Makada"
-description: "Expert-comptable pour PME, commerces, BTP et industriels du quartier Beni Makada à Tanger. Cabinet centre-ville à 10 minutes."
+description: "Expert-comptable pour PME, commerces, BTP et industriels du quartier Beni Makada à Tanger. Cabinet centre-ville à 10 minutes. 1er échange gratuit."
 eyebrow: "Quartier Beni Makada"
 keywords:
   - "expert comptable Beni Makada"

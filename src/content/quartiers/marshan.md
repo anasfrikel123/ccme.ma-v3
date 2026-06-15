@@ -1,7 +1,7 @@
 ---
-title: "Comptable Marshan Tanger | Quartier historique"
+title: "Comptable à Marshan, Tanger : quartier historique — CCME"
 h1: "Cabinet comptable à Marshan"
-description: "Expert-comptable pour cabinets médicaux, riads, agences immobilières et PME de Marshan, Tanger. Cabinet centre-ville à 5 min."
+description: "Expert-comptable pour cabinets médicaux, riads, agences immobilières et PME de Marshan, Tanger. Cabinet centre-ville à 5 minutes. 1er échange gratuit."
 eyebrow: "Quartier Marshan"
 keywords:
   - "expert comptable Marshan"

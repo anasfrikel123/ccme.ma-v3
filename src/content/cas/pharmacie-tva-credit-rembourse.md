@@ -1,6 +1,6 @@
 ---
-title: "Pharmacie Tanger : crédit TVA 220K DH"
-description: "Pharmacie centre-ville, blocage crédit TVA depuis 18 mois. Reconstitution dossier, dépôt complet, suivi DGI. Remboursement effectif 220K DH en 4 mois."
+title: "Pharmacie Tanger : crédit de TVA de 220K DH récupéré — CCME"
+description: "Pharmacie centre-ville, crédit de TVA bloqué 18 mois : reconstitution du dossier, dépôt et suivi DGI. Remboursement de 220K DH. Parlons de votre cas."
 sector: "Santé & pharmaciens"
 service: "/services/comptabilite-pharmaciens"
 zone: "Tanger centre"

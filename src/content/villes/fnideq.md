@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Fnideq | cabinet OEC"
+title: "Expert-comptable à Fnideq | cabinet OEC — CCME"
 h1: "Expert-comptable à Fnideq"
-description: "Cabinet d'expertise comptable OEC pour les entreprises de Fnideq : commerce, nouvelles zones d'activité, tourisme côtier, BTP. Basé à Tanger."
+description: "Cabinet d'expertise comptable OEC pour Fnideq : commerce, nouvelles zones d'activité, tourisme côtier et BTP. Basé à Tanger. 1er échange gratuit, en ligne."
 eyebrow: "Ville de Fnideq"
 distance: "40 km"
 keywords:

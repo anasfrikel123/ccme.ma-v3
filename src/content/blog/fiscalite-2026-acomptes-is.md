@@ -1,6 +1,6 @@
 ---
-title: "Acomptes IS 2026 : calendrier, calcul, pièges"
-description: "Comment calculer ses 4 acomptes IS en 2026, à quelles dates les payer, et comment éviter les mauvaises surprises de trésorerie."
+title: "Acomptes IS 2026 : calendrier, calcul et pièges — CCME"
+description: "Comment calculer vos 4 acomptes d'IS en 2026, à quelles dates les payer et comment éviter les surprises de trésorerie. Faites vérifier vos calculs."
 category: "Fiscalité"
 publishedTime: "2026-04-22"
 keywords:

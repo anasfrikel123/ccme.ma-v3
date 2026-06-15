@@ -1,7 +1,7 @@
 ---
-title: "Audit Tanger | Commissariat aux comptes"
+title: "Audit & commissariat aux comptes à Tanger — CCME"
 h1: "Audit & commissariat aux comptes"
-description: "Audit légal, audit contractuel, due diligence, audit fiscal. Commissaire aux comptes inscrit OEC pour PME et groupes à Tanger."
+description: "Audit légal, audit contractuel, due diligence et audit fiscal à Tanger. Commissaire aux comptes inscrit à l'OEC pour PME et groupes. 1er échange gratuit."
 eyebrow: "Comptabilité"
 category: "comptabilite"
 icon: "chart-bar"

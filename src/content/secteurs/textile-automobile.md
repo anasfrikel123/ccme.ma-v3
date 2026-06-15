@@ -1,7 +1,7 @@
 ---
-title: "Comptable textile et auto Tanger | Zones franches"
+title: "Comptable textile & auto à Tanger : zones franches — CCME"
 h1: "Comptable industrie textile et automobile"
-description: "Cabinet spécialisé pour l'industrie textile et l'équipementier automobile à Tanger Free Zone, TAC, Tanger Tech. Régime ZAI."
+description: "Cabinet spécialisé pour l'industrie textile et l'équipementier automobile à Tanger Free Zone, TAC et Tanger Tech : régime ZAI. 1er échange gratuit."
 eyebrow: "Secteurs"
 keywords:
   - "comptable textile Tanger"

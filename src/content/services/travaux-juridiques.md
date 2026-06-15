@@ -1,7 +1,7 @@
 ---
-title: "Travaux juridiques Tanger | Modifs statutaires et RC"
+title: "Travaux juridiques à Tanger : modifs statutaires & RC — CCME"
 h1: "Travaux juridiques"
-description: "Modifications statutaires, transferts de siège, augmentations de capital, cessions de parts, dépôts au tribunal. Cabinet à Tanger."
+description: "Modifications statutaires, transferts de siège, augmentations de capital, cessions de parts et dépôts au tribunal à Tanger. 1er échange gratuit."
 eyebrow: "Juridique"
 category: "juridique"
 icon: "pen-tool"

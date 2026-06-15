@@ -1,7 +1,7 @@
 ---
-title: "Fiscalité immobilière & TPI Tanger | Vente de bien"
+title: "Fiscalité immobilière & TPI à Tanger : vente de bien — CCME"
 h1: "Fiscalité immobilière & profits immobiliers (TPI)"
-description: "Vous vendez un bien à Tanger ? Calcul et déclaration de la TPI, exonérations et droits d’enregistrement. Expert-comptable pour particuliers et sociétés."
+description: "Vous vendez un bien à Tanger ? Calcul et déclaration de la TPI, exonérations et droits d'enregistrement, pour particuliers et sociétés. Échange gratuit."
 eyebrow: "Fiscalité"
 category: "fiscalite"
 icon: "building"

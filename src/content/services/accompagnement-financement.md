@@ -1,7 +1,7 @@
 ---
-title: "Financement entreprise Tanger | Crédit & garanties"
+title: "Financement à Tanger : crédit bancaire & garanties — CCME"
 h1: "Accompagnement au financement"
-description: "Montage de dossiers de financement bancaire, garanties TAMWILCOM, business plan bancable et prévisionnels à Tanger pour PME et créateurs d'entreprise."
+description: "Montage de dossiers de financement bancaire, garanties TAMWILCOM, business plan bancable et prévisionnels à Tanger pour PME et créateurs. Échange gratuit."
 eyebrow: "Gestion"
 category: "autre"
 icon: "coins"

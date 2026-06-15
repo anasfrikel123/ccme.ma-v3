@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Chefchaouen | cabinet OEC"
+title: "Expert-comptable à Chefchaouen | cabinet OEC — CCME"
 h1: "Expert-comptable à Chefchaouen"
-description: "Cabinet d'expertise comptable OEC pour les entreprises de Chefchaouen : maisons d'hôtes, tourisme, artisanat, produits du terroir. Basé à Tanger."
+description: "Cabinet d'expertise comptable OEC pour Chefchaouen : maisons d'hôtes, tourisme, artisanat et produits du terroir. Basé à Tanger. 1er échange gratuit."
 eyebrow: "Ville de Chefchaouen"
 distance: "110 km"
 keywords:

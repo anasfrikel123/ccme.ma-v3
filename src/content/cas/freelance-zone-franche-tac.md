@@ -1,6 +1,6 @@
 ---
-title: "Freelance IT → SARL TAC : IS 8,75%"
-description: "Développeur freelance, 1,1 MDH facturé en clients UE, optimisation passage SARL TAC. IS 8,75% pendant 5 ans + sortie auto-entrepreneur. Calculs et timeline."
+title: "Freelance IT passé en SARL TAC : IS à 8,75 % — CCME"
+description: "Développeur freelance, 1,1 MDH facturé en UE : passage en SARL TAC, IS à 8,75 % pendant 5 ans. La méthode détaillée pas-à-pas. 1er échange gratuit."
 sector: "Tech & services digitaux"
 service: "/services/creation-entreprise"
 zone: "Tanger Automotive City"

@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Kénitra | en ligne"
+title: "Expert-comptable à Kénitra, 100 % en ligne — CCME"
 h1: "Expert-comptable à Kénitra, en ligne"
-description: "Cabinet OEC qui accompagne à distance l'automobile, les zones franches et l'agro du Gharb à Kénitra : régime export, Office des Changes, paie."
+description: "Cabinet OEC qui suit à distance l'automobile, les zones franches et l'agro du Gharb à Kénitra : régime export, Office des Changes, paie. Échange gratuit."
 eyebrow: "Ville de Kénitra"
 distance: "220 km"
 scope: national

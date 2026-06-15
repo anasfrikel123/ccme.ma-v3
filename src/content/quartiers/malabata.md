@@ -1,7 +1,7 @@
 ---
-title: "Expert comptable Malabata Tanger | Cabinet local"
+title: "Comptable à Malabata, Tanger : cabinet local — CCME"
 h1: "Cabinet comptable à Malabata"
-description: "Expert-comptable pour PME, restaurants, hôtels et professions libérales du quartier Malabata à Tanger. Cabinet à 10 minutes."
+description: "Expert-comptable pour PME, restaurants, hôtels et professions libérales du quartier Malabata à Tanger. Cabinet à 10 minutes. 1er échange gratuit."
 eyebrow: "Quartier Malabata"
 keywords:
   - "expert comptable Malabata"

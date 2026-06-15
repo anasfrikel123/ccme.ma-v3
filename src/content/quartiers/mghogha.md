@@ -1,7 +1,7 @@
 ---
-title: "Comptable Mghogha Tanger | Zone d'activités"
+title: "Comptable à Mghogha, Tanger : zone d'activités — CCME"
 h1: "Cabinet comptable à Mghogha"
-description: "Expert-comptable pour PME, ateliers, grossistes et sociétés de transport de Mghogha à Tanger. Tenue comptable, TVA, paie et accompagnement fiscal."
+description: "Expert-comptable pour PME, ateliers, grossistes et transporteurs de Mghogha à Tanger : tenue comptable, TVA, paie et accompagnement fiscal. Parlons-en."
 eyebrow: "Quartier Mghogha"
 keywords:
   - "expert comptable Mghogha"

@@ -1,7 +1,7 @@
 ---
-title: "Externalisation comptable Tanger | PME & filiales"
+title: "Externalisation comptable à Tanger : PME & filiales — CCME"
 h1: "Externalisation comptable"
-description: "Comptabilité externalisée pour PME, filiales étrangères et sociétés en zone franche à Tanger : tenue, déclarations, paie et reporting au siège, clé en main."
+description: "Comptabilité externalisée pour PME, filiales étrangères et sociétés en zone franche à Tanger : tenue, déclarations, paie et reporting, clé en main."
 eyebrow: "Comptabilité"
 category: "comptabilite"
 icon: "globe"

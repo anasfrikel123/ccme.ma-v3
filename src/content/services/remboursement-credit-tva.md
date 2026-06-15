@@ -1,7 +1,7 @@
 ---
-title: "Remboursement de crédit de TVA à Tanger"
+title: "Remboursement de crédit de TVA à Tanger — CCME"
 h1: "Remboursement du crédit de TVA"
-description: "Vous avez un crédit de TVA bloqué ? On monte et défend votre dossier de remboursement auprès de la DGI à Tanger : exportateurs, investissements, zones franches."
+description: "Crédit de TVA bloqué ? On monte et défend votre dossier de remboursement auprès de la DGI à Tanger : exportateurs et zones franches. Parlons-en."
 eyebrow: "Fiscalité"
 category: "fiscalite"
 icon: "percent"

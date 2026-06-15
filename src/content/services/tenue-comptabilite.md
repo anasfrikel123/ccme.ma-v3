@@ -1,7 +1,7 @@
 ---
-title: "Tenue de comptabilité à Tanger — Cabinet CCME"
+title: "Tenue de comptabilité à Tanger : cabinet OEC — CCME"
 h1: "Tenue de comptabilité"
-description: "Saisie, rapprochements, états financiers, déclarations DGI et CNSS. Cabinet d'expertise comptable à Tanger pour PME, TPE et professions libérales."
+description: "Saisie, rapprochements, états financiers et déclarations DGI et CNSS à Tanger pour PME, TPE et professions libérales. Cabinet d'expertise comptable OEC."
 eyebrow: "Comptabilité"
 category: "comptabilite"
 icon: "book"

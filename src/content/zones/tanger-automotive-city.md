@@ -1,7 +1,7 @@
 ---
-title: "Comptable TAC | Tanger Automotive City"
+title: "Comptable à Tanger Automotive City (TAC) — CCME"
 h1: "Cabinet comptable pour Tanger Automotive City (TAC)"
-description: "Comptabilité spécialisée pour équipementiers automobile à Tanger Automotive City. Renault, Stellantis, JIT, prix de transfert."
+description: "Comptabilité spécialisée pour les équipementiers automobiles à Tanger Automotive City : Renault, Stellantis, JIT, prix de transfert. 1er échange gratuit."
 eyebrow: "Zones & régions"
 keywords:
   - "expert comptable TAC"

@@ -87,9 +87,12 @@ const fullTitle = (baseTitle.length + freshnessSuffix.length <= 64)
 // ("3 min de lecture · …") that acts as a CTR magnet in SERPs (numbers
 // and time commitment beat plain prose). Truncate to 160 chars to stay
 // inside Google's snippet cap.
-const ctrPrefix = ogType === 'article' && readingMinutes && readingMinutes > 0
-  ? `${readingMinutes} min de lecture · `
-  : '';
+// Reading-time prefix intentionally disabled: leading every blog snippet with
+// "N min de lecture ·" pushed the value proposition out of the SERP and caused
+// mid-word truncation at 160. Descriptions now lead with the hook directly.
+// (readingMinutes is still accepted as a prop for potential schema/UI use.)
+void readingMinutes;
+const ctrPrefix = '';
 const fullDescriptionRaw = `${ctrPrefix}${description}`;
 const fullDescription = fullDescriptionRaw.length > 160
   ? fullDescriptionRaw.slice(0, 157).trim() + '…'

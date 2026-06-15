@@ -1,7 +1,7 @@
 ---
-title: "Expert comptable TFZ Tanger Free Zone | Cabinet ZAI"
+title: "Expert-comptable Tanger Free Zone (TFZ) : régime ZAI — CCME"
 h1: "Cabinet comptable pour Tanger Free Zone (TFZ)"
-description: "Comptabilité, fiscalité et paie pour les sociétés agréées Tanger Free Zone. Régime ZAI, exonération IS, TVA export, conventions sociales."
+description: "Comptabilité, fiscalité et paie pour les sociétés agréées Tanger Free Zone : régime ZAI, exonération d'IS, TVA export, conventions sociales. Parlons-en."
 eyebrow: "Zones & régions"
 keywords:
   - "expert comptable TFZ"

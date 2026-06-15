@@ -1,7 +1,7 @@
 ---
-title: "Comptable transport & logistique Tanger | Flottes"
+title: "Comptable transport & logistique à Tanger : flottes — CCME"
 h1: "Comptable transport & logistique"
-description: "Cabinet pour transporteurs, logisticiens et messagerie à Tanger : comptabilité de flotte, TVA carburant et paie des chauffeurs."
+description: "Cabinet pour transporteurs, logisticiens et messagerie à Tanger : comptabilité de flotte, TVA carburant et paie des chauffeurs. 1er échange gratuit."
 eyebrow: "Secteurs"
 keywords:
   - "comptable transport Tanger"

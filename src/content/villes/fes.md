@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Fès | en ligne"
+title: "Expert-comptable à Fès, 100 % en ligne — CCME"
 h1: "Expert-comptable à Fès, en ligne"
-description: "Cabinet OEC qui accompagne à distance l'artisanat, l'industrie traditionnelle, le commerce et le tourisme de Fès : compta, TVA, paie, fiscalité."
+description: "Cabinet OEC qui suit à distance l'artisanat, l'industrie, le commerce et le tourisme de Fès : compta, TVA, paie, fiscalité. 1er échange gratuit, en ligne."
 eyebrow: "Ville de Fès"
 distance: "300 km"
 scope: national

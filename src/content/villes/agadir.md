@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Agadir | en ligne"
+title: "Expert-comptable à Agadir, 100 % en ligne — CCME"
 h1: "Expert-comptable à Agadir, en ligne"
-description: "Cabinet OEC qui accompagne à distance la pêche, l'agro-industrie du Souss et le tourisme d'Agadir : crédit TVA export, statut agricole, paie."
+description: "Cabinet OEC qui suit à distance la pêche, l'agro-industrie du Souss et le tourisme d'Agadir : crédit TVA export, statut agricole, paie. Échange gratuit."
 eyebrow: "Ville d'Agadir"
 distance: "810 km"
 scope: national

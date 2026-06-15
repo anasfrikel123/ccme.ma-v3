@@ -1,6 +1,6 @@
 ---
-title: "Fermer une société au Maroc : dissolution"
-description: "Dissolution, liquidation amiable, radiation du registre de commerce et clôture fiscale : le guide pour fermer proprement une SARL ou une SA au Maroc en 2026."
+title: "Fermer une société au Maroc : la dissolution — CCME"
+description: "Dissolution, liquidation, radiation du RC et clôture fiscale : fermez proprement votre SARL ou SA. Besoin d'aide pour la fermeture ? Parlons-en."
 category: "Juridique"
 publishedTime: "2026-06-14"
 keywords:

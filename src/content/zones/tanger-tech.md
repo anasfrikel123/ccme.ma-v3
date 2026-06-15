@@ -1,7 +1,7 @@
 ---
-title: "Expert comptable Tanger Tech | Tech City Mohammed VI"
+title: "Expert-comptable Tanger Tech : Mohammed VI Tech City — CCME"
 h1: "Cabinet comptable pour Tanger Tech"
-description: "Comptabilité et fiscalité pour startups, scale-ups et offshoring tech à Tanger Tech (Mohammed VI Tech City). Régime ZAI."
+description: "Comptabilité et fiscalité pour startups, scale-ups et offshoring tech à Tanger Tech (Mohammed VI Tech City) : régime ZAI. 1er échange gratuit, en ligne."
 eyebrow: "Zones & régions"
 keywords:
   - "expert comptable Tanger Tech"

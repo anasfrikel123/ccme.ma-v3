@@ -1,7 +1,7 @@
 ---
-title: "Contrôle & contentieux fiscal Tanger | Recours DGI"
+title: "Contrôle & contentieux fiscal à Tanger : recours DGI — CCME"
 h1: "Contrôle et contentieux fiscal"
-description: "Défense face aux contrôles DGI, recours hiérarchique, commission paritaire, contentieux administratif. Cabinet à Tanger inscrit OEC."
+description: "Défense face aux contrôles DGI, recours hiérarchique, commission paritaire et contentieux administratif à Tanger. Cabinet OEC. 1er échange gratuit."
 eyebrow: "Fiscalité"
 category: "fiscalite"
 icon: "gavel"

@@ -1,7 +1,7 @@
 ---
-title: "Comptable California Tanger | Quartier résidentiel"
+title: "Comptable California Tanger : professions libérales — CCME"
 h1: "Cabinet comptable à California"
-description: "Expert-comptable pour cliniques, cabinets médicaux, professions libérales du quartier California à Tanger. Cabinet centre-ville à 5 minutes."
+description: "Expert-comptable pour cliniques, cabinets médicaux et professions libérales du quartier California à Tanger. Cabinet centre-ville à 5 minutes. Parlons-en."
 eyebrow: "Quartier California"
 keywords:
   - "expert comptable California Tanger"

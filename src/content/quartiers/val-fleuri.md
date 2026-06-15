@@ -1,7 +1,7 @@
 ---
-title: "Comptable Val Fleuri Tanger | Bureaux & sièges"
+title: "Comptable à Val Fleuri, Tanger : bureaux & sièges — CCME"
 h1: "Cabinet comptable à Val Fleuri"
-description: "Expert-comptable pour sièges sociaux, sociétés de services et professions libérales du quartier Val Fleuri à Tanger. Comptabilité, fiscalité et paie."
+description: "Expert-comptable pour sièges sociaux, sociétés de services et professions libérales du quartier Val Fleuri à Tanger : comptabilité, fiscalité et paie."
 eyebrow: "Quartier Val Fleuri"
 keywords:
   - "expert comptable Val Fleuri"

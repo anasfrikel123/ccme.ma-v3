@@ -1,7 +1,7 @@
 ---
-title: "Création d'entreprise Tanger | SARL, SAS, SARLAU"
+title: "Création d'entreprise à Tanger : SARL, SAS, SARLAU — CCME"
 h1: "Création d'entreprise à Tanger"
-description: "Constitution SARL, SAS, SARLAU à Tanger en 5 à 10 jours. Statuts, certificat négatif, CRI, RC, IF, CNSS. Cabinet expert-comptable agréé OEC."
+description: "Constitution de SARL, SAS ou SARLAU à Tanger en 5 à 10 jours : statuts, certificat négatif, CRI, RC, IF, CNSS. Cabinet OEC. On s'occupe de tout pour vous."
 eyebrow: "Juridique"
 category: "juridique"
 icon: "building-2"

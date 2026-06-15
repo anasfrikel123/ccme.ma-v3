@@ -1,7 +1,7 @@
 ---
-title: "Business plan Tanger | Plan financier et bancaire"
+title: "Business plan à Tanger : plan financier bancable — CCME"
 h1: "Business plan"
-description: "Élaboration de business plan complet, prévisionnel financier, étude de rentabilité, dossier de financement bancaire. Cabinet à Tanger."
+description: "Business plan complet, prévisionnel financier, étude de rentabilité et dossier de financement bancaire à Tanger. Cabinet OEC. 1er échange gratuit."
 eyebrow: "Conseil"
 category: "autre"
 icon: "trending-up"

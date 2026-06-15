@@ -1,6 +1,6 @@
 ---
-title: "Aides à l’investissement au Maroc : le guide"
-description: "Charte de l'investissement, primes, conventions avec l'État et rôle du CRI : quelles aides pour votre projet au Maroc et comment monter un dossier qui passe."
+title: "Aides à l'investissement au Maroc 2026 : le guide — CCME"
+description: "Charte de l'investissement, primes et conventions avec l'État : quelles aides pour votre projet au Maroc et comment les obtenir. On vous guide."
 category: "Création d'entreprise"
 publishedTime: "2026-06-14"
 keywords:

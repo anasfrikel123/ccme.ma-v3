@@ -1,7 +1,7 @@
 ---
-title: "Dissolution & liquidation de société Tanger"
+title: "Dissolution & liquidation de société à Tanger — CCME"
 h1: "Dissolution & liquidation de société"
-description: "Fermer une SARL ou une SA à Tanger : dissolution anticipée, liquidation amiable, clôture des comptes, radiation du registre de commerce. Expert-comptable OEC."
+description: "Fermer une SARL ou une SA à Tanger : dissolution anticipée, liquidation amiable, clôture des comptes et radiation du RC. Expert-comptable OEC. Parlons-en."
 eyebrow: "Juridique"
 category: "juridique"
 icon: "gavel"

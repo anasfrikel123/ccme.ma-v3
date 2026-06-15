@@ -1,7 +1,7 @@
 ---
-title: "Comptable Gzenaya Tanger | Zone industrielle"
+title: "Comptable à Gzenaya, Tanger : zone industrielle — CCME"
 h1: "Cabinet comptable à Gzenaya"
-description: "Expert-comptable pour industriels, sous-traitants et logisticiens de la zone industrielle de Gzenaya à Tanger. Comptabilité, TVA, paie et fiscalité des zones."
+description: "Expert-comptable pour industriels, sous-traitants et logisticiens de la zone industrielle de Gzenaya à Tanger : compta, TVA, paie et fiscalité des zones."
 eyebrow: "Quartier Gzenaya"
 keywords:
   - "expert comptable Gzenaya"

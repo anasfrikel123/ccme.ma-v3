@@ -1,7 +1,7 @@
 ---
-title: "Comptable centre-ville Tanger | Boulevard Pasteur"
+title: "Comptable au centre-ville de Tanger : Bd Pasteur — CCME"
 h1: "Cabinet comptable Tanger centre-ville"
-description: "Cabinet d'expertise comptable au centre-ville de Tanger, Avenue Moulay Ismail. PME, commerces, professions libérales du centre."
+description: "Cabinet d'expertise comptable au centre-ville de Tanger, Avenue Moulay Ismail : PME, commerces et professions libérales du centre. 1er échange gratuit."
 eyebrow: "Zones & régions"
 keywords:
   - "expert comptable centre-ville Tanger"

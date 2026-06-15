@@ -1,7 +1,7 @@
 ---
-title: "Comptable Boukhalef Tanger | Zone aéroport"
+title: "Comptable à Boukhalef, Tanger : zone aéroport — CCME"
 h1: "Cabinet comptable à Boukhalef"
-description: "Expert-comptable pour PME et industries de Boukhalef, près de l'aéroport Ibn Battouta et de la zone Tanger Tech. Cabinet à 15 min en voiture."
+description: "Expert-comptable pour PME et industries de Boukhalef, près de l'aéroport Ibn Battouta et de Tanger Tech. Cabinet à 15 minutes. 1er échange gratuit."
 eyebrow: "Quartier Boukhalef"
 keywords:
   - "expert comptable Boukhalef"

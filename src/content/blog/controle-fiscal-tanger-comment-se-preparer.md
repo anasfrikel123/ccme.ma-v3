@@ -1,6 +1,6 @@
 ---
-title: "Contrôle fiscal DGI à Tanger : comment se préparer"
-description: "Vous avez reçu un avis de vérification. Voici les bonnes étapes pour préparer le contrôle, choisir vos arguments, et limiter les redressements."
+title: "Contrôle fiscal DGI à Tanger : comment se préparer — CCME"
+description: "Avis de vérification reçu ? Les bonnes étapes pour préparer le contrôle, bâtir vos arguments et limiter les redressements. Faites-vous accompagner."
 category: "Fiscalité"
 publishedTime: "2026-03-25"
 keywords:

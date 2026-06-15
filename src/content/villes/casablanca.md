@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Casablanca | en ligne"
+title: "Expert-comptable à Casablanca, 100 % en ligne — CCME"
 h1: "Expert-comptable à Casablanca, en ligne"
-description: "Cabinet OEC qui accompagne à distance les PME, startups et e-commerçants de Casablanca : comptabilité, fiscalité, paie. Suivi 100% en ligne."
+description: "Cabinet OEC qui suit à distance les PME, startups et e-commerçants de Casablanca : comptabilité, fiscalité, paie. 100 % en ligne, 1er échange gratuit."
 eyebrow: "Ville de Casablanca"
 distance: "340 km"
 scope: national

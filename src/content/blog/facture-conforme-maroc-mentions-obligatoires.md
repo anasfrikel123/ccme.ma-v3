@@ -1,6 +1,6 @@
 ---
-title: "Facture conforme au Maroc : mentions obligatoires"
-description: "Quelles mentions doivent figurer sur une facture au Maroc (ICE, IF, RC, TVA) ? Le guide pratique pour facturer sans risque de rejet ni de redressement."
+title: "Facture conforme au Maroc : mentions obligatoires — CCME"
+description: "Quelles mentions sur une facture au Maroc (ICE, IF, RC, TVA) ? Le guide pour facturer sans risque de rejet ni de redressement. Sécurisez vos factures."
 category: "Fiscalité"
 publishedTime: "2026-06-15"
 keywords:

@@ -1,7 +1,7 @@
 ---
-title: "Assistance fiscale Tanger | Contrôle DGI et recours"
+title: "Assistance fiscale à Tanger : contrôle DGI & recours — CCME"
 h1: "Assistance fiscale & contentieux"
-description: "Accompagnement contrôle DGI, contestation de redressements, recours hiérarchique, commission paritaire, contentieux fiscal. Cabinet expert-comptable Tanger."
+description: "Accompagnement en cas de contrôle DGI, contestation de redressements, recours hiérarchique et contentieux fiscal à Tanger. 1er échange gratuit."
 eyebrow: "Fiscalité"
 category: "fiscalite"
 icon: "shield"

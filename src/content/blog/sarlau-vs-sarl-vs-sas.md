@@ -1,6 +1,6 @@
 ---
-title: "SARLAU, SARL, SAS : laquelle choisir au Maroc en 2026"
-description: "Comparatif pratique entre SARLAU, SARL et SAS pour un projet à Tanger. Avantages, inconvénients, fiscalité, capital, gouvernance."
+title: "SARLAU, SARL ou SAS : laquelle choisir au Maroc ? — CCME"
+description: "Comparatif pratique SARLAU vs SARL vs SAS pour un projet à Tanger : avantages, fiscalité, capital, gouvernance. Trouvez la bonne forme. Parlons-en."
 category: "Création d'entreprise"
 publishedTime: "2026-02-26"
 keywords:

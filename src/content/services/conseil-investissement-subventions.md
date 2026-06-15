@@ -1,7 +1,7 @@
 ---
-title: "Conseil en investissement & subventions Tanger | CRI"
+title: "Conseil investissement & subventions à Tanger : CRI — CCME"
 h1: "Conseil en investissement & subventions"
-description: "Charte de l’investissement, primes et conventions avec l’État, dossiers CRI à Tanger. On structure votre projet pour capter les aides disponibles."
+description: "Charte de l'investissement, primes et conventions avec l'État, dossiers CRI à Tanger. On structure votre projet pour capter les aides. 1er échange gratuit."
 eyebrow: "Conseil"
 category: "autre"
 icon: "award"

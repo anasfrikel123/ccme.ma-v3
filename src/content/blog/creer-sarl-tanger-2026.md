@@ -1,6 +1,6 @@
 ---
-title: "Créer sa SARL à Tanger en 2026 : guide pratique"
-description: "Toutes les étapes pour créer une SARL à Tanger en 2026 : forme juridique, certificat négatif, statuts, CRI, RC, IF, CNSS. Délais, coûts, pièges."
+title: "Créer sa SARL à Tanger en 2026 : guide complet — CCME"
+description: "Toutes les étapes pour créer une SARL à Tanger : certificat négatif, statuts, CRI, RC, IF, CNSS. Délais, coûts, pièges à éviter. On s'occupe de tout."
 category: "Création d'entreprise"
 publishedTime: "2026-05-28"
 modifiedTime: "2026-05-28"

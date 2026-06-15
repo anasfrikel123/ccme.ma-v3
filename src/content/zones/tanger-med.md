@@ -1,7 +1,7 @@
 ---
-title: "Expert comptable Tanger Med | Cabinet zone portuaire"
+title: "Expert-comptable Tanger Med : zone portuaire — CCME"
 h1: "Cabinet comptable pour Tanger Med"
-description: "Cabinet d'expertise comptable spécialisé dans l'écosystème Tanger Med : import-export, logistique, transit, prestataires portuaires."
+description: "Cabinet d'expertise comptable spécialisé dans l'écosystème Tanger Med : import-export, logistique, transit et prestataires portuaires. 1er échange gratuit."
 eyebrow: "Zones & régions"
 keywords:
   - "expert comptable Tanger Med"

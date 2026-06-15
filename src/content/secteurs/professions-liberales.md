@@ -1,7 +1,7 @@
 ---
-title: "Comptable professions libérales Tanger | BNC"
+title: "Comptable professions libérales à Tanger : BNC — CCME"
 h1: "Comptable des professions libérales"
-description: "Cabinet pour médecins, dentistes, avocats, architectes, ingénieurs à Tanger. BNC, IR professionnel, AMO-TNS, retraite complémentaire."
+description: "Cabinet pour médecins, dentistes, avocats, architectes et ingénieurs à Tanger : BNC, IR professionnel, AMO-TNS, retraite complémentaire. Échange gratuit."
 eyebrow: "Secteurs"
 keywords:
   - "comptable médecin Tanger"

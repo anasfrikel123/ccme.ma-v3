@@ -1,6 +1,6 @@
 ---
-title: "Crédit de TVA : comment le récupérer en 2026"
-description: "Procédure de remboursement du crédit de TVA au Maroc : conditions, dossier, délais, suivi. Pour exportateurs et investissements."
+title: "Crédit de TVA : comment le récupérer en 2026 — CCME"
+description: "Remboursement du crédit de TVA au Maroc : conditions, dossier, délais et suivi, pour exportateurs et investissements. On défend votre dossier."
 category: "Fiscalité"
 publishedTime: "2026-02-12"
 keywords:

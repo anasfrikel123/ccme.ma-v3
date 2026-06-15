@@ -1,7 +1,7 @@
 ---
-title: "Expert-comptable à Marrakech | en ligne"
+title: "Expert-comptable à Marrakech, 100 % en ligne — CCME"
 h1: "Expert-comptable à Marrakech, en ligne"
-description: "Cabinet OEC qui accompagne à distance les riads, hôtels, restaurants et investisseurs de Marrakech : TVA tourisme, paie saisonnière, fiscalité."
+description: "Cabinet OEC qui suit à distance les riads, hôtels, restaurants et investisseurs de Marrakech : TVA tourisme, paie saisonnière, fiscalité. Échange gratuit."
 eyebrow: "Ville de Marrakech"
 distance: "580 km"
 scope: national

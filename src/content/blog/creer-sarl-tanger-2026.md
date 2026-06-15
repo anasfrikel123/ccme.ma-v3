@@ -15,6 +15,9 @@ related:
   - "reforme-is-2026-pme-tanger"
   - "domiciliation-societe-tanger"
   - "sarlau-vs-sarl-vs-sas"
+about:
+  - "/services/creation-entreprise"
+  - "/outils/choisir-forme-juridique"
 ---
 
 On va éviter les généralités. Si vous lisez cet article, c'est que vous voulez créer une boîte à Tanger. Voici exactement comment ça se passe en 2026, étape par étape, avec les délais réels et les coûts réels.

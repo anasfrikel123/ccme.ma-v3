@@ -13,6 +13,9 @@ related:
   - "reforme-is-2026-pme-tanger"
   - "tva-credit-remboursement-2026"
   - "fiscalite-2026-acomptes-is"
+about:
+  - "/services/controle-contentieux"
+  - "/services/assistance-fiscale"
 ---
 
 Recevoir un avis de vérification, ça remue. Surtout quand on est PME et qu'on n'a jamais vécu ça. La bonne nouvelle, c'est que dans 90% des cas, le contrôle ne tourne pas au cauchemar — à condition de bien le préparer.

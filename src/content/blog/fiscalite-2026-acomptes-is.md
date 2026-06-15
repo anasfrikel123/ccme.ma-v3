@@ -13,6 +13,9 @@ related:
   - "reforme-is-2026-pme-tanger"
   - "tva-credit-remboursement-2026"
   - "controle-fiscal-tanger-comment-se-preparer"
+about:
+  - "/services/conseil-fiscal"
+  - "/outils/simulateur-is"
 ---
 
 Quatre fois par an, votre société doit payer un acompte d'[IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") à la [DGI](/services/simpl-impots-dgi). C'est une obligation que beaucoup de dirigeants découvrent en cours de route — et qui peut vraiment plomber une trésorerie si on s'y prend mal. Voici comment ça fonctionne, sans jargon.

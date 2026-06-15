@@ -14,6 +14,9 @@ related:
   - "domiciliation-societe-tanger"
   - "creer-sarl-tanger-2026"
   - "zones-franches-tanger-comparatif"
+about:
+  - "/expat"
+  - "/services/conseil-fiscal"
 ---
 
 Investir au Maroc en tant que Français, c'est une décision de plus en plus fréquente. Tanger attire particulièrement : proximité avec l'Espagne et la France (1h en avion depuis Paris ou Madrid), cadre de vie agréable, immobilier abordable, climat fiscal qui peut être favorable. Mais il y a un cadre légal à respecter et quelques arbitrages à faire en amont.

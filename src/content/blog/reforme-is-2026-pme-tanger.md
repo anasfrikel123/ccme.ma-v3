@@ -16,6 +16,9 @@ related:
   - "fiscalite-2026-acomptes-is"
   - "creer-sarl-tanger-2026"
   - "tva-credit-remboursement-2026"
+about:
+  - "/services/conseil-fiscal"
+  - "/outils/simulateur-is"
 ---
 
 On nous pose la question plusieurs fois par semaine au cabinet : « la réforme [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") 2026, c'est bien pour moi ou pas ? ». La réponse honnête, c'est : ça dépend. Pour la majorité des PME tangéroises ça simplifie les choses, pour quelques cas particuliers ça complique. Voyons ça concrètement.

@@ -13,6 +13,9 @@ related:
   - "fiscalite-2026-acomptes-is"
   - "reforme-is-2026-pme-tanger"
   - "zones-franches-tanger-comparatif"
+about:
+  - "/services/remboursement-credit-tva"
+  - "/outils/simulateur-tva"
 ---
 
 Si votre société est en crédit permanent de [TVA](/outils/simulateur-tva "Simulateur TVA Maroc"), c'est de la trésorerie qui dort à la [DGI](/services/simpl-impots-dgi). Récupérable, mais à condition de monter un dossier solide et de suivre la procédure. Voici comment ça se passe en 2026.

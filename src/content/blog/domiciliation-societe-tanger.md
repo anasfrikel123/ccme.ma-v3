@@ -13,6 +13,8 @@ related:
   - "creer-sarl-tanger-2026"
   - "sarlau-vs-sarl-vs-sas"
   - "expat-francais-investir-tanger"
+about:
+  - "/services/domiciliation"
 ---
 
 Domicilier sa société, c'est utiliser l'adresse d'un prestataire comme siège social officiel. À Tanger, c'est une pratique très répandue — pour de bonnes raisons. Mais il y a des règles à respecter et quelques pièges à éviter.

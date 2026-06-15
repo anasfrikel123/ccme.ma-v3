@@ -14,6 +14,9 @@ related:
   - "creer-sarl-tanger-2026"
   - "domiciliation-societe-tanger"
   - "reforme-is-2026-pme-tanger"
+about:
+  - "/services/creation-entreprise"
+  - "/outils/choisir-forme-juridique"
 ---
 
 C'est la première vraie question quand on monte une boîte au Maroc : quelle forme juridique choisir. Le mauvais choix se rattrape (par transformation), mais ça coûte du temps et de l'argent. Autant prendre la bonne décision dès le départ.

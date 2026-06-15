@@ -13,6 +13,9 @@ related:
   - "creer-sarl-tanger-2026"
   - "sarlau-vs-sarl-vs-sas"
   - "domiciliation-societe-tanger"
+about:
+  - "/services/damancom-cnss"
+  - "/services/paie-grh"
 ---
 
 [Damancom](/services/damancom-cnss), c'est le portail de déclaration sociale de la [CNSS](/glossaire#cnss) au Maroc. Toute société employeuse doit y passer, chaque mois, pour déclarer ses salariés et payer les cotisations. Pour les dirigeants qui découvrent, ça paraît complexe — en réalité c'est plutôt logique une fois qu'on a pris le pli.

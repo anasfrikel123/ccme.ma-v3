@@ -26,7 +26,7 @@ Le statut de profession libérale au Maroc a ses propres règles. BNC pour la fi
 
 **Tenue comptable simplifiée** (livre journal recettes-dépenses, registre des immobilisations). Pas besoin du plan comptable général complet en BNC — mais quelques règles à respecter pour ne pas se faire reclasser en RNR.
 
-**Déclaration [IR](/outils/simulateur-ir) professionnelle.** Choix du régime (forfait, RNS, RNR), calcul de l'IR par tranche, déduction des charges déductibles spécifiques (matériel médical, formation continue, ordres professionnels). Calendrier : avant le 30 avril de l'année suivante.
+**Déclaration [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") professionnelle.** Choix du régime (forfait, RNS, RNR), calcul de l'[IR](/outils/simulateur-ir) par tranche, déduction des charges déductibles spécifiques (matériel médical, formation continue, ordres professionnels). Calendrier : avant le 30 avril de l'année suivante.
 
 **Cotisations sociales** : AMO-TNS obligatoire, retraite complémentaire (CIMR, RCAR, etc.), prévoyance. À optimiser fiscalement.
 

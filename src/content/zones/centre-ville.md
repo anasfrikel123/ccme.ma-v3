@@ -52,7 +52,7 @@ Concrètement, pour un dossier de centre-ville, on apporte trois choses :
 - **Une connaissance du quartier.** On sait quelle banque finance vite à Tanger, quel notaire est rapide pour une cession de fonds de commerce, quelle inspection du travail est plus tatillonne sur les jours de repos
 - **Un seuil d'engagement bas.** Premier diagnostic gratuit, pas de mission cadre obligatoire avant de comprendre votre besoin
 
-Pour estimer rapidement vos charges salariales (cabinet de 3-5 personnes), voir notre [simulateur de paie marocain](/outils/simulateur-paie). Pour calculer l'[IS](/outils/simulateur-is) d'un cabinet en SARL ou en SAS, le simulateur IS 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale).
+Pour estimer rapidement vos charges salariales (cabinet de 3-5 personnes), voir notre [simulateur de paie marocain](/outils/simulateur-paie). Pour calculer l'[IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") d'un cabinet en SARL ou en SAS, le [simulateur IS](/outils/simulateur-is) 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale).
 
 ## Centre-ville, libérales et changement de structure
 

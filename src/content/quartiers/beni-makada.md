@@ -26,9 +26,9 @@ Une bonne part de nos dossiers de formalisation vient de Beni Makada — un quar
 
 ## Notre clientèle Beni Makada
 
-**Commerces de gros.** Importateurs de matériaux de construction, alimentation, textile, électroménager. Compta complexe avec rotation de stock importante, [TVA](/outils/simulateur-tva) récupérée à l'import, gestion des marges.
+**Commerces de gros.** Importateurs de matériaux de construction, alimentation, textile, électroménager. Compta complexe avec rotation de stock importante, [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") récupérée à l'import, gestion des marges.
 
-**BTP et entreprises de travaux.** Petites et moyennes structures. Comptabilité par chantier, retenue de garantie, marchés publics, TVA travaux.
+**BTP et entreprises de travaux.** Petites et moyennes structures. Comptabilité par chantier, retenue de garantie, marchés publics, [TVA](/outils/simulateur-tva) travaux.
 
 **Ateliers et garages.** Compta simple mais avec spécificités (pièces détachées, main d'œuvre, stock fluide). On a l'habitude.
 

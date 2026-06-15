@@ -16,7 +16,7 @@ import { writeFileSafe } from './lib/write-file-safe.mjs';
 
 const ROOT = path.resolve('.');
 const PUB = path.join(ROOT, 'public');
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 
 /* ---------- helpers ---------- */
 

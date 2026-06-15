@@ -12,7 +12,7 @@ import crypto from 'node:crypto';
 import { writeFileSafe } from './lib/write-file-safe.mjs';
 
 const SKILLS_DIR = path.resolve('public/.well-known/agent-skills');
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 
 const sha256 = (buf) =>
   'sha256-' + crypto.createHash('sha256').update(buf).digest('base64');

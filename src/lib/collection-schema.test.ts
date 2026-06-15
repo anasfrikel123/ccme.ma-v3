@@ -1,10 +1,10 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { collectionPageSchema, mergeSchemaGraph } from './collection-schema';
 import { orgCoreGraph } from '~/data/org-schema';
 
 describe('collectionPageSchema', () => {
   const sample = collectionPageSchema({
-    url: 'https://www.ccme.ma/services',
+    url: 'https://ccme.ma/services',
     name: 'Services CCME',
     description: 'Catalogue des services du cabinet.',
     items: [
@@ -21,21 +21,21 @@ describe('collectionPageSchema', () => {
     expect(sample.mainEntity.itemListElement[0]).toMatchObject({
       '@type': 'ListItem',
       position: 1,
-      url: 'https://www.ccme.ma/services/tenue-comptabilite',
+      url: 'https://ccme.ma/services/tenue-comptabilite',
       name: 'Tenue comptable',
     });
   });
 
   it('resolves relative item URLs against SITE', () => {
     const urls = sample.mainEntity.itemListElement.map((i: { url: string }) => i.url);
-    expect(urls.every((u: string) => u.startsWith('https://www.ccme.ma/'))).toBe(true);
+    expect(urls.every((u: string) => u.startsWith('https://ccme.ma/'))).toBe(true);
   });
 });
 
 describe('mergeSchemaGraph', () => {
   it('appends extra nodes after org core without duplicating @context', () => {
     const extra = collectionPageSchema({
-      url: 'https://www.ccme.ma/services',
+      url: 'https://ccme.ma/services',
       name: 'Services',
       description: '…',
       items: [],

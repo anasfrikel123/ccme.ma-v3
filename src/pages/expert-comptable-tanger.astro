@@ -1,0 +1,229 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import Icon from '~/components/Icon.astro';
+import { cabinet, SITE, yearsInBusiness } from '~/data/cabinet';
+
+// Topical-authority hub for the head term "expert comptable Tanger" — the
+// highest-volume local query and the one CCME under-ranks (pos. 9-10) because
+// the intent was previously scattered across /prix-expert-comptable-tanger and
+// the per-zone pages. This page concentrates the signal into one canonical
+// entity for "expert-comptable à Tanger", then links out to:
+//   - the zone pages       (local "near me" intent)
+//   - the service pages    (transactional intent)
+//   - /prix + /tarifs      (informational price intent)
+// Evergreen, ranked on E-E-A-T (OEC inscription, années d'exercice, clients).
+
+const years = yearsInBusiness();
+
+const faq = [
+  {
+    q: "Quelle est la différence entre un expert-comptable et un comptable à Tanger ?",
+    a: "Un comptable saisit les écritures et établit les déclarations. Un expert-comptable est un professionnel inscrit à l'Ordre des Experts-Comptables (OEC), qui engage sa responsabilité civile, peut viser et certifier vos états financiers, et porte une mission de conseil. Concrètement, à Tanger, beaucoup de structures se présentent comme « cabinet comptable » sans être inscrites à l'OEC : elles peuvent tenir une compta simple, mais ne peuvent ni certifier des comptes face à une banque ou un investisseur, ni vous couvrir par une assurance professionnelle en cas d'erreur. Pour une activité simple, un comptable suffit. Pour une PME qui grandit, qui peut être contrôlée ou qui lèvera des fonds, l'expert-comptable est l'interlocuteur qui tient juridiquement."
+  },
+  {
+    q: "Comment choisir un expert-comptable à Tanger ?",
+    a: "Vérifiez quatre points : (1) l'inscription à l'OEC — demandez le numéro, il est vérifiable ; (2) l'expérience du secteur — un cabinet qui connaît déjà votre métier (zones franches, import-export, e-commerce, pharmacie, restauration) vous fait gagner du temps et évite les erreurs coûteuses ; (3) la transparence des honoraires — un devis ferme et détaillé avant intervention, pas de surfacturation horaire opaque ; (4) la disponibilité réelle — qui répond quand la DGI envoie un avis, et sous quel délai. La proximité géographique compte aussi : un cabinet tangérois se déplace à la DGI Tanger, signe sur place et connaît les usages locaux."
+  },
+  {
+    q: "Un expert-comptable à Tanger doit-il être inscrit à l'OEC ?",
+    a: "Pour porter le titre d'expert-comptable et certifier des comptes, oui — c'est l'inscription à l'Ordre des Experts-Comptables du Maroc qui le permet. L'inscription garantit la déontologie (secret professionnel, indépendance, formation continue), une assurance responsabilité civile professionnelle, et donne une valeur juridique au visa apposé sur vos états financiers. CCME est inscrit à l'OEC : c'est ce qui distingue un cabinet d'expertise comptable d'un simple bureau de saisie."
+  },
+  {
+    q: "Quand une entreprise tangéroise a-t-elle besoin d'un expert-comptable ?",
+    a: "Dès la création de la société, pour cadrer la forme juridique (SARL, SARLAU, SAS), le régime fiscal et la TVA. Ensuite en continu pour la tenue, les déclarations TVA/IS/IR et la paie CNSS. Et ponctuellement sur les moments à enjeu : premier contrôle fiscal, levée de fonds, transmission ou cession, implantation en zone franche, opérations avec l'étranger (Office des Changes). Plus tôt l'expert-comptable intervient, moins il y a d'erreurs structurelles à corriger après coup."
+  },
+  {
+    q: "Un expert-comptable peut-il gérer la comptabilité d'une société en zone franche (TFZ, TAC, Tanger Tech, Tanger Med) ?",
+    a: "Oui, et c'est même un domaine où l'expertise locale fait une vraie différence. Les sociétés en zone d'accélération industrielle ont un régime IS spécifique, des obligations Office des Changes sur les flux en devises, et une articulation particulière entre exonérations et liasse fiscale. CCME accompagne des structures en Tanger Free Zone, Tanger Automotive City, Tanger Tech et sur la plateforme Tanger Med — chaque zone a sa page dédiée avec le détail du cadre applicable."
+  },
+  {
+    q: "Peut-on changer d'expert-comptable en cours d'année à Tanger ?",
+    a: "Oui. La convention est généralement annuelle reconductible avec un préavis de 2 à 3 mois, mais le changement est courant et se prépare proprement : récupération du dossier comptable (grand livre, balances, FEC, déclarations déposées), reprise des à-nouveaux, et transition sur une date de clôture nette. Un cabinet sérieux organise la passation sans bloquer vos déclarations en cours. Si votre comptable actuel manque de disponibilité ou de transparence sur les honoraires, le changement vaut souvent l'effort."
+  },
+  {
+    q: "Un expert-comptable à Tanger accompagne-t-il les expatriés et investisseurs étrangers ?",
+    a: "Oui. Tanger attire des investisseurs français, espagnols et belges, et l'accompagnement va au-delà de la compta : convention fiscale franco-marocaine, déclaration des flux à l'Office des Changes, structuration entre la société marocaine et l'actionnaire étranger, rapatriement de dividendes, reporting bilingue. C'est une spécialité de CCME, avec un premier échange gratuit pour cadrer le projet avant toute implantation."
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['Service', 'AccountingService'],
+      '@id': `${SITE}/expert-comptable-tanger#service`,
+      name: "Expert-comptable à Tanger",
+      serviceType: "Expertise comptable",
+      description:
+        "Expert-comptable inscrit à l'OEC à Tanger : comptabilité, fiscalité IS/TVA/IR, paie CNSS, création d'entreprise et zones franches pour PME et expatriés.",
+      url: `${SITE}/expert-comptable-tanger`,
+      provider: { '@id': `${SITE}/#accounting`, name: cabinet.legalName },
+      areaServed: cabinet.areasServed.map((a) => ({ '@type': a.type, name: a.name })),
+      availableLanguage: [...cabinet.schemaLanguages],
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceUrl: `${SITE}/contact`,
+        servicePhone: cabinet.phone.schema,
+      },
+      inLanguage: 'fr-MA',
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE}/expert-comptable-tanger#faq`,
+      inLanguage: 'fr-MA',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+<Page
+  title="Expert-comptable à Tanger | Cabinet CCME inscrit OEC"
+  description="Expert-comptable à Tanger inscrit à l'OEC : comptabilité, fiscalité IS/TVA/IR, paie CNSS, création d'entreprise et zones franches. Premier échange gratuit."
+  eyebrow="Cabinet"
+  heading="Expert-comptable à Tanger"
+  lede="Cabinet d'expertise comptable inscrit à l'Ordre des Experts-Comptables, à Tanger depuis 2003. Tenue, fiscalité, paie, conseil juridique — un interlocuteur qui engage sa responsabilité, pas un simple bureau de saisie."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Expert-comptable Tanger' }]}
+  keywords={[
+    'expert comptable Tanger',
+    'expert-comptable Tanger',
+    'cabinet expertise comptable Tanger',
+    'comptable Tanger OEC',
+    'expert comptable inscrit OEC Tanger',
+    'cabinet comptable Tanger'
+  ]}
+  schema={schema}
+>
+  <section>
+    <div class="container guide">
+      <p class="updated"><Icon name="check" size={14} stroke={2.4} /> Cabinet inscrit à l'OEC — {years} ans d'exercice à Tanger · 500+ PME accompagnées</p>
+
+      <h2>Un expert-comptable, pas un bureau de saisie</h2>
+      <p>À Tanger, beaucoup de structures s'affichent comme « cabinet comptable ». Toutes ne sont pas des cabinets d'<strong>expertise comptable inscrits à l'OEC</strong>. La différence n'est pas cosmétique : un expert-comptable engage sa <a href="/glossaire#oec">responsabilité civile professionnelle</a>, peut viser vos états financiers face à une banque, un investisseur ou la DGI, et porte une obligation de conseil. Un bureau de saisie enregistre des écritures — utile, mais sans la couverture ni la signature qui comptent le jour d'un contrôle ou d'une levée de fonds.</p>
+      <p>CCME (Consulting Maghreb Expertise) est un cabinet inscrit à l'Ordre des Experts-Comptables du Maroc, installé à Tanger depuis 2003. On accompagne aujourd'hui plus de 500 PME, startups et investisseurs étrangers, avec un taux de fidélité d'environ 98 %. Ce n'est pas un argument marketing : c'est ce qui permet de tenir dans la durée sur des dossiers à enjeu.</p>
+
+      <h2>Ce qu'on fait pour vous, concrètement</h2>
+      <p>L'expertise comptable ne se résume pas à la tenue. Voici les missions qu'on prend en charge, chacune avec sa page détaillée :</p>
+      <div class="link-grid">
+        <a class="link-card" href="/services/tenue-comptabilite"><strong>Tenue de comptabilité</strong><span>Saisie, rapprochements, TVA, bilan et liasse fiscale.</span></a>
+        <a class="link-card" href="/services/conseil-fiscal"><strong>Conseil fiscal</strong><span>Optimisation IS, TVA, IR — dans les clous, sans risque.</span></a>
+        <a class="link-card" href="/services/creation-entreprise"><strong>Création d'entreprise</strong><span>SARL, SARLAU, SAS : forme, statuts, RC, démarrage.</span></a>
+        <a class="link-card" href="/services/paie-grh"><strong>Paie & GRH</strong><span>Bulletins, CNSS, Damancom, gestion sociale.</span></a>
+        <a class="link-card" href="/services/assistance-fiscale"><strong>Contrôle & contentieux</strong><span>Accompagnement contrôle DGI, recours, défense.</span></a>
+        <a class="link-card" href="/services/audit"><strong>Audit & commissariat</strong><span>Audit contractuel, commissariat aux comptes.</span></a>
+        <a class="link-card" href="/services/travaux-juridiques"><strong>Travaux juridiques</strong><span>Modifications statutaires, AGE, secrétariat juridique.</span></a>
+        <a class="link-card" href="/services/domiciliation"><strong>Domiciliation</strong><span>Adresse de siège au centre-ville de Tanger.</span></a>
+      </div>
+      <p class="hint-line">Voir l'ensemble des prestations sur la page <a href="/services">Services</a>.</p>
+
+      <h2>Un expert-comptable près de chez vous, dans votre zone</h2>
+      <p>Tanger n'est pas un marché homogène. Une société en zone franche n'a pas les mêmes obligations qu'un commerce du centre-ville. On connaît le cadre de chaque zone et on intervient sur place :</p>
+      <div class="link-grid">
+        <a class="link-card" href="/zones/tanger-free-zone"><strong>Tanger Free Zone (TFZ)</strong><span>Régime IS zone franche, Office des Changes, liasse.</span></a>
+        <a class="link-card" href="/zones/tanger-automotive-city"><strong>Tanger Automotive City</strong><span>Équipementiers, sous-traitance automobile, ZAI.</span></a>
+        <a class="link-card" href="/zones/tanger-med"><strong>Tanger Med</strong><span>Import-export, transit, flux portuaires.</span></a>
+        <a class="link-card" href="/zones/tanger-tech"><strong>Tanger Tech</strong><span>Tech City Mohammed VI, industrie nouvelle génération.</span></a>
+        <a class="link-card" href="/zones/centre-ville"><strong>Centre-ville</strong><span>Boulevard Pasteur, Mohammed V — commerces et PME.</span></a>
+      </div>
+
+      <h2>Votre comptable dans votre quartier à Tanger</h2>
+      <p>Un cabinet tangérois qui connaît le terrain. Trouvez votre interlocuteur près de chez vous :</p>
+      <div class="link-grid">
+        <a class="link-card" href="/quartiers/beni-makada"><strong>Comptable Beni Makada</strong><span>Quartier industriel et commerçant.</span></a>
+        <a class="link-card" href="/quartiers/gzenaya"><strong>Comptable Gzenaya</strong><span>Zone industrielle, usines, logistique.</span></a>
+        <a class="link-card" href="/quartiers/mghogha"><strong>Comptable Mghogha</strong><span>Dépôts, négoce, transport.</span></a>
+        <a class="link-card" href="/quartiers/souani"><strong>Comptable Souani</strong><span>Axe commerçant central.</span></a>
+        <a class="link-card" href="/quartiers/val-fleuri"><strong>Comptable Val Fleuri</strong><span>Bureaux et sièges sociaux.</span></a>
+        <a class="link-card" href="/quartiers/iberia"><strong>Comptable Iberia</strong><span>Centre commerçant.</span></a>
+        <a class="link-card" href="/quartiers/malabata"><strong>Comptable Malabata</strong><span>Front de mer, résidentiel.</span></a>
+        <a class="link-card" href="/quartiers/marshan"><strong>Comptable Marshan</strong><span>Quartier historique.</span></a>
+        <a class="link-card" href="/quartiers/california"><strong>Comptable California</strong><span>Quartier résidentiel.</span></a>
+        <a class="link-card" href="/quartiers/boukhalef"><strong>Comptable Boukhalef</strong><span>Zone aéroport.</span></a>
+      </div>
+      <p class="hint-line">Tous les quartiers sur la page <a href="/quartiers">Quartiers</a>.</p>
+
+      <h2>Pourquoi l'inscription OEC change tout</h2>
+      <p>L'<a href="/glossaire#oec">Ordre des Experts-Comptables du Maroc</a> ne fixe plus de barème, mais l'inscription reste le marqueur qui sépare un cabinet d'expertise d'un bureau libre. Ce que vous obtenez avec un cabinet inscrit :</p>
+      <div class="checklist">
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Responsabilité civile professionnelle</strong> — une assurance couvre l'erreur ou l'omission. Un comptable libre n'a pas cette obligation.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Un visa à valeur juridique</strong> — vos états financiers visés pèsent face à une banque, un investisseur, l'administration.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Un cadre déontologique</strong> — secret professionnel, indépendance, formation continue obligatoire.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> <strong>Un recours</strong> — en cas de différend, le conseil régional de l'Ordre est un interlocuteur réel.</div>
+      </div>
+
+      <h2>Combien coûte un expert-comptable à Tanger ?</h2>
+      <p>Réponse courte : pour une PME standard, comptez 800 à 2 500 DH HT par mois en tenue, plus le bilan annuel. Mais le prix dépend du volume de pièces, du secteur, du régime de TVA et du périmètre de conseil. On a écrit un guide complet et honnête, fourchettes réelles à l'appui :</p>
+      <p class="cta-block"><a href="/prix-expert-comptable-tanger" class="btn btn-ghost">Lire le guide des prix 2026</a> <a href="/tarifs" class="btn btn-ghost">Voir notre grille tarifaire</a></p>
+
+      <h2>Comment se passe le premier contact</h2>
+      <p>Un premier échange de 30 à 45 minutes, gratuit et sans engagement, en personne au cabinet, par téléphone ou en visio. On cadre votre situation, on identifie les points à enjeu, et on vous remet un devis ferme avant toute intervention. Pas de relance commerciale agressive si vous décidez de ne pas continuer.</p>
+      <p>Notre méthode : forfait mensuel transparent, reporting mensuel pour la tenue et trimestriel pour le pilotage, et une alerte avant chaque échéance fiscale — pour qu'aucune date ne vous surprenne.</p>
+      <p class="cta-block"><a href="/contact" class="btn btn-primary">Prendre un premier rendez-vous gratuit</a> <a href="/avis-clients" class="btn btn-ghost">Lire les avis clients</a></p>
+    </div>
+  </section>
+
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .guide { max-width: 78ch; }
+  .guide p, .guide li { font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+  .guide h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.85rem); color: var(--ink); margin-top: 44px; margin-bottom: 14px; }
+  .updated {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--paper-2); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 14px;
+    font-size: 13.5px; color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .updated :global(.icon) { color: var(--gold); }
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 8px 0 4px;
+  }
+  .link-card {
+    display: flex; flex-direction: column; gap: 4px;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: 16px 18px;
+    text-decoration: none;
+    transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+  }
+  .link-card:hover {
+    border-color: color-mix(in oklch, var(--gold) 45%, var(--line));
+    box-shadow: 0 10px 26px -16px rgba(20, 37, 63, 0.22);
+    transform: translateY(-2px);
+  }
+  .link-card strong { color: var(--ink); font-size: 15.5px; }
+  .link-card span { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+  .hint-line { font-size: 14px; color: var(--muted); margin-top: 12px; }
+  .checklist {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .checklist > div {
+    display: flex; align-items: flex-start; gap: 13px;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: 15px 18px;
+    font-size: 15px; line-height: 1.5; color: var(--ink-soft);
+    transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+  }
+  .checklist > div:hover {
+    border-color: color-mix(in oklch, var(--gold) 45%, var(--line));
+    box-shadow: 0 10px 26px -16px rgba(20, 37, 63, 0.20);
+    transform: translateY(-2px);
+  }
+  .checklist :global(.icon) {
+    width: 26px; height: 26px; padding: 5px; box-sizing: border-box;
+    color: #fff; background: var(--gold); border-radius: 50%;
+    flex-shrink: 0; margin-top: 1px;
+    box-shadow: 0 3px 8px -2px color-mix(in oklch, var(--gold) 55%, transparent);
+  }
+  .checklist strong { color: var(--ink); }
+  .cta-block { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+</style>

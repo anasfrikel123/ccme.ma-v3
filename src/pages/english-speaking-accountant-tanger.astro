@@ -1,0 +1,65 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+
+const faq = [
+  { q: "Do you work with foreign investors and English-speaking clients?", a: "Yes — it is one of our specialties. We work daily with French, Spanish, Belgian, German and other international investors setting up or running companies in Tanger. We handle the local accounting and tax obligations in full compliance with Moroccan law, and we report back to you in clear English (or French). You never have to navigate the Moroccan administration alone or in a language you don't speak." },
+  { q: "What is an OEC-registered accountant, and why does it matter?", a: "In Morocco, only a firm registered with the Ordre des Experts-Comptables (OEC) can legally hold the title of chartered accountant, certify financial statements, and carry professional liability insurance. Many 'accounting offices' in Tanger are not OEC-registered — they can do basic bookkeeping but cannot certify accounts to a bank or investor, nor cover you if they make a mistake. CCME is OEC-registered. For a foreign investor, that is the difference between a bookkeeper and a real, accountable partner." },
+  { q: "Can you set up my company in a Tanger free zone?", a: "Yes. We assist foreign investors in Tanger Free Zone (TFZ), Tanger Automotive City (TAC), Tanger Tech and on the Tanger Med platform. These zones offer a specific corporate tax regime and customs advantages, but they also carry particular obligations — Office des Changes reporting on foreign-currency flows, and a specific articulation between exemptions and the tax return. We handle the setup and the ongoing compliance." },
+  { q: "How do you handle profit repatriation and foreign-currency rules?", a: "Any operation in foreign currency with abroad goes through the Office des Changes. We manage the import/export file domiciliation, justify transfers, and structure the repatriation of dividends to the foreign shareholder properly — so your profits leave Morocco legally and without delay. This is a frequent pain point for foreign-owned companies, and one we know well." },
+  { q: "Do I need to be in Morocco to work with you?", a: "No. Everything can be handled remotely and digitally — you send documents through a shared workspace, we process them and send back your statements and a monthly dashboard. We have clients we have never met in person whose accounting has run smoothly for years. A first consultation is free and can be done by video call." },
+];
+
+const SITE = 'https://ccme.ma';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${SITE}/english-speaking-accountant-tanger#faq`,
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<Page
+  lang="en"
+  title="English-speaking accountant in Tanger"
+  description="OEC-registered chartered accountant in Tanger, Morocco for foreign investors and English-speaking entrepreneurs: company formation, free zones, tax, payroll."
+  eyebrow="For foreign investors"
+  heading="English-speaking accountant in Tanger"
+  lede="An OEC-registered chartered accountancy firm in Tanger working with foreign investors and English-speaking entrepreneurs — company formation, free zones, tax, payroll and reporting, in clear English."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'English-speaking accountant' }]}
+  keywords={["english speaking accountant Tanger","accounting firm Morocco","chartered accountant Tanger","foreign investor Morocco accountant"]}
+  schema={faqSchema}
+>
+  <section>
+    <div class="container">
+      <div class="prose" style="max-width: 900px; margin-inline: auto;">
+
+        <h2>A real chartered accountant, not just a bookkeeper</h2>
+        <p>CCME (Consulting Maghreb Expertise) is a chartered accountancy firm based in Tanger, registered with the <strong>Ordre des Experts-Comptables (OEC)</strong> and serving clients for over 20 years. We work with hundreds of businesses across northern Morocco, including many foreign-owned companies and international investors who need a local partner they can trust — and talk to in English.</p>
+
+        <h2>What we do for foreign investors</h2>
+        <ul>
+          <li><strong>Company formation</strong> — SARL, SARLAU or SAS, from the legal structure to registration. See <a href="/services/creation-entreprise">company creation</a>.</li>
+          <li><strong>Free-zone setup &amp; compliance</strong> — <a href="/zones/tanger-free-zone">Tanger Free Zone</a>, <a href="/zones/tanger-med">Tanger Med</a>, Automotive City and Tanger Tech: the favourable regime, done right.</li>
+          <li><strong>Outsourced accounting</strong> — full bookkeeping with monthly reporting to your head office in IFRS or French GAAP. See <a href="/services/externalisation-comptable">outsourced accounting</a>.</li>
+          <li><strong>Tax advisory</strong> — corporate tax (IS), VAT and optimisation within the law: <a href="/services/conseil-fiscal">tax consulting</a>.</li>
+          <li><strong>Payroll &amp; social</strong> — payslips and CNSS declarations for your Moroccan team.</li>
+          <li><strong>Office des Changes &amp; dividends</strong> — foreign-currency compliance and legal repatriation of profits to the foreign shareholder.</li>
+        </ul>
+
+        <h2>Why Tanger</h2>
+        <p>Tanger sits at the gateway between Europe and Africa, home to <a href="/zones/tanger-med">Tanger Med</a> — the largest port in Africa — and to several free zones with a favourable tax and customs regime. For a European investor, it combines proximity, cost advantage and a pro-business framework. We help you make the most of it without a single compliance misstep.</p>
+
+        <h2>How we work with international clients</h2>
+        <p>Everything is digital and remote-friendly: you send your documents through a shared workspace, we process and file them, and you receive clear monthly statements and a dashboard — in English. A single, dedicated contact who knows your file and answers quickly. Our fees are transparent and set in advance; see our <a href="/tarifs">pricing</a>.</p>
+
+        <p>Thinking of investing or already operating in Tanger? Your first consultation is free. We also have a dedicated guide for <a href="/expat">expats &amp; foreign shareholders</a>.</p>
+        <p><a href="/contact">→ Book a free first consultation</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>

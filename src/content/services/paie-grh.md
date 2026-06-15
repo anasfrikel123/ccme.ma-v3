@@ -34,7 +34,7 @@ modifiedTime: "2026-06-13"
 publishedTime: "2025-01-15"
 ---
 
-La paie au Maroc, c'est vite un casse-tête : code du travail à respecter, cotisations [CNSS](/glossaire#cnss) qui changent de plafond, taux d'[IR](/outils/simulateur-ir) par tranche, [AMO](/glossaire#amo) obligatoire, mutuelles d'entreprise, ANAPEC pour les nouveaux recrutés... Et il faut sortir un bulletin propre le 25 ou le 30 de chaque mois, sans erreur, parce qu'un salarié qui repère un calcul faux, c'est une crise de confiance qui démarre.
+La paie au Maroc, c'est vite un casse-tête : code du travail à respecter, cotisations [CNSS](/glossaire#cnss) qui changent de plafond, taux d'[IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") par tranche, [AMO](/glossaire#amo) obligatoire, mutuelles d'entreprise, ANAPEC pour les nouveaux recrutés... Et il faut sortir un bulletin propre le 25 ou le 30 de chaque mois, sans erreur, parce qu'un salarié qui repère un calcul faux, c'est une crise de confiance qui démarre.
 
 L'externaliser, c'est généralement le bon choix dès qu'on dépasse 5 salariés.
 
@@ -43,7 +43,7 @@ L'externaliser, c'est généralement le bon choix dès qu'on dépasse 5 salarié
 Tout le cycle, de l'embauche au départ :
 
 - **Embauche** : rédaction du contrat (CDI, CDD, ANAPEC, contrat d'insertion), affiliation CNSS du salarié, déclaration d'embauche
-- **Paie mensuelle** : bulletins, calcul IR par tranche, retenues CNSS et AMO, primes, indemnités kilométriques, avantages en nature
+- **Paie mensuelle** : bulletins, calcul [IR](/outils/simulateur-ir) par tranche, retenues CNSS et AMO, primes, indemnités kilométriques, avantages en nature
 - **[Damancom](/services/damancom-cnss)** : télédéclaration de la BDS (Bordereau de Déclaration des Salaires) avant le 10 du mois suivant
 - **AT-MP** : déclaration des accidents du travail à la CNSS
 - **Annuel** : édition de la 9421 (déclaration des revenus salariaux), récapitulatif individuel, attestation de salaires

@@ -1,15 +1,17 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import Icon from '~/components/Icon.astro';
 import { collectionPageSchema } from '~/lib/collection-schema';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 const tools = [
   { slug: 'simulateur-is', title: 'Simulateur IS 2026', desc: 'Calculez votre IS au barème 2026 : 20 % sur bénéfice jusqu\'à 100 MDH, 35 % au-delà. Cotisation minimale incluse.', icon: 'chart-bar' as const },
   { slug: 'simulateur-paie', title: 'Simulateur paie & charges sociales', desc: 'Du salaire brut au net : CNSS, AMO, IR, taxe formation. Charges patronales incluses.', icon: 'briefcase' as const },
   { slug: 'simulateur-creation', title: "Coût de création d'entreprise", desc: 'SARL, SARLAU, SA, SAS — coût total des démarches : OMPIC, frais notaire, dépôt capital, IRPP, publication.', icon: 'building-2' as const },
   { slug: 'simulateur-tva', title: 'Calcul TVA Maroc', desc: 'TTC ↔ HT, taux 20%, 14%, 10%, 7%. TVA collectée vs déductible.', icon: 'receipt' as const },
   { slug: 'simulateur-ir', title: 'Simulateur IR (revenus salariaux)', desc: 'Barème IR 2026, abattement professionnel, charges familiales.', icon: 'user-tie' as const },
+  { slug: 'simulateur-dividende', title: 'Simulateur dividende 2026', desc: 'Bénéfice net après IS, retenue PFL 12,5 % LF 2026, net actionnaire — par exercice.', icon: 'chart-bar' as const },
+  { slug: 'simulateur-remuneration', title: 'Salaire vs dividende — comparateur', desc: 'Pour gérant majoritaire : la stratégie qui maximise le net pour une enveloppe donnée.', icon: 'briefcase' as const },
 ];
 const hubSchema = collectionPageSchema({
   url: `${SITE}/outils`,
@@ -23,7 +25,7 @@ const hubSchema = collectionPageSchema({
   description="Simulateurs en ligne gratuits : impôt sur les sociétés 2026, paie marocaine, charges sociales CNSS, TVA, IR salaires. Calculs conformes aux barèmes 2026."
   eyebrow="Outils gratuits"
   heading="Simulateurs comptables & fiscaux Maroc 2026."
-  lede="Cinq outils en ligne gratuits, calculs à jour 2026. Pour les entrepreneurs qui veulent estimer rapidement, les RH qui valident une fiche de paie, ou le boss qui prépare un BP."
+  lede="Sept outils en ligne gratuits, calculs à jour 2026. Pour les entrepreneurs qui veulent estimer rapidement, les RH qui valident une fiche de paie, ou le dirigeant qui arbitre entre salaire et dividende."
   breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils' }]}
   keywords={["simulateur IS Maroc 2026","calcul paie Maroc","simulateur CNSS","calcul TVA Maroc","simulateur création entreprise Maroc"]}
   schema={hubSchema}
@@ -37,7 +39,7 @@ const hubSchema = collectionPageSchema({
             <div class="ico-wrap" aria-hidden="true">
               <Icon name={t.icon} size={26} stroke={1.6} />
             </div>
-            <h3>{t.title}</h3>
+            <h2>{t.title}</h2>
             <p>{t.desc}</p>
             <span class="arrow">
               Ouvrir l'outil

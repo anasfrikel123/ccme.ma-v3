@@ -15,13 +15,13 @@ related:
   - "tva-credit-remboursement-2026"
 ---
 
-Les zones franches de Tanger attirent. Et pour de bonnes raisons : exonération [IS](/outils/simulateur-is) 5 ans, taux réduit ensuite, exonération [TVA](/outils/simulateur-tva) export, avantages douaniers. Mais entre [TFZ](/zones/tanger-free-zone), [TAC](/zones/tanger-automotive-city) et [Tanger Tech](/zones/tanger-tech), le choix n'est pas évident. On clarifie.
+Les zones franches de Tanger attirent. Et pour de bonnes raisons : exonération [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") 5 ans, taux réduit ensuite, exonération [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") export, avantages douaniers. Mais entre [TFZ](/zones/tanger-free-zone), [TAC](/zones/tanger-automotive-city) et [Tanger Tech](/zones/tanger-tech), le choix n'est pas évident. On clarifie.
 
 ## Tanger Free Zone (TFZ)
 
 **Située à** Aouama, à 25 km du centre-ville et 15 km du port [Tanger Med](/zones/tanger-med).
 **Spécialité** : multi-sectorielle, mais dominée par textile-confection, électronique, métallurgie légère.
-**Avantages** : exonération IS 5 ans, taux 8,75% ensuite, [IR](/outils/simulateur-ir) salariés à 20% libératoire, exonération TVA export, régime douanier MEAD.
+**Avantages** : exonération [IS](/outils/simulateur-is) 5 ans, taux 8,75% ensuite, [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") salariés à 20% libératoire, exonération [TVA](/outils/simulateur-tva) export, régime douanier MEAD.
 **Conditions d'agrément** : activité 70%+ orientée export (en CA), implantation effective.
 **Loyers** : 30-65 DH/m² selon emplacement et état du local.
 **Pour qui** : industriels d'export classiques, sous-traitance internationale, façonnage textile.

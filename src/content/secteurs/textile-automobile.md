@@ -26,7 +26,7 @@ Pour ces structures, la compta a des spécificités importantes :
 
 ## Le régime fiscal de faveur
 
-Exonération [IS](/outils/simulateur-is) pendant 5 exercices, puis taux réduit (8,75% sur l'export). Exonération de [TVA](/outils/simulateur-tva) à l'importation des biens d'équipement. Régime douanier avantageux. Mais ces avantages sont conditionnels :
+Exonération [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") pendant 5 exercices, puis taux réduit (8,75% sur l'export). Exonération de [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") à l'importation des biens d'équipement. Régime douanier avantageux. Mais ces avantages sont conditionnels :
 
 - Agrément ZAI préalable, dossier monté en amont avec le [CRI](/glossaire#cri) Tanger
 - Activité éligible (industrie d'export essentiellement)
@@ -45,4 +45,4 @@ Pour les automotive en JIT (just-in-time), il faut des reportings très fins —
 
 La quasi-totalité des industriels en zone franche sont des filiales de groupes internationaux. Les transactions intra-groupe (royalties, frais de support, fournitures) doivent être documentées (master file + local file), à des prix conformes au principe de pleine concurrence. Sinon redressement avec pénalités.
 
-On accompagne plusieurs industriels à TFZ et TAC. Les sujets récurrents : le drawback douanier quand une partie de la matière importée finit en vente locale sans qu'on ait isolé la quote-part, les remboursements TVA sur achats locaux de matières premières (dossiers lents, souvent bloqués sur des formalités de justification que peu de comptables maîtrisent), et la base cotisable [CNSS](/glossaire#cnss) pour les ouvriers de production en équipes alternantes — primes de poste et d'assiduité que beaucoup de services RH intègrent mal dans l'assiette, ce qui génère des redressements à répétition.
+On accompagne plusieurs industriels à TFZ et TAC. Les sujets récurrents : le drawback douanier quand une partie de la matière importée finit en vente locale sans qu'on ait isolé la quote-part, les remboursements [TVA](/outils/simulateur-tva) sur achats locaux de matières premières (dossiers lents, souvent bloqués sur des formalités de justification que peu de comptables maîtrisent), et la base cotisable [CNSS](/glossaire#cnss) pour les ouvriers de production en équipes alternantes — primes de poste et d'assiduité que beaucoup de services RH intègrent mal dans l'assiette, ce qui génère des redressements à répétition.

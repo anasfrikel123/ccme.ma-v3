@@ -1,0 +1,57 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+
+const faq = [
+  { q: "Quelle est la différence entre la Loi de Finances, le CGI et une note circulaire ?", a: "La Loi de Finances est votée chaque année par le Parlement : elle fixe le budget de l'État et modifie les règles d'impôt. Le Code Général des Impôts (CGI) est le texte de référence consolidé qui regroupe toutes les règles fiscales en vigueur — il est mis à jour chaque année pour intégrer les changements de la Loi de Finances. La note circulaire, enfin, est le document par lequel la Direction Générale des Impôts (DGI) explique et interprète comment appliquer ces règles. En clair : la Loi de Finances décide, le CGI consolide, la note circulaire explique." },
+  { q: "Où trouver le CGI 2026 et la note circulaire en PDF ?", a: "Les textes officiels sont publiés par la Direction Générale des Impôts et au Bulletin Officiel. Le CGI existe en version française et arabe. Attention : ce sont des documents longs et techniques, écrits pour des fiscalistes — une lecture littérale conduit souvent à des contresens coûteux. Nous vous orientons vers le texte applicable à votre situation et nous le traduisons en décisions concrètes." },
+  { q: "Qu'est-ce qui change en 2026 pour une PME ?", a: "Les chantiers majeurs concernent l'impôt sur les sociétés (poursuite de la réforme des taux), les acomptes IS, la TVA et certaines obligations déclaratives. L'impact réel dépend de votre taille, de votre secteur et de votre régime. Plutôt que de vous noyer dans le texte, nous chiffrons ce que la Loi de Finances 2026 change précisément pour votre entreprise." },
+  { q: "Dois-je faire quelque chose suite à la Loi de Finances 2026 ?", a: "Souvent oui : ajuster vos acomptes, revoir votre stratégie de rémunération ou de dividendes, vérifier votre régime de TVA, anticiper une clôture. Ces ajustements se font en amont, pas au moment de la déclaration. C'est tout l'objet d'un point de conseil fiscal en début d'exercice." },
+];
+---
+<Page
+  title="Loi de Finances 2026 Maroc | CGI & notes circulaires"
+  description="Loi de Finances 2026, CGI et notes circulaires de la DGI expliqués simplement : ce qui change pour les PME et comment l'appliquer à votre entreprise."
+  eyebrow="Ressource fiscale"
+  heading="Loi de Finances 2026 : ce qu'il faut comprendre"
+  lede="Loi de Finances, Code Général des Impôts, notes circulaires : trois textes, trois rôles. On démêle ce qui change en 2026 et ce que ça veut dire pour votre entreprise."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Loi de Finances 2026' }]}
+  keywords={["loi de finances 2026 Maroc","CGI 2026","note circulaire 2026","code général des impôts 2026"]}
+>
+  <section>
+    <div class="container">
+      <div class="prose" style="max-width: 900px; margin-inline: auto;">
+
+        <h2>Loi de Finances, CGI, note circulaire : qui fait quoi</h2>
+        <p>Chaque début d'année, les mêmes mots reviennent — « loi de finances », « CGI », « note circulaire » — et beaucoup de dirigeants les confondent. La distinction est pourtant simple :</p>
+        <ul>
+          <li><strong>La Loi de Finances</strong> est votée chaque année par le Parlement. Elle fixe le budget de l'État et <em>modifie</em> les règles d'impôt (taux, exonérations, obligations).</li>
+          <li><strong>Le Code Général des Impôts (CGI)</strong> est le texte de référence qui <em>consolide</em> toutes les règles en vigueur. Il est réédité chaque année — en français et en arabe — pour intégrer les nouveautés de la Loi de Finances.</li>
+          <li><strong>La note circulaire</strong> est le document par lequel la <a href="/services/simpl-impots-dgi">DGI</a> <em>explique</em> comment appliquer concrètement ces règles. C'est la doctrine de l'administration.</li>
+        </ul>
+        <p>Autrement dit : la Loi de Finances décide, le CGI consolide, la note circulaire interprète. Les trois se lisent ensemble.</p>
+
+        <h2>Ce qui structure la fiscalité 2026</h2>
+        <p>Sans entrer dans le détail article par article, plusieurs chantiers rythment l'année fiscale :</p>
+        <ul>
+          <li><strong>Impôt sur les sociétés (IS)</strong> — la réforme des taux se poursuit ; nous l'avons décryptée pour les PME de Tanger dans notre article sur la <a href="/blog/reforme-is-2026-pme-tanger">réforme de l'IS 2026</a>.</li>
+          <li><strong>Acomptes IS</strong> — leur calcul et leur calendrier méritent une vérification chaque année ; voir notre note sur les <a href="/blog/fiscalite-2026-acomptes-is">acomptes IS 2026</a>.</li>
+          <li><strong>TVA</strong> — taux, droit à déduction et remboursement de crédit restent des sujets sensibles ; estimez la vôtre avec le <a href="/outils/simulateur-tva" title="Simulateur TVA Maroc">simulateur de TVA</a>.</li>
+          <li><strong>Obligations déclaratives</strong> — les échéances de l'année sont regroupées dans notre <a href="/calendrier-fiscal-2026">calendrier fiscal 2026</a>.</li>
+        </ul>
+        <p>L'impact réel de chacun de ces points dépend de votre taille, de votre secteur et de votre régime. Une mesure favorable pour l'un peut être neutre pour l'autre.</p>
+
+        <h2>Où trouver les textes officiels</h2>
+        <p>Le CGI et les notes circulaires sont publiés par la Direction Générale des Impôts et au Bulletin Officiel, en versions française et arabe. Ce sont des documents longs, écrits pour des fiscalistes : une lecture littérale, hors contexte, conduit souvent à des contresens qui coûtent cher en contrôle. Notre rôle n'est pas de vous renvoyer un PDF de 600 pages, mais de vous dire <strong>ce qui s'applique à vous</strong> et ce que vous devez faire.</p>
+
+        <h2>Ce que ça change concrètement pour votre entreprise</h2>
+        <p>Une nouvelle Loi de Finances appelle presque toujours des ajustements en début d'exercice : recalibrer vos acomptes, revoir l'arbitrage entre rémunération et dividendes, vérifier votre régime de TVA, anticiper une clôture ou un investissement. Ces décisions se prennent <strong>en amont</strong> — pas au moment de déposer la déclaration, quand il est trop tard.</p>
+        <p>C'est tout l'objet d'un point de <a href="/services/conseil-fiscal">conseil fiscal</a> en début d'année : on lit les textes pour vous, on les traduit en chiffres sur votre cas, et on sécurise vos déclarations. Et si la DGI vous notifie quoi que ce soit, notre <a href="/services/assistance-fiscale">assistance fiscale</a> prend le relais.</p>
+
+        <p><a href="/contact">→ Faites le point sur la Loi de Finances 2026 — premier échange gratuit</a></p>
+        <p>Besoin d'une définition ? Notre <a href="/glossaire">glossaire fiscal</a> traduit le jargon en français clair.</p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>

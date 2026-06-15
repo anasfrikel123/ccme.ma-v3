@@ -21,11 +21,11 @@ faq:
     a: "Oui. Tenue mensuelle, déclarations TVA, paie pour les équipes de boutique. Beaucoup de commerces nous suivent depuis l'ouverture."
 ---
 
-Dans un rayon de 500 mètres autour du Boulevard Pasteur, on compte des dizaines de commerçants qui partagent souvent les mêmes problèmes : un inventaire de fin d'année bâclé, une TVA mal ventilée sur les caisses, un fonds de commerce à céder sans savoir comment le valoriser correctement. C'est le terrain qu'on connaît le mieux dans le quartier.
+Dans un rayon de 500 mètres autour du Boulevard Pasteur, on compte des dizaines de commerçants qui partagent souvent les mêmes problèmes : un inventaire de fin d'année bâclé, une [TVA](/outils/simulateur-tva) mal ventilée sur les caisses, un fonds de commerce à céder sans savoir comment le valoriser correctement. C'est le terrain qu'on connaît le mieux dans le quartier.
 
 ## Ce qu'on fait dans le quartier
 
-**Commerces de détail.** Boutiques de mode, bijouteries, parfumeries, libraires. Compta caisse + [TVA](/outils/simulateur-tva) + paie de petites équipes. Tarif starter 700 DH HT/mois.
+**Commerces de détail.** Boutiques de mode, bijouteries, parfumeries, libraires. Compta caisse + [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") + paie de petites équipes. Tarif starter 700 DH HT/mois.
 
 **Cafés et restaurants.** Boulevard Pasteur et alentours. Compta journalière simplifiée, TVA tourisme 10%, gestion des saisonniers.
 

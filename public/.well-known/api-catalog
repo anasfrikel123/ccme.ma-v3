@@ -2,73 +2,73 @@
   "@context": "https://www.rfc-editor.org/rfc/rfc9727",
   "linkset": [
     {
-      "anchor": "https://www.ccme.ma/api/agent-manifest.json",
+      "anchor": "https://ccme.ma/api/agent-manifest.json",
       "service-doc": [
         {
-          "href": "https://www.ccme.ma/.well-known/ai.txt",
+          "href": "https://ccme.ma/.well-known/ai.txt",
           "type": "text/plain",
           "title": "CCME AI / Agent policy"
         }
       ],
       "describedby": [
         {
-          "href": "https://www.ccme.ma/llms.txt",
+          "href": "https://ccme.ma/llms.txt",
           "type": "text/plain"
         }
       ]
     },
     {
-      "anchor": "https://www.ccme.ma/api/services.json",
+      "anchor": "https://ccme.ma/api/services.json",
       "service-doc": [
         {
-          "href": "https://www.ccme.ma/services",
+          "href": "https://ccme.ma/services",
           "type": "text/html",
           "title": "Services CCME (page humaine)"
         }
       ]
     },
     {
-      "anchor": "https://www.ccme.ma/api/contact.json",
+      "anchor": "https://ccme.ma/api/contact.json",
       "service-doc": [
         {
-          "href": "https://www.ccme.ma/contact",
+          "href": "https://ccme.ma/contact",
           "type": "text/html",
           "title": "Contact CCME (page humaine)"
         }
       ]
     },
     {
-      "anchor": "https://www.ccme.ma/api/cabinet.json",
+      "anchor": "https://ccme.ma/api/cabinet.json",
       "service-doc": [
         {
-          "href": "https://www.ccme.ma/cabinet",
+          "href": "https://ccme.ma/cabinet",
           "type": "text/html",
           "title": "Le cabinet (page humaine)"
         }
       ]
     },
     {
-      "anchor": "https://www.ccme.ma/api/blog.json",
+      "anchor": "https://ccme.ma/api/blog.json",
       "service-doc": [
         {
-          "href": "https://www.ccme.ma/blog",
+          "href": "https://ccme.ma/blog",
           "type": "text/html",
           "title": "Le Journal (page humaine)"
         }
       ],
       "alternate": [
         {
-          "href": "https://www.ccme.ma/rss.xml",
+          "href": "https://ccme.ma/rss.xml",
           "type": "application/rss+xml",
           "title": "Flux RSS"
         }
       ]
     },
     {
-      "anchor": "https://www.ccme.ma/api/reviews.json",
+      "anchor": "https://ccme.ma/api/reviews.json",
       "service-doc": [
         {
-          "href": "https://www.ccme.ma/avis-clients",
+          "href": "https://ccme.ma/avis-clients",
           "type": "text/html",
           "title": "Avis clients (page humaine)"
         }

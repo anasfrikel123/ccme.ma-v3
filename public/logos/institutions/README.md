@@ -12,7 +12,7 @@ name**. No code change needed; the marquee picks it up on the next build.
 | `oec.svg`                     | Ordre des Experts-Comptables du Maroc                               | Inscription du cabinet, déontologie               |
 | `ministere-economie.svg`      | Ministère de l’Économie et des Finances                             | Tutelle DGI / Office des Changes / TGR            |
 | `dgi.svg`                     | Direction Générale des Impôts                                       | IS, TVA, IR, liasse fiscale                       |
-| `cnss.svg`                    | Caisse Nationale de Sécurité Sociale                                | Affiliations, AMO, cotisations                    |
+| `damancom.svg`                | Damancom (plateforme CNSS — déclarations & cotisations sociales)    | BDS, affiliations, AMO                           |
 | `ompic.svg`                   | Office Marocain de la Propriété Industrielle et Commerciale         | Certificat négatif, registre du commerce          |
 | `office-des-changes.svg`      | Office des Changes                                                  | Transferts internationaux, rapatriement bénéfices |
 | `tanger-med.svg`              | Tanger Med (TMSA — autorité portuaire & zones logistiques)          | Clients import-export, transitaires, zones        |

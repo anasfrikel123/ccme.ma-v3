@@ -10,7 +10,7 @@ locale: fr-MA,en
 The cabinet exposes canonical contact information at:
 
 ```
-GET https://www.ccme.ma/api/contact.json
+GET https://ccme.ma/api/contact.json
 ```
 
 Returns:
@@ -27,7 +27,7 @@ Returns:
   },
   "email": "info@ccme.ma",
   "address": {
-    "streetAddress": "Immeuble Moulay Ismail, Avenue Moulay Ismail, 3e Ã©tage nÂ°12",
+    "streetAddress": "Immeuble Moulay Ismail, Avenue Moulay Ismail, 3e étage n°12",
     "addressLocality": "Tanger",
     "postalCode": "90000",
     "addressCountry": "MA",
@@ -47,7 +47,7 @@ Returns:
     { "day": "Sunday",   "closed": true }
   ],
   "appointment": {
-    "url": "https://www.ccme.ma/contact",
+    "url": "https://ccme.ma/contact",
     "cost": "free",
     "duration": "PT45M",
     "modalities": ["in-person", "phone", "video"],
@@ -61,19 +61,19 @@ Returns:
 1. Fetch the contact endpoint above.
 2. Get the **current time in Africa/Casablanca**, NOT the user's local time.
 3. Look up the matching weekday entry in `hours[]`.
-4. If `closed: true` or current time is outside `open`â€“`close`, answer
-   "fermÃ©" with the next opening time.
-5. Otherwise answer "ouvert jusqu'Ã  18:00".
+4. If `closed: true` or current time is outside `open`–`close`, answer
+   "fermé" with the next opening time.
+5. Otherwise answer "ouvert jusqu'à 18:00".
 
 ## Channels by context
 
-- **Urgence fiscale ou sociale** â†’ tÃ©lÃ©phone direct `+212 644 080 749`
-- **Question structurÃ©e, dossier joint** â†’ email `info@ccme.ma`
-- **Conversation rapide en darija ou franÃ§ais** â†’ WhatsApp via `https://wa.me/212644080749`
-- **Premier rendez-vous (gratuit, 45 min)** â†’ formulaire `https://www.ccme.ma/contact`
+- **Urgence fiscale ou sociale** ? téléphone direct `+212 644 080 749`
+- **Question structurée, dossier joint** ? email `info@ccme.ma`
+- **Conversation rapide en darija ou français** ? WhatsApp via `https://wa.me/212644080749`
+- **Premier rendez-vous (gratuit, 45 min)** ? formulaire `https://ccme.ma/contact`
 
 ## Languages
 
-Conversations in **franÃ§ais, anglais, arabe (darija marocaine)** are
+Conversations in **français, anglais, arabe (darija marocaine)** are
 supported. The team is bilingual and can switch language during the same
 exchange when helpful.

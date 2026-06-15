@@ -7,7 +7,7 @@
   --ink-2: #3d4f66;
   --ink-3: #8a93a3;
   --surface: #fff;
-  --muted: #6a7388;
+  --muted: #4f5a72;
   --line: #e6e0d3;
   --gold: #c8a85a;
   --navy: #14253f;
@@ -17,8 +17,8 @@
   --line-soft: color-mix(in oklch, var(--line) 65%, var(--paper));
   --accent: #14253f;
   --accent-2: #1d3457;
-  --good: #2c7a4d;
-  --warn: #b94c2a;
+  --good: #1f5d39;
+  --warn: #9a3d20;
 
   --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
@@ -45,6 +45,318 @@
   --gutter: clamp(16px, 4vw, 40px);
 }
 
+/* ─────────────────────────────────────────────────────────────────
+   Dark theme — opt-in via [data-theme="dark"] on <html>.
+   Strategy: override the token palette only. Components that already
+   read tokens (--paper, --ink, --line, etc.) flip automatically;
+   components with hardcoded #fff or #14253f get an explicit override
+   below. Prose remains light-on-light intentionally for now —
+   long-form reading is the dominant use case and full prose darkening
+   needs its own design pass.
+   ───────────────────────────────────────────────────────────────── */
+:root[data-theme="dark"] {
+  /* Warm-tone dark palette — zero blue-grey. Every neutral pulls warmth
+     from the gold accent so the whole UI reads as a candle-lit document
+     rather than a cold UI chrome. */
+  --paper: #14110b;
+  --paper-2: #1c1810;
+  --surface: #211c12;
+  --ink: #f5efe1;
+  --ink-soft: #e1d6bc;
+  --ink-2: #c4b896;
+  --ink-3: #a89a7a;
+  --muted: #d4c8aa;
+  --line: #312a1d;
+  --line-soft: #221d12;
+  --gold: #d8b46a;
+  --accent-deep: #d8b46a;
+  --accent-tint: rgba(216, 180, 106, 0.12);
+  --accent: #f5efe1;
+  --accent-2: #d8b46a;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 4px 16px rgba(0, 0, 0, 0.55), 0 16px 48px rgba(0, 0, 0, 0.45);
+  --shadow-pop: 0 12px 30px rgba(0, 0, 0, 0.55);
+
+  color-scheme: dark;
+}
+
+/* ─── Dark-theme element overrides ─────────────────────────────────
+   Component CSS hardcodes #fff and other light-only colors all over
+   the codebase. Refactoring every file to a token system would touch
+   25+ files; instead we rebroadcast the surface/text/border palette
+   here for the known classnames. Specificity rule: `:root[data-theme]
+   .class` is 0,2,1 — beats Astro's scoped `.class.astro-xxx` (0,2,0).
+   ────────────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] body { background: var(--paper); color: var(--ink); }
+
+/* Surfaces — anything that shows white-on-light in light mode. */
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .post-card,
+:root[data-theme="dark"] .cas-card,
+:root[data-theme="dark"] .featured-card,
+:root[data-theme="dark"] .strat,
+:root[data-theme="dark"] .bm-item,
+:root[data-theme="dark"] .map-card,
+:root[data-theme="dark"] .sim-card,
+:root[data-theme="dark"] .result-card,
+:root[data-theme="dark"] .sim-note,
+:root[data-theme="dark"] .tool-card,
+:root[data-theme="dark"] .svc-card,
+:root[data-theme="dark"] .faq-item,
+:root[data-theme="dark"] .cas-tile,
+:root[data-theme="dark"] .bm-empty,
+:root[data-theme="dark"] .reco-banner[data-mode="equivalent"],
+:root[data-theme="dark"] .related-card,
+:root[data-theme="dark"] .booking-fallback,
+:root[data-theme="dark"] .booking-card,
+:root[data-theme="dark"] .review-card,
+:root[data-theme="dark"] .price-card,
+:root[data-theme="dark"] .glossaire-entry,
+:root[data-theme="dark"] .calendar-row,
+:root[data-theme="dark"] .article-toc,
+:root[data-theme="dark"] .article-aside .cta-aside,
+:root[data-theme="dark"] .ico-wrap,
+:root[data-theme="dark"] .art-card,
+:root[data-theme="dark"] .testimonial,
+:root[data-theme="dark"] .num-grid li,
+:root[data-theme="dark"] .quartier-tile,
+:root[data-theme="dark"] .check-list li,
+:root[data-theme="dark"] .zone-tile {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+/* Specific surfaces with gradient backgrounds — restate against dark paper. */
+:root[data-theme="dark"] .map-card,
+:root[data-theme="dark"] .cas-stats,
+:root[data-theme="dark"] .cas-ribbon,
+:root[data-theme="dark"] .featured-card,
+:root[data-theme="dark"] .reco-banner,
+:root[data-theme="dark"] .cas-kpi,
+:root[data-theme="dark"] .zone-tile {
+  background: linear-gradient(135deg, var(--paper-2) 0%, var(--surface) 100%);
+}
+:root[data-theme="dark"] .cas-ribbon {
+  background:
+    radial-gradient(700px 320px at 100% 0%, color-mix(in oklch, var(--gold) 18%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--paper-2) 0%, var(--surface) 100%);
+}
+:root[data-theme="dark"] .reco-banner[data-mode="dividende"] {
+  background: linear-gradient(135deg, color-mix(in oklch, #4f8a4f 22%, var(--paper-2)) 0%, var(--surface) 100%);
+}
+
+/* Form inputs — flip white fields to dark surfaces. */
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] .form-grid input,
+:root[data-theme="dark"] .form-grid select,
+:root[data-theme="dark"] .form-grid textarea {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: color-mix(in oklch, var(--gold) 22%, var(--line));
+}
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder { color: var(--muted); }
+
+/* Header — translucent bg + theme toggle hover */
+:root[data-theme="dark"] .header-bg { background: rgba(20, 17, 11, 0.82); }
+:root[data-theme="dark"] .site-header { color: var(--ink); }
+:root[data-theme="dark"] .site-header .sub { background: var(--surface); border-color: var(--line); }
+:root[data-theme="dark"] .site-header .sub-grid h4 { color: var(--gold); }
+:root[data-theme="dark"] .site-header .sub-grid a { color: var(--ink-soft); }
+:root[data-theme="dark"] .site-header .sub-grid a:hover { color: var(--ink); background: var(--paper-2); }
+:root[data-theme="dark"] .nav-backdrop { background: rgba(0, 0, 0, 0.7); }
+
+/* Mobile drawer */
+:root[data-theme="dark"] .primary-nav.open { background: var(--paper); }
+:root[data-theme="dark"] .primary-nav > ul > li > a { color: var(--ink); }
+:root[data-theme="dark"] .nav-toggle { background: var(--paper-2); border-color: var(--line); }
+:root[data-theme="dark"] .nav-toggle .bar { background: var(--ink); }
+
+/* Footer */
+:root[data-theme="dark"] .site-footer { background: var(--paper-2); border-color: var(--line); color: var(--ink); }
+:root[data-theme="dark"] .site-footer h4 { color: var(--gold); }
+:root[data-theme="dark"] .site-footer a { color: var(--ink-soft); }
+:root[data-theme="dark"] .site-footer a:hover { color: var(--gold); }
+
+/* Newsletter card — its hardcoded cream gradient stays light in dark mode,
+   so we also need to force the text colors back to dark navy so they read
+   on cream regardless of theme. Otherwise dark-mode --ink (cream) inherits
+   onto cream bg → invisible. */
+:root[data-theme="dark"] .foot-newsletter {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--paper-2) 100%);
+  border-color: color-mix(in oklch, var(--gold) 28%, var(--line));
+  color: var(--ink);
+}
+:root[data-theme="dark"] .foot-newsletter .newsletter-headline { color: var(--ink); }
+:root[data-theme="dark"] .foot-newsletter .newsletter-sub { color: var(--ink-soft); }
+:root[data-theme="dark"] .foot-newsletter input[type="email"] {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .foot-newsletter input[type="email"]::placeholder { color: var(--muted); }
+
+/* Tags / chips */
+:root[data-theme="dark"] .tag { background: var(--paper-2); border-color: var(--line); color: var(--ink-soft); }
+:root[data-theme="dark"] .tag-gold { background: color-mix(in oklch, var(--gold) 14%, var(--paper-2)); color: var(--gold); border-color: color-mix(in oklch, var(--gold) 35%, var(--line)); }
+:root[data-theme="dark"] .cas-ribbon-chip { background: color-mix(in oklch, var(--gold) 12%, var(--paper-2)); color: var(--gold); }
+:root[data-theme="dark"] .cas-ribbon-chip-static { background: transparent; color: var(--ink-soft); }
+:root[data-theme="dark"] .cat-pill { color: var(--ink-soft); border-color: var(--line); }
+:root[data-theme="dark"] .cat-pill:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+/* FAQ — open state */
+:root[data-theme="dark"] .faq-item[open] { background: var(--paper-2); border-color: color-mix(in oklch, var(--gold) 25%, var(--line)); }
+:root[data-theme="dark"] .faq-item summary { color: var(--ink); }
+:root[data-theme="dark"] .faq-icon { background: var(--paper); border-color: var(--line); color: var(--ink-soft); }
+
+/* Service icon wrapper */
+:root[data-theme="dark"] .ico-wrap,
+:root[data-theme="dark"] .svc-icon { background: linear-gradient(135deg, var(--paper-2) 0%, var(--surface) 100%); color: var(--gold); border-color: var(--line); }
+
+/* Stats band */
+:root[data-theme="dark"] .stats-band { background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); }
+
+/* CTA section — keep radial glows, replace the gradient stops that
+   relied on var(--ink) (now cream) with warm dark tones. */
+:root[data-theme="dark"] .cta-band {
+  background:
+    radial-gradient(800px 360px at 100% 0%, rgba(216, 180, 106, 0.20), transparent 60%),
+    radial-gradient(700px 320px at 0% 100%, rgba(216, 180, 106, 0.04), transparent 55%),
+    linear-gradient(135deg, #14110b 0%, #1c1810 60%, #221c12 100%);
+}
+:root[data-theme="dark"] .cta-band h2,
+:root[data-theme="dark"] .cta-band h3,
+:root[data-theme="dark"] .cta-band p { color: var(--ink); }
+:root[data-theme="dark"] .cta-band .lede { color: var(--ink-soft); }
+
+/* Testimonial card / .proof-card — was bg: var(--ink) (cream in dark) +
+   color: #fff. Flip to warm dark with cream text so the gold quote pops. */
+:root[data-theme="dark"] .proof-card {
+  background: #14110b;
+  color: var(--ink);
+}
+:root[data-theme="dark"] .proof-card footer { border-top-color: color-mix(in oklch, var(--gold) 25%, transparent); }
+:root[data-theme="dark"] .proof-card footer strong { color: var(--ink); }
+:root[data-theme="dark"] .proof-card footer span { color: var(--ink-soft); }
+
+/* Avatar pill on cabinet team: linear-gradient(--ink → #1d3457). Force warm dark. */
+:root[data-theme="dark"] .avatar { background: linear-gradient(135deg, #14110b 0%, #2a2418 100%); color: var(--gold); }
+
+/* Aside CTA / SidebarCTA blocks that hardcode `background: var(--ink)`. */
+:root[data-theme="dark"] .aside-cta,
+:root[data-theme="dark"] .detail-aside-card[data-dark],
+:root[data-theme="dark"] .compare-head,
+:root[data-theme="dark"] .quartier-hero,
+:root[data-theme="dark"] .aside-location,
+:root[data-theme="dark"] .compare thead th,
+:root[data-theme="dark"] .comp-logo[data-tone="dark"] {
+  background: #14110b;
+  color: var(--ink);
+}
+:root[data-theme="dark"] .comp-logo::after {
+  background: #14110b;
+  color: var(--ink);
+}
+
+/* `.why` band uses linear-gradient(--paper → #f6f0e1). Hardcoded cream
+   fights dark mode — lock to dark token gradient. */
+:root[data-theme="dark"] .why {
+  background-image: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+}
+
+/* Hero photo / hero overlays: photo overlays use rgba navy already so
+   they stay readable on top of the photo. Just retone the hero band's
+   gold/navy radial mix so it doesn't create a muddy halo on dark paper. */
+:root[data-theme="dark"] .hero-bg {
+  background:
+    radial-gradient(1000px 500px at 80% -10%, rgba(216, 180, 106, 0.18), transparent 60%),
+    radial-gradient(700px 400px at -10% 110%, rgba(216, 180, 106, 0.06), transparent 60%),
+    var(--paper);
+}
+:root[data-theme="dark"] .hero-photo { border-color: var(--line); box-shadow: 0 30px 80px -32px rgba(0, 0, 0, 0.7); }
+:root[data-theme="dark"] .blob { opacity: .15; }
+
+/* Compliance band */
+:root[data-theme="dark"] .compliance { background: var(--paper-2); border-color: var(--line); }
+:root[data-theme="dark"] .comp-slot { background: var(--surface); border-color: var(--line); }
+
+/* Prose / article body */
+:root[data-theme="dark"] .prose { color: var(--ink); }
+:root[data-theme="dark"] .prose h2, :root[data-theme="dark"] .prose h3, :root[data-theme="dark"] .prose h4 { color: var(--ink); }
+:root[data-theme="dark"] .prose strong { color: var(--ink); }
+:root[data-theme="dark"] .prose blockquote {
+  background: linear-gradient(135deg, var(--paper-2) 0%, var(--surface) 100%);
+  border-left-color: var(--gold);
+  color: var(--ink-soft);
+}
+:root[data-theme="dark"] .prose code {
+  background: var(--paper-2);
+  border-color: var(--line);
+  color: var(--gold);
+}
+:root[data-theme="dark"] .prose pre {
+  background: linear-gradient(180deg, #14110b 0%, #0d0a07 100%);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .prose pre code { color: var(--ink); background: transparent; }
+:root[data-theme="dark"] .prose table { border-color: var(--line); }
+:root[data-theme="dark"] .prose table th, :root[data-theme="dark"] .prose table td { border-color: var(--line); }
+:root[data-theme="dark"] .prose table th { background: var(--paper-2); color: var(--ink); }
+
+/* Article ancillaries */
+:root[data-theme="dark"] .article-byline { border-color: var(--line); color: var(--ink-soft); }
+:root[data-theme="dark"] .byline-avatar { background: var(--paper-2); color: var(--gold); border-color: var(--line); }
+:root[data-theme="dark"] .share-btn { background: var(--paper-2); border-color: var(--line); color: var(--ink-soft); }
+:root[data-theme="dark"] .share-btn:hover { background: var(--surface); color: var(--ink); }
+:root[data-theme="dark"] .related { background: var(--paper-2); border-color: var(--line); }
+:root[data-theme="dark"] .toc-list a { color: var(--ink-soft); }
+:root[data-theme="dark"] .toc-list a.is-current { color: var(--gold); }
+
+/* Bookmark page */
+:root[data-theme="dark"] .bm-item-type { background: var(--paper); border-color: var(--line); color: var(--gold); }
+:root[data-theme="dark"] .bm-privacy code { background: var(--paper-2); color: var(--gold); }
+
+/* Map — re-theme pin pills only; SVG fills handled inside the component */
+:root[data-theme="dark"] .map-pin a { background: rgba(22, 31, 44, 0.92); color: var(--ink); border-color: color-mix(in oklch, var(--gold) 35%, var(--line)); }
+:root[data-theme="dark"] .map-pin a:hover, :root[data-theme="dark"] .map-pin a:focus-visible { background: var(--gold); color: #1a1206; border-color: var(--gold); }
+:root[data-theme="dark"] .map-pin-desc { color: var(--ink-3); }
+
+/* Search trigger / theme toggle / bookmark btn — re-tone for dark */
+:root[data-theme="dark"] .theme-toggle { color: var(--ink-soft); border-color: var(--line); }
+:root[data-theme="dark"] .theme-toggle:hover { color: var(--ink); background: var(--paper-2); border-color: var(--gold); }
+:root[data-theme="dark"] .bm-btn { background: var(--paper-2); border-color: var(--line); color: var(--ink-soft); }
+:root[data-theme="dark"] .bm-btn:hover { background: var(--surface); color: var(--ink); }
+:root[data-theme="dark"] .bm-btn[aria-pressed="true"] { background: var(--gold); color: #1a1206; }
+
+/* Primary CTA — the light-mode navy gradient reads as a muddy grey on dark
+   (var(--ink) flips to cream). Re-cast as the gold brand accent with dark
+   ink text so the primary action stays high-contrast and on-brand. */
+:root[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, color-mix(in oklch, var(--gold) 70%, #3a2a10) 100%);
+  color: #1a1206;
+  box-shadow: var(--shadow-1), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+:root[data-theme="dark"] .btn-primary:hover {
+  background: linear-gradient(135deg, color-mix(in oklch, var(--gold) 88%, #fff) 0%, var(--gold) 100%);
+  color: #1a1206;
+  box-shadow: 0 18px 32px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Compliance live signal pulse stays gold; nothing to override */
+
+/* Hero / page hero — softens the brand band on dark */
+:root[data-theme="dark"] .page-hero,
+:root[data-theme="dark"] .article-hero {
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+}
+
+/* Skip-link, focus rings — already use --gold which auto-themes */
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 html:focus-within { scroll-behavior: smooth; }
@@ -59,21 +371,33 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
 }
 
 img, svg, video { max-width: 100%; height: auto; display: block; }
 
 a {
   color: var(--accent-2);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration: none;
   text-underline-offset: 3px;
   transition: color var(--t-fast);
 }
 a:hover {
   color: var(--gold);
+}
+/* Prose / article body keeps underlines on inline links — that's where they
+   carry meaning. Everything else (navigation, cards, CTAs) goes underline-free. */
+.prose a:not(.btn) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in oklch, var(--gold) 60%, transparent);
+}
+.prose a:not(.btn):hover {
   text-decoration-color: var(--gold);
-  text-decoration-thickness: 2px;
 }
 
 /* Clear, consistent keyboard focus state across every interactive element.
@@ -96,13 +420,25 @@ h1, h2, h3, h4 {
   font-family: var(--serif);
   font-weight: 500;
   letter-spacing: -0.012em;
-  line-height: 1.15;
+  line-height: 1.12;
   color: var(--ink);
   margin: 0 0 .5em;
+  text-wrap: balance;
 }
-h1 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); }
-h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); }
-h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+
+/* Safety net: any heading inside a dark navy band must keep paper text.
+   Section components like .vision / .cta-band / .compliance set a navy bg
+   on the wrapper but the global `color: var(--ink)` rule above wins
+   without an explicit override here. */
+.vision h1, .vision h2, .vision h3, .vision h4,
+.cta-band h1, .cta-band h2, .cta-band h3, .cta-band h4,
+.compliance h2, .compliance h3, .compliance h4,
+.site-footer h2, .site-footer h3 {
+  color: var(--paper);
+}
+h1 { font-size: clamp(2.2rem, 5.2vw, 4rem); letter-spacing: -0.018em; }
+h2 { font-size: clamp(1.75rem, 3.4vw, 2.6rem); letter-spacing: -0.014em; }
+h3 { font-size: clamp(1.2rem, 2vw, 1.55rem); }
 p  { margin: 0 0 1em; }
 
 .container {
@@ -113,14 +449,38 @@ p  { margin: 0 0 1em; }
 }
 
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: .14em;
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700;
   font-family: var(--sans);
   margin: 0 0 .8em;
 }
+/* Gold variant — reads as a "live" accent. Drop-in replacement: .eyebrow.eyebrow-gold */
+.eyebrow.eyebrow-gold { color: var(--gold); }
+.eyebrow.eyebrow-gold::before {
+  content: "";
+  width: 24px;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--gold), color-mix(in oklch, var(--gold) 20%, transparent));
+  border-radius: 2px;
+}
+
+/* Reusable section header — eyebrow + h2 + lede with consistent rhythm. */
+.section-head {
+  max-width: 64ch;
+  margin: 0 auto clamp(36px, 4vw, 56px);
+  text-align: left;
+}
+.section-head--center { text-align: center; margin-inline: auto; }
+.section-head--center .eyebrow { justify-content: center; }
+.section-head h2 { margin-bottom: 14px; }
+.section-head .lede { margin: 0; max-width: 64ch; }
+.section-head--center .lede { margin-inline: auto; }
 
 .lede {
   font-family: var(--serif);
@@ -143,6 +503,8 @@ p  { margin: 0 0 1em; }
   border: 1px solid transparent;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
   transition:
     transform .35s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow .35s ease,
@@ -150,6 +512,23 @@ p  { margin: 0 0 1em; }
     color .25s ease,
     border-color .25s ease;
 }
+/* Subtle diagonal sheen on hover — reads as "premium" without being gaudy. */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform .7s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+.btn:hover::before { transform: translateX(100%); }
 .btn-primary {
   background: linear-gradient(135deg, var(--ink) 0%, #1c2e4a 100%);
   color: var(--surface);
@@ -198,7 +577,10 @@ p  { margin: 0 0 1em; }
 section { padding-block: clamp(48px, 8vw, 96px); }
 .section-tight { padding-block: clamp(28px, 5vw, 56px); }
 
-/* Cards */
+/* Cards
+   Hover treatment: lift + soft warm glow + subtle gold top-rule reveal.
+   The previous solid `border-color: gold` was visually heavy on dense grids;
+   now the accent is a 2px ribbon that grows from the top-left corner. */
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -211,11 +593,25 @@ section { padding-block: clamp(48px, 8vw, 96px); }
     border-color .4s ease,
     background .4s ease;
 }
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold), color-mix(in oklch, var(--gold) 20%, transparent));
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  transition: width .5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
 .card:hover {
   transform: translateY(-6px);
-  border-color: var(--gold);
-  box-shadow: 0 24px 48px -16px rgba(20, 37, 63, 0.18);
+  border-color: color-mix(in oklch, var(--gold) 35%, var(--line));
+  box-shadow:
+    0 24px 48px -16px rgba(20, 37, 63, 0.18),
+    0 0 0 1px color-mix(in oklch, var(--gold) 12%, transparent) inset;
 }
+.card:hover::before { width: 100%; }
 
 .grid { display: grid; gap: 24px; }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -236,6 +632,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 }
 
 /* Tables */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .table { width: 100%; border-collapse: collapse; }
 .table th, .table td {
   text-align: left;
@@ -243,6 +640,23 @@ section { padding-block: clamp(48px, 8vw, 96px); }
   border-bottom: 1px solid var(--line);
 }
 .table thead th { background: var(--paper-2); font-weight: 600; font-size: 14px; }
+
+/* Prose content tables (markdown-rendered) get horizontal scroll on narrow screens */
+.prose table, .article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.prose table th, .prose table td,
+.article-body table th, .article-body table td {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+.prose table thead th, .article-body table thead th { background: var(--paper-2); font-weight: 600; }
 
 /* Forms */
 input, textarea, select {
@@ -294,32 +708,244 @@ label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; c
     var(--paper);
 }
 
-/* Article prose */
+/* ── Article prose — long-form reading experience ──────────────────────
+   Designed for the blog and any long-form markdown content. The goals:
+   - Generous measure (max-width ~70ch) so eyes never have to track too far
+   - Body in a clean sans, headings in serif with gold rule accent
+   - Drop cap on the first paragraph for that magazine feel
+   - Pull-quote style for blockquotes
+   - Smooth anchor offsets so fragment links don't sit under the sticky header
+*/
 .prose {
-  max-width: 70ch;
-  font-size: 1.07rem;
-  line-height: 1.75;
+  max-width: 68ch;
+  font-size: clamp(1.05rem, 1.4vw, 1.15rem);
+  line-height: 1.78;
   color: var(--ink-soft);
+  font-family: var(--sans);
 }
-.prose h2 { margin-top: 1.6em; color: var(--ink); }
-.prose h3 { margin-top: 1.4em; color: var(--ink); }
-.prose ul, .prose ol { padding-inline-start: 1.2em; }
-.prose li { margin-bottom: .35em; }
-.prose blockquote {
-  border-inline-start: 3px solid var(--gold);
-  margin: 1.5em 0;
-  padding: .4em 1.2em;
-  background: var(--paper-2);
-  border-radius: 0 var(--r-md) var(--r-md) 0;
+.prose > * + * { margin-top: 1.2em; }
+.prose p { margin: 0 0 1.1em; }
+
+/* Drop cap on the very first paragraph of an article — magazine touch. */
+.prose > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 4.6em;
+  line-height: 0.9;
+  float: left;
+  padding: 6px 14px 0 0;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--ink) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gentle lead-paragraph emphasis — first p reads like a magazine intro. */
+.prose > p:first-of-type {
+  font-size: 1.18em;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
   font-family: var(--serif);
   color: var(--ink);
+  letter-spacing: -0.012em;
+  scroll-margin-top: 90px;
 }
+.prose h2 {
+  margin-top: 2.2em;
+  margin-bottom: 0.5em;
+  font-size: clamp(1.5rem, 2.6vw, 1.85rem);
+  position: relative;
+  padding-top: 0.5em;
+}
+.prose h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.prose h3 {
+  margin-top: 1.7em;
+  margin-bottom: 0.4em;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+}
+
+/* Smooth scroll-to-anchor with offset for fragment links inside articles. */
+.prose :is(h2, h3, h4)[id]::before,
+.prose :is(h2, h3, h4)[id] { scroll-margin-top: 100px; }
+
+/* Lists — gold accent dots/numbers, comfortable spacing. */
+.prose ul, .prose ol {
+  padding-inline-start: 0;
+  list-style: none;
+}
+.prose ul li,
+.prose ol li {
+  position: relative;
+  padding-inline-start: 1.6em;
+  margin-bottom: 0.55em;
+}
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.25em;
+  top: 0.7em;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--gold) 18%, transparent);
+}
+.prose ol {
+  counter-reset: prose-ol;
+}
+.prose ol > li {
+  counter-increment: prose-ol;
+}
+.prose ol > li::before {
+  content: counter(prose-ol);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.4em;
+  height: 1.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--gold);
+  background: color-mix(in oklch, var(--gold) 14%, transparent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Pull-quote blockquote — large serif on a warm cream background. */
+.prose blockquote {
+  margin: 2em 0;
+  padding: 1.6em 1.8em 1.6em 2.6em;
+  background:
+    linear-gradient(180deg, #fdf9ef 0%, #f7f1e3 100%);
+  border-radius: var(--r-lg);
+  border: 1px solid color-mix(in oklch, var(--gold) 30%, var(--line));
+  font-family: var(--serif);
+  font-size: 1.18em;
+  line-height: 1.55;
+  color: var(--ink);
+  position: relative;
+  font-style: italic;
+}
+.prose blockquote::before {
+  content: "“";
+  position: absolute;
+  left: 14px;
+  top: 4px;
+  font-family: var(--serif);
+  font-size: 3.4em;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.85;
+}
+.prose blockquote p { margin: 0; }
+.prose blockquote p + p { margin-top: 0.6em; }
+
+/* Inline code + larger code blocks. */
 .prose code {
   font-family: var(--mono);
   background: var(--paper-2);
-  padding: 2px 6px;
+  border: 1px solid var(--line);
+  padding: 1px 6px;
   border-radius: 4px;
-  font-size: .92em;
+  font-size: .9em;
+  color: var(--accent-2);
+}
+.prose pre {
+  background: linear-gradient(180deg, #0f1c30 0%, #14253f 100%);
+  color: #e8eaf0;
+  padding: 18px 22px;
+  border-radius: var(--r-md);
+  overflow-x: auto;
+  font-size: 0.92em;
+  line-height: 1.6;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 24px -12px rgba(20, 37, 63, 0.3);
+}
+.prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: 1em;
+}
+
+/* Bold inline emphasis stays as ink (vs ink-soft body) for contrast. */
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose em { font-style: italic; }
+
+/* Inline links — gold underline that animates on hover. */
+.prose a:not(.btn) {
+  color: var(--accent-2);
+  text-decoration: none;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size .25s ease, color .25s ease;
+}
+.prose a:not(.btn):hover {
+  color: var(--gold);
+  background-size: 100% 2px;
+}
+
+/* Article images — round corners, soft shadow, optional caption. */
+.prose img {
+  border-radius: var(--r-md);
+  box-shadow: 0 14px 36px -16px rgba(20, 37, 63, 0.22);
+  margin: 1.6em auto;
+  max-width: 100%;
+  height: auto;
+}
+.prose figure { margin: 1.8em 0; }
+.prose figure img { margin: 0 auto; }
+.prose figcaption {
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Horizontal rule — gold gradient hairline */
+.prose hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2.4em auto;
+  width: 60%;
+  opacity: 0.7;
+}
+
+/* Tables inside prose — keep horizontal scroll but soften borders. */
+.prose table {
+  font-size: 0.95em;
+}
+.prose table thead th {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78em;
+  color: var(--muted);
 }
 
 /* Reusable arrow-bullet list — used in service/zone/secteur/quartier asides */
@@ -380,12 +1006,16 @@ label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; c
   .service-grid { grid-template-columns: 1fr; }
 }
 
-/* Reduced motion */
+/* Reduced motion — keep compliance marquee scrollable, not a 0.001ms flicker */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  .comp-marquee-inner {
+    animation: none !important;
+    animation-duration: unset !important;
   }
 }
 

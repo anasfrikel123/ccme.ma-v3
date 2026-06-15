@@ -14,11 +14,11 @@ related:
   - "controle-fiscal-tanger-comment-se-preparer"
 ---
 
-Quatre fois par an, votre société doit payer un acompte d'[IS](/outils/simulateur-is) à la [DGI](/services/simpl-impots-dgi). C'est une obligation que beaucoup de dirigeants découvrent en cours de route — et qui peut vraiment plomber une trésorerie si on s'y prend mal. Voici comment ça fonctionne, sans jargon.
+Quatre fois par an, votre société doit payer un acompte d'[IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") à la [DGI](/services/simpl-impots-dgi). C'est une obligation que beaucoup de dirigeants découvrent en cours de route — et qui peut vraiment plomber une trésorerie si on s'y prend mal. Voici comment ça fonctionne, sans jargon.
 
 ## Le principe
 
-L'IS, c'est l'impôt sur les bénéfices de votre société. Il est dû en N+1 (avant le 31 mars de l'année suivante), mais on n'attend pas cette date pour commencer à payer. Le législateur a prévu un mécanisme d'acomptes : vous payez en cours d'exercice, sur la base de l'IS de l'exercice précédent.
+L'[IS](/outils/simulateur-is), c'est l'impôt sur les bénéfices de votre société. Il est dû en N+1 (avant le 31 mars de l'année suivante), mais on n'attend pas cette date pour commencer à payer. Le législateur a prévu un mécanisme d'acomptes : vous payez en cours d'exercice, sur la base de l'IS de l'exercice précédent.
 
 C'est de la trésorerie anticipée. Pas un nouvel impôt, juste un calendrier de paiement.
 

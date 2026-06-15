@@ -34,13 +34,13 @@ L'enjeu : éviter la double imposition. Et payer là où c'est légitime.
 ## Les schémas types
 
 **Schéma 1 — Vous restez résident fiscal français, vous investissez à Tanger.**
-Vous créez une société marocaine (SARL ou SA) qui détient l'investissement. Les bénéfices sont imposés au Maroc ([IS](/outils/simulateur-is)). Les dividendes que vous remontez en France sont soumis à la retenue à la source marocaine de 15%, puis intégrés à votre [IR](/outils/simulateur-ir) français avec crédit d'impôt pour éviter la double imposition. C'est carré, c'est encadré par la convention.
+Vous créez une société marocaine (SARL ou SA) qui détient l'investissement. Les bénéfices sont imposés au Maroc ([IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc")). Les dividendes que vous remontez en France sont soumis à la retenue à la source marocaine de 15%, puis intégrés à votre [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") français avec crédit d'impôt pour éviter la double imposition. C'est carré, c'est encadré par la convention.
 
 **Schéma 2 — Vous devenez résident fiscal marocain.**
-Plus simple. Vous payez votre IS marocain, vous touchez vos dividendes au Maroc avec retenue de 15% libératoire (régime résident), vous êtes peinard côté fiscal français (sortie du foyer fiscal). Mais ça implique vraiment de vivre au Maroc, pas juste y avoir une carte de séjour.
+Plus simple. Vous payez votre [IS](/outils/simulateur-is) marocain, vous touchez vos dividendes au Maroc avec retenue de 15% libératoire (régime résident), vous êtes peinard côté fiscal français (sortie du foyer fiscal). Mais ça implique vraiment de vivre au Maroc, pas juste y avoir une carte de séjour.
 
 **Schéma 3 — SCI marocaine pour de l'investissement immobilier.**
-Vous achetez à Tanger via une SCI marocaine. Avantages : protection patrimoniale, transmission facilitée, optimisation fiscale sur la revente. Mais attention : la SCI marocaine est par défaut soumise à l'IS, contrairement à la SCI française à l'IR. Le régime change tout.
+Vous achetez à Tanger via une SCI marocaine. Avantages : protection patrimoniale, transmission facilitée, optimisation fiscale sur la revente. Mais attention : la SCI marocaine est par défaut soumise à l'IS, contrairement à la SCI française à l'[IR](/outils/simulateur-ir). Le régime change tout.
 
 ## Office des Changes
 

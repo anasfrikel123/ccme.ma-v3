@@ -26,11 +26,11 @@ faq:
 
 ## Notre activité à Boukhalef
 
-**Logistique aéroportuaire.** Sociétés de fret, agents handling, prestataires sol. Activité internationale, Office des Changes, [TVA](/outils/simulateur-tva) export.
+**Logistique aéroportuaire.** Sociétés de fret, agents handling, prestataires sol. Activité internationale, Office des Changes, [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") export.
 
 **Tech et SaaS [Tanger Tech](/zones/tanger-tech).** Startups, éditeurs de logiciel, BPO/ITO. Régime ZAI applicable selon activité, comptabilité moderne (Stripe, Wise, Notion), reporting investisseurs.
 
-**Résidences locatives.** Beaucoup de programmes immobiliers ces dernières années. Investisseurs marocains et étrangers qui louent à des cadres expatriés. SCI, fiscalité revenus fonciers, déclaration [IR](/outils/simulateur-ir) pro.
+**Résidences locatives.** Beaucoup de programmes immobiliers ces dernières années. Investisseurs marocains et étrangers qui louent à des cadres expatriés. SCI, fiscalité revenus fonciers, déclaration [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") pro.
 
 **Restauration et services.** Restos d'aéroport, agences de location de voitures, hôtels d'affaires.
 
@@ -48,7 +48,7 @@ On part toujours du même diagnostic :
 
 - **Profil des fondateurs** (résidents fiscaux Maroc / France / autres) — la convention France-Maroc change beaucoup la donne pour les Français
 - **Plan de levée** prévu sur 24 mois (un VC marocain ou européen voudra une SAS, pas une SARL classique)
-- **Régime ZAI applicable** au projet (BPO, ITO, R&D, édition logicielle) — exonération [IS](/outils/simulateur-is) 5 ans puis taux réduit, mais conditions précises
+- **Régime ZAI applicable** au projet (BPO, ITO, R&D, édition logicielle) — exonération [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") 5 ans puis taux réduit, mais conditions précises
 - **Stratégie de rémunération** des fondateurs (salaire vs dividendes vs management fees)
 
 Notre [comparatif SARL vs SAS au Maroc](/comparatifs/sarl-vs-sas-maroc) détaille les bascules. Pour estimer le coût initial, le [simulateur création de société](/outils/simulateur-creation) couvre les frais [OMPIC](/glossaire#ompic), notaire, IRPP, BO, capital minimum.
@@ -61,7 +61,7 @@ Les sociétés de fret aéroportuaire de Boukhalef (handling, courrier express, 
 
 Les programmes neufs autour de l'aéroport (Marina Bay, résidences Jbel Kbir, opérations Bourguignon) sont massivement achetés pour la location. Question récurrente : monter une SCI marocaine ou rester en location directe avec déclaration en revenus fonciers ?
 
-Réponse rapide : ça dépend du nombre de biens, du profil fiscal des associés et du projet à long terme (transmission, vente). Pour un seul bien et un seul propriétaire résident, l'IR pro est souvent plus simple et moins coûteux. Au-delà de 3 biens ou avec des co-investisseurs, la SCI commence à avoir du sens. On simule en RDV.
+Réponse rapide : ça dépend du nombre de biens, du profil fiscal des associés et du projet à long terme (transmission, vente). Pour un seul bien et un seul propriétaire résident, l'[IR](/outils/simulateur-ir) pro est souvent plus simple et moins coûteux. Au-delà de 3 biens ou avec des co-investisseurs, la SCI commence à avoir du sens. On simule en RDV.
 
 Pour les expats français qui investissent à Boukhalef, notre [article dédié aux investisseurs français](/blog/expat-francais-investir-tanger) couvre la convention fiscale et l'Office des Changes.
 

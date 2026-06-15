@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Raw-markdown access for blog posts.
  *
  * Convention: GET /blog/<slug>.md returns the article's clean markdown
@@ -11,18 +11,23 @@
  */
 
 import type { APIRoute, GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 export const prerender = true;
 
-export const getStaticPaths: GetStaticPaths = async () => {
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+export const getStaticPaths = (async () => {
   const posts = await getCollection('blog');
   return posts.map((p) => ({ params: { slug: p.id }, props: { post: p } }));
-};
+}) satisfies GetStaticPaths;
 
-export const GET: APIRoute = async ({ props }) => {
-  const post = (props as any).post;
+export const GET: APIRoute<Props> = async ({ props }) => {
+  const { post } = props;
   const d = post.data;
 
   const fm = [

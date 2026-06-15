@@ -24,7 +24,19 @@ test.describe('smoke', () => {
     await expect(toggle).toBeVisible();
     await toggle.click();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    await expect(page.locator('#primary-nav')).toBeVisible();
+    const nav = page.locator('#primary-nav');
+    await expect(nav).toHaveClass(/open/);
+    await expect(nav.getByRole('link', { name: 'Accueil' })).toBeVisible();
+  });
+
+  test('mobile Services accordion expands submenu links', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/');
+    await page.locator('[data-nav-toggle]').click();
+    const servicesToggle = page.locator('#primary-nav [data-sub-toggle]').first();
+    await servicesToggle.click();
+    await expect(servicesToggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(page.locator('#primary-nav .sub a[href="/services/tenue-comptabilite"]')).toBeVisible();
   });
 
   test('IS simulator calculates 850k bénéfice → 170k IS', async ({ page }) => {

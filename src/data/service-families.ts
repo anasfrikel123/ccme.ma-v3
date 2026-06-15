@@ -35,7 +35,7 @@ export const SERVICE_FAMILIES: ServiceFamily[] = [
 ];
 
 export const SERVICE_PROOF = [
-  { value: '15', suffix: '+', label: "ans d'expertise" },
+  { value: '20', suffix: '+', label: "ans d'expertise" },
   { value: '500', suffix: '+', label: 'clients accompagnés' },
   { value: '24', suffix: 'h', label: 'délai de réponse' },
   { value: '100', suffix: '%', label: 'conformité DGI & CNSS' },

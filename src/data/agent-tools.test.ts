@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { agentEndpoints, fullEndpointUrl } from './agent-tools';
 
 /**
@@ -37,7 +37,7 @@ describe('agentEndpoints — discovery registry', () => {
 
   it('builds canonical absolute URLs', () => {
     const url = fullEndpointUrl('/api/services.json');
-    expect(url).toBe('https://www.ccme.ma/api/services.json');
+    expect(url).toBe('https://ccme.ma/api/services.json');
   });
 
   it('every endpoint has a non-empty plain-French description', () => {

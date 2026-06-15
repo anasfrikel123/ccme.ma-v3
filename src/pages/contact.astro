@@ -1,12 +1,19 @@
 ---
 import Page from '~/layouts/Page.astro';
+import BookingEmbed from '~/components/BookingEmbed.astro';
 import { cabinet } from '~/data/cabinet';
 
-// Web3Forms public access key. Set via PUBLIC_WEB3FORMS_KEY env var (in .env or Cloudflare Pages settings).
-// Falls back to a placeholder so the form can still be reviewed in dev — submissions to placeholder will fail.
-const WEB3FORMS_KEY =
-  (import.meta.env.PUBLIC_WEB3FORMS_KEY as string | undefined) ||
-  'YOUR_WEB3FORMS_PUBLIC_KEY';
+// Web3Forms public access key — set via PUBLIC_WEB3FORMS_KEY (.env locally, Cloudflare Pages env in prod).
+const rawWeb3Key = (import.meta.env.PUBLIC_WEB3FORMS_KEY as string | undefined)?.trim() ?? '';
+const isPlaceholderKey =
+  !rawWeb3Key || rawWeb3Key === 'YOUR_WEB3FORMS_PUBLIC_KEY';
+if (import.meta.env.PROD && isPlaceholderKey) {
+  throw new Error(
+    'PUBLIC_WEB3FORMS_KEY must be set for production builds (Cloudflare Pages → Environment variables).',
+  );
+}
+const WEB3FORMS_KEY = rawWeb3Key;
+const contactFormEnabled = !isPlaceholderKey;
 ---
 <Page
   title="Contact | Cabinet expert-comptable Tanger — CCME"
@@ -18,6 +25,8 @@ const WEB3FORMS_KEY =
   showCTA={false}
   keywords={['contact expert comptable Tanger', 'rendez-vous comptable Tanger', 'devis cabinet comptable Maroc']}
 >
+  <BookingEmbed />
+
   <section>
     <div class="container contact-grid">
       <div class="reveal-left">
@@ -30,6 +39,7 @@ const WEB3FORMS_KEY =
           <a href={cabinet.phone.tel} class="urgency-phone">{cabinet.phone.display}</a>
         </div>
 
+        {contactFormEnabled ? (
         <form
           class="contact-form"
           name="contact"
@@ -79,6 +89,8 @@ const WEB3FORMS_KEY =
               <option>Conseil fiscal</option>
               <option>Contrôle DGI / contentieux</option>
               <option>Paie & CNSS</option>
+              <option>Conseil juridique</option>
+              <option>Travaux juridiques annuels</option>
               <option>Domiciliation</option>
               <option>Audit / commissariat aux comptes</option>
               <option>Autre</option>
@@ -119,6 +131,12 @@ const WEB3FORMS_KEY =
             data-status
           ></p>
         </form>
+        ) : (
+          <div class="contact-form-disabled" role="status">
+            <p><strong>Formulaire temporairement indisponible.</strong></p>
+            <p>Appelez <a href={cabinet.phone.tel}>{cabinet.phone.display}</a> ou écrivez à <a href={`mailto:${cabinet.email}`}>{cabinet.email}</a>.</p>
+          </div>
+        )}
       </div>
 
       <aside class="contact-aside reveal-right">
@@ -135,13 +153,20 @@ const WEB3FORMS_KEY =
           <p>Visio Google Meet : on peut caler un RDV de 30 min en visio dès aujourd'hui.</p>
           <p>Au cabinet : sans rendez-vous accepté du lundi au vendredi 14h-17h, sinon RDV pour confort des deux côtés.</p>
         </div>
-        <div class="map">
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-5.823%2C35.776%2C-5.804%2C35.785&layer=mapnik&marker=35.7802%2C-5.8136"
-            title="Localisation du cabinet CCME à Tanger sur OpenStreetMap"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <div class="map" data-map-frame>
+          <button
+            type="button"
+            class="map-load-btn"
+            data-map-load
+            aria-label="Charger la carte de localisation du cabinet sur OpenStreetMap"
+          >
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Charger la carte du cabinet</span>
+            <small>Tanger · Avenue Moulay Ismail</small>
+          </button>
         </div>
       </aside>
     </div>
@@ -149,6 +174,21 @@ const WEB3FORMS_KEY =
 </Page>
 
 <script>
+  // Click-to-load OpenStreetMap iframe. Saves ~295 KB of OSM JS on initial
+  // /contact load (FCP penalty was ~2s on mobile). User intent is high when
+  // they click "load map", so the trade-off is correct.
+  const mapBtn = document.querySelector<HTMLButtonElement>('[data-map-load]');
+  const mapFrame = document.querySelector<HTMLElement>('[data-map-frame]');
+  mapBtn?.addEventListener('click', () => {
+    if (!mapFrame) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.openstreetmap.org/export/embed.html?bbox=-5.823%2C35.776%2C-5.804%2C35.785&layer=mapnik&marker=35.7802%2C-5.8136';
+    iframe.title = 'Localisation du cabinet CCME à Tanger sur OpenStreetMap';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.loading = 'eager';
+    mapFrame.replaceChildren(iframe);
+  });
+
   // Progressive-enhancement form handler. Submits via fetch to keep the user on-page,
   // surfaces success/error in the live region, and falls back to native submit if JS fails.
   const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
@@ -208,6 +248,9 @@ const WEB3FORMS_KEY =
           'ok',
         );
         form.reset();
+        if (typeof (window).gtag === "function") {
+          (window).gtag("event", "generate_lead", { method: "contact_form", value: 1, currency: "MAD" });
+        }
       } else {
         const msg = data?.message || 'Une erreur est survenue. Réessayez ou écrivez à info@ccme.ma.';
         setStatus(msg, 'err');
@@ -233,7 +276,23 @@ const WEB3FORMS_KEY =
   .field input, .field select, .field textarea { width: 100%; }
 
   .consent { grid-template-columns: auto 1fr; align-items: start; gap: 10px; }
-  .consent input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; accent-color: var(--gold); }
+  .consent input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    width: 18px; height: 18px; margin-top: 3px; padding: 0; flex-shrink: 0;
+    border: 1.5px solid color-mix(in oklch, var(--gold) 30%, var(--line));
+    border-radius: 5px; background: var(--surface); cursor: pointer;
+    display: inline-grid; place-content: center;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .consent input[type="checkbox"]::after {
+    content: ""; width: 5px; height: 9px; margin-top: -2px;
+    border: solid #1a1206; border-width: 0 2px 2px 0;
+    transform: rotate(45deg); opacity: 0; transition: opacity .15s ease;
+  }
+  .consent input[type="checkbox"]:hover { border-color: var(--gold); }
+  .consent input[type="checkbox"]:checked { background: var(--gold); border-color: var(--gold); }
+  .consent input[type="checkbox"]:checked::after { opacity: 1; }
+  .consent input[type="checkbox"]:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
   .consent label { font-size: 13.5px; color: var(--ink-soft); font-weight: 400; line-height: 1.5; }
   .consent label a { color: var(--gold); }
 
@@ -241,6 +300,17 @@ const WEB3FORMS_KEY =
   .form-status[data-kind="sending"] { color: var(--muted); }
   .form-status[data-kind="ok"] { color: var(--good); font-weight: 600; }
   .form-status[data-kind="err"] { color: #b3261e; font-weight: 500; }
+
+  .contact-form-disabled {
+    margin-top: 24px;
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--paper-2);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .contact-form-disabled a { color: var(--ink); font-weight: 600; }
 
   .btn-loading { display: none; }
   [data-submit-btn][aria-busy="true"] .btn-label { display: none; }
@@ -252,8 +322,30 @@ const WEB3FORMS_KEY =
   .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
   .contact-aside { display: grid; gap: 20px; }
-  .map { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4/3; border: 1px solid var(--line); }
-  .map iframe { width: 100%; height: 100%; border: 0; }
+  .map { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4/3; border: 1px solid var(--line); position: relative; }
+  .map iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .map-load-btn {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background:
+      radial-gradient(120% 80% at 50% 30%, rgba(200, 168, 90, 0.10), transparent 60%),
+      linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--ink);
+    font-family: inherit;
+    transition: background-color 200ms ease;
+  }
+  .map-load-btn:hover { background-color: var(--paper-2); }
+  .map-load-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: -3px; }
+  .map-load-btn svg { color: var(--gold); }
+  .map-load-btn span { font-weight: 600; font-size: 14.5px; }
+  .map-load-btn small { color: var(--ink-2); font-size: 12.5px; }
 
   .urgency-callout {
     display: flex;
@@ -284,6 +376,29 @@ const WEB3FORMS_KEY =
     background: oklch(0.94 0.025 50);
     border-width: 2px;
     box-shadow: 0 0 0 4px rgba(185, 76, 42, 0.1);
+  }
+
+  /* ── Dark theme: urgence callout ──────────────────────
+     Light oklch backgrounds + dark --warn text become low-contrast on dark.
+     Use a dark warm-red surface with a lighter warn accent for legibility. */
+  :global(:root[data-theme="dark"]) .urgency-callout {
+    background: color-mix(in oklch, var(--warn) 20%, var(--surface));
+    border-color: color-mix(in oklch, var(--warn) 60%, var(--line));
+  }
+  :global(:root[data-theme="dark"]) .urgency-callout[data-urgent="true"] {
+    background: color-mix(in oklch, var(--warn) 28%, var(--surface));
+    box-shadow: 0 0 0 4px rgba(185, 76, 42, 0.18);
+  }
+  :global(:root[data-theme="dark"]) .urgency-callout strong,
+  :global(:root[data-theme="dark"]) .urgency-phone {
+    color: #ef9c80;
+  }
+  :global(:root[data-theme="dark"]) .urgency-phone {
+    border-color: #ef9c80;
+  }
+  :global(:root[data-theme="dark"]) .urgency-phone:hover {
+    background: #ef9c80;
+    color: #1a1206;
   }
 
   @media (max-width: 900px) {

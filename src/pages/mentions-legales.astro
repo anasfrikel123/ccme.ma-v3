@@ -15,11 +15,28 @@ import { cabinet } from '~/data/cabinet';
       <h2>Éditeur du site</h2>
       <p><strong>{cabinet.legalName} (CCME)</strong><br/>Cabinet d'expertise comptable inscrit à l'Ordre des Experts-Comptables du Maroc.<br/>{cabinet.address.formatted}<br/>Téléphone : {cabinet.phone.display} — Email : {cabinet.email}</p>
 
+      {(cabinet.legalIds.ice || cabinet.legalIds.if || cabinet.legalIds.rc || cabinet.legalIds.patente) && (
+        <>
+          <h2>Identifiants légaux</h2>
+          <ul>
+            {cabinet.legalIds.ice && <li><strong>ICE</strong> (Identifiant Commun de l'Entreprise) : {cabinet.legalIds.ice}</li>}
+            {cabinet.legalIds.if && <li><strong>IF</strong> (Identifiant Fiscal) : {cabinet.legalIds.if}</li>}
+            {cabinet.legalIds.rc && <li><strong>RC</strong> (Registre du Commerce) : {cabinet.legalIds.rc}</li>}
+            {cabinet.legalIds.patente && <li><strong>Patente</strong> (Taxe professionnelle) : {cabinet.legalIds.patente}</li>}
+          </ul>
+        </>
+      )}
+
       <h2>Directeur de la publication</h2>
       <p>Frikel Ahmed.</p>
 
       <h2>Hébergement</h2>
-      <p>Le site est hébergé sur Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, États-Unis.</p>
+      <p>
+        Le site <strong>ccme.ma</strong> est hébergé par <strong>Cloudflare, Inc.</strong>,
+        101 Townsend St, San Francisco, CA 94107, États-Unis — distribution via
+        <strong>Cloudflare Pages</strong> (projet <code>ccme-ma-v3</code>).
+        Contact hébergeur&nbsp;: <a href="https://www.cloudflare.com/abuse/" rel="noopener noreferrer">cloudflare.com/abuse</a>.
+      </p>
 
       <h2>Propriété intellectuelle</h2>
       <p>L'ensemble du contenu de ce site (textes, logos, images, graphismes) est la propriété exclusive de CCME ou de ses partenaires. Toute reproduction, totale ou partielle, est interdite sans autorisation écrite préalable.</p>
@@ -27,8 +44,11 @@ import { cabinet } from '~/data/cabinet';
       <h2>Limitation de responsabilité</h2>
       <p>Les informations diffusées sur ce site ont un caractère informatif et ne constituent en aucun cas un avis fiscal, comptable ou juridique personnalisé. Pour toute décision affectant votre situation, consultez un professionnel.</p>
 
+      <h2>Droit applicable et litiges</h2>
+      <p>Le présent site et les présentes mentions légales sont régis par le droit marocain. Tout litige relatif à leur interprétation ou à leur exécution relève de la compétence des tribunaux de Tanger, Maroc.</p>
+
       <h2>Crédits</h2>
-      <p>Conception et développement : équipe CCME. Polices : Newsreader & Hanken Grotesk via Google Fonts.</p>
+      <p>Conception et développement : équipe CCME. Polices : Newsreader & Hanken Grotesk, auto-hébergées (@fontsource, fichiers WOFF2 sur ce domaine).</p>
     </div>
   </section>
 </Page>

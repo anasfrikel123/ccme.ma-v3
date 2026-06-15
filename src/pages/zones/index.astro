@@ -1,9 +1,10 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import { getCollection } from 'astro:content';
 import { collectionPageSchema } from '~/lib/collection-schema';
+import TangerMap from '~/components/TangerMap.astro';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 const zones = await getCollection('zones');
 const hubSchema = collectionPageSchema({
   url: `${SITE}/zones`,
@@ -23,10 +24,12 @@ const hubSchema = collectionPageSchema({
 >
   <section>
     <div class="container">
+      <TangerMap kind="zones" />
+
       <div class="grid grid-2">
         {zones.map(z => (
           <a href={`/zones/${z.id}`} class="card reveal">
-            <p class="eyebrow">{z.data.eyebrow}</p>
+            <p class="eyebrow eyebrow-gold">{z.data.eyebrow}</p>
             <h3>{z.data.h1}</h3>
             <p>{z.data.description}</p>
             <span class="arrow" aria-hidden="true">→</span>

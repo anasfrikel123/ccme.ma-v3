@@ -26,11 +26,11 @@ faq:
 
 ## Notre activité à Marshan
 
-**Riads et maisons d'hôtes.** Le quartier compte plusieurs adresses connues. Compta hôtelière allégée pour structures de moins de 10 chambres, [TVA](/outils/simulateur-tva) tourisme 10%, gestion taxes locales (taxe promotion touristique 5% par nuitée), réservations Airbnb/Booking en multi-devises.
+**Riads et maisons d'hôtes.** Le quartier compte plusieurs adresses connues. Compta hôtelière allégée pour structures de moins de 10 chambres, [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") tourisme 10%, gestion taxes locales (taxe promotion touristique 5% par nuitée), réservations Airbnb/Booking en multi-devises.
 
 **Agences immobilières et investisseurs.** Marshan est un secteur où l'immobilier de prestige se vend. Rotation des biens, gestion des honoraires d'agence, fiscalité plus-values pour les vendeurs.
 
-**Cabinets de design, architecture, photographes.** Beaucoup de profils libéraux créatifs travaillent ici. BNC, gestion projets longs (un projet d'architecte peut s'étaler sur 18 mois — découpage en avancement), TVA prestation intellectuelle.
+**Cabinets de design, architecture, photographes.** Beaucoup de profils libéraux créatifs travaillent ici. BNC, gestion projets longs (un projet d'architecte peut s'étaler sur 18 mois — découpage en avancement), [TVA](/outils/simulateur-tva) prestation intellectuelle.
 
 **Investisseurs étrangers résidents.** Français, Espagnols, Italiens propriétaires à Marshan. Gestion fiscale binationale, conventions internationales, statut résident vs non-résident.
 
@@ -42,11 +42,11 @@ Un mot pour la communauté française de Marshan : la convention fiscale franco-
 
 Un riad de Marshan peut tourner sous trois régimes complètement différents :
 
-- **Exploitation directe en personne physique** ([IR](/outils/simulateur-ir) pro régime BNC) — adapté aux structures de moins de 5 chambres avec un seul propriétaire qui exploite
+- **Exploitation directe en personne physique** ([IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") pro régime BNC) — adapté aux structures de moins de 5 chambres avec un seul propriétaire qui exploite
 - **SARL classique** — quand il y a deux ou trois associés, ou un projet d'expansion (rachat d'un deuxième riad, restauration sur place)
 - **SARLAU** — pour un propriétaire seul qui veut isoler sa responsabilité sans complexifier la gouvernance
 
-Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) détaille les bascules en chiffrant l'IR, l'[IS](/outils/simulateur-is) et la [cotisation minimale](/glossaire#cotisation-minimale) dans chaque cas. Pour le coût initial du montage SARL ou SARLAU (capital, [OMPIC](/glossaire#ompic), notaire, BO), notre [simulateur de coût de création](/outils/simulateur-creation) donne une fourchette précise.
+Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) détaille les bascules en chiffrant l'[IR](/outils/simulateur-ir), l'[IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") et la [cotisation minimale](/glossaire#cotisation-minimale) dans chaque cas. Pour le coût initial du montage SARL ou SARLAU (capital, [OMPIC](/glossaire#ompic), notaire, BO), notre [simulateur de coût de création](/outils/simulateur-creation) donne une fourchette précise.
 
 Sur la fiscalité courante :
 

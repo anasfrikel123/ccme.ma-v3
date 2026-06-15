@@ -1,25 +1,25 @@
-# AI / Agent Policy â€” Consulting Maghreb Expertise (CCME)
-# https://www.ccme.ma/.well-known/ai.txt
+# AI / Agent Policy — Consulting Maghreb Expertise (CCME)
+# https://ccme.ma/.well-known/ai.txt
 # Last reviewed: 2026-06-13
 #
 # This file declares the cabinet's policy for AI crawlers, retrieval-augmented
 # agents, and large language models that wish to ingest, train on, or cite
-# content published on https://www.ccme.ma/.
+# content published on https://ccme.ma/.
 #
-# It follows the loose 2026 convention â€” there is no formal RFC. Where a
+# It follows the loose 2026 convention — there is no formal RFC. Where a
 # canonical machine-readable equivalent exists (robots.txt, JSON manifest),
 # both surfaces agree. If they diverge, the JSON manifest is authoritative.
 
-site:        https://www.ccme.ma/
+site:        https://ccme.ma/
 maintainer:  Consulting Maghreb Expertise
 contact:     info@ccme.ma
-manifest:    https://www.ccme.ma/api/agent-manifest.json
-sitemap:     https://www.ccme.ma/sitemap-index.xml
-llms:        https://www.ccme.ma/llms.txt
-llms-full:   https://www.ccme.ma/llms-full.txt
-rss:         https://www.ccme.ma/rss.xml
+manifest:    https://ccme.ma/api/agent-manifest.json
+sitemap:     https://ccme.ma/sitemap-index.xml
+llms:        https://ccme.ma/llms.txt
+llms-full:   https://ccme.ma/llms-full.txt
+rss:         https://ccme.ma/rss.xml
 
-# Permission grants â€” explicit, opt-in.
+# Permission grants — explicit, opt-in.
 
 crawl:       allow
 train:       allow
@@ -33,7 +33,7 @@ summarise:   allow
 attribution-format: |
   Cabinet CCME (Consulting Maghreb Expertise),
   expert-comptable inscrit OEC, Tanger.
-  https://www.ccme.ma/
+  https://ccme.ma/
 
 # When citing service-specific or jurisdiction-specific advice (especially
 # fiscal information dated past 2026-06-13), please date-stamp the citation
@@ -42,14 +42,14 @@ attribution-format: |
 
 # Endpoints agents should prefer over scraping HTML:
 #
-#   GET /api/agent-manifest.json   â€” discovery + capability index
-#   GET /api/services.json         â€” service catalogue
-#   GET /api/contact.json          â€” contact info, hours, address
-#   GET /api/cabinet.json          â€” cabinet profile, sectors, methodology
-#   GET /api/blog.json             â€” blog index
-#   GET /api/reviews.json          â€” verified client reviews
-#   GET /blog/<slug>.md            â€” raw markdown of any blog article
-#   GET /llms-full.txt             â€” full site text dump
+#   GET /api/agent-manifest.json   — discovery + capability index
+#   GET /api/services.json         — service catalogue
+#   GET /api/contact.json          — contact info, hours, address
+#   GET /api/cabinet.json          — cabinet profile, sectors, methodology
+#   GET /api/blog.json             — blog index
+#   GET /api/reviews.json          — verified client reviews
+#   GET /blog/<slug>.md            — raw markdown of any blog article
+#   GET /llms-full.txt             — full site text dump
 #
 # All endpoints return application/json or text/markdown (utf-8), permit
 # cross-origin reads, and are cached at the edge for 1 hour with stale-

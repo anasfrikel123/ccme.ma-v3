@@ -89,10 +89,10 @@ Allow: /
 # Block obvious junk only — keep /_astro/ open so Google can render pages.
 Disallow: /api/private/
 
-Sitemap: https://www.ccme.ma/sitemap-index.xml
+Sitemap: https://ccme.ma/sitemap-index.xml
 
 # Agent-friendly discovery surfaces (read these before crawling HTML):
-#   https://www.ccme.ma/llms.txt
-#   https://www.ccme.ma/llms-full.txt
-#   https://www.ccme.ma/api/agent-manifest.json
-#   https://www.ccme.ma/.well-known/ai.txt
+#   https://ccme.ma/llms.txt
+#   https://ccme.ma/llms-full.txt
+#   https://ccme.ma/api/agent-manifest.json
+#   https://ccme.ma/.well-known/ai.txt

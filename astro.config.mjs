@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+﻿import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { buildLastmodMap } from './scripts/build-lastmod-map.mjs';
 
@@ -11,7 +11,7 @@ function resolveLastmod(url) {
 }
 
 export default defineConfig({
-  site: 'https://www.ccme.ma',
+  site: 'https://ccme.ma',
   trailingSlash: 'never',
   build: {
     format: 'file',
@@ -29,16 +29,20 @@ export default defineConfig({
         const url = item.url;
         const lastmod = resolveLastmod(url);
         // Home
-        if (url === 'https://www.ccme.ma/' || url === 'https://www.ccme.ma') {
+        if (url === 'https://ccme.ma/' || url === 'https://ccme.ma') {
           return { ...item, lastmod, priority: 1.0, changefreq: 'daily' };
         }
         // Hubs
-        if (/\/(services|secteurs|zones|quartiers|outils|blog|comparatifs)\/?$/.test(url)) {
+        if (/\/(services|secteurs|zones|quartiers|outils|blog|comparatifs|cas-pratiques)\/?$/.test(url)) {
           return { ...item, lastmod, priority: 0.9, changefreq: 'weekly' };
         }
         // Blog posts
         if (url.includes('/blog/')) {
           return { ...item, lastmod, priority: 0.7, changefreq: 'monthly' };
+        }
+        // Cas pratiques (high commercial intent — proof pages)
+        if (url.includes('/cas-pratiques/')) {
+          return { ...item, lastmod, priority: 0.85, changefreq: 'monthly' };
         }
         // Services / secteurs / zones / quartiers detail
         if (/\/(services|secteurs|zones|quartiers)\//.test(url)) {
@@ -61,7 +65,7 @@ export default defineConfig({
     }),
   ],
   image: {
-    domains: ['www.ccme.ma'],
+    domains: ['ccme.ma'],
   },
   vite: {
     build: {

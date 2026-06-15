@@ -52,7 +52,7 @@ Recevoir une notification de redressement [DGI](/services/simpl-impots-dgi), c'e
 ## Ce qu'on a vu fonctionner
 
 - Une PME industrielle à Aouama : redressement initial 1,2M DH ramené à 280K DH après commission paritaire
-- Un commerce centre-ville : redressement [TVA](/outils/simulateur-tva) annulé en totalité après production des justificatifs export oubliés
+- Un commerce centre-ville : redressement [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") annulé en totalité après production des justificatifs export oubliés
 - Un cabinet de conseil : pénalités pour mauvaise foi écartées, le redressement passé en simple régularisation
 
 L'erreur classique, c'est de penser qu'on peut négocier avec un inspecteur "à l'amiable" sans préparation. Ça ne fonctionne pas. Ce qui fonctionne, c'est un dossier juridique solide, des justificatifs complets, et le respect strict des délais procéduraux.

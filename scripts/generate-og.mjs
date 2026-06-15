@@ -130,6 +130,11 @@ const STATIC_PAGES = [
   { slug: 'tarifs', eyebrow: 'Tarifs', title: 'Honoraires expert-comptable à Tanger · Forfaits PME' },
   { slug: 'expat', eyebrow: 'Expatriés', title: 'Investir & vivre au Maroc — accompagnement expatriés' },
   { slug: 'contact', eyebrow: 'Contact', title: 'Premier échange gratuit · Cabinet CCME Tanger' },
+  { slug: 'documentation', eyebrow: 'Documentation', title: 'Guides, PDF et textes officiels — fiscalité Maroc 2026' },
+  { slug: 'calendrier-fiscal-2026', eyebrow: 'Calendrier 2026', title: 'Toutes les échéances fiscales et sociales au Maroc' },
+  { slug: 'mentions-legales', eyebrow: 'Mentions légales', title: 'Informations légales — Cabinet CCME Tanger' },
+  { slug: 'confidentialite', eyebrow: 'Confidentialité', title: 'Politique de confidentialité — CCME' },
+  { slug: 'mes-favoris', eyebrow: 'Favoris', title: 'Vos pages enregistrées — CCME' },
 ];
 
 async function run() {

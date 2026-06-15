@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { orgGraph, orgCoreGraph, homeWebPageSchema, accountingId, websiteId } from './org-schema';
 import { cabinet } from './cabinet';
 import { reviewCount, averageRating } from './reviews';
@@ -42,8 +42,8 @@ describe('orgCoreGraph — global entity contract', () => {
   });
 
   it('exposes the canonical @id values consumers reference', () => {
-    expect(accountingId).toBe('https://www.ccme.ma/#accounting');
-    expect(websiteId).toBe('https://www.ccme.ma/#website');
+    expect(accountingId).toBe('https://ccme.ma/#accounting');
+    expect(websiteId).toBe('https://ccme.ma/#website');
   });
 });
 
@@ -54,7 +54,7 @@ describe('orgGraph — full homepage graph', () => {
   });
 
   it('homepage WebPage has speakable selectors', () => {
-    const page = homeWebPageSchema as { speakable: { cssSelector: string[] } };
-    expect(page.speakable.cssSelector).toContain('.hero-text h1');
+    const page = homeWebPageSchema as { speakable: { cssSelector: readonly string[] } };
+    expect([...page.speakable.cssSelector]).toContain('.hero-text h1');
   });
 });

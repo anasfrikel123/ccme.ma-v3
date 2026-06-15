@@ -26,7 +26,7 @@ Pour les sociétés qui opèrent dans cet écosystème — transitaires, transpo
 
 **Sociétés de transit.** Comptabilisation des refacturations clients (frais de douane, vacations, stockage), gestion des dépôts de garantie, conformité ALSC.
 
-**Transport international.** [TVA](/outils/simulateur-tva) sur transports (régime export), gestion des notes de débit/crédit avec partenaires étrangers, écarts de change.
+**Transport international.** [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") sur transports (régime export), gestion des notes de débit/crédit avec partenaires étrangers, écarts de change.
 
 **Logistique et entreposage.** Cadre fiscal des entrepôts sous douane, des MEAD, des zones d'attente. Régime du Med Hub si vous y êtes agréé.
 
@@ -41,7 +41,7 @@ Beaucoup de dirigeants installés à Tanger Med hésitent entre rester en régim
 On pose le diagnostic en 2 RDV :
 
 1. Cartographie des flux (clients, fournisseurs, devises, douane)
-2. Simulation [IS](/outils/simulateur-is) / TVA / Office des Changes sur 3 scénarios — y compris le coût caché de l'audit annuel obligatoire en zone franche
+2. Simulation [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") / [TVA](/outils/simulateur-tva) / Office des Changes sur 3 scénarios — y compris le coût caché de l'audit annuel obligatoire en zone franche
 
 Pour aller plus loin sur la comparaison des trois régimes, voir notre [comparatif TFZ vs TAC vs Tanger Med](/comparatifs/tanger-med-vs-tfz-vs-tac).
 
@@ -58,7 +58,7 @@ Pour une société de transit ou de transport international, l'Office des Change
 
 **TVA export mal documentée.** Tout transport international vers ou depuis le Maroc est exonéré de TVA — mais il faut le **certifier**. Connaissement, déclaration en douane, justificatif de paiement en devises. Dossier incomplet = TVA à 20% rétroactive sur 4 ans. On audite votre process avec notre [assistance fiscale](/services/assistance-fiscale) avant que la [DGI](/services/simpl-impots-dgi) le fasse.
 
-**Refacturation aux armateurs étrangers.** Beaucoup d'agences maritimes refacturent à l'armateur étranger les frais avancés sur place (vacations, droits, services). Le traitement TVA et IS dépend si on agit en mandataire ou en commissionnaire. C'est un classique de redressement à Tanger Med.
+**Refacturation aux armateurs étrangers.** Beaucoup d'agences maritimes refacturent à l'armateur étranger les frais avancés sur place (vacations, droits, services). Le traitement TVA et [IS](/outils/simulateur-is) dépend si on agit en mandataire ou en commissionnaire. C'est un classique de redressement à Tanger Med.
 
 **Écarts de change.** Une société qui facture en euros et achète en dirhams a des écarts à comptabiliser. Pertes et gains de change ne se traitent pas pareil au plan fiscal. Pour calibrer l'impact IS, voir notre simulateur IS 2026.
 

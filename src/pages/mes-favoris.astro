@@ -1,0 +1,247 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Mes favoris — pages sauvegardées | CCME Tanger"
+  description="Vos pages sauvegardées sur ce navigateur — articles, cas pratiques et services à retrouver plus tard."
+  eyebrow="Mes favoris"
+  heading="Vos pages sauvegardées."
+  lede="Stockées localement sur ce navigateur — pas de compte, pas de serveur. Effacées si vous nettoyez vos cookies. Pratique pour retrouver un article ou un cas avant un rendez-vous."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Mes favoris' }]}
+  noindex={true}
+  showCTA={false}
+>
+  <section>
+    <div class="container narrow">
+      <div id="bm-empty" class="bm-empty card" hidden>
+        <p>Aucune page sauvegardée pour l'instant.</p>
+        <p class="bm-empty-hint">Cliquez sur le bouton <strong>Sauvegarder</strong> en haut d'un article ou d'un cas pratique pour le retrouver ici.</p>
+        <div class="bm-empty-actions">
+          <a href="/cas-pratiques" class="btn btn-gold">Voir les cas pratiques</a>
+          <a href="/blog" class="btn btn-ghost">Lire le Journal</a>
+        </div>
+      </div>
+
+      <div id="bm-list" class="bm-list" hidden>
+        <div class="bm-toolbar">
+          <span id="bm-count" class="bm-count">—</span>
+          <button id="bm-clear" type="button" class="bm-clear">Tout effacer</button>
+        </div>
+        <ul id="bm-items" class="bm-items"></ul>
+      </div>
+
+      <p class="bm-privacy">
+        Cette liste vit uniquement dans le stockage local de ce navigateur (clé <code>ccme:bookmarks</code>). Aucune donnée n'est envoyée au cabinet ni à un tiers.
+      </p>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .narrow { max-width: 760px; }
+  .bm-empty {
+    padding: 36px 32px;
+    text-align: center;
+  }
+  .bm-empty p { margin: 0 0 12px; color: var(--ink-soft); font-size: 15px; }
+  .bm-empty-hint { color: var(--muted); font-size: 14px; }
+  .bm-empty-actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .bm-list { margin-bottom: 30px; }
+  .bm-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .bm-count { font-size: 14px; color: var(--muted); font-weight: 600; }
+  .bm-clear {
+    background: none;
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all .2s ease;
+  }
+  .bm-clear:hover { color: #b3261e; border-color: #b3261e; }
+
+  .bm-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bm-item {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .bm-item:hover { border-color: color-mix(in oklch, var(--gold) 30%, var(--line)); transform: translateY(-1px); }
+  .bm-item-type {
+    width: 56px;
+    height: 36px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    letter-spacing: 0.04em;
+  }
+  .bm-item a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  .bm-item a:hover { color: var(--accent-2); }
+  .bm-item-meta { display: block; font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 4px; }
+  .bm-item-remove {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all .2s ease;
+  }
+  .bm-item-remove:hover { color: #b3261e; background: rgba(179, 38, 30, 0.08); }
+
+  .bm-privacy {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .bm-privacy code {
+    font-family: var(--mono);
+    background: var(--paper-2);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11.5px;
+  }
+</style>
+
+<script>
+  type Bookmark = {
+    url: string;
+    title: string;
+    type: 'article' | 'cas' | 'service' | 'page';
+    savedAt: string;
+  };
+  const KEY = 'ccme:bookmarks';
+  const TYPE_LABELS: Record<Bookmark['type'], string> = {
+    article: 'Art',
+    cas: 'Cas',
+    service: 'Svc',
+    page: 'Web',
+  };
+
+  function read(): Bookmark[] {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return [];
+      const arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function write(list: Bookmark[]): void {
+    localStorage.setItem(KEY, JSON.stringify(list));
+    window.dispatchEvent(new CustomEvent('ccme:bookmarks-changed'));
+  }
+
+  function fmt(date: string): string {
+    try {
+      return new Date(date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch {
+      return '';
+    }
+  }
+
+  function escape(s: string): string {
+    return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+  }
+
+  function render() {
+    const list = read();
+    const empty = document.getElementById('bm-empty');
+    const wrap = document.getElementById('bm-list');
+    const count = document.getElementById('bm-count');
+    const items = document.getElementById('bm-items');
+    if (!empty || !wrap || !count || !items) return;
+
+    if (list.length === 0) {
+      empty.hidden = false;
+      wrap.hidden = true;
+      return;
+    }
+    empty.hidden = true;
+    wrap.hidden = false;
+    count.textContent = `${list.length} page${list.length > 1 ? 's' : ''} sauvegardée${list.length > 1 ? 's' : ''}`;
+
+    items.innerHTML = list.map(b => `
+      <li class="bm-item">
+        <span class="bm-item-type">${TYPE_LABELS[b.type] || 'Web'}</span>
+        <div>
+          <a href="${escape(b.url)}">${escape(b.title)}</a>
+          <span class="bm-item-meta">Sauvegardé le ${fmt(b.savedAt)}</span>
+        </div>
+        <button type="button" class="bm-item-remove" data-remove="${escape(b.url)}" aria-label="Retirer ${escape(b.title)}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="6" y1="18" x2="18" y2="6"></line>
+          </svg>
+        </button>
+      </li>
+    `).join('');
+
+    items.querySelectorAll<HTMLButtonElement>('[data-remove]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.dataset.remove;
+        if (!url) return;
+        const next = read().filter(b => b.url !== url);
+        write(next);
+        render();
+      });
+    });
+  }
+
+  document.getElementById('bm-clear')?.addEventListener('click', () => {
+    if (confirm('Supprimer toutes les pages sauvegardées ?')) {
+      localStorage.removeItem(KEY);
+      window.dispatchEvent(new CustomEvent('ccme:bookmarks-changed'));
+      render();
+    }
+  });
+
+  window.addEventListener('ccme:bookmarks-changed', render);
+  render();
+</script>

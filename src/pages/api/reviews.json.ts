@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Verified client reviews exposed as JSON for agents that want the raw
  * testimonial corpus without scraping the /avis-clients HTML.
  *
@@ -9,7 +9,7 @@
 import type { APIRoute } from 'astro';
 import { reviews, averageRating, reviewCount } from '~/data/reviews';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 export const prerender = true;
 
 export const GET: APIRoute = async () => {

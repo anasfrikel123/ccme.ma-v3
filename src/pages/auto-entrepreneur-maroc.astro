@@ -1,0 +1,231 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import Icon from '~/components/Icon.astro';
+import { cabinet, SITE } from '~/data/cabinet';
+
+// Funnel page for the high-volume national query "auto-entrepreneur Maroc".
+// Strategy: we don't try to win the generic "c'est quoi l'AE" term (owned by
+// software/content sites). We capture the DECISION-intent searcher — the
+// auto-entrepreneur who has outgrown the status and must convert to SARL —
+// because THAT person is a high-value création-société client. The page funnels
+// into /services/creation-entreprise + /outils/simulateur-creation and the two
+// existing comparatifs. Evergreen, ranked on decision-utility + local CTA.
+
+const faq = [
+  {
+    q: "C'est quoi le statut auto-entrepreneur au Maroc ?",
+    a: "Le statut d'auto-entrepreneur (loi 114-13) permet à une personne physique d'exercer une activité indépendante avec une fiscalité ultra-simplifiée : un impôt libératoire calculé sur le chiffre d'affaires (et non sur le bénéfice), pas de TVA, pas de registre du commerce obligatoire, et une comptabilité réduite à un simple registre des recettes. C'est le point d'entrée idéal pour tester une activité ou se lancer en solo, sans frais de structure. Sa contrepartie : des plafonds de chiffre d'affaires et l'impossibilité de déduire ses charges réelles."
+  },
+  {
+    q: "Quels sont les plafonds de chiffre d'affaires de l'auto-entrepreneur ?",
+    a: "Deux plafonds annuels : 500 000 DH pour les prestations de services, et 2 000 000 DH pour les activités commerciales, industrielles et artisanales. Dépasser ces seuils fait perdre le bénéfice du régime — c'est l'un des principaux déclencheurs du passage en société. À surveiller aussi : depuis 2023, les sommes versées par un même client au-delà de 80 000 DH par an sont soumises à une retenue de 30 %, pour éviter le salariat déguisé."
+  },
+  {
+    q: "Auto-entrepreneur ou SARL : lequel paie le moins d'impôt ?",
+    a: "Ça dépend entièrement de vos charges. L'auto-entrepreneur est taxé sur son chiffre d'affaires brut (0,5 % à 1 %), sans tenir compte de ses dépenses. Si vous avez peu de charges, c'est imbattable. Mais si vous avez des charges réelles importantes (loyer, achats, sous-traitance, salaires), la SARL devient plus avantageuse : elle est imposée sur le bénéfice (CA moins charges), et permet de récupérer la TVA sur vos achats. Notre simulateur de création vous donne une première estimation chiffrée."
+  },
+  {
+    q: "Que se passe-t-il si je dépasse le plafond auto-entrepreneur ?",
+    a: "Vous perdez le régime et basculez dans la fiscalité de droit commun (IR au barème progressif, puis assujettissement à la TVA). Concrètement, il faut anticiper : dès que votre activité approche le plafond ou que la croissance se confirme, la bonne décision est de créer une société (SARL ou SARLAU) avant d'y être contraint dans l'urgence. C'est exactement le moment où un expert-comptable structure proprement la transition."
+  },
+  {
+    q: "Comment passer d'auto-entrepreneur à SARL ?",
+    a: "On radie le statut d'auto-entrepreneur et on crée la société en parallèle : choix de la forme (SARL ou SARLAU), rédaction des statuts, dépôt du capital, immatriculation au registre du commerce, obtention de l'ICE et de l'identifiant fiscal, affiliation CNSS. Le transfert de l'activité (clients, contrats, matériel) se prépare pour ne pas créer de rupture. À Tanger, CCME gère l'ensemble de la procédure et vous remet une société opérationnelle, avec le bon régime fiscal dès le départ."
+  },
+  {
+    q: "Un auto-entrepreneur peut-il facturer la TVA ?",
+    a: "Non. L'auto-entrepreneur ne facture pas la TVA et ne peut pas la récupérer sur ses achats. C'est un avantage prix face à des particuliers, mais un vrai handicap en B2B : vos clients professionnels ne récupèrent rien sur vos factures, et vous payez la TVA sur tous vos achats sans la déduire. Si votre clientèle est surtout composée d'entreprises, la SARL (assujettie à la TVA) est généralement plus cohérente."
+  },
+  {
+    q: "Combien coûte la création d'une SARL à Tanger ?",
+    a: "Comptez à partir de 3 500 DH HT d'honoraires pour la création, hors frais administratifs (timbres, légalisations, RC, publication). Le coût exact dépend de la forme, du nombre d'associés et du capital. Notre page Tarifs détaille la grille, et le simulateur de coût de création donne une estimation immédiate. Le premier échange de cadrage est gratuit."
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${SITE}/auto-entrepreneur-maroc#article`,
+      headline: "Auto-entrepreneur ou SARL au Maroc : quand passer en société",
+      description:
+        "Plafonds, taux et limites du statut auto-entrepreneur, et les signaux qui imposent le passage en SARL. Guide 2026 et accompagnement à Tanger.",
+      image: `${SITE}/og/default.jpg`,
+      datePublished: '2026-06-14',
+      dateModified: '2026-06-14',
+      author: { '@type': 'Organization', '@id': `${SITE}/#accounting`, name: cabinet.legalName },
+      publisher: { '@type': 'Organization', '@id': `${SITE}/#accounting`, name: cabinet.legalName },
+      inLanguage: 'fr-MA',
+      isAccessibleForFree: true,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/auto-entrepreneur-maroc` },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE}/auto-entrepreneur-maroc#faq`,
+      inLanguage: 'fr-MA',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+<Page
+  title="Auto-entrepreneur ou SARL au Maroc ? | CCME Tanger"
+  description="Auto-entrepreneur au Maroc : plafonds, taux, limites du statut et quand passer en SARL. Guide 2026 et accompagnement création de société à Tanger."
+  eyebrow="Guide"
+  heading="Auto-entrepreneur ou société au Maroc : quand passer en SARL ?"
+  lede="Le statut auto-entrepreneur est parfait pour démarrer. Mais il a des plafonds et des angles morts. Voici comment savoir si vous l'avez dépassé — et comment basculer en SARL proprement, sans casser votre activité."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Auto-entrepreneur ou SARL' }]}
+  keywords={[
+    'auto-entrepreneur Maroc',
+    'auto-entrepreneur ou SARL Maroc',
+    'plafond auto-entrepreneur Maroc',
+    'passer auto-entrepreneur en société',
+    'création SARL Tanger',
+    'statut auto-entrepreneur 2026'
+  ]}
+  schema={schema}
+>
+  <section>
+    <div class="container guide">
+      <p class="updated"><Icon name="check" size={14} stroke={2.4} /> Mis à jour en juin 2026 — seuils et taux du régime auto-entrepreneur (loi 114-13).</p>
+
+      <h2>Le statut auto-entrepreneur, en bref</h2>
+      <p>L'auto-entrepreneur, c'est la porte d'entrée la plus simple pour se lancer en solo au Maroc : pas de structure lourde, une fiscalité forfaitaire, une comptabilité minimale. Voici le cadre chiffré :</p>
+      <div class="quick-table">
+        <table>
+          <thead>
+            <tr><th>Critère</th><th>Règle 2026</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Plafond CA — services</td><td>500 000 DH / an</td></tr>
+            <tr><td>Plafond CA — commerce, industrie, artisanat</td><td>2 000 000 DH / an</td></tr>
+            <tr><td>Impôt libératoire — services</td><td>1 % du chiffre d'affaires</td></tr>
+            <tr><td>Impôt libératoire — commercial / industriel</td><td>0,5 % du chiffre d'affaires</td></tr>
+            <tr><td>Retenue au-delà de 80 000 DH d'un même client</td><td>30 % (anti-salariat déguisé)</td></tr>
+            <tr><td>TVA</td><td>Ni facturée, ni récupérable</td></tr>
+            <tr><td>Déduction des charges réelles</td><td>Impossible</td></tr>
+            <tr><td>Comptabilité</td><td>Registre des recettes uniquement</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Les seuils et taux peuvent évoluer en loi de finances — vérifiez les valeurs en vigueur ou demandez-nous une confirmation avant toute décision.</p>
+      </div>
+
+      <h2>Les angles morts du statut</h2>
+      <p>Tant que votre activité est petite et peu chargée en dépenses, l'auto-entrepreneur est imbattable. Le problème, c'est qu'il est taxé sur le <strong>chiffre d'affaires brut</strong>, pas sur le bénéfice. Trois limites finissent par coûter cher :</p>
+      <ul class="reasons">
+        <li><strong>Vous payez l'impôt même à perte.</strong> 1 % de 400 000 DH de CA, c'est 4 000 DH d'impôt — même si vos charges ont mangé tout le bénéfice. La SARL, elle, n'impose que le bénéfice réel.</li>
+        <li><strong>Vous ne récupérez pas la TVA.</strong> Sur vos achats, votre matériel, votre loyer, la TVA à 20 % est perdue. En B2B, vos clients ne récupèrent rien non plus sur vos factures.</li>
+        <li><strong>Votre patrimoine personnel est exposé.</strong> Pas de séparation entre vous et l'activité : une dette professionnelle peut atteindre vos biens personnels. La SARL limite la responsabilité aux apports.</li>
+      </ul>
+
+      <h2>Les 8 signaux qu'il faut passer en société</h2>
+      <p>Si vous cochez une ou plusieurs de ces cases, il est temps de cadrer le passage en SARL — idéalement <em>avant</em> d'y être contraint dans l'urgence :</p>
+      <div class="checklist">
+        <div><Icon name="check" size={18} stroke={2.4} /> Vous approchez ou dépassez le <strong>plafond de chiffre d'affaires</strong>.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> Un <strong>seul client</strong> vous verse plus de 80 000 DH/an (retenue de 30 %).</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> Vous avez des <strong>charges réelles importantes</strong> (loyer, achats, sous-traitance).</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> Vos clients <strong>B2B exigent des factures avec TVA</strong>.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> Vous voulez <strong>embaucher des salariés</strong>.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> Vous cherchez un <strong>financement bancaire</strong> ou visez des marchés publics.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> Vous voulez <strong>protéger votre patrimoine</strong> personnel.</div>
+        <div><Icon name="check" size={18} stroke={2.4} /> Vous vous <strong>associez</strong> avec une ou plusieurs personnes.</div>
+      </div>
+
+      <h2>Auto-entrepreneur vs SARL — le comparatif</h2>
+      <div class="quick-table">
+        <table>
+          <thead>
+            <tr><th>Critère</th><th>Auto-entrepreneur</th><th>SARL / SARLAU</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Plafond de CA</td><td>500 K / 2 M DH</td><td>Aucun</td></tr>
+            <tr><td>Base d'imposition</td><td>CA brut (0,5–1 %)</td><td>Bénéfice (IS)</td></tr>
+            <tr><td>TVA</td><td>Non</td><td>Oui (récupérable)</td></tr>
+            <tr><td>Déduction des charges</td><td>Non</td><td>Oui</td></tr>
+            <tr><td>Responsabilité</td><td>Patrimoine personnel</td><td>Limitée aux apports</td></tr>
+            <tr><td>Associés</td><td>1 (personne physique)</td><td>1 à 50</td></tr>
+            <tr><td>Crédibilité banque / B2B</td><td>Limitée</td><td>Forte</td></tr>
+            <tr><td>Comptabilité</td><td>Registre des recettes</td><td>Comptabilité complète</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Pour aller plus loin : <a href="/comparatifs/freelance-vs-societe-maroc">Freelance ou société au Maroc</a> et <a href="/comparatifs/sarl-vs-sas-maroc">SARL ou SAS</a>.</p>
+      </div>
+
+      <h2>Comment se passe le passage en SARL</h2>
+      <p>La bascule se prépare pour ne créer aucune rupture dans votre activité. En pratique :</p>
+      <ul class="reasons">
+        <li><strong>Cadrage</strong> — on valide la forme (SARL ou SARLAU), le capital, le régime fiscal et TVA adaptés à votre activité.</li>
+        <li><strong>Création</strong> — statuts, dépôt du capital, immatriculation au registre du commerce, ICE, identifiant fiscal, affiliation CNSS.</li>
+        <li><strong>Transition</strong> — radiation de l'auto-entrepreneur, transfert des clients et contrats, mise en place de la comptabilité.</li>
+      </ul>
+      <p>On s'occupe de toute la procédure et on vous remet une société opérationnelle, avec le bon paramétrage fiscal dès le premier jour. <a href="/expert-comptable-tanger">Cabinet d'expert-comptable à Tanger</a>, on connaît les rouages locaux (DGI Tanger, RC, OMPIC).</p>
+
+      <h2>Estimez et lancez votre projet</h2>
+      <p>Avant de décider, chiffrez. Notre simulateur compare le coût et la fiscalité, et notre équipe cadre votre cas en 30 minutes, gratuitement.</p>
+      <p class="cta-block">
+        <a href="/outils/simulateur-creation" class="btn btn-ghost">Simuler le coût de création</a>
+        <a href="/services/creation-entreprise" class="btn btn-ghost">Voir le service création</a>
+        <a href="/contact" class="btn btn-primary">Premier échange gratuit</a>
+      </p>
+    </div>
+  </section>
+
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .guide { max-width: 78ch; }
+  .guide p, .guide li { font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+  .guide h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.85rem); color: var(--ink); margin-top: 44px; margin-bottom: 14px; }
+  .updated {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--paper-2); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 14px;
+    font-size: 13.5px; color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .updated :global(.icon) { color: var(--gold); }
+  .quick-table {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 16px; box-shadow: var(--shadow-1);
+    overflow-x: auto;
+    margin-top: 8px;
+  }
+  .quick-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .quick-table th, .quick-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .quick-table th { font-family: var(--sans); font-weight: 600; color: var(--ink); background: var(--paper-2); font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .quick-table tbody tr:last-child td { border-bottom: 0; }
+  .quick-table tbody tr:hover td { background: var(--paper-2); }
+  .quick-table .hint { font-size: 13px; color: var(--muted); margin: 12px 4px 0; padding: 0; }
+  .reasons li { margin-bottom: 12px; }
+  .checklist {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .checklist > div {
+    display: flex; align-items: flex-start; gap: 13px;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: 15px 18px;
+    font-size: 15px; line-height: 1.5; color: var(--ink-soft);
+    transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+  }
+  .checklist > div:hover {
+    border-color: color-mix(in oklch, var(--gold) 45%, var(--line));
+    box-shadow: 0 10px 26px -16px rgba(20, 37, 63, 0.20);
+    transform: translateY(-2px);
+  }
+  .checklist :global(.icon) {
+    width: 26px; height: 26px; padding: 5px; box-sizing: border-box;
+    color: #fff; background: var(--gold); border-radius: 50%;
+    flex-shrink: 0; margin-top: 1px;
+    box-shadow: 0 3px 8px -2px color-mix(in oklch, var(--gold) 55%, transparent);
+  }
+  .checklist strong { color: var(--ink); }
+  .cta-block { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+</style>

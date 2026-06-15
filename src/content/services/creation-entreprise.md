@@ -65,14 +65,14 @@ Total : 5 à 10 jours ouvrables si tout est carré dès le départ.
 
 **Vous êtes [expatrié français](/expat), espagnol ou belge** : il y a des subtilités côté Office des Changes (transferts en devises, rapatriement de bénéfices, avances en compte courant). On vous explique tout en amont, ça évite les blocages bancaires. À lire : notre [guide expatriés français à Tanger](/blog/expat-francais-investir-tanger).
 
-**Vous voulez vous installer en zone franche** (TFZ, TAC, Tanger Tech) : régime fiscal de faveur — exonération [IS](/outils/simulateur-is) sur 5 ans, puis taux réduit. On vérifie l'éligibilité de votre activité avant de lancer la procédure ZAI. Notre [comparatif Tanger Med vs TFZ vs TAC](/comparatifs/tanger-med-vs-tfz-vs-tac) détaille les avantages selon le profil d'activité.
+**Vous voulez vous installer en zone franche** (TFZ, TAC, Tanger Tech) : régime fiscal de faveur — exonération [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") sur 5 ans, puis taux réduit. On vérifie l'éligibilité de votre activité avant de lancer la procédure ZAI. Notre [comparatif Tanger Med vs TFZ vs TAC](/comparatifs/tanger-med-vs-tfz-vs-tac) détaille les avantages selon le profil d'activité.
 
 ## Et après la création ?
 
 C'est souvent là qu'on perd les entrepreneurs. La société est créée, mais personne ne leur dit qu'il faut :
 
 - Ouvrir un compte CNSS sur [Damancom](/services/damancom-cnss) et déclarer le premier salarié dans les 8 jours
-- Activer Simpl Impôts pour les télédéclarations [TVA](/outils/simulateur-tva) et IS
+- Activer Simpl Impôts pour les télédéclarations [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") et [IS](/outils/simulateur-is)
 - Tenir un livre journal coté et paraphé au tribunal
 - Faire la déclaration de patente avant le 31 janvier suivant
 

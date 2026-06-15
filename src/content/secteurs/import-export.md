@@ -26,12 +26,12 @@ faq:
 
 **Office des Changes.** Toute opération en devises avec l'étranger passe par lui. [Domiciliation](/services/domiciliation) bancaire des dossiers d'import et d'export, justification des règlements, formulaires Forex, déclarations annuelles. Beaucoup de sociétés se font sanctionner pour des oublis de formalisme alors que les opérations sont parfaitement légitimes.
 
-**[TVA](/outils/simulateur-tva) export.** Vos exports sont en exonération de TVA, mais vos achats locaux supportent la TVA. Résultat : vous accumulez du crédit de TVA. Sans demande de remboursement régulière, c'est de la trésorerie qui dort.
+**[TVA](/outils/simulateur-tva "Simulateur TVA Maroc") export.** Vos exports sont en exonération de [TVA](/outils/simulateur-tva), mais vos achats locaux supportent la TVA. Résultat : vous accumulez du crédit de TVA. Sans demande de remboursement régulière, c'est de la trésorerie qui dort.
 
 **Documentation douanière.** DUM à l'import et à l'export, déclarations sommaires, BAE. Les rapprochements entre douane et compta sont à faire — un écart inexpliqué, c'est un drapeau rouge en contrôle.
 
 **Prix de transfert.** Si vous avez une maison-mère à l'étranger, ou des sociétés sœurs, les transactions intra-groupe sont sous surveillance. Documentation prix de transfert obligatoire au-delà de certains seuils. La [DGI](/services/simpl-impots-dgi) marocaine s'est vraiment mise au sujet ces dernières années.
 
-**Régime de la zone franche.** Si vous opérez depuis [TFZ](/zones/tanger-free-zone) ou [TAC](/zones/tanger-automotive-city), vos exonérations [IS](/outils/simulateur-is) et TVA sont conditionnelles à un suivi rigoureux des opérations de la zone franche vs hors zone.
+**Régime de la zone franche.** Si vous opérez depuis [TFZ](/zones/tanger-free-zone) ou [TAC](/zones/tanger-automotive-city), vos exonérations [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") et TVA sont conditionnelles à un suivi rigoureux des opérations de la zone franche vs hors zone.
 
 On accompagne plusieurs sociétés import-export à Tanger : on connaît bien le terrain.

@@ -165,6 +165,45 @@ export const servicesDetail: Record<string, ServiceDetailMeta> = {
     ],
     "visual": "capture — comptabilité officine"
   },
+  "audit": {
+    "intro": [
+      "Un audit sécurise vos décisions et celles de vos associés, banques et investisseurs. Commissariat aux comptes, audit contractuel, due diligence et audit fiscal préventif — missions menées par des experts inscrits à l'OEC.",
+      "Bien conduit, l'audit n'est pas un contrôle pour vous embêter : c'est un regard externe qualifié sur la fiabilité de vos comptes et de vos procédures."
+    ],
+    "steps": [
+      {
+        "t": "Cadrage de la mission",
+        "d": "Définition du périmètre (légal, contractuel, fiscal), calendrier et livrables attendus."
+      },
+      {
+        "t": "Collecte & analyse",
+        "d": "Revue des comptes, procédures et pièces justificatives sur site ou à distance."
+      },
+      {
+        "t": "Rapport & recommandations",
+        "d": "Synthèse des constats, points de vigilance et plan d'actions priorisé."
+      },
+      {
+        "t": "Suivi post-audit",
+        "d": "Accompagnement sur les corrections et préparation des échéances suivantes (AGO, contrôle, cession)."
+      }
+    ],
+    "related": [
+      {
+        "label": "Supervision comptable",
+        "href": "/services/supervision-comptable"
+      },
+      {
+        "label": "Contrôle et contentieux",
+        "href": "/services/controle-contentieux"
+      },
+      {
+        "label": "Gestion financière",
+        "href": "/services/gestion-financiere"
+      }
+    ],
+    "visual": "capture — rapport d'audit"
+  },
   "conseil-fiscal": {
     "intro": [
       "Nos experts analysent votre situation et identifient les leviers d'optimisation adaptés à votre activité, tout en sécurisant votre conformité.",

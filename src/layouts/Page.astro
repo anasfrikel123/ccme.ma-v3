@@ -1,4 +1,4 @@
----
+﻿---
 import Base from './Base.astro';
 import Breadcrumb from '~/components/Breadcrumb.astro';
 import CTA from '~/components/CTA.astro';
@@ -21,6 +21,7 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   noindex?: boolean;
+  lang?: string;
 }
 const {
   eyebrow,
@@ -48,8 +49,10 @@ const heroWebp = heroImage ? heroImage.replace(/\.jpe?g$/i, '.webp') : '';
 // emits speakable hints + an Organization-linked publisher entity. This is
 // the post-March-2026 minimum required for AI Mode to confidently resolve
 // the publishing entity behind every page (not just home + blog posts).
-const SITE_BASE = 'https://www.ccme.ma';
-const pagePath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const SITE_BASE = 'https://ccme.ma';
+// Strip .html (Astro build.format: 'file') and trailing slash so canonicals,
+// JSON-LD URLs and og:url all match the clean URL Cloudflare actually serves.
+const pagePath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 const pageUrl = `${SITE_BASE}${pagePath}`;
 const { title: pageTitle, description: pageDesc, publishedTime: pubT, modifiedTime: modT } = seo as {
   title: string; description: string; publishedTime?: string; modifiedTime?: string;
@@ -62,9 +65,9 @@ const webPageSchema: Record<string, any> = {
   name: pageTitle,
   description: pageDesc,
   inLanguage: 'fr-MA',
-  isPartOf: { '@id': 'https://www.ccme.ma/#website' },
-  about: { '@id': 'https://www.ccme.ma/#accounting' },
-  publisher: { '@id': 'https://www.ccme.ma/#accounting' },
+  isPartOf: { '@id': 'https://ccme.ma/#website' },
+  about: { '@id': 'https://ccme.ma/#accounting' },
+  publisher: { '@id': 'https://ccme.ma/#accounting' },
   speakable: {
     '@type': 'SpeakableSpecification',
     cssSelector: ['.page-hero h1', '.page-hero .lede', 'main h2'],
@@ -86,7 +89,7 @@ const finalSeo = { ...seo, schema: mergedSchema };
     <div class="container page-hero-grid">
       <div class="page-hero-text">
         {breadcrumb && <Breadcrumb items={breadcrumb} />}
-        {eyebrow && <p class="eyebrow fade-up">{eyebrow}</p>}
+        {eyebrow && <p class="eyebrow eyebrow-gold fade-up">{eyebrow}</p>}
         <h1 class="fade-up d1">{heading}</h1>
         {lede && <p class="lede fade-up d2">{lede}</p>}
       </div>

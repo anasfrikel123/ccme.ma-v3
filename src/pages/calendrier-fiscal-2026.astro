@@ -1,4 +1,4 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import FAQ from '~/components/FAQ.astro';
 import Icon from '~/components/Icon.astro';
@@ -14,7 +14,7 @@ import Icon from '~/components/Icon.astro';
 //  - Refreshed monthly via `dateModified`, which gives Google a clear
 //    freshness signal even when the substance stays stable
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 
 interface Echeance {
   date: string;        // human-readable date
@@ -167,6 +167,12 @@ const typeColors: Record<Echeance['type'], string> = {
     <div class="container cal">
       <p class="updated"><Icon name="check" size={14} stroke={2.4} /> Dernière mise à jour : 12 juin 2026 — vérifié contre les circulaires DGI et CNSS.</p>
 
+      <p class="pdf-download">
+        <a href="/files/calendrier-fiscal-2026.pdf" class="btn btn-gold" download>
+          Télécharger le calendrier fiscal 2026 (PDF)
+        </a>
+      </p>
+
       <div class="legend" aria-label="Légende des types d'échéances">
         <span class="tag tag-tva">TVA</span>
         <span class="tag tag-is">IS</span>
@@ -219,6 +225,9 @@ const typeColors: Record<Echeance['type'], string> = {
     margin-bottom: 24px;
   }
   .updated :global(.icon) { color: var(--gold); }
+
+  .pdf-download { margin: 0 0 28px; }
+  .pdf-download .btn { display: inline-flex; align-items: center; gap: 8px; }
 
   .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; padding: 14px 16px; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-md); }
   .tag {

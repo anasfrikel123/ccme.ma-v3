@@ -1,0 +1,68 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import CompareTable from '~/components/CompareTable.astro';
+
+const faq = [
+  { q: "Puis-je faire ma comptabilité moi-même avec un logiciel au Maroc ?", a: "Pour un auto-entrepreneur ou une très petite activité au régime simplifié, oui : un logiciel suffit à suivre les recettes et à éditer l'essentiel. Mais pour une société soumise à l'IS, qui doit produire des états conformes au CGNC et une liasse fiscale cohérente, le logiciel n'est qu'un outil — il ne remplace ni la technique comptable, ni la responsabilité face à la DGI. L'erreur coûte presque toujours plus cher que les honoraires économisés." },
+  { q: "Un logiciel gère-t-il la liasse fiscale et la télédéclaration ?", a: "Certains logiciels produisent les états et exportent vers Simpl-Impôts, mais ils ne garantissent pas la cohérence de votre liasse fiscale : ventilation des charges, déductibilité, retraitements, concordances TVA/IS. C'est précisément là que se jouent les redressements. Le logiciel calcule ce que vous saisissez ; il ne vous dit pas si ce que vous saisissez est juste." },
+  { q: "Existe-t-il une solution intermédiaire ?", a: "Oui, et c'est souvent la meilleure : la supervision comptable. Vous (ou votre assistant) tenez la saisie au quotidien sur votre logiciel, et nous contrôlons, corrigeons et validons avant chaque échéance DGI et CNSS. Vous gardez la main et le coût bas, sans porter seul le risque fiscal." },
+  { q: "Combien coûte un expert-comptable par rapport à un logiciel ?", a: "Un logiciel coûte un abonnement mensuel ; un expert-comptable, des honoraires calés sur votre volume. Mais la comparaison n'est pas qu'une question de prix : l'expert-comptable inclut le conseil, l'optimisation fiscale, la veille réglementaire et surtout sa responsabilité (assurance RC obligatoire). Le vrai calcul, c'est le coût total — logiciel + votre temps + le risque d'erreur — face à des honoraires qui couvrent tout." },
+];
+
+const compareColumns = ['Critère', 'Logiciel de comptabilité', 'Expert-comptable'];
+const compareRows = [
+  { label: 'Coût direct', values: ['Abonnement mensuel', 'Honoraires selon volume'] },
+  { label: 'Temps à y consacrer', values: ['Important (saisie, veille, échéances)', 'Quasi nul pour vous'] },
+  { label: 'Conformité CGNC / liasse fiscale', values: ['À votre charge', 'Garantie et visée'] },
+  { label: 'Risque d\'erreur DGI / CNSS', values: ['Élevé sans expertise', 'Faible'] },
+  { label: 'Conseil & optimisation (IS, TVA, IR)', values: ['Aucun', 'Inclus'] },
+  { label: 'Veille loi de finances', values: ['À vous de suivre', 'Assurée'] },
+  { label: 'Responsabilité en cas d\'erreur', values: ['La vôtre', 'Couverte (assurance RC OEC)'] },
+  { label: 'Face à un contrôle fiscal', values: ['Seul', 'Accompagné et défendu'] },
+  { label: 'Idéal pour', values: ['Auto-entrepreneur, activité simple', 'Société, croissance, enjeux fiscaux'] },
+];
+---
+<Page
+  title="Logiciel ou expert-comptable au Maroc"
+  description="Faire sa comptabilité avec un logiciel ou confier à un expert-comptable au Maroc ? Comparatif coût, risque DGI, liasse fiscale et conseil. Lequel choisir ?"
+  eyebrow="Comparatif"
+  heading="Logiciel de comptabilité ou expert-comptable"
+  lede="Tenir sa compta soi-même sur un logiciel pour économiser, ou déléguer à un expert-comptable ? On compare le vrai coût — temps et risque compris."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs', href: '/comparatifs' }, { label: 'Logiciel vs expert-comptable' }]}
+  keywords={["logiciel comptabilité Maroc","faire sa comptabilité soi-même Maroc","expert-comptable ou logiciel","logiciel liasse fiscale Maroc"]}
+>
+  <section>
+    <div class="container">
+      <CompareTable columns={compareColumns} rows={compareRows} narrow="md" />
+
+      <div class="prose compare-prose">
+        <h2>Quand le logiciel suffit — et quand il ne suffit plus</h2>
+
+        <h3>Le logiciel seul</h3>
+        <p>Pour un <strong>auto-entrepreneur</strong> ou une activité très simple, un logiciel de comptabilité fait le travail : suivi des recettes, factures, états de base. C'est peu coûteux et ça responsabilise. Le piège, c'est de croire qu'il « fait la compta » à votre place : il calcule ce que vous saisissez, mais ne vous dit pas si une charge est déductible, si votre TVA concorde, ou si votre liasse tiendra face à un inspecteur.</p>
+        <p><strong>Notre conseil :</strong> tant que vous êtes auto-entrepreneur sans TVA ni salariés, restez sur un logiciel. Dès que vous passez en société à l'IS, le risque change de catégorie.</p>
+
+        <h3>L'expert-comptable</h3>
+        <p>Dès qu'il y a une <strong>société soumise à l'IS</strong>, de la TVA, des salariés et une liasse fiscale à déposer, l'expert-comptable n'est plus un luxe mais une assurance. Il garantit la conformité, optimise votre <a href="/outils/simulateur-is" title="Simulateur IS Maroc">IS</a> et votre TVA dans le cadre légal, assure la veille (loi de finances, notes circulaires), et engage sa responsabilité — couverte par une assurance professionnelle. C'est notre métier : <a href="/services/tenue-comptabilite">tenue de comptabilité</a> complète ou <a href="/services/externalisation-comptable">externalisation</a> clé en main.</p>
+        <p><strong>Notre conseil :</strong> ne mesurez pas seulement l'abonnement économisé, mais le coût total — votre temps + le risque de redressement. Une seule erreur de liasse coûte souvent plus cher qu'une année d'honoraires.</p>
+
+        <h3>La solution intermédiaire : la supervision</h3>
+        <p>Le meilleur des deux mondes : vous (ou votre assistant) tenez la saisie sur votre logiciel, et nous <a href="/services/supervision-comptable">supervisons</a> — contrôle, correction et validation avant chaque échéance DGI et CNSS. Vous gardez le coût bas et la main sur vos chiffres, sans porter seul le risque fiscal. Et en cas de <a href="/services/controle-contentieux">contrôle fiscal</a>, vous n'êtes plus seul face à la DGI.</p>
+
+        <h2>Cas pratiques</h2>
+        <p><strong>Omar, auto-entrepreneur graphiste :</strong> un logiciel suffit largement. Pas besoin de nous pour l'instant.</p>
+        <p><strong>SARL e-commerce, 1,2 MDH de CA, TVA et 3 salariés :</strong> a tenu seule sur un logiciel un an, puis un crédit de TVA mal déclaré et une liasse incohérente ont déclenché un contrôle. Reprise + supervision désormais.</p>
+        <p><strong>PME industrielle, 6 MDH de CA :</strong> externalisation complète. Le dirigeant ne touche plus à la compta et pilote sur tableau de bord.</p>
+
+        <p><a href="/services/supervision-comptable">→ Supervision comptable : vous saisissez, on valide</a></p>
+        <p><a href="/services/conseil-fiscal">→ Conseil fiscal : l'optimisation qu'un logiciel ne fera jamais</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .compare-prose { margin-top: 48px; max-width: 1000px; margin-inline: auto; }
+</style>

@@ -21,7 +21,7 @@ Recevoir un avis de vérification, ça remue. Surtout quand on est PME et qu'on 
 C'est un courrier de la [DGI](/services/simpl-impots-dgi) qui vous notifie l'intention de contrôler vos comptes. Il précise :
 
 - Les exercices concernés (généralement les 4 derniers exercices non prescrits)
-- Les impôts visés ([IS](/outils/simulateur-is), [TVA](/outils/simulateur-tva), [IR](/outils/simulateur-ir), ou les trois)
+- Les impôts visés ([IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc"), [TVA](/outils/simulateur-tva "Simulateur TVA Maroc"), [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc"), ou les trois)
 - La date du début du contrôle (au minimum 15 jours après la notification)
 - Le nom de l'inspecteur en charge
 - Le lieu du contrôle (sur place dans vos locaux ou sur pièces dans les bureaux DGI)
@@ -35,7 +35,7 @@ D'abord, ne rien envoyer à la DGI sans réfléchir. Pas de réponse précipité
 Ensuite :
 
 1. **Appeler votre comptable**. Si vous n'en avez pas, c'est le moment d'en prendre un — un cabinet inscrit [OEC](/glossaire#oec) habitué aux contrôles. À Tanger il y en a plusieurs sérieux.
-2. **Récupérer toutes vos pièces** des exercices visés : grand livre, balances, journaux, justificatifs (factures achats/ventes, relevés bancaires, contrats), bilans, déclarations TVA et IS déposées, attestations diverses.
+2. **Récupérer toutes vos pièces** des exercices visés : grand livre, balances, journaux, justificatifs (factures achats/ventes, relevés bancaires, contrats), bilans, déclarations [TVA](/outils/simulateur-tva) et [IS](/outils/simulateur-is) déposées, attestations diverses.
 3. **Identifier les zones sensibles**. Demandes d'IS atypiques, baisses de marge inhabituelles, comptes courants d'associés très débiteurs, charges déductibles atypiques (voyages, restaurants, cadeaux), TVA récupérée sur des factures border-line.
 4. **Préparer les justificatifs manquants**. Si une charge importante n'a pas son justif, c'est le moment de le retrouver.
 

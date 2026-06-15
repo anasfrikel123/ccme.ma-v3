@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Blog index in JSON form. Lets agents enumerate articles by category,
  * filter by date, and pull keywords without scraping HTML pages.
  */
@@ -6,7 +6,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 export const prerender = true;
 
 export const GET: APIRoute = async () => {

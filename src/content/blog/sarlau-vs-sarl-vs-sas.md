@@ -26,7 +26,7 @@ C'est la première vraie question quand on monte une boîte au Maroc : quelle fo
 - Capital minimum : 10 000 DH (libérable en numéraire ou nature)
 - Responsabilité limitée à l'apport
 - Formalisme allégé : pas d'AG (vous êtes seul), juste des décisions de l'associé unique
-- Fiscalité : [IS](/outils/simulateur-is) au taux PME (20 % en 2026)
+- Fiscalité : [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") au taux PME (20 % en 2026)
 - Possibilité de se rémunérer sous forme de salaire ET de dividendes
 
 **Limites**
@@ -46,7 +46,7 @@ Société à Responsabilité Limitée classique, 2 à 50 associés.
 - Même capital minimum (10 000 DH)
 - Responsabilité limitée
 - Très répandu, formalisme bien rodé
-- Fiscalité : IS au taux PME
+- Fiscalité : [IS](/outils/simulateur-is) au taux PME
 
 **Limites**
 
@@ -83,8 +83,8 @@ Société par Actions Simplifiée. Beaucoup plus souple que la SARL.
 **Rémunération du dirigeant** :
 
 - **SARLAU/SARL** — gérant majoritaire = TNS. Cotise à l'AMO-TNS, retraite complémentaire optionnelle. Rémunération déductible du résultat. Pas de bulletin de paie, mais déclaration 9000.
-- **SARL** — gérant minoritaire ou égalitaire = "assimilé salarié". Bulletin de paie, [CNSS](/glossaire#cnss) classique, [IR](/outils/simulateur-ir) sur salaires.
-- **SAS** — président = assimilé salarié. CNSS, IR salaires. Possibilité d'être très bien protégé socialement.
+- **SARL** — gérant minoritaire ou égalitaire = "assimilé salarié". Bulletin de paie, [CNSS](/glossaire#cnss) classique, [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") sur salaires.
+- **SAS** — président = assimilé salarié. CNSS, [IR](/outils/simulateur-ir) salaires. Possibilité d'être très bien protégé socialement.
 
 **Distribution de dividendes** : retenue à la source de 15% libératoire pour les associés résidents, 15% pour les non-résidents (sauf convention).
 

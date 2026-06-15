@@ -58,8 +58,8 @@ export const DOC_GUIDES: DocGuide[] = [
     ],
     refs: [
       { label: "Création d'entreprise — CCME", href: '/services/creation-entreprise' },
-      { label: 'Circulaire APP0001 (PDF)', href: '/files/Circulaire+APP0001.pdf', external: true },
-      { label: 'FAQ APP (PDF)', href: '/files/FAQ+APP.pdf', external: true },
+      { label: 'Circulaire APP0001 (PDF)', href: 'https://ccme.ma/files/Circulaire+APP0001.pdf', external: true },
+      { label: 'FAQ APP (PDF)', href: 'https://ccme.ma/files/FAQ+APP.pdf', external: true },
     ],
   },
   {
@@ -85,28 +85,35 @@ export const DOC_GUIDES: DocGuide[] = [
     refs: [
       {
         label: 'Note synthétique LF 2026 (PDF)',
-        href: '/files/NOTE+SYNTHETIQUE+DES+MESURES+FISCALES+DE+LA+LOI+DE+FINANCES+N%C2%B0+50-25+POUR+L%E2%80%99ANNEE+BUDGETAIRE+2026.VF.pdf',
+        href: 'https://ccme.ma/files/NOTE+SYNTHETIQUE+DES+MESURES+FISCALES+DE+LA+LOI+DE+FINANCES+N%C2%B0+50-25+POUR+L%E2%80%99ANNEE+BUDGETAIRE+2026.VF.pdf',
         external: true,
       },
       {
         label: 'Note Circulaire 734 (PDF)',
-        href: '/files/NOTE+CIRCULAIRE+N%C2%B0+734+RELATIVE+AUX+DISPOSITIONS+DE+LA+LOI+N%C2%B0+69.21.PDF',
+        href: 'https://ccme.ma/files/NOTE+CIRCULAIRE+N%C2%B0+734+RELATIVE+AUX+DISPOSITIONS+DE+LA+LOI+N%C2%B0+69.21.PDF',
         external: true,
       },
-      { label: 'CGI 2026 (Français)', href: '/files/CGI+2026+FR.pdf', external: true },
+      { label: 'CGI 2026 (Français)', href: 'https://ccme.ma/files/CGI+2026+FR.pdf', external: true },
       { label: 'Conseil fiscal — CCME', href: '/services/conseil-fiscal' },
     ],
   },
 ];
 
-/** PDF downloads — paths match main site `/files/` directory. */
+/**
+ * PDF downloads — hosted on the legacy ccme.ma site (cross-domain). They are
+ * large (6–12 MB each, ~70 MB total) and would bloat a Cloudflare Pages
+ * deploy, so we link to the existing copies on ccme.ma. They render as
+ * external links in the UI.
+ */
+const LEGACY_FILES = 'https://ccme.ma/files';
+
 export const DOC_GROUPS: DocGroup[] = [
   {
     title: 'Code Général des Impôts & charte',
     items: [
-      { name: 'CGI 2026 (Arabe)', format: 'PDF', href: '/files/CGI+2026+AR.pdf' },
-      { name: 'CGI 2026 (Français)', format: 'PDF', href: '/files/CGI+2026+FR.pdf' },
-      { name: 'Charte du Contribuable 2026 (FR)', format: 'PDF', href: '/files/Charte+2026+Fr.pdf' },
+      { name: 'CGI 2026 (Arabe)', format: 'PDF', href: `${LEGACY_FILES}/CGI+2026+AR.pdf` },
+      { name: 'CGI 2026 (Français)', format: 'PDF', href: `${LEGACY_FILES}/CGI+2026+FR.pdf` },
+      { name: 'Charte du Contribuable 2026 (FR)', format: 'PDF', href: `${LEGACY_FILES}/Charte+2026+Fr.pdf` },
     ],
   },
   {
@@ -115,18 +122,18 @@ export const DOC_GROUPS: DocGroup[] = [
       {
         name: 'Note Circulaire N° 734 (Loi 69.21)',
         format: 'PDF',
-        href: '/files/NOTE+CIRCULAIRE+N%C2%B0+734+RELATIVE+AUX+DISPOSITIONS+DE+LA+LOI+N%C2%B0+69.21.PDF',
+        href: `${LEGACY_FILES}/NOTE+CIRCULAIRE+N%C2%B0+734+RELATIVE+AUX+DISPOSITIONS+DE+LA+LOI+N%C2%B0+69.21.PDF`,
       },
       {
         name: 'Note synthétique – Loi de Finances 2026',
         format: 'PDF',
-        href: '/files/NOTE+SYNTHETIQUE+DES+MESURES+FISCALES+DE+LA+LOI+DE+FINANCES+N%C2%B0+50-25+POUR+L%E2%80%99ANNEE+BUDGETAIRE+2026.VF.pdf',
+        href: `${LEGACY_FILES}/NOTE+SYNTHETIQUE+DES+MESURES+FISCALES+DE+LA+LOI+DE+FINANCES+N%C2%B0+50-25+POUR+L%E2%80%99ANNEE+BUDGETAIRE+2026.VF.pdf`,
       },
     ],
   },
   {
     title: 'Bulletin Officiel',
-    items: [{ name: 'Bulletin Officiel 7412 (AR)', format: 'PDF', href: '/files/B.O_7412_Ar.pdf' }],
+    items: [{ name: 'Bulletin Officiel 7412 (AR)', format: 'PDF', href: `${LEGACY_FILES}/B.O_7412_Ar.pdf` }],
   },
   {
     title: 'TP, TSC & TH – déclarations 2026',
@@ -134,36 +141,36 @@ export const DOC_GROUPS: DocGroup[] = [
       {
         name: 'TP & TSC – Déclaration Chômage 2026 (FR)',
         format: 'PDF',
-        href: '/files/Communiqu%C3%A9_+TP+et+TSC__D%C3%A9claration+Ch%C3%B4mage_2026_FR_VF.pdf',
+        href: `${LEGACY_FILES}/Communiqu%C3%A9_+TP+et+TSC__D%C3%A9claration+Ch%C3%B4mage_2026_FR_VF.pdf`,
       },
       {
         name: 'TP & TSC – Déclaration Vacance 2026 (FR)',
         format: 'PDF',
-        href: '/files/Communiqu%C3%A9_+TP+et+TSC__D%C3%A9claration+vacance_2026_FR_VF.pdf',
+        href: `${LEGACY_FILES}/Communiqu%C3%A9_+TP+et+TSC__D%C3%A9claration+vacance_2026_FR_VF.pdf`,
       },
       {
         name: 'TP & TSC – Éléments imposables (Janv. 2026)',
         format: 'PDF',
-        href: '/files/Communiqu%C3%A9_+TP+et+TSC_D%C3%A9claration+El%C3%A9ments+imposables_Janv+2026_FR_VF.pdf',
+        href: `${LEGACY_FILES}/Communiqu%C3%A9_+TP+et+TSC_D%C3%A9claration+El%C3%A9ments+imposables_Janv+2026_FR_VF.pdf`,
       },
       {
         name: 'TH & TSC – Achèvement 2026 (FR)',
         format: 'PDF',
-        href: '/files/communiqu%C3%A9+-TH+et+TSC+_ach%C3%A9vement_+2026-+FR+(2).pdf',
+        href: `${LEGACY_FILES}/communiqu%C3%A9+-TH+et+TSC+_ach%C3%A9vement_+2026-+FR+(2).pdf`,
       },
-      { name: 'Communiqué TSAV 2026 (FR)', format: 'PDF', href: '/files/communiqu%C3%A9_+TSAV+_FR_2026.pdf' },
-      { name: 'Communiqué TSAV 2026 (AR)', format: 'PDF', href: '/files/Communiqu%C3%A9+_TSAV+_AR_2026.pdf' },
+      { name: 'Communiqué TSAV 2026 (FR)', format: 'PDF', href: `${LEGACY_FILES}/communiqu%C3%A9_+TSAV+_FR_2026.pdf` },
+      { name: 'Communiqué TSAV 2026 (AR)', format: 'PDF', href: `${LEGACY_FILES}/Communiqu%C3%A9+_TSAV+_AR_2026.pdf` },
     ],
   },
   {
     title: 'Auto-entrepreneur (APP)',
     items: [
-      { name: 'Circulaire APP0001', format: 'PDF', href: '/files/Circulaire+APP0001.pdf' },
-      { name: 'FAQ APP', format: 'PDF', href: '/files/FAQ+APP.pdf' },
+      { name: 'Circulaire APP0001', format: 'PDF', href: `${LEGACY_FILES}/Circulaire+APP0001.pdf` },
+      { name: 'FAQ APP', format: 'PDF', href: `${LEGACY_FILES}/FAQ+APP.pdf` },
       {
         name: 'Processus de traitement des demandes APP',
         format: 'PDF',
-        href: '/files/processus+de+traitement+des+demandes+des+APP.pdf',
+        href: `${LEGACY_FILES}/processus+de+traitement+des+demandes+des+APP.pdf`,
       },
     ],
   },
@@ -173,28 +180,57 @@ export const DOC_GROUPS: DocGroup[] = [
       {
         name: 'Secteur Touristique 2025 (FR)',
         format: 'PDF',
-        href: '/files/SECTEUR+TOURISTIQUE_FR_2025_VF.pdf',
+        href: `${LEGACY_FILES}/SECTEUR+TOURISTIQUE_FR_2025_VF.pdf`,
       },
       {
         name: 'نشرة الاجتهاد القضائي – عدد 6 (2025)',
         format: 'PDF',
-        href: '/files/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+6-2025.pdf',
+        href: `${LEGACY_FILES}/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+6-2025.pdf`,
       },
       {
         name: 'نشرة الاجتهاد القضائي – عدد 7 (2025)',
         format: 'PDF',
-        href: '/files/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+7-2025.pdf',
+        href: `${LEGACY_FILES}/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+7-2025.pdf`,
       },
       {
         name: 'نشرة الاجتهاد القضائي – عدد 8 (2025)',
         format: 'PDF',
-        href: '/files/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+8-2025.pdf',
+        href: `${LEGACY_FILES}/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+8-2025.pdf`,
       },
       {
         name: 'نشرة الاجتهاد القضائي – عدد 9 (2025)',
         format: 'PDF',
-        href: '/files/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+9-2025.pdf',
+        href: `${LEGACY_FILES}/%D9%86%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF+%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A+%D8%B9%D8%AF%D8%AF+9-2025.pdf`,
       },
+    ],
+  },
+  {
+    title: 'Normes comptables & analyse financière',
+    items: [
+      { name: 'Code Général de Normalisation Comptable (CGNC)', format: 'PDF', href: `${LEGACY_FILES}/cgnc.pdf` },
+      { name: 'Analyse du bilan & ratios financiers', format: 'PDF', href: `${LEGACY_FILES}/Analyse_du_bilan_et_ratio_1735848957.pdf` },
+    ],
+  },
+  {
+    title: 'Textes juridiques',
+    items: [
+      { name: 'Code de commerce (actualisé, 2023)', format: 'PDF', href: `${LEGACY_FILES}/Code%20de%20commerce%20actualis%C3%A9%20-%2015%20juin%202023.pdf` },
+      { name: 'Droit des contrats et des obligations', format: 'PDF', href: `${LEGACY_FILES}/Droit%20des%20contrats%20.pdf` },
+    ],
+  },
+  {
+    title: 'Contrôle fiscal, change & circulaires',
+    items: [
+      { name: 'Base des anomalies fiscales (DGI)', format: 'PDF', href: `${LEGACY_FILES}/Base_de_donn_es_des_anomalies_fiscales__1731355200.pdf` },
+      { name: 'Circulaire DGI (réf. 95253)', format: 'PDF', href: `${LEGACY_FILES}/circulaire_95253_241226_223116.pdf` },
+      { name: 'Taux de change moyens 2025 (Office des Changes)', format: 'PDF', href: `${LEGACY_FILES}/%D8%B3%D8%B9%D8%B1+%D8%A7%D9%84%D8%B5%D8%B1%D9%81+%D8%A7%D9%84%D9%85%D8%B9%D8%AA%D9%85%D8%AF+%D9%84%D8%AA%D8%AD%D9%88%D9%8A%D9%84+%D8%A7%D9%84%D8%AF%D8%AE%D9%88%D9%84+%D8%A7%D9%84%D9%85%D8%AD%D8%B5%D9%84+%D8%B9%D9%84%D9%8A%D9%87%D8%A7+%D8%A8%D8%A7%D9%84%D8%B9%D9%85%D9%84%D8%A7%D8%AA+%D8%A7%D9%84%D8%A3%D8%AC%D9%86%D8%A8%D9%8A%D8%A9+%D8%AE%D9%84%D8%A7%D9%84+%D8%B3%D9%86%D8%A9+2025.PDF` },
+    ],
+  },
+  {
+    title: 'Agenda & fiscalité sectorielle',
+    items: [
+      { name: 'Agenda fiscal', format: 'PDF', href: `${LEGACY_FILES}/Agenda%20fiscal.pdf` },
+      { name: 'Fiscalité agricole', format: 'PDF', href: `${LEGACY_FILES}/fiscalit%C3%A9%20agricole.pdf` },
     ],
   },
 ];
@@ -202,7 +238,7 @@ export const DOC_GROUPS: DocGroup[] = [
 export const OFFICIAL_LINKS: OfficialLink[] = [
   { name: 'DGI — Impôts', url: 'https://www.tax.gov.ma' },
   { name: 'CNSS', url: 'https://www.cnss.ma' },
-  { name: 'SGG', url: 'http://www.sgg.gov.ma' },
+  { name: 'SGG', url: 'https://www.sgg.gov.ma' },
   { name: 'Ministère des Finances', url: 'https://www.finances.gov.ma' },
   { name: 'Office des Changes', url: 'https://www.oc.gov.ma' },
   { name: 'Douanes (ADII)', url: 'https://www.douane.gov.ma' },

@@ -1,9 +1,9 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import { getCollection } from 'astro:content';
 import { collectionPageSchema } from '~/lib/collection-schema';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 const secteurs = await getCollection('secteurs');
 const hubSchema = collectionPageSchema({
   url: `${SITE}/secteurs`,
@@ -27,7 +27,7 @@ const hubSchema = collectionPageSchema({
         {secteurs.map(s => (
           <a href={`/secteurs/${s.id}`} class="card reveal">
             <p class="eyebrow">{s.data.eyebrow}</p>
-            <h3>{s.data.h1}</h3>
+            <h2>{s.data.h1}</h2>
             <p>{s.data.description}</p>
             <span class="arrow" aria-hidden="true">→</span>
           </a>

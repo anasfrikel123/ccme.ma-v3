@@ -14,13 +14,13 @@ related:
   - "zones-franches-tanger-comparatif"
 ---
 
-Si votre société est en crédit permanent de [TVA](/outils/simulateur-tva), c'est de la trésorerie qui dort à la [DGI](/services/simpl-impots-dgi). Récupérable, mais à condition de monter un dossier solide et de suivre la procédure. Voici comment ça se passe en 2026.
+Si votre société est en crédit permanent de [TVA](/outils/simulateur-tva "Simulateur TVA Maroc"), c'est de la trésorerie qui dort à la [DGI](/services/simpl-impots-dgi). Récupérable, mais à condition de monter un dossier solide et de suivre la procédure. Voici comment ça se passe en 2026.
 
 ## Pourquoi un crédit de TVA
 
 Trois cas typiques génèrent un crédit :
 
-**1. Activité d'export.** Vos ventes sont en exonération de TVA, mais vos achats locaux (matières premières, services, frais généraux) supportent la TVA. Cas classique des sociétés en zone franche, des transitaires, des producteurs textile orientés export.
+**1. Activité d'export.** Vos ventes sont en exonération de [TVA](/outils/simulateur-tva), mais vos achats locaux (matières premières, services, frais généraux) supportent la TVA. Cas classique des sociétés en zone franche, des transitaires, des producteurs textile orientés export.
 
 **2. Investissement important.** Vous avez acheté du matériel, fait des travaux d'aménagement, démarré une nouvelle ligne de production. La TVA déductible sur ces gros postes dépasse votre TVA collectée du moment.
 

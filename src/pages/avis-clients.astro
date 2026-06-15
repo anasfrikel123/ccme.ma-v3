@@ -1,7 +1,8 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import Icon from '~/components/Icon.astro';
 import { reviews, averageRating as avgRating, reviewCount as total } from '~/data/reviews';
+import { cabinet, SITE } from '~/data/cabinet';
 ---
 <Page
   title="Avis clients & témoignages | Cabinet CCME Tanger"
@@ -17,19 +18,19 @@ import { reviews, averageRating as avgRating, reviewCount as total } from '~/dat
       <div class="rating-summary reveal">
         <div class="big-rating">
           <strong>{avgRating}</strong>
-          <span class="stars" aria-label={`${avgRating} sur 5 étoiles`}>
+          <span class="stars" role="img" aria-label={`${avgRating} sur 5 étoiles`}>
             {Array(5).fill(0).map(() => <Icon name="star-filled" size={26} />)}
           </span>
           <span class="count">basé sur {total} avis vérifiés</span>
         </div>
-        <p class="rating-note">Tous les témoignages ci-dessous sont publiés avec l'accord écrit du client. Pour vérifier, demandez-nous le contact direct (sous réserve d'accord du client).</p>
+        <p class="rating-note">Tous les témoignages ci-dessous sont des avis vérifiés, publiés avec l'accord écrit du client. La moyenne affichée reflète uniquement les avis sélectionnés pour cette page — pas une note Google agrégée.</p>
       </div>
 
       <div class="reviews-grid">
         {reviews.map(r => (
           <article class="review reveal">
             <span class="card-shine" aria-hidden="true"></span>
-            <div class="rating" aria-label={`${r.rating} sur 5 étoiles`}>
+            <div class="rating" role="img" aria-label={`${r.rating} sur 5 étoiles`}>
               {Array(r.rating).fill(0).map(() => <Icon name="star-filled" size={18} />)}
             </div>
             <blockquote>"{r.text}"</blockquote>
@@ -56,8 +57,24 @@ import { reviews, averageRating as avgRating, reviewCount as total } from '~/dat
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "AccountingService",
-    "name": "Consulting Maghreb Expertise",
-    "url": "https://www.ccme.ma",
+    "@id": `${SITE}/#accounting`,
+    "name": cabinet.legalName,
+    "url": SITE,
+    "telephone": cabinet.phone.schema,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": cabinet.address.streetAddress,
+      "addressLocality": cabinet.address.addressLocality,
+      "addressRegion": cabinet.address.addressRegion,
+      "postalCode": cabinet.address.postalCode,
+      "addressCountry": cabinet.address.addressCountry,
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": cabinet.geo.latitude,
+      "longitude": cabinet.geo.longitude,
+    },
+    "priceRange": cabinet.priceRange,
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": avgRating,

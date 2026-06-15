@@ -42,14 +42,14 @@ Voici le détail :
 
 - **Saisie comptable** dans le respect du Code Général de Normalisation Comptable ([CGNC](/glossaire#cgnc)) et du plan comptable marocain.
 - **Rapprochements bancaires** mensuels — on aligne ce que dit votre relevé avec ce que dit votre comptabilité. C'est là qu'on attrape les erreurs, les prélèvements oubliés, les écritures en double.
-- **[TVA](/outils/simulateur-tva)** : calcul, contrôle de la cohérence collectée/déductible, télédéclaration sur [Simpl Impôts](/services/simpl-impots-dgi) (mensuelle ou trimestrielle selon votre régime).
-- **Acomptes [IS](/outils/simulateur-is)** : calendrier suivi, télépaiement, réconciliation annuelle.
+- **[TVA](/outils/simulateur-tva "Simulateur TVA Maroc")** : calcul, contrôle de la cohérence collectée/déductible, télédéclaration sur [Simpl Impôts](/services/simpl-impots-dgi) (mensuelle ou trimestrielle selon votre régime).
+- **Acomptes [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc")** : calendrier suivi, télépaiement, réconciliation annuelle.
 - **Bilan, CPC, ESG** en clôture, plus la [liasse fiscale](/glossaire#liasse-fiscale) complète.
 - **Tableaux de bord** mensuels avec ratios qui ont du sens : marge brute, BFR, trésorerie nette, ratio de structure.
 
 ## Pourquoi nous
 
-Tanger c'est une ville un peu particulière. Une PME du textile à [TFZ Gzenaya](/zones/tanger-free-zone) n'a pas les mêmes problématiques qu'un freelance digital nomade en SARLAU [au centre-ville](/zones/centre-ville), ni qu'un investisseur français qui monte une SCI [à Malabata](/quartiers/malabata). On a vu passer beaucoup de dossiers et on connaît les pièges locaux : la TVA sur les zones franches, les prix de transfert quand vous travaillez avec une maison-mère en Europe, les régularisations CNSS quand vous embauchez en cours de mois — sujet couvert par notre service [paie & GRH](/services/paie-grh) et [Damancom CNSS](/services/damancom-cnss).
+Tanger c'est une ville un peu particulière. Une PME du textile à [TFZ Gzenaya](/zones/tanger-free-zone) n'a pas les mêmes problématiques qu'un freelance digital nomade en SARLAU [au centre-ville](/zones/centre-ville), ni qu'un investisseur français qui monte une SCI [à Malabata](/quartiers/malabata). On a vu passer beaucoup de dossiers et on connaît les pièges locaux : la [TVA](/outils/simulateur-tva) sur les zones franches, les prix de transfert quand vous travaillez avec une maison-mère en Europe, les régularisations CNSS quand vous embauchez en cours de mois — sujet couvert par notre service [paie & GRH](/services/paie-grh) et [Damancom CNSS](/services/damancom-cnss).
 
 Notre approche, c'est pas de remplir des cases. C'est de comprendre ce que vous faites pour produire une comptabilité qui parle vraiment de votre activité.
 
@@ -66,6 +66,6 @@ Si vous vous reconnaissez quelque part là-dedans, on peut en parler — premier
 
 ## Outils et lectures complémentaires
 
-Pour estimer rapidement votre IS de fin d'exercice, le simulateur IS 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale) et le barème 2026 (20 % sur bénéfice jusqu'à 100 MDH, 35 % au-delà). Pour la TVA mensuelle, le calculateur TVA couvre tous les taux marocains (0%, 7%, 10%, 14%, 20%). Pour la masse salariale, le [simulateur de paie](/outils/simulateur-paie) ventile CNSS, [AMO](/glossaire#amo), [IR](/outils/simulateur-ir) et charges patronales.
+Pour estimer rapidement votre IS de fin d'exercice, le [simulateur IS](/outils/simulateur-is) 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale) et le barème 2026 (20 % sur bénéfice jusqu'à 100 MDH, 35 % au-delà). Pour la TVA mensuelle, le calculateur TVA couvre tous les taux marocains (0%, 7%, 10%, 14%, 20%). Pour la masse salariale, le [simulateur de paie](/outils/simulateur-paie) ventile CNSS, [AMO](/glossaire#amo), [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") et charges patronales.
 
 À lire ensuite : notre [guide de création de SARL Tanger 2026](/blog/creer-sarl-tanger-2026), notre [comparatif SARL vs SAS](/comparatifs/sarl-vs-sas-maroc) et l'[article fiscalité 2026 : acomptes IS](/blog/fiscalite-2026-acomptes-is).

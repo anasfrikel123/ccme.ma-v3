@@ -26,7 +26,7 @@ faq:
     a: "Oui. Affiliation employeur via le formulaire 100, attribution du n° d'affiliation, ouverture du compte Damancom, certificat numérique. Compter 2-3 semaines après dépôt du dossier complet."
   - q: "Et l'AMO obligatoire pour les indépendants ?"
     a: "Oui, on s'en occupe aussi. Affiliation au régime AMO-TNS, calcul de la cotisation forfaitaire selon votre catégorie professionnelle, télédéclaration trimestrielle. C'est obligatoire depuis 2022 pour la majorité des professions libérales et indépendants."
-modifiedTime: "2026-06-13"
+modifiedTime: "2026-06-15"
 publishedTime: "2025-01-15"
 ---
 
@@ -61,4 +61,14 @@ Damancom, c'est le portail de télédéclaration de la [CNSS](/glossaire#cnss). 
 
 **Les périodes de tuilage.** Quand un salarié sort le 5 et un autre rentre le 25, il faut faire deux lignes distinctes sur la BDS, avec les bonnes dates et les bons prorata.
 
-On a vu passer toutes ces situations. Ce qu'on vous garantit : pas de retard, pas d'oubli, et de la disponibilité pour vous expliquer ce qui se passe quand un courrier CNSS arrive et vous panique.
+On a vu passer toutes ces situations. Ce qu'on vous garantit : pas de retard, pas d'oubli, et de la disponibilité pour vous expliquer ce qui se passe quand un courrier CNSS arrive et vous panique. C'est le prolongement naturel de notre [paie & GRH](/services/paie-grh).
+## Au-delà de la CNSS : toute votre paie et votre social
+
+Damancom n'est que la partie déclarative. La paie d'une entreprise, c'est aussi des bulletins justes, des contrats en règle et une gestion sociale sans faille :
+
+- **[Paie & GRH](/services/paie-grh)** : bulletins, contrats, soldes de tout compte, gestion des congés.
+- **[Social & administratif](/services/social-administratif)** : la gestion administrative du personnel de A à Z.
+- **[Externalisation comptable](/services/externalisation-comptable)** : on prend toute la fonction, paie comprise, avec reporting au siège.
+- **[Tenue de comptabilité](/services/tenue-comptabilite)** pour relier paie et comptabilité sans double saisie.
+
+Cabinet d'**[expert-comptable à Tanger](/expert-comptable-tanger)**. Le premier **[échange est gratuit](/contact)** — confiez-nous vos déclarations CNSS et dormez tranquille avant chaque 10 du mois.

@@ -1,10 +1,9 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import FAQ from '~/components/FAQ.astro';
 import ServiceProof from '~/components/ServiceProof.astro';
 import ServiceDetailSidebar from '~/components/ServiceDetailSidebar.astro';
-import { cabinet } from '~/data/cabinet';
-import { reviews } from '~/data/reviews';
+import { reviews, averageRating, reviewCount } from '~/data/reviews';
 import { getServiceDetail } from '~/data/services-detail';
 import { getCollection, render } from 'astro:content';
 
@@ -17,7 +16,7 @@ const { service } = Astro.props;
 const { Content } = await render(service);
 const detail = getServiceDetail(service.id);
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 const url = `${SITE}/services/${service.id}`;
 
 const serviceSchema: Record<string, any> = {
@@ -28,14 +27,22 @@ const serviceSchema: Record<string, any> = {
   description: service.data.description,
   url,
   inLanguage: 'fr-MA',
-  image: service.data.heroImage ? `${SITE}${service.data.heroImage}` : `${SITE}/images/og-default.jpg`,
-  provider: { '@id': 'https://www.ccme.ma/#accounting' },
+  image: service.data.heroImage
+    ? `${SITE}${service.data.heroImage}`
+    : `${SITE}/og/services/${service.id}.jpg`,
+  provider: { '@id': 'https://ccme.ma/#accounting' },
   areaServed: [
     { '@type': 'City', name: 'Tanger' },
     { '@type': 'AdministrativeArea', name: 'Tanger-Tétouan-Al Hoceïma' },
   ],
   audience: { '@type': 'BusinessAudience', audienceType: 'PME, TPE, professions libérales, expatriés' },
-  aggregateRating: { '@id': 'https://www.ccme.ma/#accounting' },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: averageRating,
+    reviewCount: String(reviewCount),
+    bestRating: '5',
+    worstRating: '1',
+  },
   offers: {
     '@type': 'AggregateOffer',
     priceCurrency: 'MAD',
@@ -48,7 +55,7 @@ const serviceSchema: Record<string, any> = {
     },
     priceRange: '$$',
     availability: 'https://schema.org/InStock',
-    seller: { '@id': 'https://www.ccme.ma/#accounting' },
+    seller: { '@id': 'https://ccme.ma/#accounting' },
     eligibleRegion: { '@type': 'Country', name: 'Morocco' },
   },
 };
@@ -60,8 +67,8 @@ const subjectById: Record<string, string> = {
   'audit': 'Audit / commissariat aux comptes',
   'domiciliation': 'Domiciliation',
   'creation-entreprise': "Création d'entreprise",
-  'travaux-juridiques': "Création d'entreprise",
-  'conseil-juridique': "Création d'entreprise",
+  'travaux-juridiques': 'Travaux juridiques annuels',
+  'conseil-juridique': 'Conseil juridique',
 };
 const subjectByCategory: Record<string, string> = {
   comptabilite: 'Tenue comptable mensuelle',
@@ -113,7 +120,8 @@ const imgAlt = service.data.heroAlt ?? `${service.data.h1} — Cabinet expert-co
   keywords={service.data.keywords}
   publishedTime={service.data.publishedTime}
   modifiedTime={service.data.modifiedTime}
-  preloadImage={heroImage}
+  heroImage={heroImage}
+  heroAlt={imgAlt}
 >
   <section class="svc-detail-block">
     <div class="container detail-layout">
@@ -146,7 +154,7 @@ const imgAlt = service.data.heroAlt ?? `${service.data.h1} — Cabinet expert-co
           <div class="svc-section">
             <div class="svc-section-head">
               <span class="ss-num">01</span>
-              <h3>Ce que comprend la mission</h3>
+              <h2>Ce que comprend la mission</h2>
             </div>
             <ul class="includes">
               {service.data.bullets.map((item) => (
@@ -165,7 +173,7 @@ const imgAlt = service.data.heroAlt ?? `${service.data.h1} — Cabinet expert-co
           <div class="svc-section">
             <div class="svc-section-head">
               <span class="ss-num">02</span>
-              <h3>Comment ça se passe</h3>
+              <h2>Comment ça se passe</h2>
             </div>
             <ol class="detail-steps">
               {steps.map((s, i) => (
@@ -184,7 +192,7 @@ const imgAlt = service.data.heroAlt ?? `${service.data.h1} — Cabinet expert-co
         <div class="prose svc-more">
           <div class="svc-section-head">
             <span class="ss-num">{steps.length > 0 ? '03' : '02'}</span>
-            <h3>En détail</h3>
+            <h2>En détail</h2>
           </div>
           <Content />
         </div>
@@ -211,7 +219,7 @@ const imgAlt = service.data.heroAlt ?? `${service.data.h1} — Cabinet expert-co
         <div class="svc-reviews-grid">
           {serviceReviews.map((r, i) => (
             <blockquote class="svc-review reveal" style={`transition-delay:${i * 80}ms`}>
-              <div class="svc-review-stars" aria-label={`${r.rating} sur 5`}>
+              <div class="svc-review-stars" role="img" aria-label={`${r.rating} sur 5`}>
                 {Array(r.rating).fill(0).map(() => <span aria-hidden="true">★</span>)}
               </div>
               <p>"{r.text}"</p>

@@ -17,11 +17,11 @@ related:
   - "tva-credit-remboursement-2026"
 ---
 
-On nous pose la question plusieurs fois par semaine au cabinet : « la réforme [IS](/outils/simulateur-is) 2026, c'est bien pour moi ou pas ? ». La réponse honnête, c'est : ça dépend. Pour la majorité des PME tangéroises ça simplifie les choses, pour quelques cas particuliers ça complique. Voyons ça concrètement.
+On nous pose la question plusieurs fois par semaine au cabinet : « la réforme [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") 2026, c'est bien pour moi ou pas ? ». La réponse honnête, c'est : ça dépend. Pour la majorité des PME tangéroises ça simplifie les choses, pour quelques cas particuliers ça complique. Voyons ça concrètement.
 
 ## Ce que dit la nouvelle loi
 
-La réforme IS lancée en 2023 (LF 2023, CGI art. 19) converge en **2026** vers un **taux unique de 20 %** sur le **bénéfice net fiscal** pour le régime de droit commun, jusqu'à **100 millions de DH** de bénéfice. Au-delà de ce seuil, la fraction excédentaire est imposée à **35 %**.
+La réforme [IS](/outils/simulateur-is) lancée en 2023 (LF 2023, CGI art. 19) converge en **2026** vers un **taux unique de 20 %** sur le **bénéfice net fiscal** pour le régime de droit commun, jusqu'à **100 millions de DH** de bénéfice. Au-delà de ce seuil, la fraction excédentaire est imposée à **35 %**.
 
 Ce n'est pas un taux appliqué au chiffre d'affaires : c'est le résultat fiscal qui compte. Une PME peut avoir 30 M DH de CA et 800 K DH de bénéfice — l'IS se calcule sur les 800 K.
 
@@ -72,7 +72,7 @@ Belle économie. Pour beaucoup d'industriels du nord, c'est l'équivalent d'une 
 
 D'abord, refaire la projection IS pour 2026 avec votre comptable. Si l'écart entre l'ancien et le nouveau régime est significatif, ajuster les acomptes peut éviter des problèmes de trésorerie.
 
-Ensuite, regarder si certains arbitrages ont changé. Par exemple : pour un freelance entre 600K et 1M DH de bénéfice annuel, la question SARL vs BNC se rejoue. À 20% d'IS + 15% sur dividendes (avec abattement de 60%), vs [IR](/outils/simulateur-ir) par tranches (jusqu'à 38%), le calcul peut basculer. Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) chiffre les bascules en 2026.
+Ensuite, regarder si certains arbitrages ont changé. Par exemple : pour un freelance entre 600K et 1M DH de bénéfice annuel, la question SARL vs BNC se rejoue. À 20% d'IS + 15% sur dividendes (avec abattement de 60%), vs [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc") par tranches (jusqu'à 38%), le calcul peut basculer. Notre [comparatif freelance vs société](/comparatifs/freelance-vs-societe-maroc) chiffre les bascules en 2026.
 
 Enfin, si vous êtes en zone franche, **ne rien changer dans votre tête** : vos exonérations restent. Au contraire, le différentiel avec le régime de droit commun est désormais plus serré (8,75% vs 20% au lieu de 8,75% vs 31% avant), donc l'avantage compétitif des zones est moindre. À garder en tête pour les choix d'implantation futurs — voir notre [comparatif Tanger Med vs TFZ vs TAC](/comparatifs/tanger-med-vs-tfz-vs-tac) pour positionner une nouvelle implantation.
 

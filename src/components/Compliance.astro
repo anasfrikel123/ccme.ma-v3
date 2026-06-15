@@ -1,61 +1,45 @@
 ---
 /**
- * Compliance / institutions strip — horizontal SVG-logo marquee.
+ * Compliance / institutions strip.
  *
- * Continuous sideway-scrolling logo ticker for the Moroccan administrations
- * and platforms the cabinet works with daily. Visual reference is the
- * standard "trusted by / works with" enterprise logo strip, restyled in
- * the CCME palette (cream paper, ink type, gold hover).
+ * Premium horizontal marquee of administration logos. Four identical tracks
+ * in one animated wrapper (translateX(-25%) lands on copy 2 → seamless loop,
+ * zero JS). Slot widths are normalized so wordmarks and icons read as equals.
+ * Hover surfaces a small label with the institution's full name.
  *
- * IMPLEMENTATION
- * - Each entry loads a single SVG file from `public/logos/institutions/`.
- *   Drop a new SVG over the existing slug to swap a logo — no code change.
- *   See `public/logos/institutions/README.md` for the full slot manifest.
- * - Track is rendered twice; CSS keyframe translateX(0 → -50%) lands on
- *   the next copy → seamless infinite loop with zero JS.
- * - Pause on hover/focus, prefers-reduced-motion turns it into a horizontal
- *   scroll container, soft mask-image fade on both edges.
+ * Theming: logos are mixed monochrome + full-colour artwork on transparent.
+ * On the dark page theme they would vanish, so each logo sits on a light
+ * "chip" surface in dark mode — this keeps both black wordmarks and the
+ * two brand-coloured logos (ministère, damancom) legible without inverting
+ * (which would wreck their colours). Light mode keeps the floating look.
  */
 
 interface Item {
-  /** Slug — must match the filename in `public/logos/institutions/<slug>.svg` */
   slug: string;
-  /** Full official name — used as the link's accessible label and `<img alt>` */
   name: string;
-  /** Internal page that explains this institution / our service around it */
   href: string;
-  /**
-   * Backdrop tone for the slot.
-   *  - `'light'` (default): logo sits directly on the cream marquee.
-   *  - `'dark'`: slot renders a navy chip behind the logo. Use for any
-   *    SVG that was designed white/light-only and would be invisible on
-   *    a cream background (e.g. Tanger Med TMSA, where every path is
-   *    `fill:#FFFFFF`).
-   */
-  tone?: 'light' | 'dark';
 }
 
 const items: Item[] = [
   { slug: 'oec',                  name: 'Ordre des Experts-Comptables du Maroc',                         href: '/cabinet' },
   { slug: 'ministere-economie',   name: 'Ministère de l’Économie et des Finances',                       href: '/services/conseil-fiscal' },
   { slug: 'dgi',                  name: 'Direction Générale des Impôts',                                 href: '/services/conseil-fiscal' },
-  { slug: 'cnss',                 name: 'Caisse Nationale de Sécurité Sociale',                          href: '/services/damancom-cnss' },
+  { slug: 'damancom',             name: 'Damancom — plateforme CNSS (déclarations sociales)',              href: '/services/damancom-cnss' },
   { slug: 'ompic',                name: 'Office Marocain de la Propriété Industrielle et Commerciale',   href: '/services/creation-entreprise' },
   { slug: 'office-des-changes',   name: 'Office des Changes',                                            href: '/expat' },
-  { slug: 'tanger-med',           name: 'Tanger Med — autorité portuaire et zones logistiques',          href: '/zones/tanger-med', tone: 'dark' },
+  { slug: 'tanger-med',           name: 'Tanger Med — autorité portuaire et zones logistiques',          href: '/zones/tanger-med' },
 ];
 
-// Render the track twice for a seamless keyframe loop:
-// translateX(-50%) on the doubled track lands exactly on the next copy.
-const loop = [...items, ...items];
+const COPIES = 4;
 ---
 <section class="compliance" aria-labelledby="compliance-title">
-  <div class="container">
+  <div class="container compliance-head">
     <p class="compliance-eyebrow" id="compliance-title">
+      <span class="compliance-pulse" aria-hidden="true"></span>
       Conformité quotidienne avec les administrations marocaines
     </p>
     <p class="compliance-lede">
-      OEC, Ministère de l’Économie, DGI, CNSS, OMPIC, Office des Changes, Tanger Med —
+      OEC, Ministère de l’Économie, DGI, Damancom, OMPIC, Office des Changes, Tanger Med —
       on parle leur langage, on connaît leurs délais, on tient leurs formats.
     </p>
   </div>
@@ -65,58 +49,96 @@ const loop = [...items, ...items];
     role="region"
     aria-label="Administrations et plateformes que nous traitons au quotidien"
   >
-    <div class="comp-track">
-      {loop.map((it, i) => (
-        <a
-          href={it.href}
-          class="comp-logo"
-          data-tone={it.tone ?? 'light'}
-          aria-hidden={i >= items.length ? 'true' : undefined}
-          tabindex={i >= items.length ? -1 : undefined}
-          aria-label={i < items.length ? it.name : undefined}
-        >
-          <img
-            src={`/logos/institutions/${it.slug}.svg`}
-            alt={it.name}
-            width="160"
-            height="64"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
-      ))}
+    <div class="comp-marquee-inner">
+      {Array.from({ length: COPIES }).map((_, copyIdx) => {
+        const isPrimary = copyIdx === 0;
+        return (
+          <div class="comp-track" aria-hidden={isPrimary ? undefined : 'true'}>
+            {items.map((it) => (
+              <a
+                href={it.href}
+                class="comp-logo"
+                data-name={it.name}
+                aria-label={isPrimary ? it.name : undefined}
+                tabindex={isPrimary ? undefined : -1}
+              >
+                <img
+                  src={`/logos/institutions/${it.slug}.svg${it.slug === 'damancom' ? '?v=2' : ''}`}
+                  alt=""
+                  aria-hidden="true"
+                  width="160"
+                  height="56"
+                  loading={isPrimary ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              </a>
+            ))}
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <style>
   .compliance {
-    padding-block: clamp(40px, 5.5vw, 60px);
-    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    position: relative;
+    padding-block: clamp(48px, 6vw, 72px);
+    background:
+      radial-gradient(1200px 320px at 50% 0%, color-mix(in oklch, var(--gold) 8%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     overflow: hidden;
   }
+
+  .compliance-head {
+    margin-bottom: clamp(24px, 3vw, 36px);
+  }
+
   .compliance-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--gold);
-    margin: 0 0 8px;
+    margin: 0 0 10px;
   }
+  .compliance-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 0 color-mix(in oklch, var(--gold) 55%, transparent);
+    animation: comp-pulse 2.4s ease-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes comp-pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in oklch, var(--gold) 55%, transparent); }
+    70%  { box-shadow: 0 0 0 10px color-mix(in oklch, var(--gold) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--gold) 0%, transparent); }
+  }
+
   .compliance-lede {
     font-family: var(--serif);
     font-size: clamp(1.05rem, 1.4vw, 1.18rem);
     color: var(--ink-soft);
-    margin: 0 0 28px;
+    margin: 0;
     max-width: 64ch;
+    line-height: 1.55;
   }
 
   /* ── Marquee viewport ─────────────────────────────── */
   .comp-marquee {
     width: 100%;
     overflow: hidden;
+    position: relative;
+    /* Room below the logo row so the hover tooltip (top:100% of each slot)
+       is not clipped by overflow:hidden. */
+    padding-bottom: 40px;
     -webkit-mask-image: linear-gradient(
       90deg,
       transparent 0%,
@@ -133,79 +155,148 @@ const loop = [...items, ...items];
     );
   }
 
-  .comp-track {
+  /* Four copies side-by-side; translate by -25% lands on copy 2 → seamless. */
+  .comp-marquee-inner {
     display: flex;
-    align-items: center;
-    gap: clamp(36px, 6vw, 72px);
     width: max-content;
-    padding-block: 6px;
-    animation: comp-scroll 38s linear infinite;
+    will-change: transform;
+    animation: comp-scroll 52s linear infinite;
   }
-  .comp-marquee:hover .comp-track,
-  .comp-marquee:focus-within .comp-track {
+  .comp-marquee:hover .comp-marquee-inner,
+  .comp-marquee:focus-within .comp-marquee-inner {
     animation-play-state: paused;
   }
 
   @keyframes comp-scroll {
     from { transform: translate3d(0, 0, 0); }
-    to   { transform: translate3d(-50%, 0, 0); }
+    to   { transform: translate3d(-25%, 0, 0); }
   }
 
-  /* ── Individual logo slot ─────────────────────────── */
+  .comp-track {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    /* Track gap === slot gap so the seam is visually identical to interior gaps. */
+    gap: clamp(28px, 4vw, 56px);
+    padding-right: clamp(28px, 4vw, 56px);
+    padding-block: 8px;
+  }
+
+  /* ── Individual logo ──────────────────────────────────
+     Fixed-width slot normalizes presence regardless of intrinsic SVG width.
+     position:relative anchors the hover-label tooltip to THIS slot. */
   .comp-logo {
+    position: relative;
     flex: 0 0 auto;
+    width: clamp(140px, 14vw, 184px);
+    height: 72px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 64px;
-    padding: 0 6px;
-    border-radius: 8px;
+    padding: 0 12px;
+    border-radius: 12px;
     text-decoration: none;
-    /* Subtle desaturation by default — full-color on hover so the strip
-       reads as a calm, unified row that lights up on intent. */
-    filter: grayscale(0.15) opacity(0.85);
-    transition: filter var(--t-fast), transform var(--t-fast),
-                background var(--t-fast), box-shadow var(--t-fast);
+    color: inherit;
+    filter: grayscale(0.25) contrast(1.08) opacity(0.8);
+    transition:
+      filter var(--t-fast),
+      transform var(--t-fast),
+      background var(--t-fast),
+      box-shadow var(--t-fast);
   }
-  .comp-logo:hover,
-  .comp-logo:focus-visible {
+  /* When any logo is hovered, dim the others to direct attention. */
+  .comp-marquee:hover .comp-logo { filter: grayscale(0.45) contrast(1.08) opacity(0.45); }
+  /* No background card — the logo simply sharpens to full colour and lifts. */
+  .comp-marquee .comp-logo:hover,
+  .comp-marquee .comp-logo:focus-visible {
     filter: none;
     transform: translateY(-2px);
   }
 
   .comp-logo img {
     display: block;
-    height: 56px;
+    height: 48px;
     width: auto;
-    max-width: 200px;
+    max-width: 100%;
     object-fit: contain;
+    object-position: center;
   }
 
-  /* Dark backdrop chip for logos that were designed white/light-only
-     (e.g. Tanger Med TMSA — every path is `fill:#FFFFFF`). The chip
-     uses the brand ink color so the row still feels cohesive, with
-     enough horizontal padding to give the logo breathing room. */
-  .comp-logo[data-tone="dark"] {
-    background: var(--ink);
-    padding: 6px 18px;
-    border-radius: 10px;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  /* ── Dark theme ───────────────────────────────────────
+     No chip, no grey. brightness(0) collapses every logo (monochrome AND the
+     two coloured ones) to solid black; invert(1) flips that to clean white,
+     so the whole wall reads as crisp white silhouettes on the dark page.
+     Hover brings them to full white; the rest are dimmed by opacity only. */
+  :global(:root[data-theme="dark"]) .comp-logo {
+    filter: brightness(0) invert(1) opacity(0.72);
   }
-  .comp-logo[data-tone="dark"]:hover,
-  .comp-logo[data-tone="dark"]:focus-visible {
-    background: var(--accent-2);
-    box-shadow: 0 6px 16px rgba(20, 37, 63, 0.18);
+  :global(:root[data-theme="dark"]) .comp-marquee:hover .comp-logo {
+    filter: brightness(0) invert(1) opacity(0.4);
+  }
+  :global(:root[data-theme="dark"]) .comp-marquee .comp-logo:hover,
+  :global(:root[data-theme="dark"]) .comp-marquee .comp-logo:focus-visible {
+    filter: brightness(0) invert(1) opacity(1);
+    transform: translateY(-2px);
   }
 
-  /* Reduced motion — no scrolling, layout becomes a horizontal scroll */
+  /* ── Hover label (CSS-only tooltip with the institution's full name) ──
+     Anchored to .comp-logo (position:relative) and pinned under the slot.
+     Uses --navy, which does NOT flip in dark mode, so the bubble stays a
+     dark chip with white text in both themes. */
+  .comp-logo::after {
+    content: attr(data-name);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    pointer-events: none;
+    transform: translate(-50%, 4px);
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    max-width: 240px;
+    opacity: 0;
+    box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.5);
+    transition: opacity var(--t-fast), transform var(--t-fast);
+    z-index: 5;
+  }
+  .comp-logo:hover::after,
+  .comp-logo:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, 10px);
+  }
+
+  /* ── Reduced motion ──────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
-    .comp-track { animation: none; }
-    .comp-marquee { overflow-x: auto; }
+    .comp-marquee-inner { animation: none !important; }
+    .comp-marquee {
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scroll-snap-type: x proximity;
+    }
+    .comp-logo { scroll-snap-align: center; }
+    .compliance-pulse { animation: none; }
   }
 
+  /* ── Tablet ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .comp-marquee-inner { animation-duration: 40s; }
+    .comp-logo { width: clamp(124px, 22vw, 168px); height: 64px; }
+    .comp-logo img { height: 44px; }
+  }
+
+  /* ── Phone ───────────────────────────────────────── */
   @media (max-width: 600px) {
-    .comp-track { gap: 28px; animation-duration: 28s; }
-    .comp-logo { height: 52px; }
-    .comp-logo img { height: 44px; max-width: 160px; }
+    .comp-marquee-inner { animation-duration: 30s; }
+    .comp-track { gap: 22px; padding-right: 22px; }
+    .comp-logo { width: 128px; height: 60px; padding: 0 8px; }
+    .comp-logo img { height: 40px; }
+    /* Tooltips are awkward on touch devices — suppress. */
+    .comp-logo::after { display: none; }
   }
 </style>

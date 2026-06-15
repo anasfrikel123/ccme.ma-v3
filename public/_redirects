@@ -3,6 +3,9 @@
 # Docs: https://developers.cloudflare.com/pages/configuration/redirects/
 #
 # Format: <from> <to> <status> (default 302; use 301 for permanent)
+#
+# Trailing slashes (/services/ → /services) are normalized via
+# functions/_middleware.ts (301) to match Astro trailingSlash: 'never'.
 
 # Legacy .html service slugs -> Astro routes
 /Tenue-Comptabilite.html         /services/tenue-comptabilite          301
@@ -22,6 +25,24 @@
 /Social-Administratif.html       /services/social-administratif        301
 /Business-Plan.html              /services/business-plan               301
 
+# Legacy FLAT lowercase service slugs (old www.ccme.ma sitemap) -> Astro routes
+/tenue-comptabilite               /services/tenue-comptabilite          301
+/supervision-comptable            /services/supervision-comptable       301
+/gestion-financiere               /services/gestion-financiere          301
+/comptabilite-pharmaciens         /services/comptabilite-pharmaciens    301
+/conseil-fiscal                   /services/conseil-fiscal              301
+/assistance-fiscale               /services/assistance-fiscale          301
+/controle-contentieux             /services/controle-contentieux        301
+/simpl-impots-dgi                 /services/simpl-impots-dgi            301
+/creation-entreprise              /services/creation-entreprise         301
+/conseil-juridique                /services/conseil-juridique           301
+/travaux-juridiques               /services/travaux-juridiques          301
+/domiciliation                    /services/domiciliation               301
+/paie-grh                         /services/paie-grh                    301
+/damancom-cnss                    /services/damancom-cnss               301
+/social-administratif             /services/social-administratif        301
+/business-plan                    /services/business-plan               301
+
 # Legacy section landing pages
 /Services.html                   /services                             301
 /Cabinet.html                    /cabinet                              301
@@ -31,6 +52,46 @@
 /Confidentialite.html            /confidentialite                      301
 /Mentions-Legales.html           /mentions-legales                     301
 
-# Legacy /blogs prefix
+# Legacy /blogs prefix (unmapped slugs handled in functions/_middleware.ts)
 /blogs                           /blog                                 301
-/blogs/:slug                     /blog/:slug                           301
+
+# Orphan root .html pages
+/index.html                      /                                     301
+/404.html                        /404                                  301
+/Assistance-Fiscale.test.html    /services/assistance-fiscale          301
+/Consulting%20Maghreb%20Expertise.html  /                            301
+
+# Legacy /docs HTML guides (PDFs live under /files/)
+/docs/calendrier-fiscal-2026.html       /calendrier-fiscal-2026         301
+/docs/guide-creation-entreprise.html    /services/creation-entreprise   301
+/docs/guide-paie-cnss.html              /services/paie-grh              301
+/docs/guide-tva.html                    /outils/simulateur-tva          301
+/docs/modele-facture.html               /documentation                  301
+/docs/modele-note-de-frais.html         /documentation                  301
+/docs/fiche-client.html                 /contact                        301
+/docs/*                                 /documentation                  301
+
+# Real legacy slugs recovered from Search Console (old ccme.ma URL scheme)
+# These carried ~90% of the site's organic clicks and 404'd after migration.
+/simple-impots-DGI                       /services/simpl-impots-dgi                   301
+/simple-impots-dgi                       /services/simpl-impots-dgi                   301
+/conseil-fiscalite                       /services/conseil-fiscal                     301
+/conseil-fiscalite.html                  /services/conseil-fiscal                     301
+/paie-et-grh                             /services/paie-grh                           301
+/paie-et-grh.html                        /services/paie-grh                           301
+/audit                                   /services/audit                              301
+/tenu-et-suivi-comptable                 /services/tenue-comptabilite                 301
+/social-et-administratif                 /services/social-administratif               301
+/controle-et-contentieux                 /services/controle-contentieux               301
+/controle-et-contentieux.html            /services/controle-contentieux               301
+/assistance-fiscale-et-contentieux       /services/assistance-fiscale                 301
+/assistance-fiscale-et-contentieux.html  /services/assistance-fiscale                 301
+/gestion-tresorerie                      /services/gestion-financiere                 301
+/gestion-tresorerie.html                 /services/gestion-financiere                 301
+/gestion-risques                         /services/audit                              301
+/conseil-investissement                  /services/conseil-investissement-subventions 301
+/conseil-investissement.html             /services/conseil-investissement-subventions 301
+/resources                               /documentation                               301
+/resources.html                          /documentation                               301
+/creation-entreprise.html                /services/creation-entreprise                301
+/domiciliation.html                      /services/domiciliation                      301

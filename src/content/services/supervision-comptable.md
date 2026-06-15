@@ -35,9 +35,9 @@ Vous avez recruté un assistant comptable, ou un comptable junior, et vous avez 
 
 Concrètement, on intervient à fréquence régulière (souvent une fois par mois) pour :
 
-- **Relire les écritures** saisies par votre équipe : justifs présents, comptes utilisés cohérents, [TVA](/outils/simulateur-tva) bien découpée
+- **Relire les écritures** saisies par votre équipe : justifs présents, comptes utilisés cohérents, [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") bien découpée
 - **Pointer les anomalies** et expliquer comment corriger (et surtout pourquoi)
-- **Valider les déclarations** avant dépôt : TVA, acomptes [IS](/outils/simulateur-is), [IR](/outils/simulateur-ir), retenues à la source
+- **Valider les déclarations** avant dépôt : [TVA](/outils/simulateur-tva), acomptes [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc"), [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc"), retenues à la source
 - **Réviser la balance** trimestriellement, repérer les écarts inhabituels
 - **Préparer la clôture** annuelle : provisions, amortissements, régularisations, écritures d'inventaire
 - **Signer la [liasse fiscale](/glossaire#liasse-fiscale)** finale

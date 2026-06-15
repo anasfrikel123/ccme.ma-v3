@@ -1,4 +1,4 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 
 const terms = [
@@ -53,7 +53,7 @@ const grouped = terms.reduce((acc, t) => {
 }, {} as Record<string, typeof terms>);
 const letters = Object.keys(grouped).sort();
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 const slugify = (s: string) =>
   s.toLowerCase()
     .normalize('NFD')
@@ -74,7 +74,7 @@ const glossarySchema = {
   description: "Glossaire CCME : 40+ termes de comptabilité, fiscalité, paie et droit des sociétés au Maroc, définis par notre cabinet inscrit à l'OEC.",
   inLanguage: 'fr-MA',
   url: `${SITE}/glossaire`,
-  publisher: { '@id': 'https://www.ccme.ma/#accounting' },
+  publisher: { '@id': 'https://ccme.ma/#accounting' },
   hasDefinedTerm: terms.map(t => ({
     '@type': 'DefinedTerm',
     '@id': `${SITE}/glossaire#${slugify(t.term)}`,

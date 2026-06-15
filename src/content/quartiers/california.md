@@ -26,7 +26,7 @@ La question qui revient le plus souvent quand un professionnel de California nou
 
 ## Pour qui on travaille à California
 
-**Médecins et dentistes.** Cabinets de ville, cliniques privées, médecins associés. Choix BNC vs SARL, optimisation rémunération, AMO-TNS, retraite complémentaire CIMR, déclaration [IR](/outils/simulateur-ir). La compta médicale a ses subtilités (prestations honoraires, tiers payant CNOPS/[CNSS](/glossaire#cnss), registres déontologiques).
+**Médecins et dentistes.** Cabinets de ville, cliniques privées, médecins associés. Choix BNC vs SARL, optimisation rémunération, AMO-TNS, retraite complémentaire CIMR, déclaration [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc"). La compta médicale a ses subtilités (prestations honoraires, tiers payant CNOPS/[CNSS](/glossaire#cnss), registres déontologiques).
 
 **Avocats et notaires.** Le quartier compte plusieurs cabinets juridiques. BNC pour les associés, SCM pour les locaux partagés, traitement comptable des honoraires postérieurs (procédures qui s'étalent sur plusieurs exercices).
 
@@ -51,11 +51,11 @@ Concrètement, on regarde quatre paramètres :
 - **Patrimoine immobilier** existant (cabinet en propriété, SCI, résidence principale)
 - **Transmission ou cession** prévue (céder un cabinet en BNC ne se traite pas comme céder des parts de SARL)
 
-Pour calibrer rapidement les charges salariales d'un cabinet de 3-6 personnes, voir notre [simulateur de paie](/outils/simulateur-paie). Pour l'[IS](/outils/simulateur-is) d'une SARLAU médicale, le simulateur IS 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale).
+Pour calibrer rapidement les charges salariales d'un cabinet de 3-6 personnes, voir notre [simulateur de paie](/outils/simulateur-paie). Pour l'[IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") d'une SARLAU médicale, le [simulateur IS](/outils/simulateur-is) 2026 intègre la [cotisation minimale](/glossaire#cotisation-minimale).
 
 ## Avocats et juridiques : le piège des honoraires postérieurs
 
-Les cabinets d'avocats de California ont souvent des dossiers qui s'étalent sur 3 à 7 ans (procédures fiscales, prudhommales, contentieux commerciaux). Beaucoup facturent par tranches, parfois avec des honoraires de résultat à la sortie. Le rattachement comptable (à l'avancement, à la facturation, à l'encaissement) impacte directement l'IR ou l'IS de l'année.
+Les cabinets d'avocats de California ont souvent des dossiers qui s'étalent sur 3 à 7 ans (procédures fiscales, prudhommales, contentieux commerciaux). Beaucoup facturent par tranches, parfois avec des honoraires de résultat à la sortie. Le rattachement comptable (à l'avancement, à la facturation, à l'encaissement) impacte directement l'[IR](/outils/simulateur-ir) ou l'IS de l'année.
 
 C'est l'un des sujets traités via notre [conseil fiscal](/services/conseil-fiscal) et notre [tenue comptable](/services/tenue-comptabilite) pour les structures collectives (SCM, SCP, association d'avocats).
 

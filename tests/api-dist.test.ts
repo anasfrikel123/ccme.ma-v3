@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Post-build contract tests for prerendered /api/*.json endpoints.
  * Skipped when dist/ is absent (unit `npm test` before build).
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { cabinet } from '~/data/cabinet';
+import { cabinet, SITE } from '~/data/cabinet';
 
 const DIST = join(import.meta.dirname, '..', 'dist');
 const hasDist = existsSync(join(DIST, 'api', 'cabinet.json'));
@@ -46,7 +46,7 @@ describe.skipIf(!hasDist)('dist API JSON contracts', () => {
     expect(data.items.length).toBe(data.count);
     for (const item of data.items) {
       expect(item.slug).toBeTruthy();
-      expect(item.url).toMatch(/^https:\/\/www\.ccme\.ma\/services\//);
+      expect(item.url).toMatch(new RegExp(`^${SITE.replace(/\./g, '\\.')}/services/`));
       expect(item.name).toBeTruthy();
     }
   });

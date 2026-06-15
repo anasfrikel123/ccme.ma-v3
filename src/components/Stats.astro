@@ -8,6 +8,7 @@ const { items } = Astro.props;
     <div class="stats-grid">
       {items.map((s, i) => (
         <div class="stat reveal" style={`transition-delay:${i * 80}ms`}>
+          <span class="stat-rule" aria-hidden="true"></span>
           <p class="stat-value counter" data-counter={`${s.value}${s.suffix || ''}`}>{s.value}{s.suffix || ''}</p>
           <p class="stat-label">{s.label}</p>
         </div>
@@ -17,29 +18,66 @@ const { items } = Astro.props;
 </section>
 <style>
   .stats-band {
-    background: var(--paper-2);
+    background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
     border-block: 1px solid var(--line);
-    padding-block: clamp(36px, 6vw, 64px);
+    padding-block: clamp(40px, 6vw, 72px);
+    position: relative;
   }
+  .stats-band::before,
+  .stats-band::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(60px, 8vw, 120px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.5;
+  }
+  .stats-band::before { top: -1px; }
+  .stats-band::after  { bottom: -1px; }
+
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: clamp(20px, 2vw, 32px);
     text-align: center;
+  }
+  .stat {
+    position: relative;
+    padding-top: 18px;
+    transition: transform var(--t-fast);
+  }
+  .stat:hover { transform: translateY(-3px); }
+  .stat-rule {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    opacity: 0.85;
   }
   .stat-value {
     font-family: var(--serif);
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 500;
     color: var(--ink);
     margin: 0;
     line-height: 1;
+    letter-spacing: -0.02em;
   }
   .stat-label {
-    margin-top: 6px;
-    font-size: 13.5px;
+    margin: 10px 0 0;
+    font-size: 13px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: .08em;
+    letter-spacing: .12em;
     font-weight: 600;
+  }
+  @media (max-width: 600px) {
+    .stat-value { font-size: clamp(2rem, 8vw, 2.6rem); }
   }
 </style>

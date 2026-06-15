@@ -5,6 +5,9 @@ import {
   computeTVA,
   computePaie,
   computeCreation,
+  computeDividende,
+  computeRemuneration,
+  computeAcomptesIs,
   irBrackets,
 } from './tax-maroc';
 
@@ -147,6 +150,46 @@ describe('computeIR — barème mensuel', () => {
   });
 });
 
+describe('computeAcomptesIs — acomptes provisionnels trimestriels', () => {
+  it('splits 200 000 DH into four equal 50 000 installments', () => {
+    const r = computeAcomptesIs(200_000);
+    expect(r.acomptes).toHaveLength(4);
+    expect(r.acomptes.map((a) => a.montant)).toEqual([50_000, 50_000, 50_000, 50_000]);
+    expect(r.total).toBe(200_000);
+  });
+
+  it('puts rounding remainder on the 4th quarter (100 001 DH)', () => {
+    const r = computeAcomptesIs(100_001);
+    expect(r.acomptes[0].montant).toBe(25_000);
+    expect(r.acomptes[1].montant).toBe(25_000);
+    expect(r.acomptes[2].montant).toBe(25_000);
+    expect(r.acomptes[3].montant).toBe(25_001);
+    expect(r.acomptes.reduce((s, a) => s + a.montant, 0)).toBe(100_001);
+  });
+
+  it('uses civil-year due dates for 2026', () => {
+    const r = computeAcomptesIs(40_000, 2026);
+    expect(r.acomptes[0].dateLimite).toBe('2026-03-31');
+    expect(r.acomptes[1].dateLimite).toBe('2026-06-30');
+    expect(r.acomptes[2].dateLimite).toBe('2026-09-30');
+    expect(r.acomptes[3].dateLimite).toBe('2026-12-31');
+  });
+
+  it('returns empty acomptes when IS due is zero or negative', () => {
+    expect(computeAcomptesIs(0).acomptes).toEqual([]);
+    expect(computeAcomptesIs(-100).acomptes).toEqual([]);
+    expect(computeAcomptesIs(0).total).toBe(0);
+  });
+});
+
+describe('computeIS — includes acomptes', () => {
+  it('attaches acomptes to computeIS result', () => {
+    const r = computeIS(0, 200_000);
+    expect(r.acomptes.acomptes).toHaveLength(4);
+    expect(r.acomptes.total).toBe(r.isDue);
+  });
+});
+
 describe('computePaie — full payslip', () => {
   it('mid-range 8 000 DH brut, 2 charges, no CIMR', () => {
     const r = computePaie({ brut: 8_000, charges: 2, cimr: false });
@@ -226,5 +269,85 @@ describe('computeCreation — coût création société', () => {
     expect(a.notaire).toBe(0);
     expect(b.notaire).toBe(2_500);
     expect(b.total - a.total).toBe(2_500);
+  });
+});
+
+/**
+ * computeDividende — Loi de Finances 2026 a uniformisé le taux PFL à 12,5 %
+ * pour les exercices ouverts à compter du 01/01/2026 (CGI art. 73-II).
+ */
+describe('computeDividende — PFL sur dividendes', () => {
+  it('applies 12,5 % PFL on full distribution (LF 2026)', () => {
+    const r = computeDividende({
+      beneficeNetApresIs: 800_000,
+      ratioDistribue: 1,
+      regime: '12.5',
+    });
+    expect(r.montantDistribue).toBe(800_000);
+    expect(r.retenuePfl).toBe(100_000);
+    expect(r.netActionnaire).toBe(700_000);
+    expect(r.tauxEffectif).toBe(12.5);
+  });
+
+  it('applies 13,75 % PFL on legacy regime', () => {
+    const r = computeDividende({
+      beneficeNetApresIs: 1_000_000,
+      ratioDistribue: 1,
+      regime: '13.75',
+    });
+    expect(r.retenuePfl).toBe(137_500);
+    expect(r.netActionnaire).toBe(862_500);
+  });
+
+  it('respects partial distribution ratio', () => {
+    const r = computeDividende({
+      beneficeNetApresIs: 1_000_000,
+      ratioDistribue: 0.4,
+      regime: '12.5',
+    });
+    expect(r.montantDistribue).toBe(400_000);
+    expect(r.retenuePfl).toBe(50_000);
+    expect(r.netActionnaire).toBe(350_000);
+  });
+
+  it('handles zero benefit gracefully', () => {
+    const r = computeDividende({ beneficeNetApresIs: 0, ratioDistribue: 1, regime: '12.5' });
+    expect(r.netActionnaire).toBe(0);
+  });
+});
+
+describe('computeRemuneration — comparateur salaire vs dividende', () => {
+  it('returns both strategies with consistent envelope', () => {
+    const r = computeRemuneration({ enveloppeBrute: 600_000, charges: 2 });
+    // Salaire path: net should be < envelope after CNSS/IR
+    expect(r.salaire.netAnnuel).toBeLessThan(600_000);
+    expect(r.salaire.netAnnuel).toBeGreaterThan(0);
+    // Dividende path: 600 000 * 80 % = 480 000 distribuable, * 87.5 % = 420 000 net
+    expect(r.dividende.isDuSurBenefice).toBe(120_000);
+    expect(r.dividende.distribuable).toBe(480_000);
+    expect(r.dividende.netAnnuel).toBe(420_000);
+  });
+
+  it('respects custom IS rate (zone franche 8,75 %)', () => {
+    const r = computeRemuneration({
+      enveloppeBrute: 500_000,
+      tauxIs: 0.0875,
+    });
+    expect(r.dividende.isDuSurBenefice).toBe(43_750);
+    expect(r.dividende.distribuable).toBe(456_250);
+  });
+
+  it('produces a non-empty recommandation', () => {
+    const r = computeRemuneration({ enveloppeBrute: 800_000 });
+    expect(['salaire', 'dividende', 'equivalent']).toContain(r.recommandation);
+  });
+
+  it('converges employer cost within 1 DH for a 5 MDH envelope', () => {
+    const env = 5_000_000;
+    const r = computeRemuneration({ enveloppeBrute: env, charges: 0 });
+    const brutMensuel = r.salaire.brutAnnuel / 12;
+    const pa = computePaie({ brut: brutMensuel, charges: 0 });
+    const coutAnnuel = pa.coutEmployeur * 12;
+    expect(Math.abs(coutAnnuel - env)).toBeLessThan(1);
   });
 });

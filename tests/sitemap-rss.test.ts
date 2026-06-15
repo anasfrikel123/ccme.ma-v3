@@ -43,8 +43,7 @@ describe.skipIf(!hasDist)('sitemap + RSS parity', () => {
 
   it('every blog slug appears in sitemap', () => {
     for (const slug of slugs) {
-      const url = `https://www.ccme.ma/blog/${slug}`;
-      expect(blogUrls, slug).toContain(url);
+      expect(blogUrls.some((u) => u.endsWith(`/blog/${slug}`)), slug).toBe(true);
     }
   });
 

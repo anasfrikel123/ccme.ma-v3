@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Single source of truth for cabinet identity.
  *
  * Before this file existed, the same numbers (phone, address, founding
@@ -15,7 +15,15 @@
  * Everything that surfaces cabinet identity now imports from here.
  */
 
-export const SITE = 'https://www.ccme.ma';
+export const SITE = 'https://ccme.ma';
+
+/** Moroccan business identifiers (ICE, IF, RC, Patente) — set via PUBLIC_CABINET_* env vars. */
+const envLegalIds = {
+  ice: import.meta.env.PUBLIC_CABINET_ICE?.trim() ?? '',
+  if: import.meta.env.PUBLIC_CABINET_IF?.trim() ?? '',
+  rc: import.meta.env.PUBLIC_CABINET_RC?.trim() ?? '',
+  patente: import.meta.env.PUBLIC_CABINET_PATENTE?.trim() ?? '',
+} as const;
 
 export const cabinet = {
   legalName: 'Consulting Maghreb Expertise',
@@ -24,7 +32,7 @@ export const cabinet = {
   site: SITE,
   slogan: 'La rigueur des chiffres, au service de votre croissance.',
   description:
-    "Cabinet d'expertise comptable inscrit à l'OEC, à Tanger depuis 20 ans. Tenue, fiscalité, paie CNSS, conseil juridique pour PME, startups et expatriés.",
+    `Cabinet d'expertise comptable inscrit à l'OEC, à Tanger depuis ${new Date().getFullYear() - 2003} ans. Tenue, fiscalité, paie CNSS, conseil juridique pour PME, startups et expatriés.`,
   foundingDate: '2003',
   /** Seconds since epoch of `foundingDate` — used for "X years in business" UI. */
   foundedAt: new Date('2003-01-01T00:00:00Z'),
@@ -66,7 +74,7 @@ export const cabinet = {
     { day: 'Wednesday', open: '09:00', close: '18:00' },
     { day: 'Thursday', open: '09:00', close: '18:00' },
     { day: 'Friday', open: '09:00', close: '18:00' },
-    { day: 'Saturday', open: '09:00', close: '13:00', note: 'Sur RDV' },
+    { day: 'Saturday', open: '09:00', close: '13:00' },
     { day: 'Sunday', open: null, close: null, closed: true as const },
   ] as const,
 
@@ -76,6 +84,24 @@ export const cabinet = {
     duration: 'PT45M' as const,
     modalities: ['in-person', 'phone', 'video'] as const,
     note: 'Premier RDV gratuit, sans engagement, sous 24h ouvrées.',
+  },
+
+  /**
+   * Cal.com integration. Once the cabinet has a Cal.com account, set the
+   * username + booking link slug here. The booking widget on /contact will
+   * embed the picker inline. Until configured, the widget falls back to
+   * displaying the standard form-only flow.
+   *
+   * Example values once set up:
+   *   handle: 'ccme-tanger'
+   *   eventSlug: 'premier-echange-30min'
+   * Resulting public URL: https://cal.com/ccme-tanger/premier-echange-30min
+   */
+  calcom: {
+    /** @configure Set this to your Cal.com username/handle */
+    handle: '' as string,
+    /** @configure Set this to the event slug (the 30-min "premier échange" link) */
+    eventSlug: 'premier-echange-30min',
   },
 
   socials: [
@@ -98,6 +124,9 @@ export const cabinet = {
     authorityShort: 'OEC Maroc',
     authorityUrl: 'https://www.oec.ma/',
   },
+
+  /** ICE, IF, RC, Patente — obligatoires sur factures et mentions légales (OEC). */
+  legalIds: envLegalIds,
 
   sectors: [
     'PME et TPE multisectorielles',
@@ -161,6 +190,13 @@ export const cabinet = {
 export const yearsInBusiness = (): number => {
   const now = new Date();
   return now.getFullYear() - cabinet.foundedAt.getUTCFullYear();
+};
+
+/** One-line footer / legal summary when all four identifiers are configured. */
+export const formatLegalIdsLine = (): string | null => {
+  const { ice, if: ifId, rc, patente } = cabinet.legalIds;
+  if (!ice || !ifId || !rc || !patente) return null;
+  return `ICE ${ice} · IF ${ifId} · RC ${rc} · Patente ${patente}`;
 };
 
 /** Quick helpers used by api/*.json endpoints. */

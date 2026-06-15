@@ -1,12 +1,12 @@
----
+﻿---
 interface Crumb { label: string; href?: string; }
 interface Props { items: Crumb[]; }
 const { items } = Astro.props;
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 
 // Resolve current page URL once so the last (current-page) crumb gets a real `item`
 // even when no href is passed, satisfying Google's BreadcrumbList guidelines.
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const currentPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 const currentUrl = `${SITE}${currentPath}`;
 
 const schema = {

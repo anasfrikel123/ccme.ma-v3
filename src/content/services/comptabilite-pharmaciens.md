@@ -32,13 +32,13 @@ Tenir la comptabilité d'une pharmacie, c'est un métier dans le métier. Entre 
 
 **Le tiers payant.** Reconnaissance des créances CNOPS, [CNSS](/glossaire#cnss), mutuelles, suivi des rejets, retraitement comptable. Beaucoup de pharmacies ont 3-6 mois de tiers payant en cours qui sont mal valorisés en bilan.
 
-**Les marges arrières des grossistes.** Bonus de fin d'année, ristournes, RFA, marges sur volume — c'est une part significative de la marge réelle, et c'est piégeux à comptabiliser correctement (rattachement au bon exercice, traitement [TVA](/outils/simulateur-tva), base [IS](/outils/simulateur-is)).
+**Les marges arrières des grossistes.** Bonus de fin d'année, ristournes, RFA, marges sur volume — c'est une part significative de la marge réelle, et c'est piégeux à comptabiliser correctement (rattachement au bon exercice, traitement [TVA](/outils/simulateur-tva "Simulateur TVA Maroc"), base [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc")).
 
 **La gestion des stupéfiants.** Registre obligatoire, comptabilité matière, suivi pharmaceutique — séparé de la compta classique mais qui doit s'aligner.
 
-**L'inventaire annuel.** Valorisation au coût d'achat moyen, dépréciation des produits proches de la péremption, gestion des génériques. Un inventaire mal valorisé, c'est un IS mal calculé.
+**L'inventaire annuel.** Valorisation au coût d'achat moyen, dépréciation des produits proches de la péremption, gestion des génériques. Un inventaire mal valorisé, c'est un [IS](/outils/simulateur-is) mal calculé.
 
-**La fiscalité du titulaire.** L'officine est souvent en SARL, mais le titulaire est sous statut spécifique. [IR](/outils/simulateur-ir), dividendes, optimisation rémunération vs dividendes — on en discute avec vous.
+**La fiscalité du titulaire.** L'officine est souvent en SARL, mais le titulaire est sous statut spécifique. [IR](/outils/simulateur-ir "Simulateur IR — impôt sur le revenu Maroc"), dividendes, optimisation rémunération vs dividendes — on en discute avec vous.
 
 **La cession.** Quand on vend une pharmacie à Tanger, le prix se négocie sur des multiples de marge brute. Présenter des comptes propres, valoriser le tiers payant et les marges arrières correctement, ça change le prix de cession. On accompagne aussi côté acquéreur (due diligence).
 

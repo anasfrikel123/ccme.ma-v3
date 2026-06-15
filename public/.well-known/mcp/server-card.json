@@ -1,0 +1,20 @@
+{
+  "mcpVersion": "1.0.0",
+  "serverInfo": {
+    "name": "CCME Tanger Agent Tools",
+    "version": "1.0.0"
+  },
+  "transport": {
+    "type": "http",
+    "url": "https://ccme.ma/api/agent-manifest.json"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    }
+  }
+}

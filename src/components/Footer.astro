@@ -1,6 +1,7 @@
 ---
-import { cabinet } from '~/data/cabinet';
+import { cabinet, formatLegalIdsLine } from '~/data/cabinet';
 const year = new Date().getFullYear();
+const legalIdsLine = formatLegalIdsLine();
 ---
 <footer class="site-footer">
   <div class="container">
@@ -19,39 +20,44 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <h4>Comptabilité</h4>
+        <h3>Comptabilité</h3>
         <ul>
           <li><a href="/services/tenue-comptabilite">Tenue comptable</a></li>
           <li><a href="/services/supervision-comptable">Supervision</a></li>
           <li><a href="/services/gestion-financiere">Gestion financière</a></li>
           <li><a href="/services/audit">Audit</a></li>
           <li><a href="/services/comptabilite-pharmaciens">Pharmaciens</a></li>
+          <li><a href="/services/externalisation-comptable">Externalisation</a></li>
+          <li><a href="/services/comptabilite-association">Associations</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Fiscalité &amp; juridique</h4>
+        <h3>Fiscalité &amp; juridique</h3>
         <ul>
           <li><a href="/services/conseil-fiscal">Conseil fiscal</a></li>
           <li><a href="/services/assistance-fiscale">Assistance fiscale</a></li>
           <li><a href="/services/creation-entreprise">Création SARL / SAS</a></li>
           <li><a href="/services/conseil-juridique">Conseil juridique</a></li>
           <li><a href="/services/domiciliation">Domiciliation</a></li>
+          <li><a href="/services/remboursement-credit-tva">Remboursement TVA</a></li>
+          <li><a href="/services/dissolution-liquidation-societe">Dissolution &amp; liquidation</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Paie &amp; social</h4>
+        <h3>Paie &amp; social</h3>
         <ul>
           <li><a href="/services/paie-grh">Paie &amp; GRH</a></li>
           <li><a href="/services/damancom-cnss">Damancom CNSS</a></li>
           <li><a href="/services/simpl-impots-dgi">Simpl Impôts DGI</a></li>
           <li><a href="/services/business-plan">Business plan</a></li>
+          <li><a href="/services/conseil-investissement-subventions">Investissement &amp; aides</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Ressources</h4>
+        <h3>Ressources</h3>
         <ul>
           <li><a href="/outils">Outils &amp; simulateurs</a></li>
           <li><a href="/calendrier-fiscal-2026">Calendrier fiscal 2026</a></li>
@@ -61,13 +67,16 @@ const year = new Date().getFullYear();
           <li><a href="/comparatifs">Comparatifs</a></li>
           <li><a href="/quartiers">Quartiers Tanger</a></li>
           <li><a href="/expat">Expatriés &amp; SCI</a></li>
+          <li><a href="/english-speaking-accountant-tanger" lang="en">English-speaking accountant</a></li>
           <li><a href="/avis-clients">Avis clients</a></li>
           <li><a href="/blog">Le Journal</a></li>
+          <li><a href="/cas-pratiques">Cas pratiques</a></li>
+          <li><a href="/mes-favoris">Mes favoris</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Cabinet</h4>
+        <h3>Cabinet</h3>
         <ul>
           <li><a href="/cabinet">Le cabinet</a></li>
           <li><a href="/secteurs">Secteurs</a></li>
@@ -78,8 +87,41 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
+    <div class="foot-newsletter">
+      <div class="newsletter-copy">
+        <p class="eyebrow eyebrow-gold">Newsletter</p>
+        <p class="newsletter-headline">Échéances, réformes, optimisations — une fois par mois.</p>
+        <p class="newsletter-sub">Recevez gratuitement le calendrier fiscal 2026 (PDF) en confirmant votre inscription.</p>
+      </div>
+      <form
+        class="newsletter-form"
+        method="POST"
+        action="/api/newsletter"
+        aria-label="S'inscrire à la newsletter CCME"
+        data-newsletter-form
+      >
+        <label class="visually-hidden" for="newsletter-email">Adresse e-mail</label>
+        <input
+          id="newsletter-email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          placeholder="vous@exemple.ma"
+          maxlength="120"
+        />
+        {/* Honeypot anti-spam: hidden from real users + accessible tech */}
+        <input type="text" name="company" tabindex="-1" autocomplete="off" class="newsletter-hp" aria-hidden="true" />
+        <button type="submit" class="btn btn-gold" data-newsletter-btn>
+          <span class="btn-label">S'inscrire</span>
+          <span class="btn-loading" aria-hidden="true">…</span>
+        </button>
+        <p class="newsletter-status" role="status" aria-live="polite" data-newsletter-status></p>
+      </form>
+    </div>
+
     <div class="foot-bottom">
-      <p>© {year} Consulting Maghreb Expertise — Cabinet d'expertise comptable, Tanger, Maroc.</p>
+      <p>© {year} Consulting Maghreb Expertise — Cabinet d'expertise comptable, Tanger, Maroc.{legalIdsLine && <> <span class="foot-ids">{legalIdsLine}</span></>}</p>
       <ul class="legal">
         <li><a href="/mentions-legales">Mentions légales</a></li>
         <li><a href="/confidentialite">Confidentialité</a></li>
@@ -93,58 +135,213 @@ const year = new Date().getFullYear();
   </div>
 </footer>
 
+<script>
+  import { initNewsletterForm } from '~/scripts/newsletter-form';
+  initNewsletterForm();
+</script>
+
 <style>
   .site-footer {
     margin-top: clamp(48px, 8vw, 96px);
-    background: linear-gradient(180deg, var(--paper) 0%, #f3eedf 100%);
+    background:
+      radial-gradient(900px 420px at 100% 0%, rgba(200, 168, 90, 0.08), transparent 65%),
+      linear-gradient(180deg, var(--paper) 0%, #f3eedf 100%);
     border-top: 1px solid var(--line);
-    padding-block: clamp(48px, 6vw, 72px) 24px;
+    padding-block: clamp(56px, 7vw, 88px) 24px;
+    position: relative;
   }
+  /* Gold hairline at the very top of the footer — bookend to the compliance band */
+  .site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: clamp(120px, 14vw, 200px);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 2px;
+  }
+
   .foot-grid {
     display: grid;
     grid-template-columns: 1.6fr repeat(5, 1fr);
-    gap: 28px;
+    gap: clamp(20px, 2.4vw, 36px);
   }
+  .foot-grid h3,
   .foot-grid h4 {
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .14em;
-    color: var(--muted);
-    margin-bottom: 14px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  .foot-grid h3::after,
+  .foot-grid h4::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 18px;
+    height: 1.5px;
+    background: var(--gold);
+    border-radius: 2px;
+    opacity: 0.6;
   }
   .foot-grid ul {
     list-style: none;
     margin: 0; padding: 0;
     display: grid;
-    gap: 8px;
+    gap: 9px;
   }
   .foot-grid a {
     color: var(--ink-soft);
     text-decoration: none;
     font-size: 14px;
+    transition: color .2s ease, padding-left .25s ease;
+    position: relative;
   }
-  .foot-grid a:hover { color: var(--accent-2); }
+  .foot-grid a:hover {
+    color: var(--accent-2);
+    padding-left: 6px;
+  }
+  .foot-grid a:hover::before {
+    content: "→";
+    position: absolute;
+    left: -8px;
+    color: var(--gold);
+    font-weight: 700;
+  }
 
-  .brand-logo {
+  .foot-brand .brand-logo {
     width: 64px; height: 64px;
     object-fit: contain;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .foot-tag {
     font-family: var(--serif);
-    font-size: 15px;
+    font-size: 16px;
+    line-height: 1.55;
     color: var(--ink-soft);
-    max-width: 36ch;
-    margin-bottom: 18px;
+    max-width: 38ch;
+    margin-bottom: 22px;
   }
-  .foot-contact p { margin: 4px 0; font-size: 14px; color: var(--ink-soft); }
-  .foot-contact a { color: var(--ink-soft); }
+  .foot-contact p { margin: 4px 0; font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+  .foot-contact a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .foot-contact a:hover { color: var(--gold); }
+  .foot-contact strong a { color: var(--ink); font-weight: 600; font-size: 16px; }
+
+  /* ── Newsletter signup ──────────────────────────────────────── */
+  .foot-newsletter {
+    margin-top: clamp(40px, 5vw, 56px);
+    padding: clamp(24px, 3vw, 36px);
+    background:
+      radial-gradient(600px 240px at 100% 0%, rgba(200, 168, 90, 0.10), transparent 60%),
+      linear-gradient(180deg, #fff 0%, #fbf6ea 100%);
+    border: 1px solid color-mix(in oklch, var(--gold) 25%, var(--line));
+    border-radius: var(--r-lg);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(20px, 3vw, 36px);
+    align-items: center;
+    box-shadow: 0 14px 36px -22px rgba(20, 37, 63, 0.18);
+  }
+  .newsletter-copy .eyebrow { margin-bottom: 8px; }
+  .newsletter-headline {
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    color: var(--ink);
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+  .newsletter-sub {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .newsletter-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    width: 100%;
+  }
+  .newsletter-form input[type="email"] {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1.5px solid var(--line);
+    /* Pin colours per theme so the input never shows cream text on white
+       (or dark text on dark) when the OS-level dark preference is set. */
+    background: #ffffff;
+    color: #14253f;
+    font-size: 14.5px;
+  }
+  .newsletter-form input[type="email"]::placeholder { color: #4a5365; opacity: 1; }
+  .newsletter-form input[type="email"]::-webkit-input-placeholder { color: #4a5365; }
+  :root[data-theme="dark"] .newsletter-form input[type="email"] {
+    background: #1c1810;
+    color: #f5efe1;
+    border-color: var(--line);
+  }
+  :root[data-theme="dark"] .newsletter-form input[type="email"]::placeholder { color: #d4c8aa; opacity: 1; }
+  .newsletter-form input[type="email"]:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(200, 168, 90, 0.18);
+  }
+  .newsletter-form .btn {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 12px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .newsletter-hp {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important; height: 1px !important;
+    opacity: 0 !important;
+  }
+  .newsletter-form .btn-loading { display: none; }
+  .newsletter-form .btn[aria-busy="true"] .btn-label { display: none; }
+  .newsletter-form .btn[aria-busy="true"] .btn-loading { display: inline; }
+  .newsletter-status {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+    font-size: 13px;
+    min-height: 1.2em;
+    color: var(--muted);
+  }
+  .newsletter-status[data-kind="ok"]  { color: var(--good); font-weight: 600; }
+  .newsletter-status[data-kind="err"] { color: var(--warn); font-weight: 600; }
+
+  @media (max-width: 720px) {
+    .foot-newsletter { grid-template-columns: 1fr; }
+    .newsletter-form { grid-template-columns: 1fr; }
+    .newsletter-form input[type="email"] { grid-column: 1; }
+    .newsletter-form .btn {
+      grid-column: 1;
+      grid-row: 2;
+      width: 100%;
+      justify-content: center;
+    }
+    .newsletter-status { grid-row: 3; }
+  }
 
   .foot-bottom {
-    margin-top: 40px;
-    padding-top: 22px;
+    margin-top: clamp(32px, 4vw, 48px);
+    padding-top: 24px;
     border-top: 1px solid var(--line);
     display: flex;
     flex-wrap: wrap;
@@ -154,21 +351,30 @@ const year = new Date().getFullYear();
     font-size: 13px;
     color: var(--muted);
   }
+  .foot-ids { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); }
   .legal, .social {
     list-style: none;
     margin: 0; padding: 0;
-    display: flex; gap: 18px;
+    display: flex;
+    gap: clamp(14px, 2vw, 22px);
+    flex-wrap: wrap;
   }
   .legal a, .social a {
     color: var(--muted);
     text-decoration: none;
+    transition: color .2s ease;
   }
-  .legal a:hover, .social a:hover { color: var(--ink); }
+  .legal a:hover, .social a:hover { color: var(--gold); }
 
-  @media (max-width: 900px) {
-    .foot-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 1100px) {
+    .foot-grid { grid-template-columns: 1.6fr repeat(2, 1fr); }
+    .foot-grid > div:first-child { grid-column: 1 / -1; margin-bottom: 16px; }
   }
-  @media (max-width: 540px) {
+  @media (max-width: 720px) {
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-grid > div:first-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 480px) {
     .foot-grid { grid-template-columns: 1fr; }
     .foot-bottom { flex-direction: column; align-items: flex-start; }
   }

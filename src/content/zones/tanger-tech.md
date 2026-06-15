@@ -31,7 +31,7 @@ Outils modernes (Pennylane, Sage Cloud, intégrations API), réconciliation Stri
 
 ## Fiscalité de scale-up
 
-**Régime ZAI tech** : exonération [IS](/outils/simulateur-is) 5 ans pour les activités éligibles. La majorité des SaaS export y entrent.
+**Régime ZAI tech** : exonération [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") 5 ans pour les activités éligibles. La majorité des SaaS export y entrent.
 
 **Crédit d'impôt R&D** marocain : peu connu, mais existant. On monte le dossier si votre activité est éligible.
 
@@ -42,7 +42,7 @@ Outils modernes (Pennylane, Sage Cloud, intégrations API), réconciliation Stri
 ## Pour qui
 
 - **Éditeurs SaaS qui vendent en abonnement à des clients européens** — l'activité export vers l'UE est souvent éligible au régime ZAI. On vérifie l'éligibilité avant de soumettre l'agrément, pas après avoir signé le bail de la zone.
-- **Agences digitales qui font du dev en outsourcing** — facturation en devises, comptabilité multi-clients, [TVA](/outils/simulateur-tva) export : on connaît ces montages et leurs particularités [CNSS](/glossaire#cnss), notamment le traitement des freelances sous-traitants vs salariés.
+- **Agences digitales qui font du dev en outsourcing** — facturation en devises, comptabilité multi-clients, [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") export : on connaît ces montages et leurs particularités [CNSS](/glossaire#cnss), notamment le traitement des freelances sous-traitants vs salariés.
 - **BPO/ITO multilingues (FR/EN/ES/AR)** — ces structures ont leurs propres conventions sociales. La paie d'une équipe de 30 opérateurs en rotation ne se gère pas comme celle d'une PME classique, et les erreurs de base CNSS sont fréquentes.
 - **R&D, IA, fintech, edtech naissantes** — souvent encore floues juridiquement au démarrage. On aide à choisir la bonne forme selon le plan de levée, à documenter les coûts R&D éligibles au crédit d'impôt marocain, et à tenir une compta investisseur-ready dès le premier exercice.
 

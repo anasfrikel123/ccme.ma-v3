@@ -26,7 +26,7 @@ faq:
 
 - **Caisse journalière** : ventes en cash, par carte, par tiers (Glovo, Jumia, etc.). À comptabiliser proprement chaque jour ou chaque semaine.
 - **Personnel saisonnier** : embauches massives en juillet-août, sortie en septembre. Contrats courts, calculs de prorata, AT-MP. Volume de paie qui triple.
-- **[TVA](/outils/simulateur-tva) mixte** : 10% restauration et hébergement, 20% sur le bar, l'événementiel. Bonne ventilation des recettes.
+- **[TVA](/outils/simulateur-tva "Simulateur TVA Maroc") mixte** : 10% restauration et hébergement, 20% sur le bar, l'événementiel. Bonne ventilation des recettes.
 - **Pourboires** : à comptabiliser correctement (en frais de personnel ou en transit) — la [DGI](/services/simpl-impots-dgi) regarde.
 - **Taxe promotion touristique** (TPT) : 5% sur le prix de la nuitée, à reverser à la commune.
 - **Marges restauration** : suivi par catégorie (boissons / plats / desserts), benchmark sectoriel.
@@ -39,7 +39,7 @@ On suit plusieurs restos et hôtels à Tanger. On connaît les contraintes, on c
 
 On met en place un dispositif simple mais robuste :
 
-- **Bandes de caisse archivées** (papier ou numérique) avec ventilation TVA par taux
+- **Bandes de caisse archivées** (papier ou numérique) avec ventilation [TVA](/outils/simulateur-tva) par taux
 - Rapprochement quotidien **caisse / compte bancaire / TPE** — un écart non expliqué de plus de 2% sur le mois doit être justifié
 - Suivi du **coefficient matière** par catégorie (food, soft, alcools, salle, événementiel)
 - Inventaire physique mensuel pour les boissons (le poste le plus sensible aux fuites)

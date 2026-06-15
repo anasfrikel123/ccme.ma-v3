@@ -1,6 +1,7 @@
----
+﻿---
 import Base from './Base.astro';
 import Breadcrumb from '~/components/Breadcrumb.astro';
+import BookmarkButton from '~/components/BookmarkButton.astro';
 
 interface Props {
   title: string;
@@ -23,11 +24,17 @@ const {
   author = 'Équipe CCME', heroImage, related = [], wordCount, timeRequired, about = [], ...rest
 } = Astro.props;
 
-const SITE = 'https://www.ccme.ma';
-const url = `${SITE}${Astro.url.pathname}`;
+const SITE = 'https://ccme.ma';
+// Strip .html (Astro build.format: 'file') so the canonical URL inside JSON-LD
+// matches the clean URL Cloudflare Pages serves (no .html suffix).
+const articlePath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const articleSlug = articlePath.replace(/^\/blog\//, '');
+const url = `${SITE}${articlePath}`;
+const schemaImage = heroImage
+  ? `${SITE}${heroImage}`
+  : `${SITE}/og/blog/${articleSlug}.jpg`;
 
 // Map known author display names to canonical Person entities defined on /cabinet#<id>.
-// New named contributors can be added here without touching every blog post.
 const authorMap: Record<string, { id: string; name: string; jobTitle: string; sameAs?: string[] }> = {
   'Hicham Bennani': {
     id: 'hicham-bennani',
@@ -55,11 +62,11 @@ const authorPerson = authorMap[author]
       '@id': `${SITE}/cabinet#${authorMap[author].id}`,
       name: authorMap[author].name,
       jobTitle: authorMap[author].jobTitle,
-      worksFor: { '@id': 'https://www.ccme.ma/#accounting' },
+      worksFor: { '@id': 'https://ccme.ma/#accounting' },
       url: `${SITE}/cabinet#${authorMap[author].id}`,
       ...(authorMap[author].sameAs ? { sameAs: authorMap[author].sameAs } : {}),
     }
-  : { '@type': 'Organization', '@id': 'https://www.ccme.ma/#accounting', name: 'Équipe CCME' };
+  : { '@type': 'Organization', '@id': 'https://ccme.ma/#accounting', name: 'Équipe CCME' };
 
 const articleSchema: Record<string, any> = {
   '@context': 'https://schema.org',
@@ -71,7 +78,7 @@ const articleSchema: Record<string, any> = {
   author: authorPerson,
   publisher: {
     '@type': 'Organization',
-    '@id': 'https://www.ccme.ma/#accounting',
+    '@id': 'https://ccme.ma/#accounting',
     name: 'Consulting Maghreb Expertise',
     logo: {
       '@type': 'ImageObject',
@@ -80,17 +87,12 @@ const articleSchema: Record<string, any> = {
       height: 512,
     },
   },
-  image: heroImage ? `${SITE}${heroImage}` : `${SITE}/images/og-default.jpg`,
+  image: schemaImage,
   mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   url,
   inLanguage: 'fr-MA',
   articleSection: category,
   isAccessibleForFree: true,
-  // Speakable hints flag the most citable passage of the article so AI Mode
-  // (Gemini) and Google Assistant can pick a precise quote when summarising.
-  // Per the post-March-2026 schema research, Speakable is one of the few
-  // surviving "passage identification" signals that still influences AI
-  // citation precision even though it no longer triggers a SERP feature.
   speakable: {
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', '.lede', '.prose > p:first-of-type', '.prose h2'],
@@ -99,10 +101,6 @@ const articleSchema: Record<string, any> = {
 if (wordCount && wordCount > 0) articleSchema.wordCount = wordCount;
 if (timeRequired) articleSchema.timeRequired = timeRequired;
 
-// `about` lets blog posts declare which canonical entities they discuss —
-// glossary DefinedTerm IDs, Service URLs, the cabinet itself. Gemini uses
-// these entity links during query fan-out to decide whether the article
-// answers related sub-queries.
 if (about.length) {
   articleSchema.about = about.map(a => {
     if (a.startsWith('http')) return { '@id': a };
@@ -111,6 +109,19 @@ if (about.length) {
     return { '@type': 'Thing', name: a };
   });
 }
+
+// Reading time in human form for the byline pill.
+const readMinutes = timeRequired
+  ? Math.max(1, parseInt(timeRequired.replace(/\D/g, ''), 10))
+  : null;
+
+// Author initials for the avatar circle (no photo asset required).
+const initials = author
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map(w => w[0]?.toUpperCase() ?? '')
+  .join('') || 'CC';
 ---
 <Base
   title={title}
@@ -118,6 +129,7 @@ if (about.length) {
   ogType="article"
   publishedTime={publishedTime}
   modifiedTime={modifiedTime}
+  readingMinutes={readMinutes ?? undefined}
   ogImage={heroImage}
   schema={articleSchema}
   markdownUrl={`${url}.md`}
@@ -131,20 +143,49 @@ if (about.length) {
           { label: 'Le Journal', href: '/blog' },
           { label: title }
         ]} />
-        <p class="eyebrow fade-up">{category}</p>
+        <p class="eyebrow eyebrow-gold fade-up">{category}</p>
         <h1 class="fade-up d1">{title}</h1>
         <p class="lede fade-up d2">{description}</p>
-        <p class="article-meta fade-up d3">
-          <time datetime={publishedTime}>{new Date(publishedTime).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-          <span aria-hidden="true"> · </span>
-          <span>{author}</span>
-          {timeRequired && (
-            <>
-              <span aria-hidden="true"> · </span>
-              <span>{Math.max(1, parseInt(timeRequired.replace(/\D/g, ''), 10))} min de lecture</span>
-            </>
-          )}
-        </p>
+
+        <div class="article-byline fade-up d3">
+          <div class="byline-author">
+            <span class="byline-avatar" aria-hidden="true">{initials}</span>
+            <div class="byline-text">
+              <span class="byline-name">{author}</span>
+              <span class="byline-meta">
+                <time datetime={publishedTime}>{new Date(publishedTime).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                {readMinutes && (
+                  <>
+                    <span class="byline-dot" aria-hidden="true">·</span>
+                    <span>{readMinutes} min de lecture</span>
+                  </>
+                )}
+              </span>
+            </div>
+          </div>
+          <div class="byline-share" data-share-strip>
+            <button type="button" class="share-btn" data-share-copy aria-label="Copier le lien de l'article">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+              <span class="share-label">Copier le lien</span>
+            </button>
+            <a class="share-btn" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} rel="noopener noreferrer" target="_blank" aria-label="Partager sur LinkedIn (nouvel onglet)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
+              </svg>
+              LinkedIn
+            </a>
+            <a class="share-btn" href={`https://wa.me/?text=${encodeURIComponent(`${title} — ${url}`)}`} rel="noopener noreferrer" target="_blank" aria-label="Partager sur WhatsApp (nouvel onglet)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.4-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.3.4-.5.1-.2.1-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1 2.7.1.2 1.8 2.7 4.4 3.8.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.2-.3-.2-.5-.3M12 4a8 8 0 0 1 6.7 12.4l.9 3.4-3.5-.9A8 8 0 1 1 12 4m0-2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2"/>
+              </svg>
+              WhatsApp
+            </a>
+            <BookmarkButton title={title} type="article" url={Astro.url.pathname} />
+          </div>
+        </div>
       </div>
     </header>
 
@@ -158,28 +199,43 @@ if (about.length) {
     )}
 
     <div class="container article-body">
-      <div class="prose reveal">
+      <div class="prose reveal" data-article-prose>
         <slot />
       </div>
 
-      <aside class="article-cta">
-        <p class="eyebrow">Besoin d'aide concrète ?</p>
-        <h3>On regarde votre dossier ensemble.</h3>
-        <p>Premier échange de 30 minutes, gratuit, sans engagement.</p>
-        <a href="/contact" class="btn btn-primary">Prendre contact</a>
+      <aside class="article-aside" aria-label="Sommaire de l'article">
+        <nav class="article-toc" data-article-toc aria-label="Table des matières">
+          <p class="toc-label">Sommaire</p>
+          <ol class="toc-list" data-toc-list></ol>
+        </nav>
+
+        <div class="article-cta">
+          <p class="eyebrow eyebrow-gold">Besoin d'aide concrète ?</p>
+          <h3>On regarde votre dossier ensemble.</h3>
+          <p>Premier échange de 30 minutes, gratuit, sans engagement.</p>
+          <a href="/contact" class="btn btn-gold">Prendre contact</a>
+        </div>
       </aside>
     </div>
 
     {related.length > 0 && (
       <section class="related" aria-label="Articles liés">
         <div class="container">
-          <h2 class="reveal">À lire ensuite</h2>
+          <div class="section-head reveal">
+            <p class="eyebrow eyebrow-gold">À lire ensuite</p>
+            <h2>Articles connexes choisis pour vous.</h2>
+          </div>
           <div class="grid grid-3">
             {related.map((r, i) => (
-              <a href={r.href} class="card reveal" style={`transition-delay:${i * 80}ms`}>
+              <a href={r.href} class="related-card card reveal" style={`transition-delay:${i * 80}ms`}>
                 <span class="tag">{r.cat}</span>
                 <h3>{r.title}</h3>
-                <span class="arrow" aria-hidden="true">→</span>
+                <span class="related-arrow" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </span>
               </a>
             ))}
           </div>
@@ -189,43 +245,353 @@ if (about.length) {
   </article>
 </Base>
 
-<style>
-  .article-hero { padding-block: clamp(36px, 5vw, 64px) clamp(20px, 3vw, 32px); }
-  .article-hero h1 { max-width: 26ch; }
-  .article-meta { color: var(--muted); font-size: 14px; margin-top: 12px; }
-  .article-figure {
-    margin-block: 24px;
+<script>
+  // ── Auto-TOC ─────────────────────────────────────────────────────
+  // Scan the article body for h2/h3, assign IDs, populate the sticky
+  // sidebar nav, and highlight the section currently in view.
+  const prose = document.querySelector<HTMLElement>('[data-article-prose]');
+  const tocList = document.querySelector<HTMLOListElement>('[data-toc-list]');
+  if (prose && tocList) {
+    const slugify = (s: string) =>
+      s.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const headings = Array.from(prose.querySelectorAll<HTMLHeadingElement>('h2'));
+    if (headings.length === 0) {
+      // No h2s — hide the TOC entirely instead of showing an empty box.
+      document.querySelector<HTMLElement>('[data-article-toc]')?.style.setProperty('display', 'none');
+    } else {
+      const used = new Set<string>();
+      headings.forEach((h, i) => {
+        let slug = h.id || slugify(h.textContent || '') || `section-${i + 1}`;
+        let unique = slug, n = 2;
+        while (used.has(unique)) unique = `${slug}-${n++}`;
+        used.add(unique);
+        h.id = unique;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#${unique}`;
+        a.textContent = h.textContent || '';
+        a.dataset.tocLink = unique;
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      // Highlight the section the user is currently reading.
+      const links = new Map(
+        Array.from(tocList.querySelectorAll<HTMLAnchorElement>('a[data-toc-link]'))
+          .map(a => [a.dataset.tocLink as string, a])
+      );
+      let current: HTMLAnchorElement | null = null;
+      const setActive = (id: string | null) => {
+        if (current) current.classList.remove('is-active');
+        current = id ? links.get(id) || null : null;
+        current?.classList.add('is-active');
+      };
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter(e => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive((visible[0].target as HTMLElement).id);
+      }, { rootMargin: '-100px 0px -65% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+    }
   }
+
+  // ── Copy-link share button ───────────────────────────────────────
+  const copyBtn = document.querySelector<HTMLButtonElement>('[data-share-copy]');
+  if (copyBtn) {
+    const labelEl = copyBtn.querySelector<HTMLElement>('.share-label');
+    const original = labelEl?.textContent || 'Copier le lien';
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        if (labelEl) labelEl.textContent = 'Lien copié !';
+        copyBtn.classList.add('is-copied');
+        setTimeout(() => {
+          if (labelEl) labelEl.textContent = original;
+          copyBtn.classList.remove('is-copied');
+        }, 1800);
+      } catch {
+        // Fallback: select the URL and let the user copy manually.
+        window.prompt('Copier le lien :', window.location.href);
+      }
+    });
+  }
+</script>
+
+<style>
+  .article-hero {
+    padding-block: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 40px);
+  }
+  .article-hero h1 {
+    max-width: 22ch;
+    font-size: clamp(2rem, 4.6vw, 3.2rem);
+    margin-bottom: 16px;
+  }
+  .article-hero .lede {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 1.7vw, 1.32rem);
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0 0 28px;
+    line-height: 1.55;
+  }
+
+  /* ── Byline ──────────────────────────────────────────────────── */
+  .article-byline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .byline-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent-2) 0%, var(--ink) 70%);
+    box-shadow: 0 4px 10px -4px rgba(20, 37, 63, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+  .byline-text { display: flex; flex-direction: column; gap: 2px; }
+  .byline-name {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 15px;
+  }
+  .byline-meta {
+    font-size: 13px;
+    color: var(--muted);
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .byline-dot { color: color-mix(in oklch, var(--gold) 60%, var(--muted)); font-weight: 700; }
+
+  .byline-share {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color .25s ease, color .25s ease, background .25s ease, transform .25s ease;
+  }
+  .share-btn:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+    background: #fff;
+    transform: translateY(-1px);
+  }
+  .share-btn.is-copied {
+    border-color: var(--good);
+    color: var(--good);
+    background: color-mix(in oklch, var(--good) 8%, #fff);
+  }
+
+  /* ── Hero image ─────────────────────────────────────────────── */
+  .article-figure {
+    margin-block: 32px;
+  }
+  .article-figure picture { display: block; }
   .article-figure img {
     border-radius: var(--r-lg);
-    box-shadow: var(--shadow-2);
+    box-shadow: 0 24px 60px -24px rgba(20, 37, 63, 0.4);
+    width: 100%;
+    height: auto;
   }
+
+  /* ── Body grid: prose | sticky aside ────────────────────────── */
   .article-body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 280px;
-    gap: 56px;
-    padding-block: clamp(28px, 4vw, 48px);
+    gap: clamp(40px, 5vw, 80px);
+    padding-block: clamp(32px, 5vw, 56px);
+    align-items: start;
   }
-  .article-cta {
-    background: var(--paper-2);
-    border: 1px solid var(--line);
-    border-radius: var(--r-lg);
-    padding: 24px;
-    height: fit-content;
+
+  .article-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     position: sticky;
     top: 96px;
   }
-  .article-cta h3 { font-size: 1.15rem; margin-bottom: 8px; }
-  .article-cta p { font-size: 14.5px; color: var(--ink-soft); }
-  .article-cta .btn { margin-top: 8px; }
 
-  .related { padding-block: clamp(40px, 6vw, 72px); background: var(--paper-2); }
-  .related h2 { margin-bottom: 28px; }
-  .related .card { color: var(--ink); text-decoration: none; display: flex; flex-direction: column; gap: 10px; }
-  .related .arrow { color: var(--gold); margin-top: auto; }
+  /* ── Auto-TOC ───────────────────────────────────────────────── */
+  .article-toc {
+    background: linear-gradient(180deg, #fff 0%, #fbf6ea 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 24px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .toc-label {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc-label::before {
+    content: "";
+    width: 14px;
+    height: 1.5px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+  .toc-list {
+    list-style: none;
+    counter-reset: toc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .toc-list li { counter-increment: toc; }
+  .toc-list a {
+    position: relative;
+    display: block;
+    padding: 8px 12px 8px 32px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 13.5px;
+    line-height: 1.45;
+    border-radius: 8px;
+    transition: color .2s ease, background .2s ease;
+  }
+  .toc-list a::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 11px;
+    color: var(--muted);
+    transition: color .2s ease;
+  }
+  .toc-list a:hover {
+    color: var(--ink);
+    background: rgba(200, 168, 90, 0.08);
+  }
+  .toc-list a.is-active {
+    color: var(--ink);
+    background: rgba(200, 168, 90, 0.16);
+    font-weight: 600;
+  }
+  .toc-list a.is-active::before { color: var(--gold); }
 
-  @media (max-width: 900px) {
+  /* ── Sidebar CTA ─────────────────────────────────────────────── */
+  .article-cta {
+    background:
+      radial-gradient(400px 200px at 100% 0%, rgba(200, 168, 90, 0.14), transparent 60%),
+      linear-gradient(180deg, var(--surface) 0%, var(--paper-2) 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px;
+  }
+  .article-cta h3 {
+    font-size: 1.18rem;
+    margin: 6px 0 8px;
+  }
+  .article-cta p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-cta .btn { margin-top: 12px; width: 100%; justify-content: center; }
+
+  /* ── Related articles ──────────────────────────────────────── */
+  .related {
+    padding-block: clamp(48px, 6vw, 80px);
+    background:
+      radial-gradient(800px 360px at 0% 0%, rgba(200, 168, 90, 0.06), transparent 65%),
+      var(--paper-2);
+    border-top: 1px solid var(--line);
+  }
+  .related-card {
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 200px;
+  }
+  .related-card h3 {
+    font-size: 1.18rem;
+    line-height: 1.35;
+    margin: 0;
+    transition: color .25s ease;
+  }
+  .related-card:hover h3 { color: var(--accent-2); }
+  .related-arrow {
+    margin-top: auto;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    transition: transform .35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .related-card:hover .related-arrow { transform: translateX(6px); }
+
+  @media (max-width: 1100px) {
     .article-body { grid-template-columns: 1fr; }
-    .article-cta { position: static; }
+    .article-aside {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .article-toc, .article-cta {
+      flex: 1 1 320px;
+      max-height: none;
+    }
+  }
+  @media (max-width: 720px) {
+    .article-byline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .byline-share { width: 100%; }
+    .share-btn { flex: 1; justify-content: center; }
   }
 </style>

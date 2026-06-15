@@ -1,7 +1,8 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import FAQ from '~/components/FAQ.astro';
 import Icon from '~/components/Icon.astro';
+import { cabinet, SITE } from '~/data/cabinet';
 
 // Topical-authority page for the high-intent query "combien coute un
 // expert-comptable a Tanger". Goal: own the SERP for *informational* price
@@ -45,7 +46,6 @@ const faq = [
   },
 ];
 
-const SITE = 'https://www.ccme.ma';
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -63,10 +63,11 @@ const schema = {
       '@id': `${SITE}/prix-expert-comptable-tanger#article`,
       headline: "Combien coûte un expert-comptable à Tanger en 2026 ?",
       description: "Fourchettes à Tanger 2026 : tenue, paie, création, contentieux. Écarts entre cabinets et contenu d'un devis honnête.",
+      image: `${SITE}/og/default.jpg`,
       datePublished: '2026-06-12',
       dateModified: '2026-06-12',
-      author: { '@id': `${SITE}/#accounting` },
-      publisher: { '@id': `${SITE}/#accounting` },
+      author: { '@type': 'Organization', '@id': `${SITE}/#accounting`, name: cabinet.legalName },
+      publisher: { '@type': 'Organization', '@id': `${SITE}/#accounting`, name: cabinet.legalName },
       inLanguage: 'fr-MA',
       isAccessibleForFree: true,
       mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/prix-expert-comptable-tanger` },
@@ -189,12 +190,27 @@ const schema = {
   .quick-table .hint { font-size: 13px; color: var(--muted); margin: 12px 4px 0; padding: 0; }
   .reasons li { margin-bottom: 12px; }
   .checklist {
-    display: grid; gap: 10px;
-    background: var(--paper-2); border: 1px solid var(--line);
-    border-radius: var(--r-lg); padding: 20px 22px;
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
-  .checklist > div { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
-  .checklist :global(.icon) { color: var(--gold); flex-shrink: 0; margin-top: 4px; }
+  .checklist > div {
+    display: flex; align-items: flex-start; gap: 13px;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: 15px 18px;
+    font-size: 15px; line-height: 1.5; color: var(--ink-soft);
+    transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+  }
+  .checklist > div:hover {
+    border-color: color-mix(in oklch, var(--gold) 45%, var(--line));
+    box-shadow: 0 10px 26px -16px rgba(20, 37, 63, 0.20);
+    transform: translateY(-2px);
+  }
+  .checklist :global(.icon) {
+    width: 26px; height: 26px; padding: 5px; box-sizing: border-box;
+    color: #fff; background: var(--gold); border-radius: 50%;
+    flex-shrink: 0; margin-top: 1px;
+    box-shadow: 0 3px 8px -2px color-mix(in oklch, var(--gold) 55%, transparent);
+  }
   .checklist strong { color: var(--ink); }
   .cta-block { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 </style>

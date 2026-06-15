@@ -30,7 +30,7 @@ Pour ces sociétés, la complexité comptable est réelle : industrie lourde, gr
 
 **Prix de transfert.** Documentation TP obligatoire (master file + local file), test de comparabilité, suivi de la marge benchmark. C'est un sujet majeur en TAC, la [DGI](/services/simpl-impots-dgi) cible particulièrement le secteur automobile.
 
-**Régime ZAI.** Exonération [IS](/outils/simulateur-is) 5 ans, puis 8,75%. Suivi des opérations zone/hors-zone, audit annuel de conformité.
+**Régime ZAI.** Exonération [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc") 5 ans, puis 8,75%. Suivi des opérations zone/hors-zone, audit annuel de conformité.
 
 **Paie spécifique** : conventions de la métallurgie, primes liées à la production, AT-MP renforcés.
 
@@ -42,9 +42,9 @@ Le régime ZAI (zone d'accélération industrielle, ex-zone franche d'exportatio
 
 Les points-clés que la DGI vérifie chaque année :
 
-- **Exonération IS pendant 5 ans**, puis taux réduit (8,75% jusqu'en fin de période, 15% au-delà selon les arrêtés en vigueur). Pour estimer l'impact net, voir notre simulateur IS 2026
+- **Exonération IS pendant 5 ans**, puis taux réduit (8,75% jusqu'en fin de période, 15% au-delà selon les arrêtés en vigueur). Pour estimer l'impact net, voir notre [simulateur IS](/outils/simulateur-is) 2026
 - **Suivi rigoureux des opérations zone / hors-zone.** Une vente locale (en dirhams sur le territoire marocain) requalifie la marge correspondante en régime de droit commun. Beaucoup d'équipementiers font 5 à 15% de leurs ventes hors-zone sans s'en rendre compte
-- **[TVA](/outils/simulateur-tva) suspendue à l'import** des matières et équipements — mais documentation obligatoire (DUM, attestations)
+- **[TVA](/outils/simulateur-tva "Simulateur TVA Maroc") suspendue à l'import** des matières et équipements — mais documentation obligatoire (DUM, attestations)
 - **Audit annuel ZAI** par un commissaire aux comptes ou un [expert-comptable](/cabinet) agréé
 
 Notre [comparatif TFZ vs TAC vs Tanger Med](/comparatifs/tanger-med-vs-tfz-vs-tac) détaille les bascules entre régimes selon le profil d'activité.

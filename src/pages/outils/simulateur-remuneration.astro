@@ -1,0 +1,274 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Salaire vs dividende gérant Maroc | Comparateur 2026"
+  description="Comparateur salaire vs dividende pour gérant majoritaire au Maroc. IS 20 %, PFL 12,5 % LF 2026, CNSS, AMO, IR. Stratégie nette optimisée par enveloppe."
+  eyebrow="Outil"
+  heading="Salaire vs dividende — comparateur gérant"
+  lede="Pour une enveloppe brute donnée, qu'est-ce qui rapporte le plus net : se verser un salaire ou un dividende ? Calcul intégral des deux scénarios avec les barèmes 2026."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils', href: '/outils' }, { label: 'Salaire vs dividende' }]}
+  keywords={["salaire ou dividende gerant Maroc","optimisation remuneration gerant","comparateur salaire dividende 2026","TNS Maroc"]}
+>
+  <section>
+    <div class="container">
+      <div class="rem-grid">
+        <div class="card sim-card">
+          <h2>Vos paramètres</h2>
+          <div class="form-grid">
+            <label>
+              <span>Enveloppe brute disponible (DH/an)</span>
+              <input type="number" id="env" min="0" step="1000" placeholder="Ex : 600 000" />
+              <small>Ce que la société peut consacrer à votre rémunération en cumulé : salaire + cotisations OU bénéfice avant IS.</small>
+            </label>
+            <label>
+              <span>Charges familiales</span>
+              <select id="charges">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6 (max)</option>
+              </select>
+            </label>
+            <label>
+              <span>Taux IS PME</span>
+              <select id="tauxIs">
+                <option value="0.20">20 % — Régime droit commun (LF 2026)</option>
+                <option value="0.0875">8,75 % — Zone franche éligible (TFZ, TAC)</option>
+                <option value="0.40">40 % — Banques, assurances</option>
+              </select>
+            </label>
+            <label>
+              <span>Régime PFL dividende</span>
+              <select id="regime">
+                <option value="12.5">12,5 % — LF 2026</option>
+                <option value="13.75">13,75 % — Exercices antérieurs</option>
+              </select>
+            </label>
+          </div>
+          <button id="calculate" class="btn btn-gold" type="button">Comparer</button>
+          <p id="sim-error" class="sim-error" role="alert" aria-live="polite"></p>
+        </div>
+
+        <div id="result" class="card result-card" hidden>
+          <div class="reco-banner" id="recoBanner" data-mode="">
+            <span class="reco-eyebrow">Recommandation</span>
+            <strong id="recoText">—</strong>
+            <span class="reco-detail" id="recoDetail"></span>
+          </div>
+
+          <div class="strat-grid">
+            <div class="strat strat-salaire">
+              <h3>100 % salaire</h3>
+              <div class="strat-net">
+                <span>Net annuel</span>
+                <strong id="sNet">—</strong>
+              </div>
+              <ul class="strat-detail">
+                <li><span>Brut annuel</span><strong id="sBrut">—</strong></li>
+                <li><span>CNSS / AMO / FP salarié</span><strong id="sCnss">—</strong></li>
+                <li><span>IR annuel</span><strong id="sIr">—</strong></li>
+                <li><span>Cotisations patronales</span><strong id="sCnssP">—</strong></li>
+              </ul>
+              <div class="strat-tax">Taux de prélèvement : <strong id="sTaux">—</strong></div>
+            </div>
+
+            <div class="strat strat-dividende">
+              <h3>100 % dividende</h3>
+              <div class="strat-net">
+                <span>Net annuel</span>
+                <strong id="dNet">—</strong>
+              </div>
+              <ul class="strat-detail">
+                <li><span>IS sur bénéfice</span><strong id="dIs">—</strong></li>
+                <li><span>Distribuable après IS</span><strong id="dDistr">—</strong></li>
+                <li><span>Retenue PFL</span><strong id="dPfl">—</strong></li>
+                <li><span>Couverture sociale</span><strong>Aucune</strong></li>
+              </ul>
+              <div class="strat-tax">Taux de prélèvement : <strong id="dTaux">—</strong></div>
+            </div>
+          </div>
+
+          <div class="diff-banner">
+            <span>Différentiel net annuel (salaire − dividende)</span>
+            <strong id="diff">—</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-note card">
+        <p><strong>Lecture du résultat.</strong> Le dividende ignore la couverture sociale. Si la stratégie "dividende" gagne sur le pur cash, intégrez le coût d'une mutuelle privée et d'une retraite complémentaire avant de décider — sinon vous comparez des choses non comparables.</p>
+        <p>Hypothèses : société à l'IS, gérant majoritaire au régime CNSS général, plafond CNSS 6 000 DH/mois, frais professionnels 25 % plafonnés à 6 250 DH/mois (LF 2025). Pour les zones franches éligibles (TAC, TFZ), le taux IS de 8,75 % s'applique pendant 5 ans seulement. <a href="/contact">Demandez une étude personnalisée</a>.</p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .rem-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .sim-card, .result-card { padding: 32px; }
+  .form-grid { display: grid; gap: 16px; margin: 24px 0; }
+  .form-grid label { display: block; }
+  .form-grid span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-grid small { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+  .form-grid input, .form-grid select { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 16px; background: #fff; }
+  .form-grid input:focus, .form-grid select:focus { outline: 2px solid var(--gold); }
+  .sim-error { color: #b3261e; font-size: 14px; min-height: 1.4em; margin: 12px 0 0; font-weight: 500; }
+  .sim-error:empty { display: none; }
+
+  /* Result panel */
+  .reco-banner {
+    border-radius: var(--r-lg);
+    padding: 18px 22px;
+    background: linear-gradient(135deg, color-mix(in oklch, var(--gold) 14%, var(--paper-2)) 0%, var(--paper-2) 100%);
+    border: 1px solid color-mix(in oklch, var(--gold) 30%, var(--line));
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .reco-banner[data-mode="dividende"] {
+    background: linear-gradient(135deg, color-mix(in oklch, #4f8a4f 14%, var(--paper-2)) 0%, var(--paper-2) 100%);
+    border-color: color-mix(in oklch, #4f8a4f 30%, var(--line));
+  }
+  .reco-banner[data-mode="equivalent"] {
+    background: var(--paper-2);
+  }
+  .reco-eyebrow {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .reco-banner strong {
+    font-family: var(--ff-serif, 'Newsreader', serif);
+    font-size: clamp(1.4rem, 2vw, 1.7rem);
+    line-height: 1.1;
+    color: var(--accent-deep);
+  }
+  .reco-detail { color: var(--ink-soft); font-size: 14px; }
+
+  .strat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .strat {
+    padding: 22px;
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .strat h3 { margin: 0 0 16px; font-size: 1.05rem; font-weight: 600; }
+  .strat-net {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .strat-net span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+  .strat-net strong {
+    font-family: var(--ff-serif, 'Newsreader', serif);
+    font-size: 1.6rem;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .strat-detail { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; }
+  .strat-detail li { display: flex; justify-content: space-between; gap: 12px; color: var(--ink-soft); }
+  .strat-detail strong { font-variant-numeric: tabular-nums; color: var(--ink); }
+  .strat-tax {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .strat-tax strong { color: var(--ink); }
+
+  .diff-banner {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .diff-banner strong { font-variant-numeric: tabular-nums; color: var(--gold); font-size: 1.1rem; }
+
+  .sim-note { margin-top: 24px; padding: 24px 28px; font-size: 14.5px; line-height: 1.65; color: var(--ink-soft); }
+  .sim-note p { margin: 0 0 10px; }
+  .sim-note p:last-child { margin: 0; }
+
+  @media (max-width: 980px) {
+    .rem-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .strat-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  import { computeRemuneration, fmtDH, type DividendeRegime } from '~/lib/tax-maroc';
+
+  document.getElementById('calculate')!.addEventListener('click', () => {
+    const errEl = document.getElementById('sim-error') as HTMLElement;
+    errEl.textContent = '';
+    const env = parseFloat((document.getElementById('env') as HTMLInputElement).value) || 0;
+    const charges = parseInt((document.getElementById('charges') as HTMLSelectElement).value, 10) || 0;
+    const tauxIs = parseFloat((document.getElementById('tauxIs') as HTMLSelectElement).value);
+    const regime = (document.getElementById('regime') as HTMLSelectElement).value as DividendeRegime;
+
+    if (env < 50_000) {
+      errEl.textContent = 'L\'enveloppe doit être d\'au moins 50 000 DH/an pour un comparatif pertinent.';
+      return;
+    }
+
+    const r = computeRemuneration({ enveloppeBrute: env, charges, tauxIs, regimeDividende: regime });
+
+    (document.getElementById('result') as HTMLElement).hidden = false;
+
+    const recoMap = {
+      salaire: { label: 'Le salaire est plus avantageux', mode: 'salaire' as const },
+      dividende: { label: 'Le dividende est plus avantageux', mode: 'dividende' as const },
+      equivalent: { label: 'Stratégies quasi-équivalentes', mode: 'equivalent' as const },
+    };
+    const reco = recoMap[r.recommandation];
+    document.getElementById('recoText')!.textContent = reco.label;
+    document.getElementById('recoBanner')!.setAttribute('data-mode', reco.mode);
+    const diff = Math.abs(r.differentielNet);
+    document.getElementById('recoDetail')!.textContent = r.recommandation === 'equivalent'
+      ? 'Différence < 1 % de l\'enveloppe — choisissez selon couverture sociale et trésorerie.'
+      : `Écart net annuel : ${fmtDH(diff)}`;
+
+    document.getElementById('sNet')!.textContent = fmtDH(r.salaire.netAnnuel);
+    document.getElementById('sBrut')!.textContent = fmtDH(r.salaire.brutAnnuel);
+    document.getElementById('sCnss')!.textContent = fmtDH(r.salaire.cnssSalarie);
+    document.getElementById('sIr')!.textContent = fmtDH(r.salaire.irAnnuel);
+    document.getElementById('sCnssP')!.textContent = fmtDH(r.salaire.cnssPatronal);
+    document.getElementById('sTaux')!.textContent = r.salaire.tauxGlobal.toString().replace('.', ',') + ' %';
+
+    document.getElementById('dNet')!.textContent = fmtDH(r.dividende.netAnnuel);
+    document.getElementById('dIs')!.textContent = fmtDH(r.dividende.isDuSurBenefice);
+    document.getElementById('dDistr')!.textContent = fmtDH(r.dividende.distribuable);
+    document.getElementById('dPfl')!.textContent = fmtDH(r.dividende.retenuePfl);
+    document.getElementById('dTaux')!.textContent = r.dividende.tauxGlobal.toString().replace('.', ',') + ' %';
+
+    document.getElementById('diff')!.textContent = `${r.differentielNet >= 0 ? '+' : '−'}${fmtDH(Math.abs(r.differentielNet))}`;
+  });
+</script>

@@ -1,13 +1,15 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
 import { collectionPageSchema } from '~/lib/collection-schema';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 const items = [
   { slug: 'sarl-vs-sas-maroc', title: 'SARL vs SAS au Maroc', desc: 'Différences, avantages, fiscalité, capital, gouvernance. Lequel choisir en 2026 ?' },
   { slug: 'freelance-vs-societe-maroc', title: 'Freelance ou société au Maroc', desc: 'Auto-entrepreneur, IR pro, ou créer une SARL ? Comparatif charges, plafonds, image.' },
   { slug: 'comptable-vs-fiduciaire', title: 'Expert-comptable vs fiduciaire', desc: 'Quelle est la différence ? Lequel choisir selon la taille de votre entreprise ?' },
   { slug: 'tanger-med-vs-tfz-vs-tac', title: 'Tanger Med vs TFZ vs TAC', desc: 'Trois zones franches, quel régime, pour quelle activité ?' },
+  { slug: 'domiciliation-vs-local-commercial', title: 'Domiciliation ou local commercial', desc: 'Siège social : domicilier malin ou louer un local ? Coût, légalité, image.' },
+  { slug: 'logiciel-comptabilite-vs-expert-comptable', title: 'Logiciel ou expert-comptable', desc: 'Faire sa compta soi-même sur un logiciel, ou déléguer ? Le vrai coût, risque compris.' },
 ];
 const hubSchema = collectionPageSchema({
   url: `${SITE}/comparatifs`,
@@ -21,7 +23,7 @@ const hubSchema = collectionPageSchema({
   description="Comparatifs pour les bons choix : SARL vs SAS, freelance vs société, expert-comptable vs fiduciaire, zones franches Tanger. Décodés par notre cabinet."
   eyebrow="Comparatifs"
   heading="Le bon choix pour votre activité."
-  lede="Quatre comparatifs basés sur des cas réels. SARL ou SAS ? Freelance ou société ? On tranche en quelques minutes de lecture, sans jargon."
+  lede="Six comparatifs basés sur des cas réels. SARL ou SAS ? Freelance ou société ? On tranche en quelques minutes de lecture, sans jargon."
   breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs' }]}
   keywords={["SARL ou SAS Maroc","freelance ou société Maroc","expert comptable vs fiduciaire","zones franches Tanger comparatif"]}
   schema={hubSchema}
@@ -32,7 +34,7 @@ const hubSchema = collectionPageSchema({
         {items.map(it => (
           <a href={`/comparatifs/${it.slug}`} class="card reveal">
             <p class="eyebrow">Comparatif</p>
-            <h3>{it.title}</h3>
+            <h2>{it.title}</h2>
             <p>{it.desc}</p>
             <span class="arrow" aria-hidden="true">→ Lire</span>
           </a>

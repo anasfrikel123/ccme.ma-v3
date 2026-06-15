@@ -1,9 +1,10 @@
 ---
 import Page from '~/layouts/Page.astro';
+import { cabinet } from '~/data/cabinet';
 ---
 <Page
   title="Politique de confidentialité | CCME Tanger"
-  description="Politique de confidentialité du cabinet CCME : traitement des données personnelles selon la loi 09-08 et le RGPD pour les ressortissants UE."
+  description="Politique de confidentialité du cabinet CCME : traitement des données personnelles selon la loi 09-08, la CNDP et le RGPD pour les ressortissants UE."
   eyebrow="Légal"
   heading="Politique de confidentialité"
   breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Confidentialité' }]}
@@ -11,24 +12,44 @@ import Page from '~/layouts/Page.astro';
 >
   <section>
     <div class="container prose">
-      <p>Le cabinet CCME respecte la loi marocaine 09-08 relative à la protection des personnes physiques à l'égard du traitement des données personnelles, ainsi que le RGPD pour les ressortissants de l'Union européenne.</p>
+      <p><em>Dernière mise à jour : juin 2026.</em></p>
+
+      <p>Le cabinet {cabinet.legalName} (« CCME ») respecte la loi marocaine 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et les délibérations de la Commission Nationale de contrôle de la protection des Données à caractère Personnel (CNDP), ainsi que le Règlement général sur la protection des données (RGPD, UE 2016/679) pour les ressortissants de l'Union européenne.</p>
+
+      <h2>Responsable du traitement</h2>
+      <p>Le responsable du traitement des données est le cabinet {cabinet.legalName}, {cabinet.address.formatted}. Pour toute question relative à vos données personnelles, contactez-nous à <a href="mailto:{cabinet.email}">{cabinet.email}</a>.</p>
 
       <h2>Données collectées</h2>
-      <p>Nous collectons uniquement les données nécessaires à la prestation de service : identité, coordonnées, informations relatives à votre activité professionnelle. Aucune donnée sensible (santé, opinions, croyances) n'est demandée.</p>
+      <p>Nous collectons uniquement les données nécessaires à la prestation de service : identité, coordonnées, informations relatives à votre activité professionnelle. Les données transmises via le formulaire de contact (nom, e-mail, message) servent exclusivement à traiter votre demande. Aucune donnée sensible (santé, opinions politiques ou religieuses) n'est demandée.</p>
+
+      <h2>Base légale du traitement</h2>
+      <ul>
+        <li><strong>Exécution d'un contrat</strong> ou de mesures précontractuelles (devis, réalisation des missions).</li>
+        <li><strong>Obligation légale</strong> (conservation des pièces comptables, obligations fiscales et sociales).</li>
+        <li><strong>Consentement</strong> (newsletter, envoi du formulaire de contact).</li>
+        <li><strong>Intérêt légitime</strong> (sécurité du site, prévention de la fraude).</li>
+      </ul>
 
       <h2>Finalité du traitement</h2>
       <ul>
         <li>Réalisation des missions comptables, fiscales, juridiques et sociales</li>
         <li>Communication client (relances, échéances, alertes)</li>
+        <li>Réponse aux demandes envoyées via le formulaire de contact</li>
         <li>Obligations légales (conservation des pièces comptables, archivage 10 ans)</li>
-        <li>Newsletter (sur opt-in volontaire)</li>
+        <li>Newsletter (sur opt-in volontaire ; désinscription possible à tout moment)</li>
       </ul>
+
+      <h2>Durée de conservation</h2>
+      <p>Les pièces comptables sont conservées 10 ans conformément à la loi. Les données de prospects et de contact sont conservées pendant la durée de la relation, puis supprimées ou archivées au plus tard 3 ans après le dernier contact. Les données liées à la newsletter sont conservées jusqu'à votre désinscription.</p>
 
       <h2>Confidentialité professionnelle</h2>
       <p>En tant que cabinet inscrit à l'Ordre des Experts-Comptables, nous sommes soumis au secret professionnel selon l'article 4 du code de déontologie de l'OEC. Aucune information ne peut être divulguée sans votre accord exprès, sauf cas prévus par la loi.</p>
 
       <h2>Vos droits</h2>
-      <p>Vous disposez d'un droit d'accès, de rectification, d'opposition et de portabilité sur vos données. Pour l'exercer, écrivez à <a href="mailto:info@ccme.ma">info@ccme.ma</a>.</p>
+      <p>Conformément à la loi 09-08 et au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation du traitement, d'opposition et de portabilité de vos données, ainsi que du droit de retirer votre consentement à tout moment. Pour exercer ces droits, écrivez à <a href="mailto:{cabinet.email}">{cabinet.email}</a> ; une réponse vous sera apportée dans un délai maximal d'un mois.</p>
+
+      <h2>Réclamation</h2>
+      <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNDP (Commission Nationale de contrôle de la protection des Données à caractère Personnel) au Maroc — <a href="https://www.cndp.ma" rel="noopener noreferrer">cndp.ma</a> — ou auprès de l'autorité de contrôle compétente de votre pays de résidence au sein de l'Union européenne.</p>
 
       <h2>Cookies</h2>
       <p>Le site utilise un nombre limité de cookies techniques nécessaires à son fonctionnement. Aucun cookie publicitaire ou de tracking tiers n'est déposé.</p>

@@ -38,6 +38,13 @@ const round2 = (n: number): number => Math.round(n * 100) / 100;
 // IS — Impôt sur les sociétés
 // ---------------------------------------------------------------------------
 
+export interface AcompteIs {
+  numero: 1 | 2 | 3 | 4;
+  montant: number;
+  dateLimite: string;
+  label: string;
+}
+
 export interface IsResult {
   /** Net IS computed bracket-by-bracket (no minimum). */
   isCalc: number;
@@ -49,6 +56,38 @@ export interface IsResult {
   isDue: number;
   /** Which side won — useful for the UI note. */
   mode: 'bareme' | 'cotisation-minimale';
+  /** Four quarterly provisional installments (25 % each, remainder on Q4). */
+  acomptes: ReturnType<typeof computeAcomptesIs>;
+}
+
+/** Split IS due into four equal quarterly acomptes provisionnels (Moroccan law). */
+export function computeAcomptesIs(
+  isDue: number,
+  year = 2026,
+): { acomptes: AcompteIs[]; total: number } {
+  if (!Number.isFinite(isDue) || isDue <= 0) {
+    return { acomptes: [], total: 0 };
+  }
+
+  const due = round2(isDue);
+  const base = Math.floor(due / 4);
+  const q4Amount = round2(due - base * 3);
+
+  const schedule: Array<{ numero: 1 | 2 | 3 | 4; dateLimite: string; label: string }> = [
+    { numero: 1, dateLimite: `${year}-03-31`, label: '1er acompte IS' },
+    { numero: 2, dateLimite: `${year}-06-30`, label: '2e acompte IS' },
+    { numero: 3, dateLimite: `${year}-09-30`, label: '3e acompte IS' },
+    { numero: 4, dateLimite: `${year}-12-31`, label: '4e acompte IS' },
+  ];
+
+  const acomptes: AcompteIs[] = schedule.map((s, i) => ({
+    numero: s.numero,
+    dateLimite: s.dateLimite,
+    label: s.label,
+    montant: i < 3 ? base : q4Amount,
+  }));
+
+  return { acomptes, total: due };
 }
 
 const trancheTax = (
@@ -72,7 +111,7 @@ export function computeIS(ca: number, benefice: number): IsResult {
   const t4 = trancheTax(benefice, 100_000_000, Infinity, 0.35);
   const isCalc = t1 + t2 + t3 + t4;
   const cotisationMinimale = Math.max(ca * 0.0025, 3_000);
-  const isDue = Math.max(isCalc, cotisationMinimale);
+  const isDue = round2(Math.max(isCalc, cotisationMinimale));
   return {
     isCalc: round2(isCalc),
     tranches: {
@@ -82,10 +121,11 @@ export function computeIS(ca: number, benefice: number): IsResult {
       t4: round2(t4),
     },
     cotisationMinimale: round2(cotisationMinimale),
-    isDue: round2(isDue),
-    mode: isDue === cotisationMinimale && isDue !== isCalc
+    isDue,
+    mode: isDue === round2(cotisationMinimale) && isDue !== round2(isCalc)
       ? 'cotisation-minimale'
       : 'bareme',
+    acomptes: computeAcomptesIs(isDue),
   };
 }
 
@@ -308,6 +348,177 @@ export function computeCreation(input: CreationInput): CreationResult {
     honorairesCabinet: round2(honoraires),
     total: round2(total),
     note: input.forme === 'sa' ? 'sa' : 'standard',
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Dividende — retenue à la source PFL (LF 2026: 12,5 %)
+// ---------------------------------------------------------------------------
+
+/**
+ * Retenue PFL sur dividendes — Loi de Finances 2026 a abaissé le taux de
+ * 13,75 % à 12,5 % pour les distributions de bénéfices d'exercices ouverts
+ * à compter du 01/01/2026 (CGI art. 19 bis & 73-II). Les dividendes
+ * distribués au titre d'exercices antérieurs restent taxés à l'ancien taux
+ * — le simulateur expose les deux taux pour permettre la comparaison.
+ *
+ * Cas particulier non couvert ici : redistribution intra-groupe, conventions
+ * fiscales internationales (taux conventionnels souvent réduits), holding
+ * personnelle imposée à l'IS sur les dividendes reçus.
+ */
+export type DividendeRegime = '12.5' | '13.75' | '0';
+
+export interface DividendeInput {
+  /** Bénéfice net distribuable (après IS). */
+  beneficeNetApresIs: number;
+  /** Quote-part distribuée (0 à 1). */
+  ratioDistribue: number;
+  /** Régime applicable selon l'exercice. */
+  regime: DividendeRegime;
+}
+
+export interface DividendeResult {
+  beneficeNetApresIs: number;
+  montantDistribue: number;
+  retenuePfl: number;
+  netActionnaire: number;
+  tauxEffectif: number;
+}
+
+export function computeDividende(input: DividendeInput): DividendeResult {
+  const benef = Math.max(0, Number.isFinite(input.beneficeNetApresIs) ? input.beneficeNetApresIs : 0);
+  const ratio = Math.min(1, Math.max(0, Number.isFinite(input.ratioDistribue) ? input.ratioDistribue : 0));
+  const taux = input.regime === '0' ? 0 : input.regime === '13.75' ? 0.1375 : 0.125;
+  const distribue = benef * ratio;
+  const retenue = distribue * taux;
+  const net = distribue - retenue;
+  return {
+    beneficeNetApresIs: round2(benef),
+    montantDistribue: round2(distribue),
+    retenuePfl: round2(retenue),
+    netActionnaire: round2(net),
+    tauxEffectif: round2(taux * 100),
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Rémunération gérant : salaire vs dividende — comparateur
+// ---------------------------------------------------------------------------
+
+/**
+ * Compare deux stratégies de rémunération pour un gérant majoritaire :
+ *   - 100 % salaire (cotisations CNSS / AMO + IR mensuel) ;
+ *   - 100 % dividende (PFL 12,5 % LF 2026, après IS sur le bénéfice).
+ *
+ * Hypothèses : société à l'IS au taux unique 20 % (PME, CGI art. 19 LF 2026),
+ * gérant majoritaire = TNS au régime général CNSS, plafond CNSS 6 000 DH.
+ * Pas d'optimisation hybride dans ce modèle — l'objectif est de cadrer les
+ * ordres de grandeur, pas de remplacer un avis fiscal personnalisé.
+ */
+export interface RemunerationInput {
+  /** Enveloppe brute disponible avant tout choix de répartition (DH/an). */
+  enveloppeBrute: number;
+  /** Charges familiales (capées 6). */
+  charges?: number;
+  /** Taux IS applicable (par défaut 20 % LF 2026 régime PME). */
+  tauxIs?: number;
+  /** Régime PFL dividende (par défaut 12,5 %). */
+  regimeDividende?: DividendeRegime;
+}
+
+export interface RemunerationStrategy {
+  /** Net annuel perçu par le gérant. */
+  netAnnuel: number;
+  /** Total prélèvements (charges + impôts) sur l'enveloppe. */
+  totalPrelevements: number;
+  /** Taux global de prélèvement (%). */
+  tauxGlobal: number;
+}
+
+export interface RemunerationResult {
+  enveloppeBrute: number;
+  salaire: RemunerationStrategy & {
+    brutAnnuel: number;
+    cnssSalarie: number;
+    cnssPatronal: number;
+    irAnnuel: number;
+  };
+  dividende: RemunerationStrategy & {
+    isDuSurBenefice: number;
+    distribuable: number;
+    retenuePfl: number;
+  };
+  /** Différentiel net (salaire − dividende). Positif → salaire gagne. */
+  differentielNet: number;
+  /** Stratégie la plus avantageuse. */
+  recommandation: 'salaire' | 'dividende' | 'equivalent';
+}
+
+export function computeRemuneration(input: RemunerationInput): RemunerationResult {
+  const env = Math.max(0, Number.isFinite(input.enveloppeBrute) ? input.enveloppeBrute : 0);
+  const charges = Math.max(0, Math.min(6, Math.floor(input.charges ?? 0)));
+  const tauxIs = Number.isFinite(input.tauxIs) && (input.tauxIs as number) > 0 ? (input.tauxIs as number) : 0.20;
+  const regime = input.regimeDividende ?? '12.5';
+
+  // Stratégie 1 : 100% salaire. L'enveloppe couvre brut + cotisations patronales.
+  // On résout brut tel que cout employeur = enveloppe annuelle.
+  // Cout employeur ≈ brut * (1 + tauxPatronalEffectif). Le taux patronal
+  // dépend du plafond CNSS, donc on itère mensuellement.
+  // Approximation : on tente brut = env / 1.21 (taux patronal moyen 21% pour
+  // bruts > plafond) puis on ajuste via computePaie.
+  let brutMensuelEstime = env / 12 / 1.21;
+  for (let i = 0; i < 12; i++) {
+    const pa = computePaie({ brut: brutMensuelEstime, charges });
+    const coutAnnuel = pa.coutEmployeur * 12;
+    if (Math.abs(coutAnnuel - env) < 1) break;
+    brutMensuelEstime *= env / coutAnnuel;
+  }
+  const paie = computePaie({ brut: brutMensuelEstime, charges });
+  const netSalaireAnnuel = paie.salarie.net * 12;
+  const cnssSalAnnuel = paie.salarie.cnss * 12;
+  const irAnnuel = paie.salarie.ir * 12;
+  const cnssPatAnnuel = (paie.patronal.cnss + paie.patronal.amo + paie.patronal.allocationsFamiliales + paie.patronal.taxeFormationPro) * 12;
+  const totalPrelevSalaire = env - netSalaireAnnuel;
+
+  // Stratégie 2 : 100% dividende. L'enveloppe est le bénéfice avant IS.
+  const isDu = env * tauxIs;
+  const distribuable = env - isDu;
+  const div = computeDividende({
+    beneficeNetApresIs: distribuable,
+    ratioDistribue: 1,
+    regime,
+  });
+  const totalPrelevDiv = env - div.netActionnaire;
+
+  const diff = netSalaireAnnuel - div.netActionnaire;
+  const recommandation: 'salaire' | 'dividende' | 'equivalent' =
+    Math.abs(diff) < env * 0.01
+      ? 'equivalent'
+      : diff > 0
+        ? 'salaire'
+        : 'dividende';
+
+  return {
+    enveloppeBrute: round2(env),
+    salaire: {
+      brutAnnuel: round2(brutMensuelEstime * 12),
+      cnssSalarie: round2(cnssSalAnnuel),
+      cnssPatronal: round2(cnssPatAnnuel),
+      irAnnuel: round2(irAnnuel),
+      netAnnuel: round2(netSalaireAnnuel),
+      totalPrelevements: round2(totalPrelevSalaire),
+      tauxGlobal: round2((totalPrelevSalaire / env) * 100),
+    },
+    dividende: {
+      isDuSurBenefice: round2(isDu),
+      distribuable: round2(distribuable),
+      retenuePfl: round2(div.retenuePfl),
+      netAnnuel: div.netActionnaire,
+      totalPrelevements: round2(totalPrelevDiv),
+      tauxGlobal: round2((totalPrelevDiv / env) * 100),
+    },
+    differentielNet: round2(diff),
+    recommandation,
   };
 }
 

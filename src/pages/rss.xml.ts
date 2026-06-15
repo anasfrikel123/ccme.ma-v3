@@ -1,4 +1,4 @@
-import rss from '@astrojs/rss';
+﻿import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 
@@ -12,7 +12,7 @@ export async function GET(context: APIContext) {
     title: 'CCME — Le Journal',
     description:
       'Articles, guides et analyses de l\'équipe Consulting Maghreb Expertise : fiscalité 2026, comptabilité, paie, création d\'entreprise au Maroc.',
-    site: context.site?.toString() ?? 'https://www.ccme.ma',
+    site: context.site?.toString() ?? 'https://ccme.ma',
     items: sorted.map((post) => ({
       title: post.data.title,
       description: post.data.description,

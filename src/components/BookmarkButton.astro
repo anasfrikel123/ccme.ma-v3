@@ -1,0 +1,133 @@
+---
+/**
+ * Toggle that saves the current page to a per-browser bookmark list.
+ *
+ * Storage key: `ccme:bookmarks` → array of { url, title, type, savedAt }.
+ * No server, no account — explicitly local-only. Privacy footnote rendered
+ * inside the dropdown that lists saved items so users understand the scope.
+ *
+ * The button decides what to save from `data-bm-*` attributes; defaults to
+ * the current document.title and pathname when those are absent. The
+ * `type` prop is informational ("article", "cas", "service", …) and just
+ * drives the icon in /mes-favoris.
+ */
+interface Props {
+  title?: string;
+  type?: 'article' | 'cas' | 'service' | 'page';
+  url?: string;
+}
+const { title, type = 'page', url } = Astro.props;
+---
+<button
+  type="button"
+  class="bm-btn"
+  data-bookmark-toggle
+  data-bm-title={title || ''}
+  data-bm-type={type}
+  data-bm-url={url || ''}
+  aria-pressed="false"
+  aria-label="Sauvegarder cette page dans mes favoris"
+>
+  <svg class="bm-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+  </svg>
+  <span class="bm-label">Sauvegarder</span>
+</button>
+
+<style>
+  .bm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .25s ease;
+  }
+  .bm-btn:hover, .bm-btn:focus-visible {
+    border-color: var(--gold);
+    color: var(--ink);
+    background: color-mix(in oklch, var(--gold) 8%, #fff);
+    outline: none;
+  }
+  .bm-btn[aria-pressed="true"] {
+    background: var(--gold);
+    color: #2a1f04;
+    border-color: var(--gold);
+  }
+  .bm-btn[aria-pressed="true"] .bm-icon { fill: currentColor; }
+  .bm-icon { transition: fill .2s ease; }
+</style>
+
+<script>
+  type Bookmark = {
+    url: string;
+    title: string;
+    type: 'article' | 'cas' | 'service' | 'page';
+    savedAt: string;
+  };
+
+  const KEY = 'ccme:bookmarks';
+
+  function read(): Bookmark[] {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return [];
+      const arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function write(list: Bookmark[]): void {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(list.slice(0, 100)));
+      window.dispatchEvent(new CustomEvent('ccme:bookmarks-changed'));
+    } catch {
+      // Storage full / disabled — ignore.
+    }
+  }
+
+  function isSaved(url: string): boolean {
+    return read().some(b => b.url === url);
+  }
+
+  function toggle(url: string, title: string, type: Bookmark['type']): boolean {
+    const list = read();
+    const idx = list.findIndex(b => b.url === url);
+    if (idx >= 0) {
+      list.splice(idx, 1);
+      write(list);
+      return false;
+    }
+    list.unshift({ url, title, type, savedAt: new Date().toISOString() });
+    write(list);
+    return true;
+  }
+
+  function applyState(btn: HTMLButtonElement, saved: boolean) {
+    btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+    const label = btn.querySelector<HTMLElement>('.bm-label');
+    if (label) label.textContent = saved ? 'Sauvegardé' : 'Sauvegarder';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-bookmark-toggle]').forEach((btn) => {
+    const url = btn.dataset.bmUrl || window.location.pathname;
+    const title = btn.dataset.bmTitle || document.title;
+    const type = (btn.dataset.bmType as Bookmark['type']) || 'page';
+
+    applyState(btn, isSaved(url));
+
+    btn.addEventListener('click', () => {
+      const saved = toggle(url, title, type);
+      applyState(btn, saved);
+    });
+  });
+</script>

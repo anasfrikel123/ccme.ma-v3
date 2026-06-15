@@ -1,5 +1,5 @@
 ---
-title: "Gestion financière Tanger | Trésorerie et BFR"
+title: "Gestion financière Tanger | Trésorerie"
 h1: "Gestion financière"
 description: "Pilotage de trésorerie, plan de financement, BFR, négociation bancaire, KPIs financiers. Cabinet expert-comptable à Tanger."
 eyebrow: "Comptabilité"

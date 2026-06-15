@@ -37,6 +37,19 @@ import Page from '~/layouts/Page.astro';
           <div class="row"><span>IS calculé selon barème</span><strong id="isCalc">—</strong></div>
           <div class="row"><span>Cotisation minimale (0,25 % du CA, min 3 000 DH)</span><strong id="cm">—</strong></div>
           <div class="row total"><span>IS dû (le plus élevé)</span><strong id="isDue">—</strong></div>
+          <div id="acomptes-section" class="acomptes" hidden>
+            <h3>Acomptes provisionnels</h3>
+            <p class="acomptes-note">Quatre versements trimestriels de 25&nbsp;% de l'IS dû (base N-1), à régulariser au bilan.</p>
+            <table class="acomptes-table">
+              <thead>
+                <tr>
+                  <th scope="col">Échéance</th>
+                  <th scope="col">Montant</th>
+                </tr>
+              </thead>
+              <tbody id="acomptes-body"></tbody>
+            </table>
+          </div>
           <p class="note" id="note"></p>
         </div>
       </div>
@@ -73,6 +86,13 @@ import Page from '~/layouts/Page.astro';
   .note { margin-top: 16px; font-size: 13px; color: var(--ink-soft); padding: 12px; background: var(--paper-2); border-radius: var(--r-md); }
   .sim-error { color: #b3261e; font-size: 14px; min-height: 1.4em; margin: 12px 0 0; font-weight: 500; }
   .sim-error:empty { display: none; }
+  .acomptes { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .acomptes h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 6px; color: var(--ink); }
+  .acomptes-note { font-size: 13px; color: var(--ink-soft); margin: 0 0 12px; }
+  .acomptes-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .acomptes-table th, .acomptes-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+  .acomptes-table th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); font-weight: 600; }
+  .acomptes-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 </style>
 
 <script>
@@ -95,6 +115,19 @@ import Page from '~/layouts/Page.astro';
     document.getElementById('isCalc')!.textContent = fmtDH(r.isCalc);
     document.getElementById('cm')!.textContent = fmtDH(r.cotisationMinimale);
     document.getElementById('isDue')!.textContent = fmtDH(r.isDue);
+    const acomptesSection = document.getElementById('acomptes-section') as HTMLElement;
+    const acomptesBody = document.getElementById('acomptes-body') as HTMLTableSectionElement;
+    if (r.acomptes.acomptes.length > 0) {
+      acomptesBody.innerHTML = r.acomptes.acomptes.map((a) => {
+        const d = new Date(a.dateLimite + 'T12:00:00');
+        const dateLabel = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+        return `<tr><td>${dateLabel} — ${a.label}</td><td>${fmtDH(a.montant)}</td></tr>`;
+      }).join('');
+      acomptesSection.hidden = false;
+    } else {
+      acomptesBody.innerHTML = '';
+      acomptesSection.hidden = true;
+    }
     document.getElementById('note')!.textContent = r.mode === 'cotisation-minimale'
       ? 'La cotisation minimale s\u2019applique car elle est sup\u00e9rieure \u00e0 l\u2019IS calcul\u00e9 sur votre b\u00e9n\u00e9fice.'
       : 'IS calcul\u00e9 au bar\u00e8me 2026 (20 % jusqu\u2019\u00e0 100 MDH de b\u00e9n\u00e9fice, 35 % au-del\u00e0).';

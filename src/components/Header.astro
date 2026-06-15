@@ -1,25 +1,21 @@
 ---
+import ThemeToggle from '~/components/ThemeToggle.astro';
+import { cabinet } from '~/data/cabinet';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const brandLogoAlt = `${cabinet.legalName} (CCME) — expert-comptable à Tanger`;
 const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
 ---
 <header class="site-header" data-header>
+  <span class="header-bg" aria-hidden="true"></span>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
   <div class="container header-row">
     <a href="/" class="brand" aria-label="Accueil — Consulting Maghreb Expertise">
       <picture>
         <source srcset="/images/cme-logo-96.webp" type="image/webp" />
-        <img src="/images/cme-logo-96.png" alt="" class="brand-logo" width="48" height="48" decoding="async" />
+        <img src="/images/cme-logo-96.png" alt={brandLogoAlt} class="brand-logo" width="48" height="48" decoding="async" />
       </picture>
       <span class="brand-name">Consulting Maghreb<br/>Expertise</span>
     </a>
-
-    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
-      <span class="bar bar-1"></span>
-      <span class="bar bar-2"></span>
-      <span class="bar bar-3"></span>
-    </button>
-
-    <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
 
     <nav id="primary-nav" class="primary-nav" aria-label="Menu principal" data-nav>
       <ul>
@@ -36,11 +32,14 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
             <div class="sub-grid">
               <div>
                 <h4>Comptabilité</h4>
+                <a href="/expert-comptable-tanger">Expert-comptable Tanger</a>
                 <a href="/services/tenue-comptabilite">Tenue comptable</a>
                 <a href="/services/supervision-comptable">Supervision</a>
                 <a href="/services/gestion-financiere">Gestion financière</a>
                 <a href="/services/audit">Audit</a>
                 <a href="/services/comptabilite-pharmaciens">Pharmaciens</a>
+                <a href="/services/externalisation-comptable">Externalisation</a>
+                <a href="/services/comptabilite-association">Associations &amp; coopératives</a>
               </div>
               <div>
                 <h4>Fiscalité</h4>
@@ -48,6 +47,8 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
                 <a href="/services/assistance-fiscale">Assistance fiscale</a>
                 <a href="/services/controle-contentieux">Contrôle &amp; contentieux</a>
                 <a href="/services/simpl-impots-dgi">Simpl Impôts DGI</a>
+                <a href="/services/remboursement-credit-tva">Remboursement TVA</a>
+                <a href="/services/fiscalite-immobiliere-tpi">Fiscalité immobilière</a>
               </div>
               <div>
                 <h4>Juridique</h4>
@@ -55,6 +56,8 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
                 <a href="/services/conseil-juridique">Conseil juridique</a>
                 <a href="/services/travaux-juridiques">Travaux juridiques</a>
                 <a href="/services/domiciliation">Domiciliation</a>
+                <a href="/services/dissolution-liquidation-societe">Dissolution &amp; liquidation</a>
+                <a href="/services/evaluation-transmission-entreprise">Évaluation &amp; transmission</a>
               </div>
               <div>
                 <h4>Paie &amp; social</h4>
@@ -62,6 +65,8 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
                 <a href="/services/damancom-cnss">Damancom CNSS</a>
                 <a href="/services/social-administratif">Social &amp; administratif</a>
                 <a href="/services/business-plan">Business plan</a>
+                <a href="/services/accompagnement-financement">Financement</a>
+                <a href="/services/conseil-investissement-subventions">Investissement &amp; aides</a>
               </div>
             </div>
           </div>
@@ -86,13 +91,17 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
                 <a href="/outils/simulateur-tva">Calcul TVA</a>
                 <a href="/outils/simulateur-creation">Coût création société</a>
                 <a href="/outils/simulateur-ir">Simulateur IR</a>
+                <a href="/outils/simulateur-dividende">Dividende 2026</a>
+                <a href="/outils/simulateur-remuneration">Salaire vs dividende</a>
               </div>
               <div>
                 <h4>Documentation</h4>
                 <a href="/documentation">Ressources</a>
                 <a href="/glossaire">Glossaire comptable</a>
                 <a href="/comparatifs">Comparatifs</a>
+                <a href="/loi-de-finances-2026">Loi de Finances 2026</a>
                 <a href="/blog">Le Journal</a>
+                <a href="/cas-pratiques">Cas pratiques</a>
                 <a href="/avis-clients">Avis clients</a>
                 <a href="/expat">Expatriés &amp; SCI</a>
               </div>
@@ -102,21 +111,45 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
         <li><a href="/cabinet" class={isActive('/cabinet') ? 'active' : ''}>Cabinet</a></li>
         <li><a href="/tarifs" class={isActive('/tarifs') ? 'active' : ''}>Tarifs</a></li>
       </ul>
+      <ThemeToggle />
       <a href="/contact" class="btn btn-gold nav-cta">Devis gratuit</a>
     </nav>
+
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </button>
   </div>
 </header>
 
+<div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+<style is:global>
+  body.nav-open { overflow: hidden; }
+  body.nav-open .site-header { z-index: 300; }
+</style>
+
 <style>
+  /* The header itself MUST stay free of transform/filter/backdrop-filter so that
+     position:fixed children (the mobile drawer) escape to the viewport, not the
+     header box. The blurred background lives on a sibling layer below. */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 100;
+    isolation: isolate;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  }
+  .header-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: rgba(254, 252, 246, 0.85);
     backdrop-filter: saturate(160%) blur(14px);
     -webkit-backdrop-filter: saturate(160%) blur(14px);
-    border-bottom: 1px solid transparent;
-    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+    pointer-events: none;
   }
   .site-header.scrolled {
     border-bottom-color: var(--line);
@@ -193,12 +226,14 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
     transform: translateY(8px);
     transition: opacity var(--t-fast), transform var(--t-fast), visibility var(--t-fast);
   }
-  .has-sub:hover .sub,
-  .has-sub:focus-within .sub,
-  .has-sub.sub-open .sub {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
+  @media (min-width: 1181px) {
+    .has-sub:hover .sub,
+    .has-sub:focus-within .sub,
+    .has-sub.sub-open .sub {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
   }
   .has-sub > a[data-sub-toggle] > span { transition: transform var(--t-fast); }
   .has-sub.sub-open > a[data-sub-toggle] > span { transform: rotate(180deg); }
@@ -207,7 +242,8 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
   }
-  .sub.sub-narrow { width: 440px; }
+  /* Right-align the narrow sub so it doesn't overflow the right edge of the viewport */
+  .sub.sub-narrow { width: 440px; left: auto; right: 0; }
   .sub-grid.sub-grid-2 { grid-template-columns: 1fr 1fr; }
   .sub-grid h4 {
     font-family: var(--sans);
@@ -258,7 +294,7 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
     width: 44px; height: 44px;
     position: relative;
     cursor: pointer;
-    z-index: 102;
+    z-index: 292;
     transition: background .25s ease, border-color .25s ease;
     padding: 0;
   }
@@ -287,7 +323,7 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     opacity: 0;
-    z-index: 99;
+    z-index: 290;
     transition: opacity .35s ease;
   }
   .nav-backdrop.show {
@@ -303,7 +339,9 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
       position: fixed;
       top: 0;
       right: 0;
-      bottom: 0;
+      height: 100dvh;
+      height: 100vh;
+      max-height: 100dvh;
       width: min(420px, 92vw);
       background: linear-gradient(180deg, var(--paper) 0%, #f7f1e3 100%);
       flex-direction: column;
@@ -316,8 +354,9 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
       transform: translateX(100%);
       transition: transform .45s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: -24px 0 60px -20px rgba(15, 20, 30, 0.25);
-      z-index: 101;
+      z-index: 291;
       overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
     .primary-nav.open { transform: translateX(0); }
     .primary-nav > ul {
@@ -344,18 +383,30 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
     .primary-nav > ul > li > a.active { color: var(--gold); }
 
     .has-sub > a span { transition: transform .3s ease; }
-    .sub {
+    .has-sub.sub-open > a[data-sub-toggle] > span { transform: rotate(180deg); }
+
+    /* Accordion sub-panels — collapsed until tapped */
+    .has-sub .sub {
       position: static;
       width: auto;
       max-width: none;
+      max-height: 0;
+      overflow: hidden;
       box-shadow: none;
-      opacity: 1;
-      visibility: visible;
+      opacity: 0;
+      visibility: hidden;
       transform: none;
-      padding: 0 0 12px 12px;
+      padding: 0 0 0 12px;
       border: none;
       background: transparent;
       border-radius: 0;
+      transition: max-height .35s ease, opacity .25s ease, padding .25s ease;
+    }
+    .has-sub.sub-open .sub {
+      max-height: 1200px;
+      opacity: 1;
+      visibility: visible;
+      padding: 0 0 12px 12px;
     }
     .sub-grid { grid-template-columns: 1fr; gap: 12px; }
     .sub.sub-narrow { width: auto; }
@@ -405,95 +456,6 @@ const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
 </style>
 
 <script>
-  const header = document.querySelector<HTMLElement>('[data-header]');
-  const onScroll = () => {
-    if (window.scrollY > 6) header?.classList.add('scrolled');
-    else header?.classList.remove('scrolled');
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  const toggle = document.querySelector<HTMLElement>('[data-nav-toggle]');
-  const nav = document.querySelector<HTMLElement>('[data-nav]');
-  const backdrop = document.querySelector<HTMLElement>('[data-nav-backdrop]');
-
-  const setOpen = (open: boolean) => {
-    if (!nav || !toggle || !backdrop) return;
-    nav.classList.toggle('open', open);
-    backdrop.classList.toggle('show', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    document.body.style.overflow = open ? 'hidden' : '';
-  };
-
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav?.classList.contains('open');
-    setOpen(!isOpen);
-  });
-
-  backdrop?.addEventListener('click', () => setOpen(false));
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav?.classList.contains('open')) setOpen(false);
-  });
-
-  nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    setOpen(false);
-  }));
-
-  // Reset menu state on resize back to desktop
-  const mq = window.matchMedia('(min-width: 1181px)');
-  mq.addEventListener('change', (e) => {
-    if (e.matches) setOpen(false);
-  });
-
-  // Desktop sub-nav: explicit click + aria-expanded toggle. Hover and
-  // :focus-within still open the panel (the existing CSS handles those),
-  // but keyboard users on touch devices and assistive-tech users now get
-  // a real, intent-driven control. Tapping the toggle on touch screens
-  // reveals the sub-nav without forcing the parent link to navigate.
-  const desktopMq = window.matchMedia('(min-width: 1181px)');
-  const subToggles = document.querySelectorAll<HTMLAnchorElement>('[data-sub-toggle]');
-  const closeOtherSubs = (except?: HTMLLIElement) => {
-    document.querySelectorAll<HTMLLIElement>('[data-has-sub]').forEach((li) => {
-      if (li === except) return;
-      li.classList.remove('sub-open');
-      const t = li.querySelector<HTMLAnchorElement>('[data-sub-toggle]');
-      t?.setAttribute('aria-expanded', 'false');
-    });
-  };
-  subToggles.forEach((toggle) => {
-    toggle.addEventListener('click', (e) => {
-      // Mobile drawer: parent link should navigate normally; sub-nav opens
-      // via the `nav.open` state, not via click handler here.
-      if (!desktopMq.matches) return;
-      const li = toggle.closest<HTMLLIElement>('[data-has-sub]');
-      if (!li) return;
-      // First click reveals the sub-panel; second click (already open)
-      // falls through and navigates to the parent route.
-      const alreadyOpen = li.classList.contains('sub-open');
-      if (alreadyOpen) return;
-      e.preventDefault();
-      closeOtherSubs(li);
-      li.classList.add('sub-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      // Move keyboard focus into the panel for screen-reader users.
-      const firstLink = li.querySelector<HTMLAnchorElement>('.sub a');
-      firstLink?.focus({ preventScroll: true });
-    });
-  });
-  // Close sub-nav on outside click + Escape.
-  document.addEventListener('click', (e) => {
-    const inSub = (e.target as Element)?.closest('[data-has-sub]');
-    if (!inSub) closeOtherSubs();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const open = document.querySelector<HTMLLIElement>('[data-has-sub].sub-open');
-      if (open) {
-        closeOtherSubs();
-        open.querySelector<HTMLAnchorElement>('[data-sub-toggle]')?.focus();
-      }
-    }
-  });
+  import { initSiteNav } from '~/scripts/site-nav';
+  initSiteNav();
 </script>

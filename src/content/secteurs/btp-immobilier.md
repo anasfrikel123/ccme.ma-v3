@@ -26,7 +26,7 @@ Le BTP à Tanger explose : [Tanger Med](/zones/tanger-med) II, prolongement du t
 - Comptabilité analytique par chantier
 - Méthode à l'avancement vs achevée
 - Retenue de garantie (5 ou 10%) — comptabilisation, suivi, libération
-- [TVA](/outils/simulateur-tva) sur travaux : taux 20%, taux 14% (logements sociaux), exonération zones franches
+- [TVA](/outils/simulateur-tva "Simulateur TVA Maroc") sur travaux : taux 20%, taux 14% (logements sociaux), exonération zones franches
 - Marchés publics : conformité, attestations, cautions bancaires
 - Sous-traitance : retenue à la source 10% (régime général)
 - Paie BTP : convention collective sectorielle, primes de chantier, indemnités de déplacement
@@ -40,7 +40,7 @@ La règle d'or du BTP : un chantier = une analytique. Sans cette discipline, vou
 Concrètement, on met en place :
 
 - Un **plan analytique par chantier** (charges, produits, marge brute, marge nette par opération)
-- Un suivi **mensuel des situations facturées vs avancement réel des travaux** (pour éviter l'effet "TVA encaissée d'avance" qui plombe la trésorerie au moment du paiement)
+- Un suivi **mensuel des situations facturées vs avancement réel des travaux** (pour éviter l'effet "[TVA](/outils/simulateur-tva) encaissée d'avance" qui plombe la trésorerie au moment du paiement)
 - Un tableau de bord des **retenues de garantie** non encore libérées — souvent oublié et qui représente parfois 5 à 10% du CA cumulé sur 3 ans
 - Le rapprochement entre les **factures sous-traitants** et les attestations de retenue à la source 10% à reverser
 
@@ -58,7 +58,7 @@ Beaucoup de PME tangéroises remportent des marchés publics (Wilaya, communes, 
 
 **TVA sur logements sociaux** : taux réduit 14% mais conditions strictes (surface, prix de vente, agrément). Une vente requalifiée en logement classique et c'est 6 points de TVA à reverser. On documente le dossier en amont.
 
-**Frais financiers et [IS](/outils/simulateur-is).** Les promoteurs immobiliers s'endettent lourdement. Tous les intérêts ne sont pas déductibles — règle de la sous-capitalisation, charges intercos. À surveiller via notre [conseil fiscal](/services/conseil-fiscal).
+**Frais financiers et [IS](/outils/simulateur-is "Simulateur IS — impôt sur les sociétés Maroc").** Les promoteurs immobiliers s'endettent lourdement. Tous les intérêts ne sont pas déductibles — règle de la sous-capitalisation, charges intercos. À surveiller via notre [conseil fiscal](/services/conseil-fiscal).
 
 **Régime des LOA (location-accession).** De plus en plus utilisé sur les programmes neufs Hay Riad, Aouama, Bourguignon. Comptabilisation et TVA spécifiques.
 

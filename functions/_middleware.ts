@@ -20,6 +20,8 @@
  *     misrouted request still returns the regular HTML page.
  */
 
+import { legacyBlogRedirect } from './legacy-redirects';
+
 interface PagesContext {
   request: Request;
   next: (input?: Request | string, init?: RequestInit) => Promise<Response>;
@@ -54,26 +56,54 @@ function prefersMarkdown(accept: string | null): boolean {
 function isMdNegotiable(pathname: string): boolean {
   if (pathname.endsWith('.md')) return false; // already markdown
   if (pathname.endsWith('/')) pathname = pathname.replace(/\/$/, '');
+  if (pathname === '') return true; // homepage -> llms.txt
   return MD_SIBLING_PREFIXES.some(
     (p) => pathname.startsWith(p) && pathname.length > p.length,
   );
+}
+
+/** Astro uses trailingSlash: 'never' — canonicals omit the slash. 301 away duplicates. */
+function trailingSlashRedirect(url: URL, request: Request): Response | null {
+  if (request.method !== 'GET' && request.method !== 'HEAD') return null;
+  const { pathname, search } = url;
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    const target = pathname.replace(/\/+$/, '') + search;
+    return Response.redirect(new URL(target, url.origin), 301);
+  }
+  return null;
 }
 
 export const onRequest = async (context: PagesContext): Promise<Response> => {
   const { request, next } = context;
   const url = new URL(request.url);
 
+  // Canonical host: www.ccme.ma -> ccme.ma (apex). Cloudflare Pages serves
+  // both hostnames from this same deployment, so we consolidate all SEO
+  // signal onto the non-www canonical here. Path + query are preserved.
+  // 301 is permanent so search engines transfer ranking to the apex.
+  if (url.hostname === "www.ccme.ma") {
+    return Response.redirect(`https://ccme.ma${url.pathname}${url.search}`, 301);
+  }
+
+  const slash = trailingSlashRedirect(url, request);
+  if (slash) return slash;
+
+  if (request.method === 'GET' || request.method === 'HEAD') {
+    const legacyBlog = legacyBlogRedirect(url.pathname);
+    if (legacyBlog) {
+      return Response.redirect(new URL(legacyBlog + url.search, url.origin), 301);
+    }
+  }
+
   if (
     request.method === 'GET' &&
     isMdNegotiable(url.pathname) &&
     prefersMarkdown(request.headers.get('Accept'))
   ) {
-    // Build an in-process rewrite to the .md sibling. This avoids the
-    // extra hop a sub-fetch would incur and lets Pages serve the static
-    // markdown asset through the same dispatch the original request was
-    // already in.
+    // Build an in-process rewrite to the .md sibling.
     const mdUrl = new URL(url.toString());
-    mdUrl.pathname = url.pathname.replace(/\/$/, '') + '.md';
+    const cleanPath = url.pathname.replace(/\/$/, '');
+    mdUrl.pathname = cleanPath === '' ? '/llms.txt' : cleanPath + '.md';
     const rewritten = new Request(mdUrl.toString(), request);
     const mdResponse = await next(rewritten);
     if (mdResponse.ok) {

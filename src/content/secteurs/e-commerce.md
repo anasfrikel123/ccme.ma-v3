@@ -28,7 +28,7 @@ Le digital est en train de tout changer pour la profession. Marketplaces, dropsh
 
 **Marketplaces.** Amazon, eBay, Etsy, Shopify, Jumia. Chaque plateforme a son propre format de relevé, ses commissions, ses retenues. On a des modèles rôdés.
 
-**[TVA](/outils/simulateur-tva) digitale.** Pour les services électroniques, la règle de localisation a changé. Vendre du SaaS à un consommateur final en France, c'est de la TVA française à appliquer (régime OSS). Vendre en B2B, c'est l'autoliquidation. On vous met en conformité.
+**[TVA](/outils/simulateur-tva "Simulateur TVA Maroc") digitale.** Pour les services électroniques, la règle de localisation a changé. Vendre du SaaS à un consommateur final en France, c'est de la [TVA](/outils/simulateur-tva) française à appliquer (régime OSS). Vendre en B2B, c'est l'autoliquidation. On vous met en conformité.
 
 **Multi-devises.** Société marocaine qui facture en USD, EUR, GBP. Comptabilisation au cours de transaction, écarts de change réalisés vs latents, traitement bilan vs résultat.
 

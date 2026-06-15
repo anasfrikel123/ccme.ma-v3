@@ -13,10 +13,15 @@
   X-Frame-Options: SAMEORIGIN
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://api.web3forms.com; frame-src https://www.openstreetmap.org https://www.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://cloudflareinsights.com https://api.web3forms.com; frame-src https://www.openstreetmap.org https://www.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'; upgrade-insecure-requests
+  # CSP tradeoff: 'unsafe-inline' required for the synchronous theme bootstrap in Base.astro
+  # (prevents light/dark FOUC). Nonce/hash would need per-request middleware — not available on
+  # static Pages assets without a Worker wrapper. Review if theme script moves to external file.
   Link: </.well-known/ai.txt>; rel="ai-policy"; type="text/plain"
   Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"
   Link: </.well-known/agent-skills/index.json>; rel="agent-skills"; type="application/json"
+  Link: </.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json"
+  Link: </auth.md>; rel="agent-auth"; type="text/markdown"
   Link: </api/agent-manifest.json>; rel="manifest"; type="application/json"
   Link: </sitemap-index.xml>; rel="sitemap"; type="application/xml"
   Link: </rss.xml>; rel="alternate"; type="application/rss+xml"; title="CCME — Le Journal"

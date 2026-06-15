@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Machine-readable catalogue of every service offered by the cabinet.
  * Powered by the same content collection that drives the public site,
  * so the JSON output is always 1:1 with what's live.
@@ -12,7 +12,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 export const prerender = true;
 
 export const GET: APIRoute = async () => {

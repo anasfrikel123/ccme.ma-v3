@@ -1,4 +1,4 @@
----
+﻿---
 interface Props {
   title: string;
   description: string;
@@ -11,6 +11,12 @@ interface Props {
   modifiedTime?: string;
   schema?: Record<string, any> | Record<string, any>[];
   keywords?: string[];
+  /**
+   * Optional reading-time annotation surfaced in the meta description and
+   * og:description. Only used for blog articles to boost CTR by signalling
+   * commitment ("3 min de lecture · …").
+   */
+  readingMinutes?: number;
 }
 const {
   title,
@@ -24,18 +30,21 @@ const {
   modifiedTime,
   schema,
   keywords,
+  readingMinutes,
 } = Astro.props;
 
-const SITE = 'https://www.ccme.ma';
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const fullCanonical = canonical || `${SITE}${path}`;
+const SITE = 'https://ccme.ma';
+// Strip .html suffix (build.format: 'file' generates dist/foo.html, but
+// Cloudflare Pages serves it at /foo without .html) AND trailing slashes.
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const fullCanonical = canonical || (path === '/' ? SITE : `${SITE}${path}`);
 
 function resolveOg(p: string): string {
   if (p === '/' || p === '') return `${SITE}/og/home.jpg`;
   const m = p.match(/^\/(services|secteurs|zones|quartiers|blog)\/([^/]+)$/);
   if (m) return `${SITE}/og/${m[1]}/${m[2]}.jpg`;
   const hub = p.replace(/^\//, '').split('/')[0];
-  const knownHubs = ['services', 'secteurs', 'zones', 'quartiers', 'blog', 'outils', 'comparatifs', 'glossaire', 'avis-clients', 'cabinet', 'tarifs', 'expat', 'contact'];
+  const knownHubs = ['services', 'secteurs', 'zones', 'quartiers', 'blog', 'cas-pratiques', 'outils', 'comparatifs', 'glossaire', 'avis-clients', 'cabinet', 'tarifs', 'expat', 'contact', 'documentation', 'calendrier-fiscal-2026', 'mentions-legales', 'confidentialite', 'mes-favoris'];
   if (knownHubs.includes(hub)) return `${SITE}/og/${hub}.jpg`;
   return `${SITE}/og/default.jpg`;
 }
@@ -44,15 +53,50 @@ const finalOg = ogImage
   ? (ogImage.startsWith('http') ? ogImage : `${SITE}${ogImage}`)
   : resolveOg(path);
 
-// Word-boundary match — avoids false positives like "accme" matching "CCME".
+// ── Title composition ──────────────────────────────────────────────
+// 1. Append "— CCME" brand suffix if the title doesn't already mention it.
+// 2. For articles modified within the last 12 months, append a freshness
+//    cue ("· MAJ 2026") that improves SERP CTR — but only when the result
+//    stays under Google's ~60-char practical title cap. Articles with
+//    long headlines fall back to keeping the title clean (the brand
+//    suffix already costs ~7 chars).
 const hasBrand = /\bCCME\b/i.test(title);
-const fullTitle = hasBrand ? title : `${title} — CCME`;
+const baseTitle = hasBrand ? title : `${title} — CCME`;
+
+const isFresh = (() => {
+  if (!modifiedTime) return false;
+  const t = Date.parse(modifiedTime);
+  if (Number.isNaN(t)) return false;
+  const ageDays = (Date.now() - t) / 86_400_000;
+  return ageDays >= 0 && ageDays <= 365;
+})();
+
+const freshnessSuffix = isFresh && modifiedTime
+  ? ` · MAJ ${new Date(modifiedTime).getFullYear()}`
+  : '';
+
+const fullTitle = (baseTitle.length + freshnessSuffix.length <= 64)
+  ? `${baseTitle}${freshnessSuffix}`
+  : baseTitle;
+
+// ── Description composition ────────────────────────────────────────
+// For article-type pages with a known reading time, prepend a short cue
+// ("3 min de lecture · …") that acts as a CTR magnet in SERPs (numbers
+// and time commitment beat plain prose). Truncate to 160 chars to stay
+// inside Google's snippet cap.
+const ctrPrefix = ogType === 'article' && readingMinutes && readingMinutes > 0
+  ? `${readingMinutes} min de lecture · `
+  : '';
+const fullDescriptionRaw = `${ctrPrefix}${description}`;
+const fullDescription = fullDescriptionRaw.length > 160
+  ? fullDescriptionRaw.slice(0, 157).trim() + '…'
+  : fullDescriptionRaw;
 
 // Social alt: descriptive, not keyword-stuffed SEO title.
 const imageAlt = ogImageAlt ?? description.slice(0, 120).replace(/\s+/g, ' ').trim();
 ---
 <title>{fullTitle}</title>
-<meta name="description" content={description} />
+<meta name="description" content={fullDescription} />
 {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
 <meta name="author" content="Consulting Maghreb Expertise" />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
@@ -73,7 +117,7 @@ const imageAlt = ogImageAlt ?? description.slice(0, 120).replace(/\s+/g, ' ').tr
 <meta property="og:type" content={ogType} />
 <meta property="og:site_name" content="Consulting Maghreb Expertise" />
 <meta property="og:title" content={fullTitle} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={fullDescription} />
 <meta property="og:image" content={finalOg} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -85,7 +129,7 @@ const imageAlt = ogImageAlt ?? description.slice(0, 120).replace(/\s+/g, ' ').tr
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
-<meta name="twitter:description" content={description} />
+<meta name="twitter:description" content={fullDescription} />
 <meta name="twitter:image" content={finalOg} />
 <meta name="twitter:image:alt" content={imageAlt} />
 

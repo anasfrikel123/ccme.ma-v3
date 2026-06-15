@@ -33,7 +33,7 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
 <Base
   title="Expert-comptable à Tanger | Cabinet CCME"
   description="Cabinet d'expertise comptable à Tanger : tenue, fiscalité, paie CNSS, conseil juridique. PME, startups et expatriés. Premier échange gratuit."
-  ogImage="/images/og-home.jpg"
+  ogImage="/og/home.jpg"
   schema={orgSchema}
   keywords={['expert comptable Tanger', 'cabinet comptable Tanger', 'comptable agréé Tanger', 'fiduciaire Tanger', 'création SARL Tanger', 'IS 2026 PME Maroc']}
   lcpImageSrcset={{ avif: HERO_AVIF, webp: HERO_WEBP, sizes: HERO_SIZES }}
@@ -42,9 +42,9 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
     <div class="cursor-glow" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-text">
-        <p class="eyebrow fade-up">Expert-comptable à Tanger · Maroc</p>
-        <h1 class="fade-up d1">La rigueur des chiffres,<br/><span class="text-sweep">au service de votre croissance.</span></h1>
-        <p class="lede fade-up d2">Cabinet d'expertise comptable inscrit à l'OEC. Tenue, fiscalité, paie CNSS, conseil juridique. PME, startups, industries en zones franches, expatriés.</p>
+        <p class="eyebrow eyebrow-gold fade-up">Expert-comptable à Tanger · Maroc</p>
+        <h1 class="fade-up d1">Expert-comptable à Tanger.<br/><span class="text-sweep">La rigueur des chiffres au service de votre croissance.</span></h1>
+        <p class="lede fade-up d2">Cabinet d'<a href="/expert-comptable-tanger">expert-comptable à Tanger</a> inscrit à l'OEC. Tenue, fiscalité, paie CNSS, conseil juridique. PME, startups, industries en zones franches, expatriés.</p>
         <div class="hero-cta fade-up d3">
           <a href="/contact" class="btn btn-primary" data-astro-prefetch="viewport">Premier échange gratuit</a>
           <a href="/services" class="btn btn-ghost" data-astro-prefetch="viewport">Voir nos services</a>
@@ -56,14 +56,14 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
           <li><Icon name="check" size={16} stroke={2.4} /> Conformité IS 2026, Simpl Impôts, Damancom</li>
         </ul>
       </div>
-      <div class="hero-art fade-up d3" aria-hidden="true">
+      <div class="hero-art fade-up d3">
         <figure class="hero-photo">
           <picture>
             <source srcset={HERO_AVIF} sizes={HERO_SIZES} type="image/avif" />
             <source srcset={HERO_WEBP} sizes={HERO_SIZES} type="image/webp" />
             <img
-              src="/images/hero.jpg"
-              alt=""
+              src="/images/hero-720.webp"
+              alt="Cabinet expert-comptable CCME à Tanger — conseil comptable, fiscal et social pour PME"
               width="1200"
               height="900"
               loading="eager"
@@ -102,7 +102,7 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Ce qu'on fait pour vous</p>
+        <p class="eyebrow eyebrow-gold">Ce qu'on fait pour vous</p>
         <h2>Un cabinet, toutes les compétences pour piloter votre entreprise.</h2>
         <p class="lede">Comptabilité, fiscalité, juridique, paie. Quatre métiers réunis sous un même toit, un seul interlocuteur, et un suivi qui ne lâche rien.</p>
       </div>
@@ -124,7 +124,7 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
   <section class="why hero-bg">
     <div class="container why-grid">
       <div class="reveal-left">
-        <p class="eyebrow">Pourquoi nous</p>
+        <p class="eyebrow eyebrow-gold">Pourquoi nous</p>
         <h2>On parle votre langue. Pas seulement la comptable.</h2>
         <p>Tanger, c'est une ville à part. PME locales, industriels en zone franche, e-commerçants en télétravail, expatriés français qui investissent. Chaque profil a ses contraintes, ses attentes, ses zones de risque.</p>
         <p>Notre approche : comprendre votre métier avant de proposer des solutions. Pas de comptabilité industrielle pour un cabinet médical. Pas de jargon de zone franche pour une boulangerie. Un suivi adapté à ce que vous faites vraiment.</p>
@@ -197,7 +197,7 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Secteurs spécialisés</p>
+        <p class="eyebrow eyebrow-gold">Secteurs spécialisés</p>
         <h2>On a vu passer beaucoup de dossiers tangérois.</h2>
       </div>
       <div class="grid grid-3">
@@ -232,28 +232,28 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
   <section class="zones-band">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Zones &amp; régions</p>
+        <p class="eyebrow eyebrow-gold">Zones &amp; régions</p>
         <h2>Du centre-ville aux zones franches, on couvre tout le tissu économique tangérois.</h2>
       </div>
       <div class="zones-grid">
         <a href="/zones/tanger-med" class="zone-tile reveal">
-          <h4>Tanger Med</h4>
+          <h3>Tanger Med</h3>
           <p>Logistique, transit</p>
         </a>
         <a href="/zones/tanger-free-zone" class="zone-tile reveal delay-1">
-          <h4>TFZ</h4>
+          <h3>TFZ</h3>
           <p>Industrie d'export</p>
         </a>
         <a href="/zones/tanger-automotive-city" class="zone-tile reveal delay-2">
-          <h4>TAC</h4>
+          <h3>TAC</h3>
           <p>Équipementiers auto</p>
         </a>
         <a href="/zones/tanger-tech" class="zone-tile reveal delay-3">
-          <h4>Tanger Tech</h4>
+          <h3>Tanger Tech</h3>
           <p>SaaS, BPO, R&D</p>
         </a>
         <a href="/zones/centre-ville" class="zone-tile reveal delay-4">
-          <h4>Centre-ville</h4>
+          <h3>Centre-ville</h3>
           <p>PME, libérales, commerce</p>
         </a>
       </div>
@@ -263,7 +263,7 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
   <section class="tools-band">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Outils gratuits</p>
+        <p class="eyebrow eyebrow-gold">Outils gratuits</p>
         <h2>Calculs comptables & fiscaux Maroc 2026 — sans inscription.</h2>
         <p class="lede">Cinq simulateurs en ligne pour estimer vite. IS, paie, TVA, IR, coût de création.</p>
       </div>
@@ -395,11 +395,12 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
   }
   .art-row:last-child { border-bottom: none; }
   .art-row .dot { width: 8px; height: 8px; background: var(--good); border-radius: 50%; }
-  .status-ok { color: var(--good); font-weight: 600; font-size: 13px; }
-  .status-warn { color: var(--warn); font-weight: 600; font-size: 13px; }
-
-  .section-head { max-width: 60ch; margin-bottom: 40px; }
-  .section-head h2 { margin-bottom: 14px; }
+  /* status badges use theme-specific colors so contrast holds in both modes
+     (dark green on cream stays readable; light green on dark surface stays readable) */
+  .status-ok { color: #1f5d39; font-weight: 600; font-size: 13px; }
+  .status-warn { color: #9a3d20; font-weight: 600; font-size: 13px; }
+  :root[data-theme="dark"] .status-ok { color: #6dd198; }
+  :root[data-theme="dark"] .status-warn { color: #ff9b78; }
 
   .why { background-image: linear-gradient(180deg, var(--paper) 0%, #f6f0e1 100%); }
   .why-grid {
@@ -528,23 +529,57 @@ const HERO_SIZES = '(max-width: 720px) 100vw, 50vw';
     .proof-card { transition: none; transform: none; }
   }
 
-  .zones-band { background: var(--paper-2); }
+  .zones-band {
+    background:
+      radial-gradient(900px 360px at 0% 100%, rgba(200, 168, 90, 0.06), transparent 65%),
+      var(--paper-2);
+  }
   .zones-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: clamp(14px, 1.6vw, 20px);
   }
   .zone-tile {
-    background: #fff;
-    padding: 22px;
+    position: relative;
+    background: linear-gradient(180deg, #fff 0%, #fbf6ea 100%);
+    padding: 24px 22px;
     border-radius: var(--r-lg);
     border: 1px solid var(--line);
     text-decoration: none;
     color: var(--ink);
-    transition: transform var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .3s ease, box-shadow .3s ease;
   }
-  .zone-tile:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: var(--shadow-1); }
-  .zone-tile h4 { margin: 0 0 4px; font-size: 1.1rem; }
+  /* Decorative gold corner that grows on hover */
+  .zone-tile::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 28px; height: 28px;
+    background:
+      linear-gradient(225deg, color-mix(in oklch, var(--gold) 60%, transparent) 0%, transparent 60%);
+    border-top-right-radius: var(--r-lg);
+    transition: width .35s ease, height .35s ease, background .35s ease;
+    pointer-events: none;
+  }
+  .zone-tile:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in oklch, var(--gold) 35%, var(--line));
+    box-shadow: 0 18px 36px -16px rgba(20, 37, 63, 0.18);
+  }
+  .zone-tile:hover::after {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(225deg, color-mix(in oklch, var(--gold) 80%, transparent) 0%, transparent 65%);
+  }
+  .zone-tile h3 {
+    margin: 0 0 6px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    transition: color .25s ease;
+  }
+  .zone-tile:hover h3 { color: var(--accent-2); }
   .zone-tile p { margin: 0; color: var(--muted); font-size: 13px; }
 
   .more-link { text-align: center; margin-top: 32px; }

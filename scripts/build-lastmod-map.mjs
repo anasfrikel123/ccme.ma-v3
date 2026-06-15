@@ -16,6 +16,7 @@ const COLLECTIONS = {
   secteurs: 'secteurs',
   zones: 'zones',
   quartiers: 'quartiers',
+  cas: 'cas',
 };
 
 /**
@@ -23,6 +24,7 @@ const COLLECTIONS = {
  * @param {string} id
  */
 function entryPath(coll, id) {
+  if (coll === 'cas') return `/cas-pratiques/${id}`;
   return `/${coll}/${id}`;
 }
 
@@ -51,7 +53,9 @@ export async function buildLastmodMap() {
       if (!hubLatest || iso > hubLatest) hubLatest = iso;
     }
 
-    if (hubLatest) map.set(`/${coll}`, hubLatest);
+    if (hubLatest) {
+      map.set(coll === 'cas' ? '/cas-pratiques' : `/${coll}`, hubLatest);
+    }
   }
 
   map.set('/', '2026-06-13T00:00:00.000Z');

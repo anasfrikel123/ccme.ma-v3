@@ -1,0 +1,68 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import CompareTable from '~/components/CompareTable.astro';
+
+const faq = [
+  { q: "La domiciliation d'entreprise est-elle légale au Maroc ?", a: "Oui, à condition de respecter le cadre prévu par la loi sur la domiciliation : un contrat de domiciliation écrit entre votre société et le domiciliataire, une adresse réelle (pas une simple boîte aux lettres fictive), et la tenue d'un registre par le domiciliataire. C'est une pratique parfaitement reconnue pour le siège social, très répandue à Tanger pour les créations, les filiales et les holdings." },
+  { q: "Puis-je immatriculer ma société avec une simple domiciliation ?", a: "Oui. L'adresse de domiciliation sert de siège social pour l'inscription au registre de commerce et figure sur vos statuts, votre modèle J et vos documents officiels. C'est exactement ce que nous mettons en place lors d'une création d'entreprise quand le dirigeant n'a pas encore de local." },
+  { q: "Quand faut-il un vrai local plutôt qu'une domiciliation ?", a: "Dès que vous recevez des clients sur place, que vous avez besoin de stocker de la marchandise, d'installer des équipements ou d'héberger une équipe. Un commerce, un atelier, un cabinet médical ou un restaurant ont besoin d'un local ; une activité de conseil, de services à distance, d'e-commerce ou une holding peuvent rester en domiciliation longtemps." },
+  { q: "Peut-on commencer en domiciliation puis prendre un local ?", a: "Bien sûr, c'est le parcours le plus fréquent. Le passage de la domiciliation à un local (ou l'inverse) est un simple transfert de siège social : modification statutaire, dépôt au tribunal et mise à jour du registre de commerce. Nous gérons cette formalité dans le cadre de nos travaux juridiques." },
+];
+
+const compareColumns = ['Critère', 'Domiciliation', 'Local commercial loué'];
+const compareRows = [
+  { label: 'Coût mensuel', values: ['À partir de quelques centaines de DH', 'Loyer plein + charges (eau, électricité, internet)'] },
+  { label: 'Engagement', values: ['Contrat de domiciliation, souple', 'Bail commercial, engagement long'] },
+  { label: 'Adresse', values: ['Adresse professionnelle immédiate (centre-ville)', "Selon l'emplacement que vous louez"] },
+  { label: 'Cadre légal', values: ['Contrat écrit + registre obligatoires', 'Bail enregistré'] },
+  { label: 'Courrier', values: ['Réceptionné et géré pour vous', 'À votre charge'] },
+  { label: 'Recevoir des clients', values: ['Non', 'Oui'] },
+  { label: 'Stockage / atelier', values: ['Non', 'Oui'] },
+  { label: 'Évolutivité', values: ['Idéale au démarrage', 'Pour activité installée'] },
+  { label: 'Idéal pour', values: ['Création, e-commerce, conseil, holding, filiale', 'Commerce, atelier, cabinet recevant du public'] },
+];
+---
+<Page
+  title="Domiciliation ou local commercial Maroc"
+  description="Domiciliation d'entreprise ou location d'un local commercial à Tanger ? Comparatif coût, légalité, image et évolutivité pour bien choisir votre siège social."
+  eyebrow="Comparatif"
+  heading="Domiciliation ou local commercial"
+  lede="Au moment de fixer le siège de votre société : payer un local plein, ou domicilier intelligemment ? On compare coût, cadre légal et image, sans jargon."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs', href: '/comparatifs' }, { label: 'Domiciliation vs local' }]}
+  keywords={["domiciliation ou local Maroc","domiciliation entreprise Tanger","siège social société Maroc","prix domiciliation Maroc"]}
+>
+  <section>
+    <div class="container">
+      <CompareTable columns={compareColumns} rows={compareRows} narrow="md" />
+
+      <div class="prose compare-prose">
+        <h2>Quel choix selon votre situation</h2>
+
+        <h3>La domiciliation</h3>
+        <p>Vous obtenez une adresse de siège social professionnelle, souvent en centre-ville, sans payer un loyer plein. C'est la solution privilégiée pour <strong>démarrer vite et léger</strong> : création de société, filiale d'un groupe étranger, holding, ou activité qui n'a pas besoin de murs (conseil, services à distance, e-commerce). Le tout dans un cadre légal précis — contrat de <a href="/services/domiciliation">domiciliation</a> écrit et registre tenu par le domiciliataire.</p>
+        <p><strong>Notre conseil :</strong> si vous ne recevez pas de clients sur place et n'avez ni stock ni équipe, la domiciliation vous fait économiser des milliers de dirhams par an, surtout la première année.</p>
+
+        <h3>Le local commercial</h3>
+        <p>Indispensable dès que votre activité a besoin de <strong>murs</strong> : recevoir du public, exposer, stocker, produire, installer une équipe. Un commerce de détail, un atelier, un cabinet médical ou un restaurant n'ont pas le choix. Le local engage davantage (bail, charges) mais crédibilise une activité installée et visible.</p>
+        <p><strong>Notre conseil :</strong> ne louez un local que lorsque l'activité le justifie réellement. Beaucoup de jeunes sociétés signent un bail trop tôt et plombent leur trésorerie alors qu'une domiciliation aurait suffi 12 à 24 mois de plus.</p>
+
+        <h3>La solution mixte</h3>
+        <p>Très fréquente : on domicilie le <strong>siège social</strong> (adresse administrative et fiscale) tout en exerçant depuis un atelier, un entrepôt ou même son domicile. On structure ça proprement lors de la <a href="/services/creation-entreprise">création d'entreprise</a> pour que tout soit conforme côté registre de commerce et DGI.</p>
+
+        <h2>Cas pratiques</h2>
+        <p><strong>Yassine, consultant à Tanger, lance sa SARLAU :</strong> domiciliation au centre-ville. Adresse crédible, zéro loyer, il garde sa trésorerie pour son activité.</p>
+        <p><strong>Filiale espagnole d'un groupe industriel :</strong> domiciliation le temps de monter la structure, puis transfert vers un local en zone une fois l'usine engagée.</p>
+        <p><strong>Nadia ouvre une boutique à Iberia :</strong> local commercial obligatoire — elle reçoit des clients et stocke. La domiciliation n'a pas de sens ici.</p>
+
+        <p><a href="/services/domiciliation">→ Notre service de domiciliation à Tanger</a></p>
+        <p><a href="/services/creation-entreprise">→ Création d'entreprise : on cale le siège social avec vous</a></p>
+      </div>
+    </div>
+  </section>
+  <FAQ items={faq} />
+</Page>
+
+<style>
+  .compare-prose { margin-top: 48px; max-width: 1000px; margin-inline: auto; }
+</style>

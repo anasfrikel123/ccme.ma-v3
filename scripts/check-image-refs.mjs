@@ -33,6 +33,18 @@ for (const f of files) {
   }
 }
 
+const INSTITUTION_LOGOS = [
+  'oec', 'ministere-economie', 'dgi', 'damancom', 'ompic', 'office-des-changes', 'tanger-med',
+];
+for (const slug of INSTITUTION_LOGOS) {
+  const ref = `/logos/institutions/${slug}.svg`;
+  const onDisk = join(PUB, ref);
+  if (!existsSync(onDisk)) {
+    if (!missing.has(ref)) missing.set(ref, []);
+    missing.get(ref).push('src/components/Compliance.astro');
+  }
+}
+
 if (missing.size === 0) {
   console.log(`OK — all ${files.length} files reference existing images.`);
 } else {

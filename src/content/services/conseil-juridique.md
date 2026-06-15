@@ -1,5 +1,5 @@
 ---
-title: "Conseil juridique Tanger | Droit des sociétés"
+title: "Conseil juridique Tanger | Sociétés"
 h1: "Conseil juridique"
 description: "Conseil en droit des sociétés, contrats commerciaux, baux, pactes d'associés, secrétariat juridique annuel. Cabinet expert-comptable à Tanger."
 eyebrow: "Juridique"

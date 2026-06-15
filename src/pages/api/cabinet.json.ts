@@ -30,6 +30,7 @@ export const GET: APIRoute = async () => {
         authorityUrl: cabinet.oec.authorityUrl,
       },
     },
+    legalIds: cabinet.legalIds,
     sectors: sectorsArray,
     services: {
       comptabilite: ['Tenue', 'Supervision', 'Audit', 'Gestion financière'],

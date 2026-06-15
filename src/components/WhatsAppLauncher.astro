@@ -1,0 +1,157 @@
+---
+/**
+ * Floating WhatsApp launcher.
+ *
+ * Sticky in the bottom-right corner site-wide. Pre-fills the message based
+ * on the current page so leads don't have to explain context. Hidden in
+ * print, optional via `data-no-wa` on the body, and respects reduced-motion
+ * for the bounce-in animation.
+ */
+import { cabinet } from '~/data/cabinet';
+
+// Page-aware label & message. Pure server-render: no JS roundtrip on first load.
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function contextFor(p: string): { label: string; topic: string } {
+  if (p === '/') return { label: 'Discuter sur WhatsApp', topic: 'votre cabinet' };
+  if (p.startsWith('/services/')) {
+    const slug = p.replace('/services/', '').replace(/-/g, ' ');
+    return { label: 'Une question sur ce service ?', topic: `votre service ${slug}` };
+  }
+  if (p.startsWith('/secteurs/')) {
+    const slug = p.replace('/secteurs/', '').replace(/-/g, ' ');
+    return { label: 'Discuter de mon secteur', topic: `un dossier ${slug}` };
+  }
+  if (p.startsWith('/zones/')) {
+    const slug = p.replace('/zones/', '').replace(/-/g, ' ');
+    return { label: 'Question sur cette zone', topic: `une activité en ${slug}` };
+  }
+  if (p.startsWith('/quartiers/')) {
+    const slug = p.replace('/quartiers/', '').replace(/-/g, ' ');
+    return { label: 'Question sur mon quartier', topic: `un dossier à ${slug}` };
+  }
+  if (p.startsWith('/blog/')) return { label: "Question sur cet article ?", topic: "l'article que je suis en train de lire" };
+  if (p.startsWith('/outils/')) return { label: 'Aide sur le simulateur', topic: 'un calcul que je viens de faire' };
+  if (p === '/tarifs') return { label: 'Demander un devis', topic: "vos tarifs" };
+  if (p === '/contact') return { label: '', topic: '' }; // already on contact, hide
+  if (p === '/cabinet') return { label: 'Discuter avec le cabinet', topic: 'votre cabinet' };
+  return { label: 'Une question rapide ?', topic: 'votre site' };
+}
+
+const { label, topic } = contextFor(path);
+const message = topic
+  ? `Bonjour, je consulte ${cabinet.site}${path} et j'aurais une question sur ${topic}.`
+  : '';
+const href = label
+  ? `${cabinet.phone.whatsapp}?text=${encodeURIComponent(message)}`
+  : '';
+---
+{label && (
+  <a
+    class="wa-launcher"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${label} (ouvre WhatsApp dans un nouvel onglet)`}
+    data-wa-launcher
+  >
+    <span class="wa-icon" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor">
+        <path d="M16 .395A15.6 15.6 0 0 0 .4 16.001c0 2.749.731 5.435 2.121 7.795L.05 31.605l8.012-2.45A15.62 15.62 0 0 0 16 31.605C24.605 31.605 31.6 24.61 31.6 16.001 31.6 7.395 24.605.395 16 .395Zm0 28.555a13 13 0 0 1-6.616-1.81l-.474-.281-4.751 1.45 1.51-4.626-.31-.49A13 13 0 1 1 28.95 16c0 7.155-5.795 12.95-12.95 12.95Zm7.082-9.642c-.39-.195-2.305-1.137-2.661-1.267-.357-.13-.617-.195-.876.196-.26.39-1.007 1.267-1.235 1.527-.227.26-.454.292-.844.097-.39-.195-1.643-.605-3.13-1.928-1.157-1.033-1.937-2.31-2.164-2.7-.227-.39-.024-.6.171-.794.176-.176.39-.454.585-.682.195-.227.26-.39.39-.65.13-.26.065-.487-.032-.682-.097-.195-.876-2.114-1.202-2.892-.317-.762-.638-.658-.876-.67l-.747-.013c-.26 0-.682.097-1.04.487-.357.39-1.365 1.333-1.365 3.252s1.397 3.772 1.592 4.032c.195.26 2.749 4.198 6.66 5.886.93.4 1.658.638 2.225.816.935.297 1.787.255 2.461.155.751-.112 2.305-.943 2.63-1.853.325-.91.325-1.69.227-1.853-.097-.162-.357-.26-.747-.454Z"/>
+      </svg>
+    </span>
+    <span class="wa-label">{label}</span>
+  </a>
+)}
+
+<style>
+  .wa-launcher {
+    position: fixed;
+    bottom: clamp(16px, 3vw, 24px);
+    right: clamp(16px, 3vw, 24px);
+    z-index: 280;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px 12px 12px;
+    border-radius: 999px;
+    background: #25D366;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow:
+      0 8px 22px -6px rgba(37, 211, 102, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+    animation: wa-bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s backwards;
+    transition: transform .25s ease, box-shadow .25s ease;
+    /* Live pulse halo */
+    isolation: isolate;
+  }
+  .wa-launcher::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+    animation: wa-pulse 2.6s ease-out 2s infinite;
+    z-index: -1;
+  }
+  .wa-launcher:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      0 14px 30px -8px rgba(37, 211, 102, 0.75),
+      0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+  }
+  .wa-launcher:active { transform: translateY(0) scale(0.98); }
+  .wa-launcher:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
+  .wa-icon {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .wa-icon svg { display: block; }
+  .wa-label {
+    white-space: nowrap;
+    padding-right: 4px;
+    letter-spacing: 0.005em;
+  }
+
+  @keyframes wa-bounce-in {
+    from { transform: translateY(80px) scale(0.85); opacity: 0; }
+    to   { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  @keyframes wa-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+    70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  /* Phone — collapse to icon-only to save thumb space. */
+  @media (max-width: 600px) {
+    .wa-launcher { padding: 12px; }
+    .wa-label { display: none; }
+    .wa-icon { width: 32px; height: 32px; }
+  }
+
+  /* Hide near the bottom of really narrow viewports if a sticky footer/CTA
+     appears (any element with [data-bottom-cta]) — JS sets a class. */
+  body[data-wa-hide] .wa-launcher { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wa-launcher { animation: none; }
+    .wa-launcher::before { animation: none; }
+  }
+
+  @media print {
+    .wa-launcher { display: none !important; }
+  }
+</style>

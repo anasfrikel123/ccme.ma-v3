@@ -1,0 +1,108 @@
+---
+import Page from '~/layouts/Page.astro';
+---
+<Page
+  title="Simulateur dividende Maroc 2026 | PFL 12,5 %"
+  description="Calcul dividende net après IS + retenue PFL 12,5 %. Loi de Finances 2026. Bénéfice → IS → distribution → net actionnaire. Outil instantané."
+  eyebrow="Outil"
+  heading="Simulateur dividende — Maroc 2026"
+  lede="Combien reste-t-il à l'actionnaire après IS et retenue à la source ? La Loi de Finances 2026 a abaissé le PFL à 12,5 %. Calcul instantané, par exercice."
+  breadcrumb={[{ label: 'Accueil', href: '/' }, { label: 'Outils', href: '/outils' }, { label: 'Dividende' }]}
+  keywords={["simulateur dividende Maroc","PFL 12.5 Maroc","retenue dividende 2026","calcul dividende net actionnaire"]}
+>
+  <section>
+    <div class="container narrow">
+      <div class="card sim-card">
+        <h2>Vos paramètres</h2>
+        <div class="form-grid">
+          <label>
+            <span>Bénéfice net après IS (DH)</span>
+            <input type="number" id="benefice" min="0" step="100" placeholder="Ex : 800 000" />
+          </label>
+          <label>
+            <span>Quote-part distribuée (%)</span>
+            <input type="number" id="ratio" min="0" max="100" step="5" value="100" />
+          </label>
+          <label>
+            <span>Régime PFL applicable</span>
+            <select id="regime">
+              <option value="12.5">12,5 % — Exercices ouverts dès 2026 (LF 2026)</option>
+              <option value="13.75">13,75 % — Exercices antérieurs</option>
+              <option value="0">0 % — Convention fiscale (cas spéciaux)</option>
+            </select>
+          </label>
+        </div>
+        <button id="calculate" class="btn btn-gold" type="button">Calculer le dividende net</button>
+        <p id="sim-error" class="sim-error" role="alert" aria-live="polite"></p>
+
+        <div id="result" class="result" hidden>
+          <div class="row"><span>Bénéfice net après IS</span><strong id="rBenefice">—</strong></div>
+          <div class="row"><span>Montant distribué (avant PFL)</span><strong id="rDistribue">—</strong></div>
+          <div class="row"><span>Retenue PFL (<em id="rTaux">12,5 %</em>)</span><strong id="rRetenue">—</strong></div>
+          <div class="row total"><span>Net actionnaire</span><strong id="rNet">—</strong></div>
+        </div>
+      </div>
+
+      <div class="sim-note card">
+        <p><strong>Comment ça marche.</strong> Le PFL (Prélèvement Forfaitaire Libératoire) s'applique à la source au moment de la distribution. L'actionnaire reçoit le net, sans avoir à le réintégrer dans son IR (sauf cas particulier holding). La LF 2026 a uniformisé le taux à 12,5 % pour les exercices ouverts à partir du 01/01/2026.</p>
+        <p>Ce simulateur ne couvre pas les conventions fiscales internationales (taux conventionnel pour résident UE), les redistributions intra-groupe (IS du holding), ni les régimes spéciaux (zones franches). Pour un cas réel, <a href="/contact">contactez le cabinet</a>.</p>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .narrow { max-width: 720px; }
+  .sim-card { padding: 32px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .form-grid label:last-child { grid-column: 1 / -1; }
+  .form-grid span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-grid input, .form-grid select { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 16px; background: #fff; }
+  .form-grid input:focus, .form-grid select:focus { outline: 2px solid var(--gold); }
+  .result { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 15px; gap: 12px; }
+  .row strong { font-variant-numeric: tabular-nums; }
+  .row em { font-style: normal; }
+  .row.total { padding: 14px 0; border-top: 1px solid var(--ink); margin-top: 8px; font-weight: 700; font-size: 17px; }
+  .row.total strong { color: var(--gold); font-size: 22px; }
+  .sim-error { color: #b3261e; font-size: 14px; min-height: 1.4em; margin: 12px 0 0; font-weight: 500; }
+  .sim-error:empty { display: none; }
+  .sim-note { margin-top: 24px; padding: 24px 28px; font-size: 14.5px; line-height: 1.65; color: var(--ink-soft); }
+  .sim-note p { margin: 0 0 10px; }
+  .sim-note p:last-child { margin: 0; }
+  @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  import { computeDividende, fmtDH2, type DividendeRegime } from '~/lib/tax-maroc';
+
+  document.getElementById('calculate')!.addEventListener('click', () => {
+    const errEl = document.getElementById('sim-error') as HTMLElement;
+    errEl.textContent = '';
+    const benefice = parseFloat((document.getElementById('benefice') as HTMLInputElement).value) || 0;
+    const ratioPct = parseFloat((document.getElementById('ratio') as HTMLInputElement).value) || 0;
+    const regime = (document.getElementById('regime') as HTMLSelectElement).value as DividendeRegime;
+
+    if (benefice <= 0) {
+      errEl.textContent = 'Saisissez un bénéfice net positif.';
+      return;
+    }
+    if (ratioPct < 0 || ratioPct > 100) {
+      errEl.textContent = 'La quote-part doit être comprise entre 0 et 100 %.';
+      return;
+    }
+
+    const r = computeDividende({
+      beneficeNetApresIs: benefice,
+      ratioDistribue: ratioPct / 100,
+      regime,
+    });
+
+    document.getElementById('rBenefice')!.textContent = fmtDH2(r.beneficeNetApresIs);
+    document.getElementById('rDistribue')!.textContent = fmtDH2(r.montantDistribue);
+    document.getElementById('rRetenue')!.textContent = fmtDH2(r.retenuePfl);
+    document.getElementById('rNet')!.textContent = fmtDH2(r.netActionnaire);
+    document.getElementById('rTaux')!.textContent = r.tauxEffectif.toString().replace('.', ',') + ' %';
+    (document.getElementById('result') as HTMLElement).hidden = false;
+  });
+</script>

@@ -45,13 +45,21 @@ export function mergeSchemaGraph(
   core: { '@context': string; '@graph': readonly unknown[] },
   extra?: Record<string, unknown> | Record<string, unknown>[],
 ): { '@context': string; '@graph': unknown[] } {
-  const extraNodes = !extra
+  const extraNodes: unknown[] = !extra
     ? []
     : Array.isArray(extra)
-      ? extra.flatMap((n) => (n['@graph'] ? n['@graph'] : [n]))
-      : extra['@graph']
-        ? extra['@graph']
-        : [extra];
+      ? extra.flatMap((n) => {
+          const graph = n['@graph'];
+          if (graph === undefined) return [n];
+          return Array.isArray(graph) ? graph : [graph];
+        })
+      : (() => {
+          const graph = extra['@graph'];
+          if (graph !== undefined) {
+            return Array.isArray(graph) ? graph : [graph];
+          }
+          return [extra];
+        })();
   return {
     '@context': 'https://schema.org',
     '@graph': [...core['@graph'], ...extraNodes],

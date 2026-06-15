@@ -102,4 +102,40 @@ const quartiers = defineCollection({
   }),
 });
 
-export const collections = { services, secteurs, zones, blog, quartiers };
+/**
+ * Cas pratiques — anonymized client outcomes. Each entry doubles as a
+ * SEO landing page targeting a specific scenario ("e-commerçant Tanger
+ * passe IS de 12K à 4K") and as social proof. Frontmatter ships measurable
+ * outcomes so the page can render a Before/After ribbon.
+ */
+const cas = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/cas' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    /** Industry / sector — drives the filter on the index page. */
+    sector: z.string(),
+    /** Cabinet service involved — links to /services/[slug]. */
+    service: z.string().optional(),
+    /** Optional zone / quartier context. */
+    zone: z.string().optional(),
+    /** Anonymized client profile: "PME e-commerce, 8 salariés, CA 12 MDH". */
+    profile: z.string(),
+    /** Three measurable outcomes shown as KPI tiles ("IS divisé par 3"). */
+    outcomes: z.array(z.object({
+      label: z.string(),
+      before: z.string(),
+      after: z.string(),
+      delta: z.string().optional(),
+    })).min(1).max(4),
+    publishedTime: z.string(),
+    modifiedTime: z.string().optional(),
+    duration: z.string().optional(),
+    keywords: z.array(z.string()).default([]),
+    heroImage: z.string().optional(),
+    heroAlt: z.string().optional(),
+    related: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { services, secteurs, zones, blog, quartiers, cas };

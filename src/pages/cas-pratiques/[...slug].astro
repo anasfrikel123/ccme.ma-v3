@@ -1,0 +1,214 @@
+---
+import Article from '~/layouts/Article.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await getCollection('cas');
+  return items.map(c => ({ params: { slug: c.id }, props: { entry: c } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Reading time is mostly informational on a cas page; keep it for the byline.
+const rawBody = (entry.body || '').replace(/```[\s\S]*?```/g, ' ').replace(/[#>*_`\[\]\(\)\-]/g, ' ');
+const wordCount = rawBody.split(/\s+/).filter(Boolean).length;
+const minutes = Math.max(1, Math.round(wordCount / 220));
+const timeRequired = `PT${minutes}M`;
+
+const all = await getCollection('cas');
+const related = (entry.data.related || [])
+  .map(slug => all.find(c => c.id === slug))
+  .filter(Boolean)
+  .slice(0, 3)
+  .map(c => ({
+    title: c!.data.title,
+    href: `/cas-pratiques/${c!.id}`,
+    cat: c!.data.sector,
+  }));
+
+if (related.length < 3) {
+  const fallback = all
+    .filter(c => c.id !== entry.id && c.data.sector === entry.data.sector)
+    .slice(0, 3 - related.length)
+    .map(c => ({ title: c.data.title, href: `/cas-pratiques/${c.id}`, cat: c.data.sector }));
+  related.push(...fallback);
+}
+
+const outcomes = entry.data.outcomes;
+---
+<Article
+  title={entry.data.title}
+  description={entry.data.description}
+  category={entry.data.sector}
+  publishedTime={entry.data.publishedTime}
+  modifiedTime={entry.data.modifiedTime}
+  author="Équipe CCME"
+  heroImage={entry.data.heroImage}
+  keywords={entry.data.keywords}
+  related={related}
+  wordCount={wordCount}
+  timeRequired={timeRequired}
+>
+  <section class="cas-ribbon" aria-label="Résultats clés du dossier">
+    <div class="cas-ribbon-head">
+      <p class="eyebrow eyebrow-gold">Résultats mesurés</p>
+      <h2>Avant / Après</h2>
+      <p class="cas-ribbon-profile"><strong>Profil :</strong> {entry.data.profile}</p>
+    </div>
+
+    <div class="cas-ribbon-grid" data-count={outcomes.length}>
+      {outcomes.map(o => (
+        <div class="cas-tile">
+          <div class="cas-tile-label">{o.label}</div>
+          <div class="cas-tile-row">
+            <div class="cas-tile-cell cas-tile-before">
+              <span class="cas-tile-cell-label">Avant</span>
+              <strong>{o.before}</strong>
+            </div>
+            <svg class="cas-tile-arrow" width="28" height="14" viewBox="0 0 28 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="2" y1="7" x2="24" y2="7"></line>
+              <polyline points="18 1 24 7 18 13"></polyline>
+            </svg>
+            <div class="cas-tile-cell cas-tile-after">
+              <span class="cas-tile-cell-label">Après</span>
+              <strong>{o.after}</strong>
+            </div>
+          </div>
+          {o.delta && <div class="cas-tile-delta">{o.delta}</div>}
+        </div>
+      ))}
+    </div>
+
+    {(entry.data.service || entry.data.zone || entry.data.duration) && (
+      <div class="cas-ribbon-meta">
+        {entry.data.service && (
+          <a class="cas-ribbon-chip" href={entry.data.service}>
+            <span aria-hidden="true">→</span> Service mobilisé
+          </a>
+        )}
+        {entry.data.zone && <span class="cas-ribbon-chip cas-ribbon-chip-static">{entry.data.zone}</span>}
+        {entry.data.duration && <span class="cas-ribbon-chip cas-ribbon-chip-static">Durée : {entry.data.duration}</span>}
+      </div>
+    )}
+  </section>
+
+  <Content />
+</Article>
+
+<style>
+  .cas-ribbon {
+    margin-bottom: clamp(36px, 5vw, 56px);
+    padding: clamp(28px, 4vw, 44px);
+    border-radius: var(--r-xl);
+    background:
+      radial-gradient(700px 320px at 100% 0%, color-mix(in oklch, var(--gold) 14%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    border: 1px solid color-mix(in oklch, var(--gold) 25%, var(--line));
+    position: relative;
+    overflow: hidden;
+  }
+  .cas-ribbon::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  }
+  .cas-ribbon-head { margin-bottom: 28px; }
+  .cas-ribbon-head h2 {
+    margin: 6px 0 12px;
+    font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+    line-height: 1.2;
+  }
+  .cas-ribbon-profile {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .cas-ribbon-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .cas-ribbon-grid[data-count="1"] { grid-template-columns: 1fr; max-width: 540px; }
+
+  .cas-tile {
+    background: #fff;
+    border: 1px solid color-mix(in oklch, var(--gold) 22%, var(--line));
+    border-radius: var(--r-lg);
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .cas-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -20px rgba(20, 37, 63, 0.22);
+  }
+  .cas-tile-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .cas-tile-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .cas-tile-cell { display: flex; flex-direction: column; gap: 2px; }
+  .cas-tile-cell-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .cas-tile-before strong { color: var(--muted); text-decoration: line-through; font-weight: 500; font-size: 1rem; }
+  .cas-tile-after strong { color: var(--ink); font-weight: 700; font-size: 1.1rem; }
+  .cas-tile-arrow { color: var(--gold); }
+  .cas-tile-delta {
+    align-self: flex-start;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--gold) 22%, transparent);
+    color: var(--accent-deep);
+  }
+
+  .cas-ribbon-meta {
+    margin-top: 22px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cas-ribbon-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklch, var(--gold) 30%, var(--line));
+    background: color-mix(in oklch, var(--gold) 8%, #fff);
+    color: var(--accent-deep);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .25s ease;
+  }
+  .cas-ribbon-chip:not(.cas-ribbon-chip-static):hover {
+    background: var(--gold);
+    color: #2a1f04;
+  }
+  .cas-ribbon-chip-static { background: transparent; color: var(--ink-soft); }
+
+  @media (max-width: 540px) {
+    .cas-tile-row { grid-template-columns: 1fr; }
+    .cas-tile-arrow { transform: rotate(90deg); justify-self: center; }
+  }
+</style>

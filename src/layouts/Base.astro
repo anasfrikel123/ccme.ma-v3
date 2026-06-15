@@ -5,6 +5,8 @@ import '~/styles/animations.css';
 import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
 import SEO from '~/components/SEO.astro';
+import Analytics from '~/components/Analytics.astro';
+import WhatsAppLauncher from '~/components/WhatsAppLauncher.astro';
 import { agentEndpoints } from '~/data/agent-tools';
 import { orgCoreGraph } from '~/data/org-schema';
 import { mergeSchemaGraph } from '~/lib/collection-schema';
@@ -20,6 +22,8 @@ interface Props {
   noindex?: boolean;
   publishedTime?: string;
   modifiedTime?: string;
+  /** For articles only: reading-time minutes — surfaces in SERP description as CTR signal. */
+  readingMinutes?: number;
   schema?: any;
   keywords?: string[];
   bodyClass?: string;
@@ -38,7 +42,7 @@ interface Props {
    */
   markdownUrl?: string;
 }
-const { bodyClass = '', preloadImage, lcpImageSrcset, markdownUrl, schema, ...seo } = Astro.props;
+const { bodyClass = '', preloadImage, lcpImageSrcset, markdownUrl, schema, lang = 'fr-MA', ...seo } = Astro.props;
 const mergedSchema = mergeSchemaGraph(orgCoreGraph, schema);
 const lcpHref = preloadImage
   ? preloadImage.replace(/\.jpe?g$/i, '.webp')
@@ -48,10 +52,25 @@ const heroAvif = lcpImageSrcset?.avif ?? '';
 const heroSizes = lcpImageSrcset?.sizes ?? '';
 ---
 <!DOCTYPE html>
-<html lang="fr-MA">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      // Theme bootstrap — run synchronously before any paint to prevent
+      // light/dark FOUC. Reads explicit user choice from localStorage,
+      // Light is the DEFAULT; dark only when the user explicitly chose it.
+      // Stored under 'ccme:theme'.
+      (function () {
+        try {
+          var saved = localStorage.getItem('ccme:theme');
+          var theme = saved || 'light';
+          if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (_) { /* private mode or storage disabled */ }
+      })();
+    </script>
     <link rel="icon" type="image/png" sizes="96x96" href="/images/cme-logo-96.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="/images/cme-logo-192.png" />
     <link rel="preload" href="/fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin />
@@ -92,6 +111,7 @@ const heroSizes = lcpImageSrcset?.sizes ?? '';
       <link rel="alternate" type="text/markdown" href={markdownUrl} title="Source markdown" />
     )}
     <SEO {...seo} schema={mergedSchema} />
+    {import.meta.env.PROD && <Analytics />}
   </head>
   <body class={bodyClass}>
     <div class="scroll-progress" aria-hidden="true"></div>
@@ -99,6 +119,7 @@ const heroSizes = lcpImageSrcset?.sizes ?? '';
     <main id="main">
       <slot />
     </main>
+    <WhatsAppLauncher />
     <Footer />
 
     {/* WebMCP — exposes the same machine-readable surface that

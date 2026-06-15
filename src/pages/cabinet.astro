@@ -1,9 +1,9 @@
----
+﻿---
 import Page from '~/layouts/Page.astro';
-import { cabinet } from '~/data/cabinet';
+import { cabinet, yearsInBusiness } from '~/data/cabinet';
 import { CABINET_VALUES } from '~/data/service-families';
 
-const SITE = 'https://www.ccme.ma';
+const SITE = 'https://ccme.ma';
 
 const team = [
   {
@@ -11,7 +11,7 @@ const team = [
     name: 'Hicham Bennani',
     jobTitle: 'Expert-comptable, associé fondateur',
     pole: 'Direction technique · Expertise comptable & audit',
-    bio: "Inscrit à l'Ordre des Experts-Comptables du Maroc (OEC). Plus de 20 ans à Tanger, dont 12 en pratique indépendante. Spécialiste de la fiscalité internationale, des conventions bilatérales (France, Espagne, Belgique) et de la consolidation pour groupes PME.",
+    bio: `Inscrit à l'Ordre des Experts-Comptables du Maroc (OEC). Plus de ${yearsInBusiness()} ans à Tanger, dont 12 en pratique indépendante. Spécialiste de la fiscalité internationale, des conventions bilatérales (France, Espagne, Belgique) et de la consolidation pour groupes PME.`,
     sameAs: ['https://www.linkedin.com/company/consulting-maghreb-expertises/'],
     knowsAbout: [
       "Fiscalité internationale Maroc",
@@ -52,18 +52,17 @@ const teamSchema = team.map(m => ({
   '@id': `${SITE}/cabinet#${m.id}`,
   name: m.name,
   jobTitle: m.jobTitle,
-  worksFor: { '@id': 'https://www.ccme.ma/#accounting' },
+  worksFor: { '@id': 'https://ccme.ma/#accounting' },
   url: `${SITE}/cabinet#${m.id}`,
   description: m.bio,
   knowsLanguage: ['fr-MA', 'ar-MA', 'en'],
   knowsAbout: m.knowsAbout,
   ...(m.alumniOf ? { alumniOf: m.alumniOf } : {}),
   ...(m.hasCredential ? { hasCredential: m.hasCredential } : {}),
-  sameAs: m.sameAs,
 }));
 
 const cabinetStats = [
-  { value: '15', suffix: '+', label: "années d'expérience" },
+  { value: String(yearsInBusiness()), suffix: '+', label: "années d'expérience" },
   { value: '500', suffix: '+', label: 'clients accompagnés' },
   { value: '20', suffix: '+', label: 'experts dédiés' },
   { value: '100', suffix: '%', label: 'conformité DGI & CNSS' },
@@ -71,7 +70,7 @@ const cabinetStats = [
 ---
 <Page
   title="Le cabinet | CCME — Expert-comptable Tanger"
-  description="Consulting Maghreb Expertise : cabinet d'expertise comptable inscrit OEC, basé à Tanger depuis plus de 20 ans. Histoire, équipe, valeurs."
+  description={`Consulting Maghreb Expertise : cabinet d'expertise comptable inscrit OEC, basé à Tanger depuis plus de ${yearsInBusiness()} ans. Histoire, équipe, valeurs.`}
   eyebrow="Le cabinet"
   heading="Un partenaire de confiance, au cœur de Tanger."
   lede="Consulting Maghreb Expertise accompagne entrepreneurs, PME et expatriés au Maroc avec une expertise comptable, fiscale et juridique rigoureuse et personnalisée."
@@ -82,11 +81,11 @@ const cabinetStats = [
   <section>
     <div class="container lead-2col">
       <div class="reveal">
-        <span class="eyebrow">Notre métier</span>
+        <span class="eyebrow eyebrow-gold">Notre métier</span>
         <h2 class="headline cabinet-headline">L'expertise au service de vos décisions.</h2>
       </div>
       <div class="prose reveal">
-        <p>Depuis plus de 15 ans, notre cabinet met la rigueur des chiffres au service de la croissance de ses clients. De la création d'entreprise au pilotage quotidien, nous couvrons l'ensemble des obligations comptables, fiscales, sociales et juridiques.</p>
+        <p>Depuis plus de {yearsInBusiness()} ans, notre cabinet met la rigueur des chiffres au service de la croissance de ses clients. De la création d'entreprise au pilotage quotidien, nous couvrons l'ensemble des obligations comptables, fiscales, sociales et juridiques.</p>
         <p>Notre approche est simple : un interlocuteur unique, des process clairs et des outils digitaux qui fluidifient les échanges. Que vous soyez une TPE, une PME en croissance ou un investisseur expatrié, nous adaptons notre accompagnement à votre réalité.</p>
       </div>
     </div>
@@ -116,7 +115,7 @@ const cabinetStats = [
   <section class="vision">
     <div class="container vk">
       <div class="reveal">
-        <span class="eyebrow">Notre vision</span>
+        <span class="eyebrow eyebrow-gold">Notre vision</span>
       </div>
       <div class="reveal">
         <h2>Être le cabinet de référence au Maroc en expertise comptable, fiscale et juridique — par l'innovation, la proximité et des solutions vraiment personnalisées.</h2>
@@ -127,7 +126,7 @@ const cabinetStats = [
   <section>
     <div class="container">
       <div class="sec-head reveal">
-        <span class="eyebrow">Nos valeurs</span>
+        <span class="eyebrow eyebrow-gold">Nos valeurs</span>
         <h2 class="headline">Ce qui guide notre travail.</h2>
       </div>
       <div class="values reveal">
@@ -145,7 +144,7 @@ const cabinetStats = [
   <section id="equipe">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="eyebrow">L'équipe</span>
+        <span class="eyebrow eyebrow-gold">L'équipe</span>
         <h2 class="headline">Une équipe disponible quand ça devient urgent.</h2>
         <p class="lede">Experts-comptables, juristes d'affaires et gestionnaires de paie — une pratique locale à Tanger sur des dossiers industriels, commerciaux et immobiliers.</p>
       </div>
@@ -167,7 +166,7 @@ const cabinetStats = [
         ))}
       </div>
       <div class="cabinet-contact reveal">
-        <p class="eyebrow">Coordonnées</p>
+        <p class="eyebrow eyebrow-gold">Coordonnées</p>
         <p><strong>{cabinet.legalName}</strong> · <span class="tag">Inscrit à l'OEC Maroc</span></p>
         <p set:html={`${cabinet.address.streetAddressLong.replace('3ème', '3<sup>ème</sup>')}<br/>${cabinet.address.postalCode} ${cabinet.address.addressLocality}`} />
         <p><a href={cabinet.phone.tel}>{cabinet.phone.display}</a> · <a href={`mailto:${cabinet.email}`}>{cabinet.email}</a></p>

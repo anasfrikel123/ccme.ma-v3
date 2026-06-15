@@ -138,4 +138,29 @@ const cas = defineCollection({
   }),
 });
 
-export const collections = { services, secteurs, zones, blog, quartiers, cas };
+
+/**
+ * Villes — nearby northern-Morocco cities CCME serves from its Tanger OEC
+ * cabinet (remote-first + on-site visits). Each entry is an exact-match
+ * SEO landing page ("expert comptable Asilah") at /expert-comptable-[ville].
+ */
+const villes = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/villes' }),
+  schema: z.object({
+    title: z.string(),
+    h1: z.string(),
+    description: z.string(),
+    eyebrow: z.string(),
+    /** Distance from Tanger, e.g. "45 km". */
+    distance: z.string(),
+    keywords: z.array(z.string()).default([]),
+    heroImage: z.string().optional(),
+    heroAlt: z.string().optional(),
+    landmarks: z.array(z.string()).default([]),
+    bullets: z.array(z.string()).default([]),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    order: z.number().default(99),
+  }),
+});
+
+export const collections = { services, secteurs, zones, blog, quartiers, cas, villes };

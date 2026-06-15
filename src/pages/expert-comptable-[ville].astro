@@ -1,0 +1,83 @@
+---
+import Page from '~/layouts/Page.astro';
+import FAQ from '~/components/FAQ.astro';
+import AsideCard from '~/components/AsideCard.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const list = await getCollection('villes');
+  return list.map((v) => ({ params: { ville: v.id }, props: { ville: v } }));
+}
+const { ville } = Astro.props;
+const { Content } = await render(ville);
+const SITE = 'https://ccme.ma';
+
+// Local-intent schema: an OEC accounting service whose areaServed is this city,
+// provided by the Tanger cabinet entity. Helps "expert comptable <ville>" rank.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AccountingService',
+  '@id': `${SITE}/expert-comptable-${ville.id}#service`,
+  name: ville.data.h1,
+  description: ville.data.description,
+  url: `${SITE}/expert-comptable-${ville.id}`,
+  areaServed: { '@type': 'City', name: ville.data.eyebrow.replace(/^Ville d[e'’]\s*/i, '') },
+  provider: { '@id': 'https://ccme.ma/#accounting' },
+};
+const faqSchema = ville.data.faq.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${SITE}/expert-comptable-${ville.id}#faq`,
+  mainEntity: ville.data.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+} : null;
+const schema = faqSchema ? [serviceSchema, faqSchema] : serviceSchema;
+---
+<Page
+  title={ville.data.title}
+  description={ville.data.description}
+  eyebrow={ville.data.eyebrow}
+  heading={ville.data.h1}
+  lede={ville.data.description}
+  breadcrumb={[
+    { label: 'Accueil', href: '/' },
+    { label: 'Expert-comptable Tanger', href: '/expert-comptable-tanger' },
+    { label: ville.data.h1 },
+  ]}
+  keywords={ville.data.keywords}
+  schema={schema}
+>
+  <section>
+    <div class="container service-grid">
+      <div class="prose reveal"><Content /></div>
+      <aside class="reveal-right">
+        {ville.data.bullets.length > 0 && (
+          <AsideCard eyebrow="On accompagne">
+            <ul class="bullet-list">{ville.data.bullets.map((b) => <li>{b}</li>)}</ul>
+          </AsideCard>
+        )}
+        {ville.data.landmarks.length > 0 && (
+          <AsideCard eyebrow="Repères" class="aside-card-spaced">
+            <ul class="bullet-list">{ville.data.landmarks.map((l) => <li>{l}</li>)}</ul>
+          </AsideCard>
+        )}
+        <div class="aside-card aside-card-spaced aside-location">
+          <p class="eyebrow aside-location-eyebrow">À {ville.data.distance} de Tanger</p>
+          <p class="aside-location-text">Cabinet OEC centre-ville<br/>Avenue Moulay Ismail, 90000 Tanger</p>
+          <a href="/contact" class="btn btn-gold" style="display:inline-block">Prendre RDV</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  {ville.data.faq.length > 0 && <FAQ items={ville.data.faq} />}
+</Page>
+
+<style>
+  .aside-card-spaced { margin-top: 16px; }
+  .aside-location { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .aside-location-eyebrow { color: var(--gold); }
+  .aside-location-text { font-size: 14px; line-height: 1.55; color: #e9e6e0; margin: 0 0 12px; }
+</style>
